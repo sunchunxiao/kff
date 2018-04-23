@@ -1,0 +1,17 @@
+.item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px 0;
+
+}
+
+.index, .img, .btn {
+  flex: 1;
+}
+.index{
+  text-align: center;
+}
+.message {
+  flex: 3;
+}

@@ -1,0 +1,28 @@
+html, body {
+  font-size: 14px;
+}
+
+body {
+  margin-bottom: 40px;
+}
+
+.longBtn {
+  width: 90%;
+  margin-left: 5%;
+}
+
+.bottomPopup {
+  width: 100%;
+}
+
+.inlineBlock {
+  display: inline-block;
+}
+
+.mint-search{
+  height: auto;
+}
+
+ul{
+  padding: 0;
+}
