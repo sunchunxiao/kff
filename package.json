@@ -1,7 +1,7 @@
 {
-  "name": "tfvue",
+  "name": "KFF",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "KFF project",
   "author": "zcs <zhengchangshun928@126.com>",
   "private": true,
   "scripts": {
