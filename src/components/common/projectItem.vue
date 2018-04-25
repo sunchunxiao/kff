@@ -89,7 +89,7 @@
             <div class="time">{{item.time}}</div>
           </div>
           <div class="btn">
-            <mt-button @click="addAttention(item,index)" :type="baseInfo.isAttention ? 'default' : 'primary'">{{baseInfo.isAttention ? "已关注" : "+ 关注"}} </mt-button>
+            <mt-button @click="addAttention(item,index)" :type="item.isAttention ? 'default' : 'primary'">{{item.isAttention ? "已关注" : "+ 关注"}} </mt-button>
           </div>
         </div>
         <div class="row row2">
@@ -126,12 +126,12 @@
   </div>
 </template>
 <script>
-  import myProgress from '@/components/common/myProgress.vue'
+  import MyProgress from '@/components/common/myProgress.vue'
 
   export default {
     name: "projectItem",
     components: {
-      myProgress
+      MyProgress
     },
     data() {
       return {

@@ -7,7 +7,7 @@
       justify-content: space-between;
       margin-bottom: 60px;
     }
-    .content {
+    .rangeInfo {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -19,6 +19,10 @@
         font-weight: 600;
         margin: 20px 0 10px;
       }
+
+    }
+    .message {
+      margin: 50px 0 30px;
     }
   }
 </style>
@@ -36,7 +40,7 @@
           <router-link :to="{path: '/project/authority', query: {id}}">切换至专业测评</router-link>
         </div>
       </div>
-      <div class="content">
+      <div class="rangeInfo">
         <div>我的评分</div>
         <div class='rangeValue'>{{rangeValue / 10}}</div>
         <mt-range class="range"
@@ -48,6 +52,10 @@
         </mt-range>
         <div>{{rangeText}}</div>
       </div>
+      <div class="message">
+        <mt-field placeholder="写几句评价" type="textarea" rows="4" v-model="message"></mt-field>
+      </div>
+      <mt-button type="primary" class="longBtn" @click.native="submit">发布</mt-button>
     </div>
   </div>
 </template>
@@ -71,25 +79,33 @@
         rangeList,
         id: "",
         rangeValue: 0,
-        rangeText: "",
+        message: "",
       }
     },
     created() {
       this.id = this.$route.query.id
     },
-    watch: {
-      rangeValue: function (v) {
+    computed: {
+      rangeText() {
+        let rangeValue = this.rangeValue;
         let arr = this.rangeList.filter((item, index) => {
-          return v > item.min && v <= item.max
+          return rangeValue >= item.min && rangeValue <= item.max
         })
 
-        this.rangeText = arr[0].text
+        return arr[0].text
       }
     },
     methods: {
       leftClickHandel() {
         this.$router.go(-1)
       },
+      submit() {
+        /*接口*/
+        let {rangeValue, message} = this
+        let parmas = {
+          rangeValue, message
+        }
+      }
     }
   }
 </script>

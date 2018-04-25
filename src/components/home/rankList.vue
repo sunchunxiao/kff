@@ -52,12 +52,12 @@
 </template>
 
 <script>
-  import myProgress from '@/components/common/myProgress.vue'
+  import MyProgress from '@/components/common/myProgress.vue'
 
   export default {
     name: "homeRanklist",
     components: {
-      myProgress
+      MyProgress
     },
     props: ['rankList'],
     data() {

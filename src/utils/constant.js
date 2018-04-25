@@ -18,7 +18,7 @@ export const PROJECT_RATE_LABEL = {
 //项目 - 普通测评 - 评分文案
 export const PROJECT_ORDINARY_RANGETEXT = [
   {min:0,max:60,text:'不合格'},
-  {min:60,max:80,text:'一般'},
-  {min:80,max:90,text:'看好'},
-  {min:90,max:100,text:'十分看好'},
+  {min:61,max:80,text:'一般'},
+  {min:81,max:90,text:'看好'},
+  {min:91,max:100,text:'十分看好'},
 ]
