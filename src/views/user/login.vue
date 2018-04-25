@@ -68,7 +68,11 @@
 
     methods: {
       login() {
-        login().then(res=>{
+        let params ={
+          userName:"111",
+          password:"111"
+        }
+        login(params).then(res=>{
           console.log("第一个接口调试");
         })
         this.$router.push('/main')
