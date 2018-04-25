@@ -1,60 +1,50 @@
 <style lang="less">
-  .ordinary {
-    margin-top: 20px;
-    padding: 0 20px;
-    .title {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 60px;
-    }
+  .authorityDetail {
+    padding: 20px 10px;
     .rangeInfo {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
       .range {
         width: 200px;
       }
       .rangeValue {
-        font-size: 30px;
+        font-size: 18px;
         font-weight: 600;
-        margin: 20px 0 10px;
+        margin-left: 20px;
       }
     }
-    .message {
-      margin: 50px 0 30px;
-    }
   }
+
 </style>
 <template>
   <div>
     <HeaderBar
       :leftOptions="leftOptions"
+      :rightOptions="rightOptions"
       v-on:leftClickHandel="leftClickHandel"
+      v-on:rightClickHandel="rightClickHandel"
       :title="title"
     />
-    <div class="ordinary">
-      <div class="title">
-        <div>普通测评</div>
-        <div>
-          <router-link :to="{path: '/project/authority', query: {id}}">切换至专业测评</router-link>
-        </div>
-      </div>
-      <div class="rangeInfo">
-        <div>我的评分</div>
-        <div class='rangeValue'>{{rangeValue / 10}}</div>
+    <div class="authorityDetail">
+      <h1>项目定位</h1>
+      <div>说明：主要从竞争对手、市场前景、可行性等各方面进行评测</div>
+      <div class='rangeInfo'>
+        <label>评分</label>
         <mt-range class="range"
                   v-model="rangeValue"
                   :min="0"
                   :max="100"
                   :step="1"
                   :bar-height="5">
+          <div slot="end" class="rangeValue">{{rangeValue / 10}}</div>
         </mt-range>
-        <div>{{rangeText}}</div>
+        <span>{{rangeText}}</span>
       </div>
       <div class="message">
         <mt-field placeholder="写几句评价" type="textarea" rows="4" v-model="message"></mt-field>
       </div>
-      <mt-button type="primary" class="longBtn" @click.native="submit">发布</mt-button>
+
     </div>
   </div>
 </template>
@@ -64,7 +54,7 @@
   import {PROJECT_ORDINARY_RANGETEXT as rangeList} from '@/utils/constant.js'
 
   export default {
-    name: "projectOrdinary",    //普通测评
+    name: "authorityDetail",
     components: {
       HeaderBar
     },
@@ -74,15 +64,20 @@
           hasLeftBtn: true,
           leftBtnText: "返回"
         },
+        rightOptions: {
+          hasRightBtn: true,
+          rightBtnText: "发布"
+        },
         title: this.$route.meta.title,
+        origin: "",
         rangeList,
-        id: "",
         rangeValue: 0,
-        message: "",
+        rate: "",
+        message: "111",
       }
     },
     created() {
-      this.id = this.$route.query.id
+      this.origin = this.$route.query.origin
     },
     computed: {
       rangeText() {
@@ -98,12 +93,17 @@
       leftClickHandel() {
         this.$router.go(-1)
       },
-      submit() {
-        /*接口*/
-        let {rangeValue, message} = this
-        let parmas = {
-          rangeValue, message
+
+      rightClickHandel() {
+        let {rate, message, origin} = this
+        let params = {
+          rate, message, origin
         }
+
+        /*接口*/
+        this.$router.push({
+          path: '/project/authority',
+        })
       }
     }
   }

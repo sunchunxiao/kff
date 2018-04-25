@@ -27,11 +27,40 @@ export const projectRouter = [
       title: '普通测评'
     },
     component: (resolve) => require(['@/views/project/ordinary.vue'], resolve)
-  },{
+  }, {
     path: '/project/authority',
     meta: {
       title: '专业测评'
     },
     component: (resolve) => require(['@/views/project/authority.vue'], resolve)
+  },
+  {
+    path: '/project/authorityDetail',
+    meta: {
+      title: '专业测评'
+    },
+    component: (resolve) => require(['@/views/project/authorityDetail.vue'], resolve)
+  },
+
+  {
+    path: '/project/firstEvaluation',
+    meta: {
+      title: '发表测评'
+    },
+    component: (resolve) => require(['@/views/project/firstEvaluation.vue'], resolve)
+  },
+  {
+    path: '/project/secondEvaluation',
+    meta: {
+      title: '发表测评'
+    },
+    component: (resolve) => require(['@/views/project/secondEvaluation.vue'], resolve)
+  },
+  {
+    path: '/project/addModel',
+    meta: {
+      title: '新建测评'
+    },
+    component: (resolve) => require(['@/views/project/addModel.vue'], resolve)
   },
 ]
