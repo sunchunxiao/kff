@@ -15,7 +15,7 @@ axios.interceptors.response.use((res) => {
   return res
 }, (error) => {
   let message = (error.response.data && error.response.data.message) || error.message
-  Toast.error(message)
+  Toast(message);
   return Promise.reject(error)
 })
 
