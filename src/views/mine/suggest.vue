@@ -27,7 +27,7 @@
     margin-top: 20px;
   }
   .suggest-title{
-    font-size: rem;
+    font-size: 1rem;
     color: #a2a2a2;
     padding: 1rem 0 1rem 1rem;
   }
@@ -35,22 +35,23 @@
     width: 100%;
     background-color: #fff;
     textarea{
-      width: 100%;
+      width: 96%;
       font-size: 1.2rem;
       outline: none;
       border:none;
       resize: none;
-      padding: 0.5rem 1rem;
+      margin: 0.5rem 1rem;
+      word-wrap: break-word;
       /*overflow: hidden;*/
     }
   }
   input{
     width: 100%;
     height: 1.5rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
     border: none;
     outline: none;
-    margin: 0.5rem 0;
+    margin: 0.8rem 0;
     padding-left: 1rem;
   }
   .longBtn{

@@ -6,10 +6,26 @@
 export const userRouter = [
   {
     path: "/",
-    redirect: "/user/login"
+    redirect: "/user/codeLogin"
+  },
+ //首次登录
+  {
+    path: "/user/codeLogin",
+    meta: {
+      title: '登录',
+    },
+    component: (resolve) => require(['@/views/user/codeLogin.vue'], resolve)
+  },
+  //验证码登录
+  {
+    path: "/user/codeLogin1",
+    meta: {
+      title: '验证码登录',
+    },
+    component: (resolve) => require(['@/views/user/codeLogin1.vue'], resolve)
   },
 
-  //用户登录
+  //老用户登录
   {
     path: "/user/login",
     meta: {
@@ -18,7 +34,7 @@ export const userRouter = [
     component: (resolve) => require(['@/views/user/login.vue'], resolve)
   },
 
-  //用户注册
+  //新用户注册
   {
     path: "/user/register",
     meta: {
@@ -31,7 +47,7 @@ export const userRouter = [
   {
     path: "/user/forgetPwd",
     meta: {
-      title: '注册',
+      title: '忘记密码',
     },
     component: (resolve) => require(['@/views/user/forgetPwd.vue'], resolve)
   }

@@ -1,5 +1,18 @@
+<style lang="less" scoped>
+  .find{
+    background-color: #f9f9f9;
+  }
+  .mint-navbar .mint-tab-item.is-selected{
+    border-bottom:1px solid #26a2ff;
+    color:#3b88f6;
+  }
+  .mint-tab-item-label{
+    font-size: 17px;
+  }
+
+</style>
 <template>
-  <div>
+  <div class="find">
     <HeaderBar
       :rightOptions="rightOptions"
       v-on:rightClickHandel="rightClickHandel"

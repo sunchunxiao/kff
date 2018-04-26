@@ -1,6 +1,6 @@
 <style lang="less">
   input::-webkit-input-placeholder{
-    color:#fff;
+    color:#c2e4ff;
   }
   .page-field{
     color:#fff;
@@ -24,22 +24,27 @@
       color:#ffffff;
       letter-spacing:0.23px;
       text-align: left;
-      padding-top: 8rem;
-      margin-bottom: 5rem;
+      padding-top: 7rem;
       text-indent:1.4rem;
+      margin-bottom: 5rem;
+      .code-send{
+        font-size: 12px;
+
+      }
     }
+
     .reg-intro{
       width:90%;
       margin-left:5%;
       position: relative;
-      margin-top: 1rem;
       input{
         height:2.8rem;
         width:100%;
         font-size:1.4rem;
-        font-weight: lighter;
         border-bottom:1px #fff solid;
         color:#fff;
+        letter-spacing:0.14px;
+        text-align:left;
         margin-top:2rem;
       }
       button{
@@ -50,7 +55,7 @@
         padding:0 0.6rem;
         position:absolute;
         right:0px;
-        bottom:0.5rem;
+        bottom:1rem;
         background-color: transparent;
         color:#fff;
       }
@@ -58,16 +63,23 @@
     .longBtn{
       border-radius:0.3rem;
       background-color:#64b5f7;
-      margin-top:2rem;
+      margin-top:4rem;
     }
-
+    .protocol{
+      width:100%;
+      text-align: center;
+      position:absolute;
+      color:#fff;
+      bottom:1rem;
+      a{
+        color:#fff;
+      }
+    }
   }
   .userCode {
-    color: #d5eafb;
     float: left;
   }
   .gotoRegister {
-    color: #d5eafb;
     float: right;
   }
   .mint-button-text{
@@ -79,52 +91,50 @@
     line-height: 40px;
     font-size: 1rem;
   }
-
-
 </style>
-
-
 <template>
   <div class="page-field">
-    <a class="back">&nbsp;</a>
+    <a class="back" @click="back">&nbsp;</a>
     <h2 class="reg-tit">
-      欢迎回来!
+      验证码登录
+      <div class="code-send" v-show="!show"><span>验证码已经发送至 {{codephone}}</span></div>
     </h2>
     <div class="reg-intro">
-      <input placeholder="输入手机号" type="tel" v-model="phone" id="telnum" @blur="handleCommentBlur">
-      <input placeholder="输入密码" type="password" v-model="password" @blur="regpw">
-      <div class="otherWay">
-        <div class="userCode" @click="codeLogin">验证码登录</div>
-        <div class="gotoRegister" @click="forgetPwd">忘记密码</div>
-      </div>
+      <input placeholder="请输入6位数验证码" type="text" v-model="code">
+      <button @click="getCode">获取验证码<span v-show="!show">({{count}}S)</span></button>
     </div>
-
     <mt-button type="primary" class="longBtn" @click.native="login">登录</mt-button>
-
+    <div class="protocol">
+      <a @click="showProtocolModal">登录即同意《开封府服务协议》</a>
+    </div>
   </div>
 </template>
 
 <script>
-  import HeaderBar from '@/components/layout/headerBar.vue'
-  import {login} from '@/service/user'
+  import { MessageBox } from 'mint-ui';
+  import {getCode,phoneAvailable,login} from '@/service/user';
+  // import {phoneAvailable} from '@/service/user';
+
 
   export default {
-    name: 'login',
-    components: {
-      HeaderBar,
-    },
+    name: 'register',
     data() {
       return {
-        phone: "13111111111",
-        password: "123456",
-        rightOptions: {
-          hasRightBtn: true,
-          rightBtnText: "忘记密码"
-        },
-        imgurl:"../static/nVisiblepasswords.png"
+        phone: "",
+        codephone:"",
+        password: "",
+        code: "",
+        show: true,
+        count: '',
+        timer: null,
+        agree: false,
       }
     },
+    mounted(){
+        console.log(localStorage.phone)
+        this.codephone= localStorage.phone;
 
+    },
     methods: {
       //手机号验证
       handleCommentBlur(){
@@ -150,6 +160,37 @@
           });
         }
       },
+      //back
+      back(){
+        var _this=this;
+        _this.$router.go(-1);
+      },
+      getCode() {
+        this.show = !this.show;
+        //发送获取验证码的接口请求
+        if(this.show){//倒计时内只能点一次
+          getCode({
+            phone:this.phone,
+            module:"register"
+          });
+        }
+        const TIME_COUNT = 60;
+        if (!this.timer) {
+          this.count = TIME_COUNT;
+          this.show = false;
+          this.timer = setInterval(() => {
+            if (this.count > 0 && this.count <= TIME_COUNT) {
+              this.count--;
+            } else {
+              this.show = true;
+              clearInterval(this.timer);
+              localStorage.removeItem("phone",this.codephone);
+              this.timer = null;
+            }
+          }, 1000)
+        }
+
+      },
       login() {
         let params ={
           userName:"111",
@@ -160,32 +201,14 @@
         })
         this.$router.push('/main')
       },
-      //验证码登登录
-      codeLogin(){
-        this.$router.push('/user/codeLogin1');
-      },
 
-      //忘记密码
-      forgetPwd() {
-        this.$router.push('/user/forgetPwd')
-      },
-
-      rightClickHandel() {
-        this.$router.push('/user/forgetPwd')
-      },
-
-      //密码是否可见
-      hideShowPsw() {
-        if(passwords.type == "text") {
-          passwords.type = "password";
-          Visiblepasswords.src = "../static/nVisiblepasswords.png";
-        } else {
-          console.log(111)
-          passwords.type = "text";
-          Visiblepasswords.src = "../static/Visiblepasswords.png";
-        }
+      showProtocolModal() {
+        MessageBox({
+          title: '开封府服务协议',
+          message: '开封府服务协议具体内容',
+          showConfirmButton: true
+        });
       }
-
     }
   };
 </script>

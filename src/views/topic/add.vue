@@ -1,10 +1,29 @@
 <style lang="less">
   .addProject {
+    /*background-color:#f4f4f4;*/
+
     .title {
       padding: 10px 5px;
+      text-align: center;
+      .title-img{
+        border:1px solid #dddddd;
+        width:70px;
+        height:70px;
+        margin: 10px auto ;
+        border-radius:100%;
+      }
+      span{
+        font-size: 14px;
+        color:#888888;
+        letter-spacing:0.13px;
+      }
     }
   }
-
+  /*.mint-cell-wrapper{*/
+    /*width: 90%;*/
+    /*padding-left: 5%;*/
+    /*border-bottom: 1px solid;*/
+  /*}*/
 
 </style>
 <template>
@@ -15,8 +34,8 @@
       :title="title"
     />
     <div class="title">
-      <div>未找到你寻找的项目？来帮我们完善吧！</div>
-      <div>若提交内容被采纳，我们将奖励2000QTC。</div>
+        <div class="title-img"></div>
+        <span>上传代币主图</span>
     </div>
     <Step :current="current"></Step>
     <keep-alive>

@@ -1,13 +1,11 @@
 <style lang="less">
-  body{
-    background-image:linear-gradient(-180deg, #02b7ea 0%, #4372ff 100%);
-    font-family:HiraginoSansGB-W3;
-  }
   input::-webkit-input-placeholder{
     color:#fff;
   }
   .page-field{
     color:#fff;
+    background-image:linear-gradient(-180deg, #02b7ea 0%, #4372ff 100%);
+    font-family:HiraginoSansGB-W3;
     .back{
       position:absolute;
       left:1.5rem;
@@ -25,7 +23,6 @@
       letter-spacing:0.23px;
       text-align: left;
       padding-top: 8rem;
-      margin-bottom: 5rem;
       text-indent:1.4rem;
     }
     .reg-intro{
@@ -71,6 +68,7 @@
   }
   .forgetPas{
     text-align: center;
+    margin-bottom: 4rem;
     span{
       display: inline-block;
       margin-top: 1.5rem;
@@ -84,21 +82,20 @@
       <a class="back" @click="back">&nbsp;</a>
       <span>忘记密码</span>
     </div>
-    <h2 class="reg-tit">
-      欢迎注册使用
-    </h2>
+
     <div class="reg-intro">
       <input placeholder="输入手机号" type="tel" v-model="phone" id="telnum" @blur="handleCommentBlur">
-      <input placeholder="输入长度6——16位密码" type="password" v-model="password" @blur="regpw">
+      <input placeholder="输入验证码" type="text" v-model="code">
+      <button @click="getCode">获取验证码<span v-show="!show">({{count}}S)</span></button>
+
       <!--<div class="register-tel-error" id="telnum-error" style="opacity: 0;">-->
       <!--<span>请输入正确的手机号</span>-->
       <!--</div>-->
     </div>
     <div class="reg-intro">
-      <input placeholder="输入验证码" type="text" v-model="code">
-      <button @click="getCode">获取验证码<span v-show="!show">({{count}}S)</span></button>
+      <input placeholder="输入长度6——16位密码" type="password" v-model="password" @blur="regpw">
     </div>
-    <mt-button type="primary" class="longBtn" @click.native="register">注册</mt-button>
+    <mt-button type="primary" class="longBtn" @click.native="register">确认</mt-button>
     <div class="protocol">
       <!--<input type="checkbox" name="" id="" v-model="agree">同意-->
       <a @click="showProtocolModal">注册即同意《开封府服务协议》</a>

@@ -1,13 +1,13 @@
 <style lang="less">
-  body{
-    background-image:linear-gradient(-180deg, #02b7ea 0%, #4372ff 100%);
-    font-family:HiraginoSansGB-W3;
-  }
   input::-webkit-input-placeholder{
     color:#fff;
   }
   .page-field{
     color:#fff;
+    background-image:linear-gradient(-180deg, #02b7ea 0%, #4372ff 100%);
+    font-family:HiraginoSansGB-W3;
+    /*position: fixed;*/
+    height: 100%;
     .back{
       position:absolute;
       left:1.5rem;
@@ -155,7 +155,6 @@
             module:"register"
           });
         }
-
         const TIME_COUNT = 60;
         if (!this.timer) {
           this.count = TIME_COUNT;
@@ -174,23 +173,23 @@
       },
       register() {
         //提交注册
-        register({
-          phoneNumber:this.phone,
-          password:this.password,
-          dynamicVerifyCode:this.code
-        }).then(res=>{
-          if(res.code==0){
-            MessageBox({
-              title: '提示',
-              message: '注册成功',
-              showConfirmButton: true
-            });
-            this.$router.push('/main');
+          let params ={
+            phoneNumber:this.phone,
+            password:this.password,
+            dynamicVerifyCode:this.code
           }
+          register(params).then(res=>{
+            if(res.code==0){
+              MessageBox({
+                title: '提示',
+                message: '注册成功',
+                showConfirmButton: true
+              });
 
-        })
-
-
+            }
+            console.log("第一个接口调试");
+          })
+           this.$router.push('/main');
       },
 
       showProtocolModal() {
