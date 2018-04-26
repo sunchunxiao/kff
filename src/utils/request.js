@@ -21,6 +21,8 @@ axios.interceptors.response.use((res) => {
 
 // option = {method,body,header}
 const request = (url, options = {}) => {
+  //测试地址
+  var url = "http://47.98.197.101/tzg-rest"+url;
   //默认post请求
   let method = options.method || "post"
   let key = ~['delete', 'get', 'head'].indexOf(method) ? 'params' : 'data'

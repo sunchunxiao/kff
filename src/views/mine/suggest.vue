@@ -1,19 +1,64 @@
 <template>
-  <div>
+  <div class="suggest">
     <HeaderBar
       :leftOptions="leftOptions"
       :title="title"
       v-on:leftClickHandel="leftClickHandel"
     />
     <div>
-      <mt-field label="您的建议" placeholder="您的建议" type="textarea" rows="4" v-modal="suggestion"></mt-field>
-      <mt-field label="联系方式" placeholder="请输入联系方式" type="number" v-model="tel"></mt-field>
+      <div class="suggest-title">意见描述</div>
+      <div class="suggest-content">
+        <textarea label="您的建议:" placeholder="请输入不少于10个字的建议" type="textarea" rows="4" v-modal="suggestion"></textarea>
+      </div>
+      <div class="suggest-title">联系方式</div>
+      <div class="suggest-content">
+        <input label="联系方式:" placeholder="为了更快的解决问题请提供你的联系方式" type="text" v-model="tel"></input>
+      </div>
     </div>
     <mt-button type="primary" class="longBtn" @click.native="submit">提交</mt-button>
   </div>
 </template>
+<style lang="less">
+  .suggest{
+    height: 100%;
+    background-color:#f4f4f4 ;
+  }
+  .mint-cell-wrapper{
+    margin-top: 20px;
+  }
+  .suggest-title{
+    font-size: rem;
+    color: #a2a2a2;
+    padding: 1rem 0 1rem 1rem;
+  }
+  .suggest-content{
+    width: 100%;
+    background-color: #fff;
+    textarea{
+      width: 100%;
+      font-size: 1.2rem;
+      outline: none;
+      border:none;
+      resize: none;
+      padding: 0.5rem 1rem;
+      /*overflow: hidden;*/
+    }
+  }
+  input{
+    width: 100%;
+    height: 1.5rem;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    margin: 0.5rem 0;
+    padding-left: 1rem;
+  }
+  .longBtn{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
 
-<style>
 
 </style>
 

@@ -1,51 +1,119 @@
 <style lang="less">
-  .logo {
-    width: 100%;
-    height: 100px;
-    text-align: center;
-    margin: 50px 0;
-    img {
-      height: 100px;
+  body{
+    background-image:linear-gradient(-180deg, #02b7ea 0%, #4372ff 100%);
+    font-family:HiraginoSansGB-W3;
+  }
+  input::-webkit-input-placeholder{
+    color:#fff;
+  }
+  .page-field{
+    color:#fff;
+    .back{
+      position:absolute;
+      left:1.5rem;
+      top:1.5rem;
+      display:inline-block;
+      width:1.2rem;
+      height:1.2rem;
+      border-bottom:2px solid #ffffff;
+      border-left:2px solid #ffffff;
+      transform:rotate(45deg);
+    }
+    .reg-tit{
+      font-size:2rem;
+      color:#ffffff;
+      letter-spacing:0.23px;
+      text-align: left;
+      padding-top: 8rem;
+      margin-bottom: 5rem;
+      text-indent:1.4rem;
+    }
+    .reg-intro{
+      width:90%;
+      margin-left:5%;
+      position: relative;
+      margin-top: 1rem;
+      input{
+        height:2.8rem;
+        width:100%;
+        font-size:1.4rem;
+        font-weight: lighter;
+        border-bottom:1px #fff solid;
+        color:#fff;
+        margin-top:2rem;
+      }
+      button{
+        line-height:2rem;
+        font-size:1rem;
+        border:1px #fff solid;
+        border-radius: 1rem;
+        padding:0 0.6rem;
+        position:absolute;
+        right:0px;
+        bottom:0.5rem;
+        background-color: transparent;
+        color:#fff;
+      }
+    }
+    .longBtn{
+      border-radius:0.3rem;
+      background-color:#64b5f7;
+      margin-top:2rem;
+    }
+    .protocol{
+      width:100%;
+      text-align: center;
+      position:absolute;
+      color:#fff;
+      bottom:1rem;
+      a{
+        color:#fff;
+      }
     }
   }
-
+  .userCode {
+    float: left;
+  }
+  .gotoRegister {
+    float: right;
+  }
+  .mint-button-text{
+    background-color: #63b5f7;
+  }
   .otherWay {
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
     height: 40px;
     line-height: 40px;
-    font-size: 14px;
-    div {
-      padding: 10px;
-    }
-    .userCode {
-      float: left;
-    }
-    .gotoRegister {
-      float: right;
-    }
+    font-size: 1rem;
   }
+
+
 </style>
+
+
 <template>
   <div class="page-field">
-    <HeaderBar
-      :rightOptions="rightOptions"
-      v-on:rightClickHandel="rightClickHandel"/>
+    <a class="back">&nbsp;</a>
+    <h2 class="reg-tit">
+      欢迎回来!
+    </h2>
+    <div class="reg-intro">
+      <input placeholder="输入手机号" type="tel" v-model="phone" id="telnum" @blur="handleCommentBlur">
+      <input placeholder="输入密码" type="password" v-model="password" @blur="regpw">
+      <div class="otherWay">
+        <div class="userCode">验证码登录</div>
+        <div class="gotoRegister" @click="gotoRegister">注册账号</div>
+      </div>
+    </div>
 
-    <div class="logo">
-      <img src="../../assets/image/logo.png"/>
-    </div>
-    <div class="page-part">
-      <mt-field label="手机号" placeholder="输入手机号" type="tel" v-model="phone"></mt-field>
-      <mt-field label="密码" placeholder="输入长度6-16位密码" type="password" v-model="password"></mt-field>
-    </div>
-    <mt-button type="primary" class="longBtn" @click.native="login">登陆</mt-button>
-    <div class="otherWay">
-      <div class="userCode">验证码登录</div>
-      <div class="gotoRegister" @click="gotoRegister">注册账号</div>
+    <mt-button type="primary" class="longBtn" @click.native="login">登录</mt-button>
+    <div class="protocol">
+      <!--<input type="checkbox" name="" id="" v-model="agree">同意-->
+
     </div>
   </div>
 </template>
+
 <script>
   import HeaderBar from '@/components/layout/headerBar.vue'
   import {login} from '@/service/user'
@@ -62,11 +130,36 @@
         rightOptions: {
           hasRightBtn: true,
           rightBtnText: "忘记密码"
-        }
+        },
+        imgurl:"../static/nVisiblepasswords.png"
       }
     },
 
     methods: {
+      //手机号验证
+      handleCommentBlur(){
+        var phone  = this.phone;
+        var myreg = /^1[34578]\d{9}$/;
+        if(!myreg.test(phone)) {
+          MessageBox({
+            title: '提示',
+            message: '请输入正确的手机号！',
+            showConfirmButton: true
+          });
+        }
+      },
+      //密码验证
+      regpw(){
+        var pw = this.password;
+        var pwreg = /[a-zA-Z\d+]{6,16}/;
+        if(!pwreg.test(pw)) {
+          MessageBox({
+            title: '提示',
+            message: '请输入正确的密码！',
+            showConfirmButton: true
+          });
+        }
+      },
       login() {
         let params ={
           userName:"111",
@@ -84,6 +177,18 @@
 
       rightClickHandel() {
         this.$router.push('/user/forgetPwd')
+      },
+
+      //密码是否可见
+      hideShowPsw() {
+        if(passwords.type == "text") {
+          passwords.type = "password";
+          Visiblepasswords.src = "../static/nVisiblepasswords.png";
+        } else {
+          console.log(111)
+          passwords.type = "text";
+          Visiblepasswords.src = "../static/Visiblepasswords.png";
+        }
       }
 
     }
