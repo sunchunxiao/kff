@@ -2,10 +2,7 @@ import axios from 'axios'
 import {Toast} from 'mint-ui';
 import util from '@/utils/common'
 import Md5 from 'js-md5';
-import Base64 from 'js-base64';
-import Aes128 from 'node-cryptojs-aes';
-
-// const Aes128 = aes.randomBytes(128)
+import {Base64} from 'js-base64';
 
 
 const specialCode = []
@@ -45,17 +42,18 @@ const request = (url, options = {}) => {
     }
   }
 
-  // let originBody = options.body
+  let originBody = options.body
   // let policy = Base64(Aes128(JSON.stringify(originBody)))
-  // let sign = Md5(JSON.stringify(originBody))
-  // let time = new Date();
-  // let encodeBody = {
-  //   policy, sign, time
-  // }
- let body
-  //数据单据处理
-  // let body = {[key]: encodeBody}
-  // delete  options.body
+  let policy = Base64.encode(JSON.stringify(originBody))
+  let sign = Md5(JSON.stringify(originBody))
+  let time = new Date().getTime();
+  let encodeBody = {
+    policy, sign, time
+  }
+
+  // 数据单据处理
+  let body = {[key]: encodeBody}
+  delete  options.body
 
   // form表单格式提交
   if (options.isForm) {
