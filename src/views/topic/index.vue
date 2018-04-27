@@ -111,6 +111,27 @@
       bottom: 15%;
     }
   }
+  .mint-button{
+    width:43px;
+    height:20px;
+    border:1px solid #3b88f6;
+    background:#3b88f6;
+    color: #fff;
+  }
+  /*.mint-button::after{*/
+
+
+    /*border-radius:2px;*/
+
+  /*}*/
+  .mint-button-text{
+    font-size: 12px;
+    padding-bottom: 1px;
+  }
+  .mint-button--normal{
+    padding: 0;
+
+  }
 </style>
 <template>
   <div class="topicIndex">
@@ -139,8 +160,9 @@
                 <span class="spanName">EOS</span><span class="spanF"> / 柚子</span>
                 <span class="spanNum">11115关注</span>
               </p>
-              <span class="followR" @click="follow"><a class="fill">+ 关注</a></span>
-              <span class="followR followB" v-show="!show"><a class="fill">已关注</a></span>
+              <!--<span class="followR" @click="follow"><a class="fill">+ 关注</a></span>-->
+              <!--<span class="followR followB" v-show="!show"><a class="fill">已关注</a></span>-->
+              <mt-button @click.native="handleClick"> +关注</mt-button>
             </div>
           </li>
 
@@ -153,7 +175,7 @@
       </keep-alive>
     </div>
     <div class="footBtn">
-      <mt-button type="primary" class="longBtn" @click.native="addProject"></mt-button>
+      <mt-button type="primary" class="longBtn" @click.native="addProject">+</mt-button>
     </div>
   </div>
 </template>
@@ -186,6 +208,10 @@
       //点击关注
       follow(){
         this.show = !this.show;
+      },
+      //加关注
+      handleClick: function() {
+        this.$toast('已经添加关注')
       },
       queryRankList() {
         //接口

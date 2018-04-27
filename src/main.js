@@ -8,6 +8,7 @@ import VueClipboard from 'vue-clipboard2'
 import 'mint-ui/lib/style.css'
 import './css/reset.css'
 import './css/global.css'
+import CryptoJS from 'crypto-js'
 
 // 复制到剪切板
 Vue.use(VueClipboard)

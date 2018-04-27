@@ -1,5 +1,5 @@
 <style lang="less" scoped>
-  html{
+  html.body{
     -webkit-text-size-adjust:none;
   }
   .mint-tabbar > .mint-tab-item.is-selected{
@@ -14,6 +14,7 @@
   .mint-tab-item-label{
     font-size: 9px;
     -webkit-transform:scale(0.8);
+    -webkit-text-size-adjust:none
   }
 
 

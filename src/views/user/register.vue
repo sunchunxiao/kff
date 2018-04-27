@@ -111,6 +111,8 @@
         count: '',
         timer: null,
         agree: false,
+        _key :'abcdefghijklmn',
+        _password :'123456'
       }
     },
     mounted(){
@@ -173,6 +175,9 @@
       },
       register() {
         //提交注册
+        // console.log(this.decryptByDES(this._password,this._key))
+        // var policy = this.decryptByDES(this._password,this._key);
+
           let params ={
             phoneNumber:this.phone,
             password:this.password,
@@ -185,12 +190,33 @@
                 message: '注册成功',
                 showConfirmButton: true
               });
-
+              console.log(res.data)
+              this.$router.push('/main');
             }
             console.log("第一个接口调试");
           })
-           this.$router.push('/main');
+
       },
+      //加密
+      // encryptByDES(message, key){
+      //   const keyHex = CryptoJS.enc.Utf8.parse(key);
+      //   const encrypted = CryptoJS.DES.encrypt(message, keyHex, {
+      //     mode: CryptoJS.mode.ECB,
+      //     padding: CryptoJS.pad.Pkcs7
+      //   });
+      //   return encrypted.toString();
+      // },
+      //DES解密
+      // decryptByDES(ciphertext, key){
+      //   const keyHex = CryptoJS.enc.Utf8.parse(key);
+      //   const decrypted = CryptoJS.DES.decrypt({
+      //     ciphertext: CryptoJS.enc.Base64.parse(ciphertext)
+      //   }, keyHex, {
+      //     mode: CryptoJS.mode.ECB,
+      //     padding: CryptoJS.pad.Pkcs7
+      //   });
+      //   return decrypted.toString(CryptoJS.enc.Utf8);
+      // },
 
       showProtocolModal() {
         MessageBox({

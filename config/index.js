@@ -10,7 +10,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/kff':{
+        target:'http://47.98.197.101/tzg-rest/kff/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/kff': '/'
+        }
+      }
+    },
 
     // Various Dev Server settings
     // host: 'localhost', // can be overwritten by process.env.HOST

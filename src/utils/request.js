@@ -2,7 +2,10 @@ import axios from 'axios'
 import {Toast} from 'mint-ui';
 import util from '@/utils/common'
 
+
 const specialCode = []
+
+let Base64 = require('js-base64').Base64;
 let defaultOpts = {
   method: 'POST',
   credentials: 'same-origin',

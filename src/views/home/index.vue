@@ -9,6 +9,9 @@
   .mint-tab-item-label{
     font-size: 17px;
   }
+  .mint-navbar .mint-tab-item.is-selected{
+    border: none;
+  }
 
 </style>
 <template>

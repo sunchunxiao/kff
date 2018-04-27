@@ -6,25 +6,25 @@
       height: 75px;
     }
   }
-
   .userInfo, .category {
     text-align: center;
   }
   .set{
     width: 100%;
-    height: 200px;
+    height: 160px;
     background: url("../../assets/mine/邀请 bg@3x.png");
 
     .mine-title{
       padding: 1.5rem;
       font-size: 18px;
       text-align: right;
+      color: #fff;
     }
     .mine-info{
       width: 90%;
       margin: 0 auto;
       overflow: hidden;
-
+      position: relative;
       .mine-img{
         background:#ffffff;
         border:1px solid #ffffff;
@@ -34,12 +34,19 @@
         float: left;
       }
       .mine-author{
-        width: 70%;
-        padding-left: 2%;
+        width: 65%;
+        padding-left: 5%;
+        float: left;
         .little-name{
           font-size:15px;
           color:#ffffff;
           letter-spacing:0.13px;
+          text-align:left;
+        }
+        .mine-fans{
+          font-size:12px;
+          color:#d3e4fc;
+          letter-spacing:0.11px;
           text-align:left;
         }
         .evaluation-institution{
@@ -56,7 +63,20 @@
     }
 
   }
-
+  .category{
+    .cell{
+      font-size: 18px;
+    }
+  }
+p{
+  margin-bottom: 5px;
+}
+  .invitation{
+    width: 10px;
+    position: absolute;
+    right: 1%;
+    top: 23%;
+  }
 </style>
 <template>
   <div>
@@ -74,23 +94,24 @@
           <div class="mine-img"></div>
           <div class="mine-author">
             <p><span class="little-name">小霸王 </span><span class="evaluation-institution">测评机构</span></p>
-            <p><span>300粉丝</span><span>10000 赞</span></p>
-            <p>区块链创业者，早期投资人</p>
+            <p class="mine-fans"><span>3000 粉丝</span><span>10000 赞</span></p>
+            <p class="mine-fans">区块链创业者，早期投资人</p>
           </div>
+          <img class="invitation" src="../../assets/mine/箭头@2x.png" alt="">
         </div>
       <div>
 
       </div>
     </div>
-    <div class="userInfo">
-      <div class="name">{{name}}</div>
-      <div class="description">{{description}}</div>
-    </div>
-    <category-Num :data="categoryData1"></category-Num>
-    <hr/>
+    <!--<div class="userInfo">-->
+      <!--<div class="name">{{name}}</div>-->
+      <!--<div class="description">{{description}}</div>-->
+    <!--</div>-->
+    <!--<category-Num :data="categoryData1"></category-Num>-->
+    <!--<hr/>-->
     <category-Num :data="categoryData2"></category-Num>
     <div class="link">
-      <mt-cell title="我的关注" is-link to="/mine/attention"></mt-cell>
+      <mt-cell title="我的关注" is-link to="/mine/attention"><img src="" alt=""></mt-cell>
       <mt-cell title="我的收藏" is-link to="/mine/store"></mt-cell>
       <mt-cell title="推荐好友" is-link to="/mine/friends"></mt-cell>
       <mt-cell title="关于我们" is-link to="/mine/about"></mt-cell>
