@@ -1,11 +1,15 @@
 import axios from 'axios'
 import {Toast} from 'mint-ui';
 import util from '@/utils/common'
+import Md5 from 'js-md5';
+import Base64 from 'js-base64';
+import aes from 'node-cryptojs-aes';
+
+const Aes128 = aes.randomBytes(128)
 
 
 const specialCode = []
 
-let Base64 = require('js-base64').Base64;
 let defaultOpts = {
   method: 'POST',
   credentials: 'same-origin',
@@ -25,7 +29,7 @@ axios.interceptors.response.use((res) => {
 // option = {method,body,header}
 const request = (url, options = {}) => {
   //测试地址
-  var url = "http://47.98.197.101/tzg-rest"+url;
+  var url = "http://47.98.197.101/tzg-rest" + url;
   //默认post请求
   let method = options.method || "post"
   let key = ~['delete', 'get', 'head'].indexOf(method) ? 'params' : 'data'
@@ -41,8 +45,16 @@ const request = (url, options = {}) => {
     }
   }
 
+  let body = options.body
+  let policy = Base64(Aes128(JSON.stringify(body)))
+  let sign = Md5(JSON.stringify(body))
+  let time = new Date();
+  let encodeBody = {
+    policy, sign, time
+  }
+
   //数据单据处理
-  let body = {[key]: options.body}
+  let body = {[key]: encodeBody}
   delete  options.body
 
   // form表单格式提交
