@@ -77,6 +77,31 @@ p{
     right: 1%;
     top: 23%;
   }
+  .font{
+    font-size: 12px;
+  }
+  .balance{
+    height:35px;
+    line-height: 35px;
+    background:#f4f4f4;
+    .balance-money{
+      color:#888888;
+      letter-spacing:0.11px;
+      padding-left: 4%;
+    }
+    .corn{
+      color:#888787;
+      font-weight: bold;
+      letter-spacing:0.11px;
+    }
+    .look-detail{
+      float: right;
+      margin-right:5%;
+      margin-right:5%;
+      color:#3b88f6;
+      letter-spacing:0.11px;
+    }
+  }
 </style>
 <template>
   <div>
@@ -97,7 +122,7 @@ p{
             <p class="mine-fans"><span>3000 粉丝</span><span>10000 赞</span></p>
             <p class="mine-fans">区块链创业者，早期投资人</p>
           </div>
-          <img class="invitation" src="../../assets/mine/箭头@2x.png" alt="">
+          <img class="invitation" src="../../assets/mine/jt.png" alt="">
         </div>
       <div>
 
@@ -110,8 +135,13 @@ p{
     <!--<category-Num :data="categoryData1"></category-Num>-->
     <!--<hr/>-->
     <category-Num :data="categoryData2"></category-Num>
+    <div class="balance">
+      <span class="balance-money font">KFF余额</span>
+      <span class="corn font">106.05</span>
+      <span class="look-detail font">查看明细</span>
+    </div>
     <div class="link">
-      <mt-cell title="我的关注" is-link to="/mine/attention"><img src="" alt=""></mt-cell>
+      <mt-cell title="我的关注" is-link to="/mine/attention"><img src="../../assets/mine/mfollow.png" alt=""></mt-cell>
       <mt-cell title="我的收藏" is-link to="/mine/store"></mt-cell>
       <mt-cell title="推荐好友" is-link to="/mine/friends"></mt-cell>
       <mt-cell title="关于我们" is-link to="/mine/about"></mt-cell>
