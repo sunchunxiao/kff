@@ -5,10 +5,10 @@
       <!--v-on:leftClickHandel="leftClickHandel"-->
       <!--:title="title"-->
     <!--/>-->
-    <dvi class="setting-title" >
+    <div class="setting-title" >
       <span @click="leftClickHandel">返回</span>
       设置
-    </dvi>
+    </div>
     <div class="title">个人信息</div>
     <mt-cell title="头像">
       <span>

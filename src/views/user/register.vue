@@ -84,7 +84,7 @@
     </div>
     <div class="reg-intro">
       <input placeholder="输入验证码" type="text" v-model="code">
-      <button @click="getCode">获取验证码<span v-show="!show">({{count}}S)</span></button>
+      <button @click="getcode">获取验证码<span v-show="!show">({{count}}S)</span></button>
     </div>
     <mt-button type="primary" class="longBtn" @click.native="register">注册</mt-button>
     <div class="protocol">
@@ -148,7 +148,7 @@
         var _this=this;
         _this.$router.go(-1);
       },
-      getCode() {
+      getcode() {
 
         //发送获取验证码的接口请求
         if(this.show){//倒计时内只能点一次
@@ -157,7 +157,7 @@
             module:"register"
           });
         }
-        const TIME_COUNT = 60;
+        const TIME_COUNT = 10;
         if (!this.timer) {
           this.count = TIME_COUNT;
           this.show = false;

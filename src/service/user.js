@@ -12,6 +12,15 @@ export const login = (params = {}) => {
     },
   })
 }
+//点击开始使用的时候
+export const phoneAvailable = (params = {}) => {
+  return request('kff/user/register/phoneAvailable', {
+    body: {
+      ...params
+    }
+  })
+}
+
 //getCode 获取验证码
 export const getCode = (params = {}) => {
   return request('/kff/dynamicValidateCode/send', {

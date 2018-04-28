@@ -99,7 +99,7 @@
         <div class="gotoRegister" @click="gotoLogin">用户登录</div>
       </div>
     </div>
-    <mt-button type="primary" class="longBtn" @click.native="start">开始使用</mt-button>
+    <mt-button type="primary" class="longBtn" @click.native="startRegister">开始使用</mt-button>
     <div class="protocol">
       <a @click="showProtocolModal">注册即同意《开封府服务协议》</a>
     </div>
@@ -183,26 +183,26 @@
         }
 
       },
-      start() {
+      startRegister() {
         //开始使用
         // if(){
         //
         // }
+        let params ={
+          phone:this.phone,
+
+        }
+        phoneAvailable(params).then(res=>{
+          if(res.code==0){
+            console.log(res.data);
+          }
+        })
+
+
         this.$router.push('/user/codeLogin1');
         console.log(this.phone)
         localStorage.setItem('phone',this.phone);
         console.log(localStorage.phone)
-        // phoneAvailable({
-        //   phone:this.phone,
-        // }).then(res=>{
-        //   if(res.code==0){
-        //
-        //     console.log(res.data);
-        //     this.data=res.data;
-        //
-        //   }
-        //
-        // })
 
       },
       //点击用户登录
