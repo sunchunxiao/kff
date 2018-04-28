@@ -1,13 +1,15 @@
 <template>
   <div class="setting">
-    <HeaderBar
-      :leftOptions="leftOptions"
-      v-on:leftClickHandel="leftClickHandel"
-      :title="title"
-    />
-
+    <!--<HeaderBar-->
+      <!--:leftOptions="leftOptions"-->
+      <!--v-on:leftClickHandel="leftClickHandel"-->
+      <!--:title="title"-->
+    <!--/>-->
+    <dvi class="setting-title" >
+      <span @click="leftClickHandel">返回</span>
+      设置
+    </dvi>
     <div class="title">个人信息</div>
-    <hr/>
     <mt-cell title="头像">
       <span>
         <img :src='formData.imageUrl' alt="图像"/>
@@ -41,34 +43,49 @@
       <span>{{formData.userType}}</span>
     </mt-cell>
 
-    <hr/>
+    <!--<hr/>-->
     <div class="title">账户设置</div>
     <mt-cell title="绑定手机号">
       <span>{{formData.mobileNumber}}</span>
     </mt-cell>
-
-
   </div>
 </template>
 
 <style lang="less">
   .setting {
+    .setting-title{
+      width: 100%;
+      text-align: center;
+      height: 40px;
+    }
     .mint-cell-title {
       flex: 0.4;
       min-width: 80px;
+      .mint-cell-text{
+        color: #888;
+        font-size: 14px;
+      }
     }
 
     .rightBtn {
       position: absolute;
       right: 0;
-      font-size: 20px;
+      font-size: 18px;
+      color: #d0d0d0;
       padding: 0 20px;
     }
 
     .title {
-      font-size: 16px;
-      font-weight: 600;
-      margin: 10px;
+      background:#f4f4f4;
+      /*width:100%;*/
+      height:30px;
+      line-height: 30px;
+      font-size: 12px;
+      font-weight: 200;
+      color:#888888;
+      letter-spacing:0;
+      padding-left: 2%;
+
     }
 
     .introduction {

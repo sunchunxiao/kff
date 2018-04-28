@@ -102,6 +102,21 @@ p{
       letter-spacing:0.11px;
     }
   }
+  .mint-cell-wrapper{
+      /*border-bottom: 1px solid #ddd;*/
+    .mint-cell-text{
+      padding-left: 10%;
+      font-family:HiraginoSansGB-W3;
+      font-size:15px;
+      color:#333333;
+      letter-spacing:0.13px;
+    }
+  }
+  .mint-cell-value.is-link img{
+    position: absolute;
+    left: 4%;
+    width: 4%;
+  }
 </style>
 <template>
   <div>
@@ -142,10 +157,10 @@ p{
     </div>
     <div class="link">
       <mt-cell title="我的关注" is-link to="/mine/attention"><img src="../../assets/mine/mfollow.png" alt=""></mt-cell>
-      <mt-cell title="我的收藏" is-link to="/mine/store"></mt-cell>
-      <mt-cell title="推荐好友" is-link to="/mine/friends"></mt-cell>
-      <mt-cell title="关于我们" is-link to="/mine/about"></mt-cell>
-      <mt-cell title="意见反馈" is-link to="/mine/suggest"></mt-cell>
+      <mt-cell title="我的收藏" is-link to="/mine/store"><img src="../../assets/mine/sc.png" alt=""></mt-cell>
+      <mt-cell title="推荐好友" is-link to="/mine/friends"><img src="../../assets/mine/tuij.png" alt=""></mt-cell>
+      <mt-cell title="关于我们" is-link to="/mine/about"><img src="../../assets/mine/about.png" alt=""></mt-cell>
+      <mt-cell title="意见反馈" is-link to="/mine/suggest"><img src="../../assets/mine/yjfk.png" alt=""></mt-cell>
     </div>
   </div>
 </template>
