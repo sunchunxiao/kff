@@ -9,7 +9,7 @@ import {ase128Encode, encrypt} from './aesEncode'
 const specialCode = []
 
 let defaultOpts = {
-  method: 'POST',
+  method: 'get',
   credentials: 'same-origin',
   headers: {
     'Content-Type': 'application/json; charset=UTF-8'
@@ -29,19 +29,19 @@ const request = (url, options = {}) => {
   //测试地址
   var url = "http://47.98.197.101/tzg-rest" + url;
   //默认post请求
-  let method = options.method || "post"
-  let key = ~['delete', 'get', 'head'].indexOf(method) ? 'params' : 'data'
-  // 过滤空的筛选条件
-  if (['get'].indexOf(method.toLowerCase()) > -1) {
-    options.body = Object.assign({}, options.body)
-    for (let key in options.body) {
-      if (options.body.hasOwnProperty(key)) {
-        if (options.body[key] === '') {
-          delete  options.body[key]
-        }
-      }
-    }
-  }
+  // let method = options.method || "post"
+  // let key = ~['delete', 'get', 'head'].indexOf(method) ? 'params' : 'data'
+  // // 过滤空的筛选条件
+  // if (['get'].indexOf(method.toLowerCase()) > -1) {
+  //   options.body = Object.assign({}, options.body)
+  //   for (let key in options.body) {
+  //     if (options.body.hasOwnProperty(key)) {
+  //       if (options.body[key] === '') {
+  //         delete  options.body[key]
+  //       }
+  //     }
+  //   }
+  // }
 
   let originBody = options.body
   let aesEncode = encrypt(JSON.stringify(originBody))
@@ -53,7 +53,7 @@ const request = (url, options = {}) => {
   }
 
   // 数据单据处理
-  let body = {[key]: encodeBody}
+  let body = {'params': encodeBody}
   delete  options.body
 
   // form表单格式提交

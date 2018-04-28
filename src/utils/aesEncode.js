@@ -1,7 +1,6 @@
 /**
  * Created by zhengchangshun on 2018/4/27.
  */
-var aesjs = require('aes-js');
 var CryptoJS = require('crypto-js');
 
 export function encrypt(plaintText){
