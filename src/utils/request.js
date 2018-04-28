@@ -46,9 +46,7 @@ const request = (url, options = {}) => {
   let originBody = options.body
   let aesEncode = encrypt(JSON.stringify(originBody))
   let policy = Base64.encode(aesEncode)
-  // policy = policy.url
   let sign = Md5(JSON.stringify(originBody))
-  debugger
   let time = new Date().getTime();
   let encodeBody = {
     policy, sign, time
