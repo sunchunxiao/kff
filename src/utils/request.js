@@ -3,7 +3,7 @@ import {Toast} from 'mint-ui';
 import util from '@/utils/common'
 import Md5 from 'js-md5';
 import {Base64} from 'js-base64';
-import {ase128Encode} from './aesEncode'
+import {ase128Encode, encrypt} from './aesEncode'
 
 
 const specialCode = []
@@ -44,7 +44,7 @@ const request = (url, options = {}) => {
   }
 
   let originBody = options.body
-  let aesEncode = ase128Encode(JSON.stringify(originBody))
+  let aesEncode = encrypt(JSON.stringify(originBody))
   let policy = Base64.encode(aesEncode)
   let sign = Md5(JSON.stringify(originBody))
   let time = new Date().getTime();
@@ -72,8 +72,7 @@ const request = (url, options = {}) => {
       if (res.data.success) {
         return res.data.data
       } else {
-        console.error('api error result', res)
-        Toast.error(res.data.message)
+        Toast(res.data.message)
         if (res.data.code === specialCode) {
           util.jumpToLogin()
         }
