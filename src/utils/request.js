@@ -3,6 +3,7 @@ import {Toast} from 'mint-ui';
 import util from '@/utils/common'
 import Md5 from 'js-md5';
 import {Base64} from 'js-base64';
+import {ase128Encode} from './aesEncode'
 
 
 const specialCode = []
@@ -43,8 +44,8 @@ const request = (url, options = {}) => {
   }
 
   let originBody = options.body
-  // let policy = Base64(Aes128(JSON.stringify(originBody)))
-  let policy = Base64.encode(JSON.stringify(originBody))
+  let aesEncode = ase128Encode(JSON.stringify(originBody))
+  let policy = Base64.encode(aesEncode)
   let sign = Md5(JSON.stringify(originBody))
   let time = new Date().getTime();
   let encodeBody = {
