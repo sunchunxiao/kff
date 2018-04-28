@@ -1,0 +1,39 @@
+@media screen and (min-width:321px) and (max-width:414px){html{font-size:12px}}
+@media screen and (min-width:415px) and (max-width:719px){html{font-size:14px}}
+@media screen and (min-width:720px){html{font-size:16px}}
+body,div,a,h1,h2,h3,input,form,strong,span,select,option,textarea,dl,dt,dd,ul,li,p{margin:0;padding:0;}
+strong,i,em{font-style:normal;}
+li{list-style:none;}
+
+.longBtn {
+  width: 90%;
+  margin-left: 5%;
+}
+a{
+  text-decoration: none;
+  color: #000000;
+}
+.bottomPopup {
+  width: 100%;
+}
+
+.inlineBlock {
+  display: inline-block;
+}
+
+.mint-search{
+  height: auto;
+}
+
+input{
+  background-color:transparent;
+  border: 0 none;
+}
+input:focus,button:focus{
+  border: 0 none;
+  outline: none;
+}
+h2{
+  font-weight: 100;
+  font-family:HiraginoSansGB-W3;
+}
