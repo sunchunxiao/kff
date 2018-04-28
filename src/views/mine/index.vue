@@ -115,7 +115,7 @@ p{
   .mint-cell-value.is-link img{
     position: absolute;
     left: 4%;
-    width: 4%;
+    width: 5%;
   }
 </style>
 <template>
@@ -127,8 +127,8 @@ p{
       <!--<img src="../../assets/image/logo.png"/>-->
     <!--</div>-->
     <div class="set">
-        <div class="mine-title" @click="rightClickHandel">
-          设置
+        <div class="mine-title" >
+          <span @click="rightClickHandel">设置</span>
         </div>
         <div class="mine-info">
           <div class="mine-img"></div>

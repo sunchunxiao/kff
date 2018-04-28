@@ -6,7 +6,7 @@ import request from '../utils/request'
 
 // login
 export const login = (params = {}) => {
-  return request(`user/login`, {
+  return request(`/kff/user/login`, {
     body: {
       ...params
     },
@@ -29,5 +29,13 @@ export const register = (params = {}) => {
     body: {
       ...params
     }
+  })
+}
+// 验证码登录
+export const phoneAvailable = (params = {}) => {
+  return request(`/kff/user/register/phoneAvailable`, {
+    body: {
+      ...params
+    },
   })
 }

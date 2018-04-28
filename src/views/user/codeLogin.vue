@@ -188,11 +188,12 @@
         // if(){
         //
         // }
+        console.log(this.phone);
         let params ={
           phone:this.phone,
-
         }
         phoneAvailable(params).then(res=>{
+
           if(res.code==0){
             console.log(res.data);
           }
@@ -200,9 +201,9 @@
 
 
         this.$router.push('/user/codeLogin1');
-        console.log(this.phone)
+        // console.log(this.phone)
         localStorage.setItem('phone',this.phone);
-        console.log(localStorage.phone)
+        // console.log(localStorage.phone)
 
       },
       //点击用户登录

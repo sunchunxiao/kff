@@ -6,8 +6,8 @@
       <!--:title="title"-->
     <!--/>-->
     <div class="setting-title" >
-      <span @click="leftClickHandel">返回</span>
-      设置
+      <span class="back" @click="leftClickHandel"><img src="../../assets/mine/zhufan.png" alt=""></span>
+      <span class="setting">设置</span>
     </div>
     <div class="title">个人信息</div>
     <mt-cell title="头像">
@@ -42,7 +42,6 @@
     <mt-cell title="用户类型">
       <span>{{formData.userType}}</span>
     </mt-cell>
-
     <!--<hr/>-->
     <div class="title">账户设置</div>
     <mt-cell title="绑定手机号">
@@ -57,6 +56,20 @@
       width: 100%;
       text-align: center;
       height: 40px;
+      line-height: 40px;
+      .back{
+        height: 40px;
+        line-height: 50px;
+        float: left;
+        img{
+          width: 50%;
+        }
+      }
+      .setting{
+        font-size:18px;
+        color:#333333;
+        letter-spacing:0;
+      }
     }
     .mint-cell-title {
       flex: 0.4;
