@@ -46,12 +46,14 @@ const request = (url, options = {}) => {
   let originBody = options.body
   let aesEncode = encrypt(JSON.stringify(originBody))
   let policy = Base64.encode(aesEncode)
+  policy = encodeURIComponent(policy)
   let sign = Md5(JSON.stringify(originBody))
   let time = new Date().getTime();
   let encodeBody = {
     policy, sign, time
   }
 
+  encodeURIComponent()
   // 数据单据处理
   let body = {'params': encodeBody}
   delete  options.body
