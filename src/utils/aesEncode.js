@@ -8,6 +8,10 @@ export function encrypt(plaintText){
   var key = CryptoJS.enc.Utf8.parse("0987654321qazxcv");
   var iv  = CryptoJS.enc.Utf8.parse('0102030405060708');
   var srcs = CryptoJS.enc.Utf8.parse(plaintText);
-  var encrypted = CryptoJS.AES.encrypt(srcs, key, { iv: iv,mode:CryptoJS.mode.CBC});
+  var encrypted = CryptoJS.AES.encrypt(srcs, key, {
+    iv: iv,
+    mode:CryptoJS.mode.CBC,
+    padding: CryptoJS.pad.Pkcs7,
+  });
   return encrypted.toString();
 }
