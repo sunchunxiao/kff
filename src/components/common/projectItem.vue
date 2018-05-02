@@ -4,6 +4,7 @@
     /*border-top: 1px solid;*/
     border-bottom: 1px solid;
     margin-bottom: 8px;
+    overflow: hidden;
     .action {
       justify-content: flex-start !important;
       align-items: center;
@@ -13,6 +14,21 @@
     .row {
       display: flex;
       justify-content: space-between;
+      .btn{
+        border:1px solid #3b88f6;
+        border-radius:2px;
+        width:43px;
+        height:20px;
+        position: absolute;
+        right: 5%;
+        .mint-button-text{
+          font-size: 12px;
+        }
+      }
+      .name{
+        position: absolute;
+        left: 20%;
+      }
     }
     .row1 {
       align-items: center;
@@ -31,6 +47,8 @@
     .row3 {
       margin-bottom: 5px;
       .content {
+        color:#7e7d7e;
+        line-height:20px;
         flex: 7;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -38,19 +56,10 @@
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
       }
-      .image {
-        flex: 2;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        img {
-          width: 40px;
-          height: 40px;
-        }
-      }
+
     }
     .row4 {
-      border-bottom: 1px solid;
+      border-bottom: 1px solid #ddd;
       padding-bottom: 5px;
       margin-bottom: 5px;
       .testerInfo {
@@ -59,21 +68,86 @@
       }
     }
     .row5 {
+      float: right;
       justify-content: flex-start;
       .detail {
         display: flex;
         align-items: center;
+        img{
+          width: 1.5rem;
+          height: 1.5rem;
+          padding-right: 20%;
+        }
       }
       .zan {
         margin-right: 20px;
       }
     }
   }
+  .already{
+    background-color: #fff;
+    padding: 0.5rem 0;
+    padding-left: 1rem;
+    .already-follow{
+      background:#f4f4f4;
+      border-radius:2rem;
+      overflow: hidden;
+      width:46%;
+      /*height:22px;*/
+      line-height: 2.5rem;
+      margin: 2px 0;
+      img{
+        width: 18%;
+        float: left;
+      }
+     .cat{
+       float: left;
+       .oldcat{
+         font-size:14px;
+         color:#333333;
+         letter-spacing:0;
+       }
+       .follow-this{
+         font-size:12px;
+         color:#888888;
+         letter-spacing:0;
+       }
+     }
+    }
+  }
+  .mint-button--normal{
+    padding: 0;
+  }
+  .mint-button{
+    border-radius: 1px;
+    width: 43px;
+    height: 20px;
+    font-size: 0;
+  }
+.mt-progress div:nth-child(2){
+  font-size:14px;
+  color:#3b88f6;
+  letter-spacing:0;
+  font-weight: bolder;
+}
+  .image {
+    text-align: center;
+    /*flex: 2;*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    img {
+      width: 100%;
+      height: 100%;
+  }
+  }
 
 </style>
 <template>
   <div>
+
     <template v-for="(item,index) in itemList">
+
       <div class="projectItem" :key="index">
         <div class="row action" v-if="isActionTop">
           <img slot="icon" :src="item.operatorImg"/>
@@ -93,16 +167,17 @@
           </div>
         </div>
         <div class="row row2">
-          <div class="test">{{item.testName}}</div>
+          <div class="test" style="font-size: 16px;color: #333">{{item.testName}}</div>
           <My-Progress :rate="item.rate"></My-Progress>
         </div>
         <div class="row row3">
           <div class="content">
             {{item.descrption}}
           </div>
-          <div class="image">
-            <img :src="item.descrImg">
-          </div>
+
+        </div>
+        <div class="image">
+        <img :src="item.descrImg">
         </div>
         <div class="row4" v-if="!isActionTop">
           <div class="testerInfo">
@@ -113,11 +188,11 @@
         </div>
         <div class="row row5">
           <div class="detail zan">
-            <img src="../../assets/image/rose.png">
+            <img @click="zan()" src="../../assets/index/zan.png">
             <label>{{ item.zanNum}}</label>
           </div>
           <div class="detail">
-            <img src="../../assets/image/rose.png">
+            <img src="../../assets/index/review.png">
             <label>{{ item.commentNum}}</label>
           </div>
         </div>
@@ -153,6 +228,11 @@
       }
     },
     methods: {
+      //点赞
+      zan(){
+        console.log(111)
+          this.zanNum+=1;
+      },
       addAttention(item, index) {
         this.$emit('addAttention', item, index)
       },

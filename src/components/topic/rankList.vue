@@ -1,4 +1,6 @@
-<style src="./common.css" lang="less"></style>
+<style src="./common.css" lang="less">
+
+</style>
 <template>
   <div>
     <template v-for="(item,index) in rankList ">

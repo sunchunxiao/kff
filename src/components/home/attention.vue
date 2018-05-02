@@ -1,5 +1,14 @@
 <template>
   <div>
+    <div class="already">
+      <div class="already-follow">
+        <img src="../../assets/image/rose.png" alt="">
+        <div class="cat">
+          <span class="oldcat">老猫</span>
+          <span class="follow-this">关注了这个项目</span>
+        </div>
+      </div>
+    </div>
     <Project-Item :itemList="attentionList" :isActionTop='true' v-on:addAttention="addAttention"></Project-Item>
   </div>
 </template>

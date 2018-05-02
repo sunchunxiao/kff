@@ -25,10 +25,31 @@
       }
     }
   }
+  .rank-title{
+    padding: 1rem 0 1rem 2rem;
+    border:1px solid #ddd;
+    color: #aaa;
+    .score{
+      float: right;
+      padding-right: 15%;
+      .score-comment{
+        /*padding-right: 5%;*/
+      }
+    }
+  }
 </style>
 
 <template>
   <div>
+    <div class="ranklist">
+      <div class="rank-title">
+        <span>排名</span>
+        <div class="score">
+          <span class="score-comment">评分</span>
+          <span>关注数</span>
+        </div>
+      </div>
+    </div>
     <template v-for="(item,index) in rankList">
       <div class="homeRanklist">
         <div class='index'>{{index}}</div>

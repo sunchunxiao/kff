@@ -1,6 +1,7 @@
 <style lang="less" scoped>
   html.body{
     -webkit-text-size-adjust:none;
+    transform:scale(0.5)
   }
   .mint-tabbar > .mint-tab-item.is-selected{
     background-color: #fafafa;
@@ -10,12 +11,12 @@
       width:19px;
       height:19px;
     }
+    .mint-tab-item-label{
+      font-size:20px;
+      -webkit-transform:scale(0.8);
+    }
   }
-  .mint-tab-item-label{
-    font-size: 9px;
-    -webkit-transform:scale(0.8);
-    -webkit-text-size-adjust:none
-  }
+
 
 
 </style>
@@ -25,7 +26,7 @@
     <mt-tabbar v-model="selected" fixed>
       <mt-tab-item id="home">
         <img slot="icon" src="../../assets/tab/首页_未选中@2x.png">
-        首页
+        <span>首页</span>
       </mt-tab-item>
       <mt-tab-item id="topic">
         <img slot="icon" src="../../assets/tab/话题@2x.png">

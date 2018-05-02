@@ -1,12 +1,25 @@
 <style lang="less" scoped>
   .find{
     background-color: #f9f9f9;
+    .mint-tab-item-label{
+      font-size: 17px;
+    }
+    .search{
+      width: 6%;
+      position: absolute;
+      left:0;
+      top: 0;
+      display: inline-block;
+      margin:1rem 0 1rem 1rem;
+
+    }
   }
   .mint-navbar{
-    width: 45%;
+    width: 46%;
     margin: 0 auto;
     color:#aeaeae;
     background-color:#f9f9f9 ;
+
     .mint-tab-item-label{
       font-size:17px;
       /*color:#aeaeae;*/
@@ -15,14 +28,13 @@
   }
   .mint-tab-item{
     width: 20%;
+
   }
   .mint-navbar .mint-tab-item .is-selected{
     border-bottom:1px solid #26a2ff;
     color:#3b88f6;
   }
-  /*.mint-tab-item-label{*/
-    /*font-size: 17px;*/
-  /*}*/
+
   /*.mint-navbar .mint-tab-item.is-selected{*/
     /*border: none;*/
   /*}*/
@@ -33,12 +45,12 @@
 </style>
 <template>
   <div class="find">
-    <HeaderBar
-      :rightOptions="rightOptions"
-      v-on:rightClickHandel="rightClickHandel"
-      :title="title"
-    />
-
+    <!--<HeaderBar-->
+      <!--:rightOptions="rightOptions"-->
+      <!--v-on:rightClickHandel="rightClickHandel"-->
+      <!--:title="title"-->
+    <!--/>-->
+    <img src="../../assets/index/search.png" alt="搜索" class="search">
     <mt-navbar v-model="selected">
       <mt-tab-item id="recommend">推荐</mt-tab-item>
       <mt-tab-item id="attention">关注</mt-tab-item>
