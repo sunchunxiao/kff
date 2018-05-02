@@ -110,6 +110,14 @@
       overflow: hidden
     }
   }
+  .mint-cell-value{
+    text-align: left;
+    span{
+      font-size: 14px;
+      color: #333;
+    }
+  }
+
 </style>
 
 <script>

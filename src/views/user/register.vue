@@ -180,7 +180,7 @@
             password:this.password,
             dynamicVerifyCode:this.code
           }
-          debugger
+
           register(params).then(res=>{
             if(res.code==0){
               MessageBox({

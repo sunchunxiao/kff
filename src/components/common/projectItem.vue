@@ -1,7 +1,7 @@
 <style lang="less">
   .projectItem {
     padding: 10px 20px;
-    border-top: 1px solid;
+    /*border-top: 1px solid;*/
     border-bottom: 1px solid;
     margin-bottom: 8px;
     .action {

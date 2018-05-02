@@ -17,7 +17,7 @@
   </div>
 </template>
 
-<style lang="less">
+<style lang="less" scoped>
   .mint-navbar{
     width: 26%;
     margin: 0 auto;

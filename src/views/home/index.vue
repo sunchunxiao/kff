@@ -2,15 +2,32 @@
   .find{
     background-color: #f9f9f9;
   }
-  .mint-navbar .mint-tab-item.is-selected{
+  .mint-navbar{
+    width: 45%;
+    margin: 0 auto;
+    color:#aeaeae;
+    background-color:#f9f9f9 ;
+    .mint-tab-item-label{
+      font-size:17px;
+      /*color:#aeaeae;*/
+      letter-spacing:0;
+    }
+  }
+  .mint-tab-item{
+    width: 20%;
+  }
+  .mint-navbar .mint-tab-item .is-selected{
     border-bottom:1px solid #26a2ff;
     color:#3b88f6;
   }
-  .mint-tab-item-label{
-    font-size: 17px;
-  }
-  .mint-navbar .mint-tab-item.is-selected{
-    border: none;
+  /*.mint-tab-item-label{*/
+    /*font-size: 17px;*/
+  /*}*/
+  /*.mint-navbar .mint-tab-item.is-selected{*/
+    /*border: none;*/
+  /*}*/
+  .mint-button-text{
+    background-color: #fff;
   }
 
 </style>
