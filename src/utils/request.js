@@ -3,7 +3,7 @@ import {Toast} from 'mint-ui';
 import util from '@/utils/common'
 import Md5 from 'js-md5';
 import {Base64} from 'js-base64';
-import {ase128Encode, encrypt} from './aesEncode'
+import {encrypt as aes128Encod} from './aesEncode'
 
 
 const specialCode = []
@@ -28,27 +28,12 @@ axios.interceptors.response.use((res) => {
 const request = (url, options = {}) => {
   //测试地址
   var url = "http://47.98.197.101/tzg-rest" + url;
-  //默认post请求
-  // let method = options.method || "post"
-  // let key = ~['delete', 'get', 'head'].indexOf(method) ? 'params' : 'data'
-  // // 过滤空的筛选条件
-  // if (['get'].indexOf(method.toLowerCase()) > -1) {
-  //   options.body = Object.assign({}, options.body)
-  //   for (let key in options.body) {
-  //     if (options.body.hasOwnProperty(key)) {
-  //       if (options.body[key] === '') {
-  //         delete  options.body[key]
-  //       }
-  //     }
-  //   }
-  // }
 
-  let originBody = options.body
-  let aesEncode = encrypt(JSON.stringify(originBody))
-  // let aesEncode = encrypt(originBody)
+  let originBody = JSON.stringify(options.body)
+  let aesEncode = aes128Encod(originBody)
   let policy = Base64.encode(aesEncode)
   policy = encodeURI(policy)
-  let sign = Md5(JSON.stringify(originBody))
+  let sign = Md5(originBody)
   let time = new Date().getTime();
   let encodeBody = {
     policy, sign, time
