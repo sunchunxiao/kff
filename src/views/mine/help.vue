@@ -2,9 +2,7 @@
   <div>
     <HeaderBar
       :leftOptions="leftOptions"
-      :rightOptions="rightOptions"
       v-on:leftClickHandel="leftClickHandel"
-      v-on:rightClickHandel="rightClickHandel"
       :title="title"
     />
 
