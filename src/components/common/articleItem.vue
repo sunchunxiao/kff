@@ -1,5 +1,5 @@
 <style lang="less">
-  .evaluateItem {
+  .artiList {
     padding: 10px 20px;
     /*border-top: 1px solid;*/
     border-bottom: 1px solid;
@@ -90,19 +90,17 @@
   <div>
 
     <template v-for="(item,index) in itemList">
-
-      <div class="evaluateItem" :key="index">
+      <div class="artiList" :key="index">
         <div class="row row1">
           <div class="photo">
             <img slot="icon" :src="item.itemImg" @click="gotoProjectHome(item.id)">
           </div>
           <div class="name">
-            <div class="projectName">{{item.name}}</div>
+            <div class="projectName">{{item.itemName}}</div>
           </div>
         </div>
         <div class="row row2">
-          <div class="test" style="font-size: 16px;color: #333">{{item.testName}}</div>
-          <My-Progress :rate="item.rate"></My-Progress>
+          <div class="articleItem">{{item.articleItem}}</div>
         </div>
         <div class="row row3">
           <div class="content">
@@ -127,12 +125,10 @@
   </div>
 </template>
 <script>
-  import MyProgress from '@/components/common/myProgress.vue'
 
   export default {
-    name: "evaluateItem",
+    name: "articleItem",
     components: {
-      MyProgress
     },
     data() {
       return {

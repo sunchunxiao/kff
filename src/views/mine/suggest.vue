@@ -8,7 +8,7 @@
     <div>
       <div class="suggest-title">意见描述</div>
       <div class="suggest-content">
-        <textarea label="您的建议:" placeholder="请输入不少于10个字的建议" type="textarea" rows="4" v-modal="suggestion"></textarea>
+        <textarea label="您的建议:" placeholder="请输入不少于10个字的建议" type="textarea" rows="4" v-model="suggestion"></textarea>
       </div>
       <div class="suggest-title">联系方式</div>
       <div class="suggest-content">

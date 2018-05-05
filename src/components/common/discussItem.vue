@@ -1,5 +1,5 @@
 <style lang="less">
-  .evaluateItem {
+  .discussItem {
     padding: 10px 20px;
     /*border-top: 1px solid;*/
     border-bottom: 1px solid;
@@ -14,18 +14,18 @@
     .row {
       display: flex;
       justify-content: space-between;
-      .btn {
-        border: 1px solid #3b88f6;
-        border-radius: 2px;
-        width: 43px;
-        height: 20px;
+      .btn{
+        border:1px solid #3b88f6;
+        border-radius:2px;
+        width:43px;
+        height:20px;
         position: absolute;
         right: 5%;
-        .mint-button-text {
+        .mint-button-text{
           font-size: 12px;
         }
       }
-      .name {
+      .name{
         position: absolute;
         left: 20%;
       }
@@ -47,8 +47,8 @@
     .row3 {
       margin-bottom: 5px;
       .content {
-        color: #7e7d7e;
-        line-height: 20px;
+        color:#7e7d7e;
+        line-height:20px;
         flex: 7;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -73,7 +73,7 @@
       .detail {
         display: flex;
         align-items: center;
-        img {
+        img{
           width: 1.5rem;
           height: 1.5rem;
           padding-right: 20%;
@@ -85,24 +85,23 @@
     }
   }
 
+
 </style>
 <template>
   <div>
-
     <template v-for="(item,index) in itemList">
-
-      <div class="evaluateItem" :key="index">
+      <div class="discussItem" :key="index">
         <div class="row row1">
           <div class="photo">
             <img slot="icon" :src="item.itemImg" @click="gotoProjectHome(item.id)">
           </div>
           <div class="name">
-            <div class="projectName">{{item.name}}</div>
+            <div class="projectName">{{item.itemName}}</div>
+            <div class="time">{{item.time}}</div>
           </div>
         </div>
         <div class="row row2">
-          <div class="test" style="font-size: 16px;color: #333">{{item.testName}}</div>
-          <My-Progress :rate="item.rate"></My-Progress>
+          <div class="test" style="font-size: 16px;color: #333">{{item.discussItem}}</div>
         </div>
         <div class="row row3">
           <div class="content">
@@ -127,13 +126,10 @@
   </div>
 </template>
 <script>
-  import MyProgress from '@/components/common/myProgress.vue'
 
   export default {
-    name: "evaluateItem",
-    components: {
-      MyProgress
-    },
+    name: "discussItem",
+    components: {},
     data() {
       return {
         value: 5
@@ -149,7 +145,7 @@
     },
     methods: {
       //点赞
-      zan(index) {
+      zan(index){
         /*接口*/
         this.itemList[index].zanNum += 1;
       },

@@ -188,7 +188,7 @@
         </div>
         <div class="row row5">
           <div class="detail zan">
-            <img @click="zan()" src="../../assets/index/zan.png">
+            <img @click="zan(index)" src="../../assets/index/zan.png">
             <label>{{ item.zanNum}}</label>
           </div>
           <div class="detail">
@@ -229,9 +229,9 @@
     },
     methods: {
       //点赞
-      zan(){
-        console.log(111)
-          this.zanNum+=1;
+      zan(index){
+        /*接口*/
+        this.itemList[index].zanNum += 1;
       },
       addAttention(item, index) {
         this.$emit('addAttention', item, index)

@@ -63,7 +63,7 @@
   import EvaluateItem from '@/components/common/evaluateItem.vue'
 
   export default {
-    name: "evaluate",  //专业测评
+    name: "evaluate",  //测评
     components: {
       MyProgress,
       EvaluateItem
@@ -101,7 +101,6 @@
           rate: 85,
           descrption: "以太坊系统自身带有一种叫做以太币（Ether）的数字货币。以太币和著名的数字货币比特币（Bitcoin）...",
           descrImg: require("../../assets/image/logo.png"),
-          testerImg: require("../../assets/image/rose.png"),
           zanNum: 200,
           commentNum: 50,
         },

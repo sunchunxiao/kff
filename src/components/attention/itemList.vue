@@ -11,7 +11,6 @@
     props: ['itemList'],
     methods: {
       gotoProject(id) {
-        console.log(111);
         this.router.push({path: '/project/home', query: {id}})
       }
     }
