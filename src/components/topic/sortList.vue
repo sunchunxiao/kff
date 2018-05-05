@@ -21,11 +21,11 @@
 </template>
 
 <script>
-  import myProgress from '@/components/common/myProgress.vue'
+  import MyProgress from '@/components/common/myProgress.vue'
   export default {
     name: "sort",
     components: {
-      myProgress
+      MyProgress
     },
     props: ['sortList'],
     methods: {

@@ -69,7 +69,7 @@
     </mt-navbar>
 
     <keep-alive>
-      <component :is="selected"/>
+      <component :is="selected" :id="id"/>
     </keep-alive>
   </div>
 </template>
@@ -98,7 +98,6 @@
           leftBtnText: "返回"
         },
         baseInfo: {},
-
       }
     },
     created() {
@@ -111,6 +110,7 @@
 
       //查询基本信息
       queryBaseInfo() {
+        this.id = this.$route.query.id
         //接口
         this.baseInfo = {
           id: 1,
@@ -146,7 +146,7 @@
       },
 
       addAttention() {
-        let id = this.baseInfo.id
+        let id = this.id
         //接口
         this.baseInfo.isAttention = !this.baseInfo.isAttention
       }

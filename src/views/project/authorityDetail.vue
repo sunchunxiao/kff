@@ -27,7 +27,7 @@
       :title="title"
     />
     <div class="authorityDetail">
-      <h1>项目定位</h1>
+      <h1>{{origin}}</h1>
       <div>说明：主要从竞争对手、市场前景、可行性等各方面进行评测</div>
       <div class='rangeInfo'>
         <label>评分</label>
