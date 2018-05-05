@@ -1,10 +1,11 @@
 <style lang="less">
-  .topicIndex{
+  .topicIndex {
     width: 100%;
     position: fixed;
     height: 100%;
-    background-color:#f4f4f4;
+    background-color: #f4f4f4;
   }
+
   .topicContent {
     margin-bottom: 100px;
   }
@@ -14,18 +15,19 @@
     bottom: 60px;
     width: 100%;
   }
-  .current{
-    .first{
+
+  .current {
+    .first {
       background-color: #fff;
       padding: 10px 0;
       border-bottom: 1px solid #ddd;
     }
-    li{
+    li {
       /*margin: 5px auto;*/
       border-bottom: 1px solid #ddd;
       background-color: #fff;
       position: relative;
-      div{
+      div {
         width: 90%;
         padding-left: 5%;
       }
@@ -36,99 +38,103 @@
   .currentRank {
     width: 90%;
     margin: 0 auto;
-    span{
-      font-size:14px;
-      color:#000000;
-      letter-spacing:0;
-      text-align:left;
+    span {
+      font-size: 14px;
+      color: #000000;
+      letter-spacing: 0;
+      text-align: left;
     }
-    div{
+    div {
       float: right;
-      a{
-        font-size:12px;
-        color:#aaa;
-        letter-spacing:0;
-        text-align:right;
+      a {
+        font-size: 12px;
+        color: #aaa;
+        letter-spacing: 0;
+        text-align: right;
         padding: 0 5px;
       }
     }
   }
-  .rightBorder{
+
+  .rightBorder {
     border-right: 1px solid #dddddd;
   }
-  .follow{
+
+  .follow {
     width: 80px;
-   display: inline-block;
+    display: inline-block;
     padding-left: 3%;
   }
-  .spanName{
-    font-size:16px;
-    color:#333333;
-    letter-spacing:0;
-    text-align:left;
+
+  .spanName {
+    font-size: 16px;
+    color: #333333;
+    letter-spacing: 0;
+    text-align: left;
   }
-  .spanNum{
-    font-size:12px;
-    color:#888888;
-    letter-spacing:0;
-    text-align:left;
+
+  .spanNum {
+    font-size: 12px;
+    color: #888888;
+    letter-spacing: 0;
+    text-align: left;
   }
-  .currentP{
+
+  .currentP {
     padding: 10px 0;
   }
-  .followR{
+
+  .followR {
     display: inline-block;
-    border:1px solid #3b88f6;
-    color:#3b88f6;
-    border-radius:2px;
-    width:43px;
-    height:20px;
+    border: 1px solid #3b88f6;
+    color: #3b88f6;
+    border-radius: 2px;
+    width: 43px;
+    height: 20px;
     position: absolute;
     right: 2%;
     bottom: 31%;
   }
-  .followB{
-    background:#f4f4f4;
-    letter-spacing:0;
-    width:46px;
-    height:23px;
+
+  .followB {
+    background: #f4f4f4;
+    letter-spacing: 0;
+    width: 46px;
+    height: 23px;
     border: none;
   }
-  .add{
 
-
+  .add {
 
   }
-  .footBtn{
-    .longBtn{
-      background:#ffffff;
-      box-shadow:0 0 4px 0 #dfdfdf;
-      border-radius:100%;
-      width:38px;
-      height:38px;
+
+  .footBtn {
+    .longBtn {
+      background: #ffffff;
+      box-shadow: 0 0 4px 0 #dfdfdf;
+      border-radius: 100%;
+      width: 38px;
+      height: 38px;
       position: fixed;
       right: 2%;
       bottom: 15%;
     }
   }
-  .mint-button{
-    width:43px;
-    height:20px;
-    border:1px solid #3b88f6;
-    background:#3b88f6;
+
+  .mint-button {
+    width: 43px;
+    height: 20px;
+    border: 1px solid #3b88f6;
+    background: #3b88f6;
     color: #fff;
   }
-  /*.mint-button::after{*/
 
-
-    /*border-radius:2px;*/
-
-  /*}*/
-  .mint-button-text{
+  .mint-button-text {
     font-size: 12px;
     padding-bottom: 1px;
   }
-  .mint-button--normal{
+
+  .mint-button--normal {
     padding: 0;
 
   }
@@ -138,8 +144,8 @@
     <div class="topicContent">
       <mt-search v-model="searchWord"></mt-search>
       <!--<mt-navbar v-model="selected">-->
-        <!--<mt-tab-item id="rank">关注排名</mt-tab-item>-->
-        <!--<mt-tab-item id="sort">名称排序</mt-tab-item>-->
+      <!--<mt-tab-item id="rank">关注排名</mt-tab-item>-->
+      <!--<mt-tab-item id="sort">名称排序</mt-tab-item>-->
       <!--</mt-navbar>-->
       <!--内容-->
       <div class="current">
@@ -147,8 +153,8 @@
           <div class="currentRank">
             <span>共380个币种</span>
             <div>
-              <a href="###" class="rightBorder">按关注</a>
-              <a href="###">按名称</a>
+              <a @click="changeTab('rank')" class="rightBorder">按关注</a>
+              <a @click="changeTab('sort')" >按名称</a>
             </div>
           </div>
         </div>
@@ -160,8 +166,6 @@
                 <span class="spanName">EOS</span><span class="spanF"> / 柚子</span>
                 <span class="spanNum">11115关注</span>
               </p>
-              <!--<span class="followR" @click="follow"><a class="fill">+ 关注</a></span>-->
-              <!--<span class="followR followB" v-show="!show"><a class="fill">已关注</a></span>-->
               <mt-button @click.native="handleClick"> +关注</mt-button>
             </div>
           </li>
@@ -193,7 +197,7 @@
     },
     data() {
       return {
-        show:"true",
+        show: "true",
         searchWord: "",
         selected: "rank",
         rankList: [],
@@ -205,12 +209,16 @@
       this.querySortList();
     },
     methods: {
+      //tab切换
+      changeTab(item) {
+        this.selected = item;
+      },
       //点击关注
-      follow(){
+      follow() {
         this.show = !this.show;
       },
       //加关注
-      handleClick: function() {
+      handleClick: function () {
         this.$toast('已经添加关注')
       },
       queryRankList() {
@@ -255,14 +263,14 @@
       //flag区别是 rangList 还是sortList
       attentionHandel(flag, item, index) {
         let id = item.id;
-        if(flag === 'rank'){
+        if (flag === 'rank') {
           //接口
-          this.rankList[index].isAttention =  !this.rankList[index].isAttention
+          this.rankList[index].isAttention = !this.rankList[index].isAttention
         }
 
-        if(flag === 'sort'){
+        if (flag === 'sort') {
           //接口
-          this.sortList[index].isAttention =  !this.sortList[index].isAttention
+          this.sortList[index].isAttention = !this.sortList[index].isAttention
         }
       },
       addProject() {
