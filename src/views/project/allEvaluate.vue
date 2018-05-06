@@ -3,11 +3,7 @@
 </style>
 <template>
   <div>
-    <HeaderBar
-      :leftOptions="leftOptions"
-      v-on:leftClickHandel="leftClickHandel"
-      :title="title"
-    />
+    <HeaderBar :title="title" />
     <div>
       <div>共{{total}}条</div>
       <Evaluate-Item :itemList="evaluateList"></Evaluate-Item>
@@ -27,10 +23,6 @@
     },
     data() {
       return {
-        leftOptions: {
-          hasLeftBtn: true,
-          leftBtnText: "返回"
-        },
         title: this.$route.meta.title,
         evaluateList: [],
         total: 0,
@@ -41,9 +33,6 @@
       this.queryEvaluateList(this.id)
     },
     methods: {
-      leftClickHandel() {
-        this.$router.go(-1)
-      },
       queryEvaluateList(id) {
         this.total = 10000
         this.evaluateList = [{

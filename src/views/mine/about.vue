@@ -1,9 +1,7 @@
 <template>
   <div>
     <HeaderBar
-      :leftOptions="leftOptions"
       :rightOptions="rightOptions"
-      v-on:leftClickHandel="leftClickHandel"
       v-on:rightClickHandel="rightClickHandel"
       :title="title"
     />
@@ -35,10 +33,6 @@
     },
     data() {
       return {
-        leftOptions: {
-          hasLeftBtn: true,
-          leftBtnText: "返回"
-        },
         rightOptions: {
           hasRightBtn: true,
           rightBtnText: '帮助中心',
@@ -49,10 +43,6 @@
     },
 
     methods: {
-      leftClickHandel() {
-        this.$router.push('/main/mine')
-      },
-
       rightClickHandel() {
         this.$router.push('/mine/help')
       }

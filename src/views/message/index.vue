@@ -1,8 +1,6 @@
 <template>
   <div>
     <HeaderBar
-      :leftOptions="leftOptions"
-      v-on:leftClickHandel="leftClickHandel"
       :title="title"
     />
     <mt-cell :title="item.title" v-for="(item,index) in List"  :key="index">
@@ -25,10 +23,6 @@
     },
     data() {
       return {
-        leftOptions: {
-          hasLeftBtn: true,
-          leftBtnText: "返回"
-        },
         rightOptions: {
           hasRightBtn: false,
         },
@@ -55,9 +49,6 @@
     },
 
     methods: {
-      leftClickHandel() {
-        this.$router.push('/main/home')
-      }
     }
   }
 </script>

@@ -20,9 +20,7 @@
 <template>
   <div>
     <HeaderBar
-      :leftOptions="leftOptions"
       :rightOptions="rightOptions"
-      v-on:leftClickHandel="leftClickHandel"
       v-on:rightClickHandel="rightClickHandel"
       :title="title"
     />
@@ -60,10 +58,6 @@
     },
     data() {
       return {
-        leftOptions: {
-          hasLeftBtn: true,
-          leftBtnText: "返回"
-        },
         rightOptions: {
           hasRightBtn: true,
           rightBtnText: "发布"
@@ -90,10 +84,6 @@
       }
     },
     methods: {
-      leftClickHandel() {
-        this.$router.go(-1)
-      },
-
       rightClickHandel() {
         let {rate, message, origin} = this
         let params = {

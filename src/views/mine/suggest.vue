@@ -1,9 +1,7 @@
 <template>
   <div class="suggest">
     <HeaderBar
-      :leftOptions="leftOptions"
       :title="title"
-      v-on:leftClickHandel="leftClickHandel"
     />
     <div>
       <div class="suggest-title">意见描述</div>
@@ -73,10 +71,6 @@
     },
     data() {
       return {
-        leftOptions: {
-          hasLeftBtn: true,
-          leftBtnText: "返回",
-        },
         title: this.$route.meta.title,
         suggestion: '',
         tel: ''
@@ -84,10 +78,6 @@
     },
 
     methods: {
-      // 返回
-      leftClickHandel() {
-        this.$router.push('/main/mine')
-      },
 
       //提交
       submit() {

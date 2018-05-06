@@ -1,10 +1,6 @@
 <template>
   <div>
-    <HeaderBar
-      :leftOptions="leftOptions"
-      v-on:leftClickHandel="leftClickHandel"
-      :title="title"
-    />
+    <HeaderBar :title="title" />
     <Project-Item :itemList="itemList"  :isActionTop='false' v-on:addAttention="addAttention"></Project-Item>
   </div>
 </template>
@@ -25,10 +21,6 @@
     },
     data() {
       return {
-        leftOptions: {
-          hasLeftBtn: true,
-          leftBtnText: "返回"
-        },
         title: this.$route.meta.title,
         itemList: [],
       }
@@ -72,10 +64,6 @@
     },
 
     methods: {
-      leftClickHandel() {
-        this.$router.push('/main/mine')
-      },
-
       addAttention(item, index) {
         let {id} = item
         //接口

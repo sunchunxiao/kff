@@ -1,8 +1,6 @@
 <template>
   <div class="setting">
     <!--<HeaderBar-->
-      <!--:leftOptions="leftOptions"-->
-      <!--v-on:leftClickHandel="leftClickHandel"-->
       <!--:title="title"-->
     <!--/>-->
     <div class="setting-title" >
@@ -133,10 +131,6 @@
     },
     data() {
       return {
-        leftOptions: {
-          hasLeftBtn: true,
-          leftBtnText: "返回"
-        },
         rightOptions: {
           hasRightBtn: false,
         },
@@ -173,10 +167,6 @@
       // queryList();
     },
     methods: {
-      //头部 -返回
-      leftClickHandel() {
-        this.$router.push('/main/mine')
-      },
       //更改图像
       changeImage() {
         console.log("更换图像");
