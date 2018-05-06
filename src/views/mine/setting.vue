@@ -1,12 +1,6 @@
 <template>
   <div class="setting">
-    <!--<HeaderBar-->
-      <!--:title="title"-->
-    <!--/>-->
-    <div class="setting-title" >
-      <span class="back" @click="leftClickHandel"><img src="../../assets/mine/zhufan.png" alt=""></span>
-      <span class="setting">设置</span>
-    </div>
+    <HeaderBar :title="title" />
     <div class="title">个人信息</div>
     <mt-cell title="头像">
       <span>
