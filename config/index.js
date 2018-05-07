@@ -13,7 +13,7 @@ module.exports = {
     proxyTable: {
       '/kff':{
         // target:'http://47.98.197.101/tzg-rest/kff/',
-        target:'http://192.168.10.151:802/rest/kff',
+        target:'http://192.168.10.151:803/kff',
         changeOrigin: true,
         pathRewrite: {
           '^/kff': '/'
