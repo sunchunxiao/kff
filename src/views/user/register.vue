@@ -71,7 +71,7 @@
   .register{
       width: 90%;
       margin: 0 auto;
-      padding: 20% 0 50%;
+      padding: 5% 0 50%;
   }
   .see{
     padding-bottom: 15%;
@@ -212,13 +212,13 @@
 
           register(params).then(res=>{
             if(res.code==0){
-              MessageBox({
-                title: '提示',
-                message: '注册成功',
-                showConfirmButton: true
-              });
+              // MessageBox({
+              //   title: '提示',
+              //   message: '注册成功',
+              //   showConfirmButton: true
+              // });
               console.log(res.data)
-              this.$router.push('/main');
+              this.$router.push('/user/login');
             }
             console.log("第一个接口调试");
           })

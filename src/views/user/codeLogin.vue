@@ -193,6 +193,9 @@
             console.log(res.data.isRegister);
             if(res.data.isRegister==0){
               this.$router.push('/user/register')
+            }else{
+              console.log(222)
+              this.$router.push('/user/codeLogin1')
             }
           }
         })

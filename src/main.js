@@ -9,11 +9,12 @@ import 'mint-ui/lib/style.css'
 import './css/reset.css'
 import './css/global.css'
 import CryptoJS from 'crypto-js'
+import iView from 'iview'
+import 'iview/dist/styles/iview.css'
 
 // 复制到剪切板
 Vue.use(VueClipboard)
-
-
+Vue.use(iView)
 Vue.config.productionTip = false
 
 // 加载插件

@@ -115,8 +115,8 @@
     },
     data() {
       return {
-        phone: "13111111111",
-        password: "123456",
+        phone: "",
+        password: "",
         rightOptions: {
           hasRightBtn: true,
           rightBtnText: "忘记密码"
@@ -152,13 +152,17 @@
       },
       login() {
         let params ={
-          userName:"111",
-          password:"111"
+          loginName:this.phone,
+          password:this.password
         }
         login(params).then(res=>{
-          console.log("第一个接口调试");
+          if(res.code==0){
+            console.log("res.data.user");
+            this.$router.push('/main')
+          }
+
         })
-        this.$router.push('/main')
+
       },
       //验证码登登录
       codeLogin(){
