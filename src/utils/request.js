@@ -41,8 +41,7 @@ const request = (url, options = {}) => {
   // }
 
   // 数据单据处理
-  // let body = {'params': encodeBody}
-  let body;
+  let body = {'params': options.body}
   delete  options.body
 
   // form表单格式提交
