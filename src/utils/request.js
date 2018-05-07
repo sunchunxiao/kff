@@ -19,7 +19,7 @@ let defaultOpts = {
 axios.interceptors.response.use((res) => {
   return res
 }, (error) => {
-  let message = (error.response.data && error.response.data.message) || error.message
+  let message = (error.response.data && error.response.data.msg) || error.msg
   Toast(message);
   return Promise.reject(error)
 })
