@@ -59,16 +59,17 @@
 
     }
     .row4 {
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 5px;
-      margin-bottom: 5px;
+      /*border-bottom: 1px solid #ddd;*/
+      /*padding-bottom: 5px;*/
+      /*margin-bottom: 5px;*/
       .testerInfo {
         display: flex;
         align-items: center;
       }
     }
     .row5 {
-      float: right;
+      position: absolute;
+      right: 10%;
       justify-content: flex-start;
       .detail {
         display: flex;
@@ -148,7 +149,7 @@
 
     <template v-for="(item,index) in itemList">
 
-      <div class="projectItem" :key="index">
+      <div class="projectItem" :key="index" @click="info">
         <div class="row action" v-if="isActionTop">
           <img slot="icon" :src="item.operatorImg"/>
           <span v-if="item.action=='zan'">{{item.operator}}赞同了评测</span>
@@ -184,18 +185,20 @@
             <img :src="item.testerImg">
             <span style="margin-right: 20px" v-if="item.action=='zan'">{{item.tester}}赞同了评测</span>
             <span style="margin-right: 20px" v-if="item.action=='test'">{{item.tester}}评论了文章</span>
+            <div class="row row5">
+              <div class="detail zan">
+                <img @click="zan()" src="../../assets/index/zan.png">
+                <label>{{ item.zanNum}}</label>
+              </div>
+              <div class="detail">
+                <img src="../../assets/index/review.png">
+                <label>{{ item.commentNum}}</label>
+              </div>
+            </div>
           </div>
+
         </div>
-        <div class="row row5">
-          <div class="detail zan">
-            <img @click="zan()" src="../../assets/index/zan.png">
-            <label>{{ item.zanNum}}</label>
-          </div>
-          <div class="detail">
-            <img src="../../assets/index/review.png">
-            <label>{{ item.commentNum}}</label>
-          </div>
-        </div>
+
       </div>
     </template>
   </div>
@@ -228,6 +231,10 @@
       }
     },
     methods: {
+      //跳转页面详情
+      info(){
+        this.$router.push("")
+      },
       //点赞
       zan(){
         console.log(111)

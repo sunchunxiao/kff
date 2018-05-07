@@ -4,6 +4,12 @@
     .mint-tab-item-label{
       font-size: 17px;
     }
+    .release{
+      width: 5%;
+      position: absolute;
+      right: 3%;
+      top: 1.5%;
+    }
     .search{
       width: 6%;
       position: absolute;
@@ -42,6 +48,8 @@
     background-color: #fff;
   }
 
+
+
 </style>
 <template>
   <div class="find">
@@ -52,10 +60,11 @@
     <!--/>-->
     <img src="../../assets/index/search.png" alt="搜索" class="search">
     <mt-navbar v-model="selected">
-      <mt-tab-item id="recommend">推荐</mt-tab-item>
+      <mt-tab-item id="recommend">发现</mt-tab-item>
       <mt-tab-item id="attention">关注</mt-tab-item>
       <mt-tab-item id="rangkList">青天榜</mt-tab-item>
     </mt-navbar>
+    <img class="release" src="../../assets/index/release.png" alt="">
 
     <keep-alive>
       <component :is="selected" :recommendList="recommendList" :rankList="rankList" :attentionList="attentionList" v-on:attentionHandel="attentionHandel"/>
