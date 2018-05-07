@@ -180,7 +180,6 @@
           passwords.type = "password";
           Visiblepasswords.src = "../static/nVisiblepasswords.png";
         } else {
-          console.log(111)
           passwords.type = "text";
           Visiblepasswords.src = "../static/Visiblepasswords.png";
         }

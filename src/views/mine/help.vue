@@ -1,12 +1,6 @@
 <template>
   <div>
-    <HeaderBar
-      :leftOptions="leftOptions"
-      :rightOptions="rightOptions"
-      v-on:leftClickHandel="leftClickHandel"
-      v-on:rightClickHandel="rightClickHandel"
-      :title="title"
-    />
+    <HeaderBar :title="title" />
 
     <mt-navbar v-model="selected">
       <mt-tab-item id="evaluate">评测规则</mt-tab-item>
@@ -46,19 +40,12 @@
     },
     data() {
       return {
-        leftOptions: {
-          hasLeftBtn: true,
-          leftBtnText: "返回"
-        },
         title: this.$route.meta.title,
         selected: "evaluate"
       }
     },
 
     methods: {
-      leftClickHandel() {
-        this.$router.push('/mine/about')
-      },
     }
   }
 </script>

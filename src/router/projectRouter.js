@@ -14,6 +14,7 @@ export const projectRouter = [
     },
     component: (resolve) => require(['@/views/project/home.vue'], resolve)
   },
+  /*测评详细部分（start）*/
   {
     path: '/project/rate',
     meta: {
@@ -27,7 +28,8 @@ export const projectRouter = [
       title: '普通测评'
     },
     component: (resolve) => require(['@/views/project/ordinary.vue'], resolve)
-  }, {
+  },
+  {
     path: '/project/authority',
     meta: {
       title: '专业测评'
@@ -41,7 +43,6 @@ export const projectRouter = [
     },
     component: (resolve) => require(['@/views/project/authorityDetail.vue'], resolve)
   },
-
   {
     path: '/project/firstEvaluation',
     meta: {
@@ -62,5 +63,13 @@ export const projectRouter = [
       title: '新建测评'
     },
     component: (resolve) => require(['@/views/project/addModel.vue'], resolve)
+  },
+  /*测评详细部分（end）*/
+  {
+    path: '/project/allEvaluate',
+    meta: {
+      title: '全部测评'
+    },
+    component: (resolve) => require(['@/views/project/allEvaluate.vue'], resolve)
   },
 ]

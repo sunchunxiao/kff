@@ -23,8 +23,6 @@
 <template>
   <div class="projectHome">
     <HeaderBar
-      :leftOptions="leftOptions"
-      v-on:leftClickHandel="leftClickHandel"
       :title="baseInfo.name"
     />
 
@@ -69,7 +67,7 @@
     </mt-navbar>
 
     <keep-alive>
-      <component :is="selected"/>
+      <component :is="selected" :id="id"/>
     </keep-alive>
   </div>
 </template>
@@ -93,24 +91,16 @@
     data() {
       return {
         selected: "introduction",
-        leftOptions: {
-          hasLeftBtn: true,
-          leftBtnText: "返回"
-        },
         baseInfo: {},
-
       }
     },
     created() {
       this.queryBaseInfo()
     },
     methods: {
-      leftClickHandel() {
-        this.$router.go(-1)
-      },
-
       //查询基本信息
       queryBaseInfo() {
+        this.id = this.$route.query.id
         //接口
         this.baseInfo = {
           id: 1,
@@ -146,7 +136,7 @@
       },
 
       addAttention() {
-        let id = this.baseInfo.id
+        let id = this.id
         //接口
         this.baseInfo.isAttention = !this.baseInfo.isAttention
       }

@@ -1,5 +1,5 @@
 <style lang="less">
-  .projectItem {
+  .discussItem {
     padding: 10px 20px;
     /*border-top: 1px solid;*/
     border-bottom: 1px solid;
@@ -84,76 +84,13 @@
       }
     }
   }
-  .already{
-    background-color: #fff;
-    padding: 0.5rem 0;
-    padding-left: 1rem;
-    .already-follow{
-      background:#f4f4f4;
-      border-radius:2rem;
-      overflow: hidden;
-      width:46%;
-      /*height:22px;*/
-      line-height: 2.5rem;
-      margin: 2px 0;
-      img{
-        width: 18%;
-        float: left;
-      }
-     .cat{
-       float: left;
-       .oldcat{
-         font-size:14px;
-         color:#333333;
-         letter-spacing:0;
-       }
-       .follow-this{
-         font-size:12px;
-         color:#888888;
-         letter-spacing:0;
-       }
-     }
-    }
-  }
-  .mint-button--normal{
-    padding: 0;
-  }
-  .mint-button{
-    border-radius: 1px;
-    width: 43px;
-    height: 20px;
-    font-size: 0;
-  }
-.mt-progress div:nth-child(2){
-  font-size:14px;
-  color:#3b88f6;
-  letter-spacing:0;
-  font-weight: bolder;
-}
-  .image {
-    text-align: center;
-    /*flex: 2;*/
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
-    img {
-      width: 100%;
-      height: 100%;
-  }
-  }
+
 
 </style>
 <template>
   <div>
-
     <template v-for="(item,index) in itemList">
-
-      <div class="projectItem" :key="index">
-        <div class="row action" v-if="isActionTop">
-          <img slot="icon" :src="item.operatorImg"/>
-          <span v-if="item.action=='zan'">{{item.operator}}赞同了评测</span>
-          <span v-if="item.action=='test'">{{item.operator}}评论了文章</span>
-        </div>
+      <div class="discussItem" :key="index">
         <div class="row row1">
           <div class="photo">
             <img slot="icon" :src="item.itemImg" @click="gotoProjectHome(item.id)">
@@ -162,29 +99,17 @@
             <div class="projectName">{{item.itemName}}</div>
             <div class="time">{{item.time}}</div>
           </div>
-          <div class="btn">
-            <mt-button @click="addAttention(item,index)" :type="item.isAttention ? 'default' : 'primary'">{{item.isAttention ? "已关注" : "+ 关注"}} </mt-button>
-          </div>
         </div>
         <div class="row row2">
-          <div class="test" style="font-size: 16px;color: #333">{{item.testName}}</div>
-          <My-Progress :rate="item.rate"></My-Progress>
+          <div class="test" style="font-size: 16px;color: #333">{{item.discussItem}}</div>
         </div>
         <div class="row row3">
           <div class="content">
             {{item.descrption}}
           </div>
-
         </div>
-        <div class="image">
-        <img :src="item.descrImg">
-        </div>
-        <div class="row4" v-if="!isActionTop">
-          <div class="testerInfo">
-            <img :src="item.testerImg">
-            <span style="margin-right: 20px" v-if="item.action=='zan'">{{item.tester}}赞同了评测</span>
-            <span style="margin-right: 20px" v-if="item.action=='test'">{{item.tester}}评论了文章</span>
-          </div>
+        <div class="image row row4">
+          <img :src="item.descrImg">
         </div>
         <div class="row row5">
           <div class="detail zan">
@@ -201,13 +126,10 @@
   </div>
 </template>
 <script>
-  import MyProgress from '@/components/common/myProgress.vue'
 
   export default {
-    name: "projectItem",
-    components: {
-      MyProgress
-    },
+    name: "discussItem",
+    components: {},
     data() {
       return {
         value: 5
@@ -220,21 +142,12 @@
           return []
         }
       },
-      "isActionTop": {
-        type: Boolean,
-        default: function () {
-          return true
-        }
-      }
     },
     methods: {
       //点赞
       zan(index){
         /*接口*/
         this.itemList[index].zanNum += 1;
-      },
-      addAttention(item, index) {
-        this.$emit('addAttention', item, index)
       },
 
       gotoProjectHome(id) {

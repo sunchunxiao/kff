@@ -29,8 +29,6 @@
 <template>
   <div class="addProject">
     <HeaderBar
-      :leftOptions="leftOptions"
-      v-on:leftClickHandel="leftClickHandel"
       :title="title"
     />
     <div class="title">
@@ -63,10 +61,6 @@
     },
     data() {
       return {
-        leftOptions: {
-          hasLeftBtn: true,
-          leftBtnText: "返回"
-        },
         title: this.$route.meta.title,
         current: 1,
       }
@@ -77,9 +71,6 @@
       }
     },
     methods: {
-      leftClickHandel() {
-        this.$router.push('/main/topic')
-      },
       btn1Handel() {
         let current = this.current
         //第一时，点击按钮下一步，其他的都是上一步

@@ -40,11 +40,7 @@
 </style>
 <template>
   <div>
-    <HeaderBar
-      :leftOptions="leftOptions"
-      v-on:leftClickHandel="leftClickHandel"
-      :title="title"
-    />
+    <HeaderBar :title="title" />
     <div class="addModal">
       <div class="average">
         <div>总体评分</div>
@@ -97,10 +93,6 @@
     },
     data() {
       return {
-        leftOptions: {
-          hasLeftBtn: true,
-          leftBtnText: "返回"
-        },
         title: this.$route.meta.title,
         modelInfoList: [],
         modalVisible: false,
@@ -124,10 +116,6 @@
       }
     },
     methods: {
-      leftClickHandel() {
-        this.$router.go(-1)
-      },
-
       queryEvaluteInfo() {
         //接口
         this.modelInfoList = [

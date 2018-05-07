@@ -27,11 +27,7 @@
 </style>
 <template>
   <div>
-    <HeaderBar
-      :leftOptions="leftOptions"
-      v-on:leftClickHandel="leftClickHandel"
-      :title="title"
-    />
+    <HeaderBar :title="title"/>
     <div class="ordinary">
       <div class="title">
         <div>普通测评</div>
@@ -70,10 +66,6 @@
     },
     data() {
       return {
-        leftOptions: {
-          hasLeftBtn: true,
-          leftBtnText: "返回"
-        },
         title: this.$route.meta.title,
         rangeList,
         id: "",

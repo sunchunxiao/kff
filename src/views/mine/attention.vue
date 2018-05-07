@@ -1,8 +1,6 @@
 <template>
   <div>
     <!--<HeaderBar-->
-      <!--:leftOptions="leftOptions"-->
-      <!--v-on:leftClickHandel="leftClickHandel"-->
       <!--:title="title"-->
     <!--/>-->
     <mt-navbar v-model="selected">
@@ -47,10 +45,6 @@
     },
     data() {
       return {
-        leftOptions: {
-          hasLeftBtn: true,
-          leftBtnText: "返回"
-        },
         title: this.$route.meta.title,
         selected: "item",
         itemList: [],
@@ -100,9 +94,6 @@
     },
 
     methods: {
-      leftClickHandel() {
-        this.$router.push('/main/mine')
-      },
     }
   }
 </script>

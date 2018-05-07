@@ -20,14 +20,12 @@
 <template>
   <div>
     <HeaderBar
-      :leftOptions="leftOptions"
       :rightOptions="rightOptions"
-      v-on:leftClickHandel="leftClickHandel"
       v-on:rightClickHandel="rightClickHandel"
       :title="title"
     />
     <div class="authorityDetail">
-      <h1>项目定位</h1>
+      <h1>{{origin}}</h1>
       <div>说明：主要从竞争对手、市场前景、可行性等各方面进行评测</div>
       <div class='rangeInfo'>
         <label>评分</label>
@@ -60,10 +58,6 @@
     },
     data() {
       return {
-        leftOptions: {
-          hasLeftBtn: true,
-          leftBtnText: "返回"
-        },
         rightOptions: {
           hasRightBtn: true,
           rightBtnText: "发布"
@@ -90,10 +84,6 @@
       }
     },
     methods: {
-      leftClickHandel() {
-        this.$router.go(-1)
-      },
-
       rightClickHandel() {
         let {rate, message, origin} = this
         let params = {

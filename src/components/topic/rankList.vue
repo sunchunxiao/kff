@@ -14,7 +14,7 @@
           <div>{{item.number}}关注</div>
         </div>
         <div class="btn">
-          <mt-button @click="addAttention(item,index)" :type="baseInfo.isAttention ? 'default' : 'primary'">{{baseInfo.isAttention ? "已关注" : "+ 关注"}} </mt-button>
+          <mt-button @click="addAttention(item,index)" :type="item.isAttention ? 'default' : 'primary'">{{item.isAttention ? "已关注" : "+ 关注"}} </mt-button>
         </div>
       </div>
     </template>

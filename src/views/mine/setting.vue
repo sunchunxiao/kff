@@ -1,14 +1,6 @@
 <template>
   <div class="setting">
-    <!--<HeaderBar-->
-      <!--:leftOptions="leftOptions"-->
-      <!--v-on:leftClickHandel="leftClickHandel"-->
-      <!--:title="title"-->
-    <!--/>-->
-    <div class="setting-title" >
-      <span class="back" @click="leftClickHandel"><img src="../../assets/mine/zhufan.png" alt=""></span>
-      <span class="setting">设置</span>
-    </div>
+    <HeaderBar :title="title" />
     <div class="title">个人信息</div>
     <mt-cell title="头像">
       <span>
@@ -133,10 +125,6 @@
     },
     data() {
       return {
-        leftOptions: {
-          hasLeftBtn: true,
-          leftBtnText: "返回"
-        },
         rightOptions: {
           hasRightBtn: false,
         },
@@ -173,10 +161,6 @@
       // queryList();
     },
     methods: {
-      //头部 -返回
-      leftClickHandel() {
-        this.$router.push('/main/mine')
-      },
       //更改图像
       changeImage() {
         console.log("更换图像");
