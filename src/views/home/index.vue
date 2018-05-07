@@ -1,9 +1,6 @@
 <style lang="less" scoped>
   .find{
     background-color: #f9f9f9;
-    .mint-tab-item-label{
-      font-size: 17px;
-    }
     .release{
       width: 5%;
       position: absolute;
@@ -19,19 +16,26 @@
       margin:1rem 0 1rem 1rem;
 
     }
-  }
-  .mint-navbar{
-    width: 46%;
-    margin: 0 auto;
-    color:#aeaeae;
-    background-color:#f9f9f9 ;
+    .mint-navbar{
+      width: 46%;
+      margin: 0 auto;
+      color:#aeaeae;
+      background-color:#f9f9f9 ;
+      .mint-tab-item .is-selected{
+        .mint-tab-item-label{
+          font-size: 17px;
+        }
 
-    .mint-tab-item-label{
-      font-size:17px;
-      /*color:#aeaeae;*/
-      letter-spacing:0;
+      }
+
+      .mint-tab-item-label{
+        font-size:17px;
+        /*color:#aeaeae;*/
+        letter-spacing:0;
+      }
     }
   }
+
   .mint-tab-item{
     width: 20%;
 
@@ -44,9 +48,9 @@
   /*.mint-navbar .mint-tab-item.is-selected{*/
     /*border: none;*/
   /*}*/
-  .mint-button-text{
-    background-color: #fff;
-  }
+  /*.mint-button-text{*/
+    /*background-color: #fff;*/
+  /*}*/
 
 
 

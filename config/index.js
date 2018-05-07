@@ -12,7 +12,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/kff':{
-        target:'http://47.98.197.101/tzg-rest/kff/',
+        // target:'http://47.98.197.101/tzg-rest/kff/',
+        target:'http://192.168.10.151:802/rest/kff',
         changeOrigin: true,
         pathRewrite: {
           '^/kff': '/'

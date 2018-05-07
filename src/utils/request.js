@@ -1,9 +1,9 @@
 import axios from 'axios'
 import {Toast} from 'mint-ui';
 import util from '@/utils/common'
-import Md5 from 'js-md5';
-import {Base64} from 'js-base64';
-import {encrypt as aes128Encod} from './aesEncode'
+// import Md5 from 'js-md5';
+// import {Base64} from 'js-base64';
+// import {encrypt as aes128Encod} from './aesEncode'
 
 
 const specialCode = []
@@ -27,20 +27,22 @@ axios.interceptors.response.use((res) => {
 // option = {method,body,header}
 const request = (url, options = {}) => {
   //测试地址
-  var url = "http://47.98.197.101/tzg-rest" + url;
+  // var url = "http://47.98.197.101/tzg-rest" + url;
+  var url = "http://192.168.10.151:802/kff" + url;
 
-  let originBody = JSON.stringify(options.body)
-  let aesEncode = aes128Encod(originBody)
-  let policy = Base64.encode(aesEncode)
-  policy = encodeURI(policy)
-  let sign = Md5(originBody)
-  let time = new Date().getTime();
-  let encodeBody = {
-    policy, sign, time
-  }
+  // let originBody = JSON.stringify(options.body)
+  // let aesEncode = aes128Encod(originBody)
+  // let policy = Base64.encode(aesEncode)
+  // policy = encodeURI(policy)
+  // let sign = Md5(originBody)
+  // let time = new Date().getTime();
+  // let encodeBody = {
+  //   policy, sign, time
+  // }
 
   // 数据单据处理
-  let body = {'params': encodeBody}
+  // let body = {'params': encodeBody}
+  let body;
   delete  options.body
 
   // form表单格式提交
