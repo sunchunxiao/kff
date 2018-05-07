@@ -124,6 +124,7 @@
   .mint-button {
     width: 43px;
     height: 20px;
+    line-height: 17px;
     border: 1px solid #3b88f6;
     background: #3b88f6;
     color: #fff;

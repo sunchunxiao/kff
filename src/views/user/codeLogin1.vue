@@ -82,9 +82,9 @@
   .gotoRegister {
     float: right;
   }
-  .mint-button-text{
-    background-color: #63b5f7;
-  }
+  /*.mint-button-text{*/
+    /*background-color: #63b5f7;*/
+  /*}*/
   .otherWay {
     width: 100%;
     height: 40px;

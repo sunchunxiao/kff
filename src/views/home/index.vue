@@ -27,7 +27,6 @@
         }
 
       }
-
       .mint-tab-item-label{
         font-size:17px;
         /*color:#aeaeae;*/

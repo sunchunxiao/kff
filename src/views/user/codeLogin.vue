@@ -5,8 +5,6 @@
   .page-field{
     color:#fff;
     background-image:linear-gradient(-180deg, #02b7ea 0%, #4372ff 100%);
-
-
     /*position: fixed;*/
     height: 100%;
     .back{
@@ -77,9 +75,9 @@
   .gotoRegister {
     float: right;
   }
-  .mint-button-text{
-    background-color: #63b5f7;
-  }
+  /*.mint-button-text{*/
+    /*background-color: #63b5f7;*/
+  /*}*/
   .otherWay {
     width: 100%;
     height: 40px;
@@ -183,24 +181,22 @@
         }
 
       },
+      //开始使用
       startRegister() {
-        //开始使用
-        // if(){
-        //
-        // }
-        console.log(this.phone);
         let params ={
           phone:this.phone,
         }
         phoneAvailable(params).then(res=>{
 
           if(res.code==0){
-            console.log(res.data);
+            console.log(111)
+            console.log(res.data.isRegister);
+            if(res.data.isRegister==0){
+              this.$router.push('/user/register')
+            }
           }
         })
 
-
-        this.$router.push('/user/codeLogin1');
         // console.log(this.phone)
         localStorage.setItem('phone',this.phone);
         // console.log(localStorage.phone)
