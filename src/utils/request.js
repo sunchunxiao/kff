@@ -57,8 +57,9 @@ const request = (url, options = {}) => {
 
   return axios(Object.assign({url}, defaultOpts, body, options))
     .then(res => {
-      if (res.data.success) {
-        return res.data.data
+
+      if (res.data.code == 0) {
+        return res.data
       } else {
         Toast(res.data.message)
         if (res.data.code === specialCode) {

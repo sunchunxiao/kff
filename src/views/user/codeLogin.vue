@@ -187,7 +187,7 @@
           phone:this.phone,
         }
         phoneAvailable(params).then(res=>{
-
+          // debugger;
           if(res.code==0){
             console.log(111)
             console.log(res.data.isRegister);

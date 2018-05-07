@@ -68,6 +68,21 @@
       }
     }
   }
+  .register{
+      width: 90%;
+      margin: 0 auto;
+      padding: 20% 0 50%;
+  }
+  .see{
+    padding-bottom: 15%;
+  }
+  .introduce{
+    color: #000;
+    h2{
+     text-align: center;
+    }
+
+  }
 </style>
 <template>
   <div class="page-field">
@@ -75,22 +90,36 @@
     <h2 class="reg-tit">
       欢迎注册使用
     </h2>
-    <div class="reg-intro">
-      <input placeholder="输入手机号" type="tel" v-model="phone" id="telnum" @blur="handleCommentBlur">
-      <input placeholder="输入长度6——16位密码" type="password" v-model="password" @blur="regpw">
-      <!--<div class="register-tel-error" id="telnum-error" style="opacity: 0;">-->
-      <!--<span>请输入正确的手机号</span>-->
-      <!--</div>-->
+    <div class="register">
+      <div class="reg-intro">
+        <input placeholder="输入手机号" type="tel" v-model="phone" id="telnum" @blur="handleCommentBlur">
+        <input placeholder="输入长度6——16位密码" type="password" v-model="password" @blur="regpw">
+        <!--<div class="register-tel-error" id="telnum-error" style="opacity: 0;">-->
+        <!--<span>请输入正确的手机号</span>-->
+        <!--</div>-->
+      </div>
+      <div class="reg-intro">
+        <input placeholder="输入验证码" type="text" v-model="code">
+        <button @click="getcode">获取验证码<span v-show="!show">({{count}}S)</span></button>
+      </div>
+      <mt-button type="primary" class="longBtn" @click.native="register">注册</mt-button>
     </div>
-    <div class="reg-intro">
-      <input placeholder="输入验证码" type="text" v-model="code">
-      <button @click="getcode">获取验证码<span v-show="!show">({{count}}S)</span></button>
+    <!--<div class="protocol">-->
+      <!--<a @click="showProtocolModal">注册即同意《开封府服务协议》</a>-->
+    <!--</div>-->
+    <div class="see">全方位了解区块链项目，做个成熟的价值投资者</div>
+    <div class="introduce">
+      <h2>区分是什么</h2>
+      <p>
+        全球首家针对区块链项目的分布式评测平台。
+      </p>
+      <p>区分(Trios),是一个新型的分布式写作平台。用区块链分布式协作的理念生产评测内容，真正独立、公平地去评测区块链投资标的。</p>
+      <p>
+        <span>区分指数</span>
+
+      </p>
     </div>
-    <mt-button type="primary" class="longBtn" @click.native="register">注册</mt-button>
-    <div class="protocol">
-      <!--<input type="checkbox" name="" id="" v-model="agree">同意-->
-      <a @click="showProtocolModal">注册即同意《开封府服务协议》</a>
-    </div>
+
   </div>
 </template>
 
