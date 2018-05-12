@@ -43,6 +43,39 @@ export const projectRouter = [
     },
     component: (resolve) => require(['@/views/project/authorityDetail.vue'], resolve)
   },
+  //测评
+  {
+    path: '/project/articleInfo',
+    meta: {
+      title: '测评'
+    },
+    component: (resolve) => require(['@/views/project/articleInfo.vue'], resolve)
+  },
+  //讨论
+  {
+    path: '/project/discuss',
+    meta: {
+      title: '讨论'
+    },
+    component: (resolve) => require(['@/views/project/discuss.vue'], resolve)
+  },
+  //文章
+  {
+    path: '/project/article',
+    meta: {
+      title: '文章'
+    },
+    component: (resolve) => require(['@/views/project/article.vue'], resolve)
+  },
+  //部分评测
+  {
+    path: '/project/evaluationLitt',
+    meta: {
+      title: '部分评测'
+    },
+    component: (resolve) => require(['@/views/project/evaluationLitt.vue'], resolve)
+  },
+
   {
     path: '/project/firstEvaluation',
     meta: {

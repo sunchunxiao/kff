@@ -8,7 +8,7 @@
   <div>
     <div class="articleList">
       <div>共{{total}}条</div>
-      <Article-Item :itemList="artiList"></Article-Item>
+      <Article-Item :itemList="artiList" $click="link"></Article-Item>
     </div>
   </div>
 </template>
@@ -32,6 +32,14 @@
       this.queryList(this.id)
     },
     methods: {
+      link(){
+        this.$router.push({
+          path: "/project/articleInfo",
+          // query: {
+          //   id,
+          // }
+        })
+      },
       queryList() {
         /*接口*/
         this.total=1000,
