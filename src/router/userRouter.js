@@ -36,11 +36,27 @@ export const userRouter = [
 
   //新用户注册
   {
-    path: "/user/register",
+    path: "/user/register1",
     meta: {
       title: '注册',
     },
-    component: (resolve) => require(['@/views/user/register.vue'], resolve)
+    component: (resolve) => require(['@/views/user/register1.vue'], resolve)
+  },
+  //注册成功
+  {
+    path: "/user/registerSuccess",
+    meta: {
+      title: '注册',
+    },
+    component: (resolve) => require(['@/views/user/registerSuccess.vue'], resolve)
+  },
+  //什么是区分
+  {
+    path: "/user/qf",
+    meta: {
+      title: '区分',
+    },
+    component: (resolve) => require(['@/views/user/qf.vue'], resolve)
   },
 
   //忘记密码

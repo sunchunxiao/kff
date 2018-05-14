@@ -71,10 +71,10 @@
   .register{
       width: 90%;
       margin: 0 auto;
-      padding: 5% 0 50%;
+      padding: 25% 0 50%;
   }
   .see{
-    padding-bottom: 15%;
+    padding-bottom: 20%;
   }
   .introduce{
     color: #000;

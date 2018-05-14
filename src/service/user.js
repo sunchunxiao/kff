@@ -24,8 +24,17 @@ export const getCode = (params = {}) => {
 }
 
 //register 注册
+// export const register = (params = {}) => {
+//   return request('/kff/user/register', {
+//     body: {
+//       ...params
+//     }
+//   })
+// }
+
+//第一期注册
 export const register = (params = {}) => {
-  return request('/kff/user/register', {
+  return request('kff/user/registerInva', {
     body: {
       ...params
     }
@@ -33,9 +42,19 @@ export const register = (params = {}) => {
 }
 // 验证码登录
 export const phoneAvailable = (params = {}) => {
-  return request(`/kff/user/register/phoneAvailable`, {
+  return request(`/kff/LoginDynamicValidata/send`, {
     body: {
       ...params
     },
   })
 }
+
+
+// 验证码登录
+// export const phoneAvailable = (params = {}) => {
+//   return request(`/kff/user/register/phoneAvailable`, {
+//     body: {
+//       ...params
+//     },
+//   })
+// }
