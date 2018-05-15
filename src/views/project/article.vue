@@ -34,7 +34,9 @@
     width: 220px;
   }
   .evaluation-info-img{
-    width: 32px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
     float: left;
   }
   .evaluation-info-title{
@@ -196,21 +198,20 @@
       <div class="evaluation-info-title">
         <img class="evaluation-info-img" :src="src" alt="">
         <div class="evaluation-info-p">
-          <p class="name">老柚子</p>
-          <span class="info">EOS早期投资人，EOS节点发起人</span>
+          <p class="name">{{username}}</p>
+          <span class="info">{{userSignature}}</span>
         </div>
         <div class="evaluation-follow">+关注</div>
       </div>
       <div>
-
-          <img class="img" src="../../assets/evaluation/Bitmap@1x.png" alt="">
+          <img class="img" :src="imgsrc" alt="">
           <p class="p1">
             自在EOS引力区的知识星球里有一个人，他在知识星球分享了一篇文章《数字会说明，老猫在想什么，写给eos的投资者们》，精明地推测出老猫分批地积累了上百万个EOS，这更能说明老猫看好EOS。道理很简单：因为看好，所以大量持有。
           </p>
           <!--已经赞助-->
           <div class="crack" >
-            <div class="crack-tag1" ><span class="span-name">EOS</span></div>
-            <span class="crack-tag3">编辑于 2015-07-15</span>
+            <div class="crack-tag1" ><span class="span-name">{{tag}}</span></div>
+            <span class="crack-tag3">编辑于 {{timestr}}</span>
             <div class="sponsor">
               <img class="sponsor4 img1" :src="item" v-for="(item,index) in imgUrls" :style="fun(index)" alt="">
 
@@ -235,6 +236,11 @@
         title:"",
         articleTitle:"",
         src:"",
+        username:"",
+        userSignature:"",
+        imgsrc:"",
+        tag:"",
+        timestr:"",
         imgUrls:[
           "http://192.168.10.151:8080/Idcard/10.jpg",
           "http://192.168.10.151:8080/Idcard/10.jpg",
@@ -273,11 +279,23 @@
             var data = res.data.articleDetail
             console.log(JSON.parse(data.createUserIcon).fileUrl)
             this.articleTitle = data.postTitle
-            // console.log(JSON.parse(data.postSmallImages).fileUrl)
-            var a = "http://192.168.10.151:8080"+JSON.parse(data.createUserIcon).fileUrl
-
-            this.src = a.url
-            console.log(this.src)
+            //头像
+            var icon = "http://192.168.10.151:8080"+JSON.parse(data.createUserIcon).fileUrl
+            this.src = icon;
+            this.imgsrc = "http://192.168.10.151:8080"+JSON.parse(data.postSmallImages).fileUrl
+            this.username = data.createUserName;
+            this.userSignature = data.createUserSignature;
+            //标签
+            this.tag = data.projectCode;
+            //时间
+            this.timestr = data.createTimeStr;
+            //赞助  循环图片
+            var result =  data.commendationList
+             for (let i = 0; i <result.length; i++) {
+                 this.imgUrls.push(result[i].sendUserIcon);
+            }
+           []
+            
           }
 
       })
