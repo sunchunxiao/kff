@@ -154,6 +154,7 @@
     margin-top: 1rem;
     text-align: center;
     position: relative;
+    height: 9rem;
   }
   .img1{
     width: 15%;
@@ -226,6 +227,7 @@
             </div>
             <p class="zan">68人已赞助</p>
           </div>
+          <FooterInfo></FooterInfo>
         </div>
       </div>
     </div>
@@ -236,6 +238,7 @@
 
 <script>
   import HeaderBar from '@/components/layout/headerBar.vue'
+  import FooterInfo from '@/components/layout/footerInfo.vue'
   export default {
     name: "article-info",
     data(){
@@ -271,7 +274,7 @@
       }
     },
     components: {
-      HeaderBar,
+      HeaderBar,FooterInfo
     }
   }
 </script>

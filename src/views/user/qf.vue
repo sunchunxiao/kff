@@ -26,17 +26,21 @@
       letter-spacing:0;
       line-height:23px;
     }
-
-    .qf-index{
+    .qf-index-com{
       background:#3b88f6;
       border-radius:100px;
       text-align: center;
-      width:72px;
       height:22px;
       line-height: 22px;
       font-size:13px;
       color:#ffffff;
       margin: 1rem 0;
+    }
+    .qf-index{
+      width:72px;
+    }
+    .qf-index1{
+      width:47px;
     }
   .qf-title-map{
     width: 78%;
@@ -64,7 +68,31 @@
     .img1 img{
       width: 100%;
     }
-
+    ol{
+      padding-left: 5%;
+    }
+  li {
+    font-size:13px;
+    color:#333333;
+    letter-spacing:0;
+    line-height:23px;
+    list-style:decimal ;
+  }
+  /*合作*/
+  .cooperation{
+    width: 50%;
+    margin: 0 auto;
+    overflow: hidden;
+    font-size:12px;
+    color:#999999;
+  }
+  .left{
+    float: left;
+    width:50px;
+  }
+  .right{
+    float: left;
+  }
 </style>
 
 <template>
@@ -82,7 +110,7 @@
           主体的高频率、高质量内容生态。以项目评测为切入口，形
           成用户、内容、社区、投资、数据的投资内容生态。
         </p>
-        <div class="qf-index">区分指数</div>
+        <div class="qf-index qf-index-com">区分指数</div>
         <p class="font">多维度评测用户影响力，保证区分生态的健康发展。</p>
         <div class="qf-title-map">
           <img src="../../assets/register/other.png" alt="">
@@ -101,9 +129,40 @@
       <div  class="img1" >
         <img src="../../assets/register/Bitmap@1x.png" alt="">
       </div>
-      <div class="qf-title-map">
-        <img src="../../assets/register/other.png" alt="">
-        <span class="map">活动细则</span>
+      <div class="qf-title-content">
+        <div class="qf-title-map">
+          <img src="../../assets/register/other.png" alt="">
+          <span class="map">活动细则</span>
+        </div>
+        <div class="qf-index1 qf-index-com">说明</div>
+        <ol>
+          <li>活动开始时间：2018年5月21日10:00;</li>
+          <li>本次活动的FIND将在APP内分期领取发放，逾期(2019/5/21) 未领取将会被系统回收;</li>
+          <li>在区分贡献有价值的内容（评测、讨论、文章）将赚取更多的FIND；</li>
+          <li>未明确事宜，请关注区分官方公告，最终解释权归区分官方所有。</li>
+        </ol>
+        <div class="qf-title-map">
+          <img src="../../assets/register/other.png" alt="">
+          <span class="map">联系我们</span>
+        </div>
+        <div class="cooperation">
+          <div class="left">
+            <span>微信号</span>
+            <span>电报群</span>
+            <span>微博</span>
+            <span>Twitter</span>
+            <span>facebook</span>
+            <span>商务合作</span>
+          </div>
+          <div class="right">
+            <p>:qufenfind</p>
+            <p>:计算机第几集</p>
+            <p>:djdin@weibo.com</p>
+            <p>:djdinkosko.com</p>
+            <p>:djdinkosko.com</p>
+            <p>:business@qufen.top</p>
+          </div>
+        </div>
       </div>
     </div>
 </template>

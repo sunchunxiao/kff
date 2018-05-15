@@ -115,6 +115,74 @@
     margin-top: 1rem;
   }
 
+  /*标签*/
+   .crack-tag1{
+
+     display: inline-block;
+     background-color:#3b88f6;
+     border-radius:35px;
+     width:61px;
+     height:22px;
+     text-align: center;
+     line-height: 22px;
+     /*opacity:0.2;*/
+     margin: 0 0.5rem;
+   }
+  .span-name{
+    font-size:14px;
+    color:black;
+  }
+  .crack{
+    margin: 2rem 0;
+  }
+  .crack-tag2{
+    font-size:14px;
+    color:#3b88f6;
+    letter-spacing:0;
+    margin-left: 2rem;
+  }
+  .crack-tag3{
+    position: absolute;
+    right: 1.5rem;
+    font-size:10px;
+    color:#c2c2c2;
+    letter-spacing:0;
+
+  }
+  .sponsor{
+    /*width: 50%;*/
+    /*margin: 0 auto;*/
+    margin-top: 1rem;
+    text-align: center;
+    position: relative;
+    height: 9rem;
+  }
+  .img1{
+    width: 15%;
+  }
+  .sponsor1{
+    position: absolute;
+    left: 130px;
+  }
+  .sponsor2{
+    position: absolute;
+    left: 135px;
+  }
+  .sponsor3{
+    position: absolute;
+    left: 145px;
+  }
+  .sponsor4{
+    position: absolute;
+    left: 155px;
+  }
+  .zan{
+    text-align: center;
+    position: absolute;
+    bottom: -3rem;
+    left: 12.5rem;
+  }
+
 </style>
 
 <template>
@@ -143,8 +211,20 @@
           <p class="p1">
             自在EOS引力区的知识星球里有一个人，他在知识星球分享了一篇文章《数字会说明，老猫在想什么，写给eos的投资者们》，精明地推测出老猫分批地积累了上百万个EOS，这更能说明老猫看好EOS。道理很简单：因为看好，所以大量持有。
           </p>
+          <!--已经赞助-->
+          <div class="crack" >
+            <div class="crack-tag1" ><span class="span-name">EOS</span></div>
+            <span class="crack-tag3">编辑于 2015-07-15</span>
+            <div class="sponsor">
+              <img class="sponsor1 img1" src="../../assets/image/rose.png" alt="">
+              <img class="sponsor2 img1" src="../../assets/image/rose.png" alt="">
+              <img class="sponsor3 img1" src="../../assets/image/rose.png" alt="">
+              <img class="sponsor4 img1" src="../../assets/image/rose.png" alt="">
 
-
+            </div>
+            <p class="zan">68人已赞助</p>
+          </div>
+        <FooterInfo></FooterInfo>
         </div>
       </div>
     </div>
@@ -155,6 +235,7 @@
 
 <script>
   import HeaderBar from '@/components/layout/headerBar.vue'
+  import FooterInfo from '@/components/layout/footerInfo.vue'
   export default {
     name: "article-info",
     data(){
@@ -189,7 +270,7 @@
       }
     },
     components: {
-      HeaderBar,
+      HeaderBar,FooterInfo
     }
   }
 </script>

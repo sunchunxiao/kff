@@ -6,7 +6,7 @@
 export const userRouter = [
   {
     path: "/",
-    redirect: "/user/codeLogin"
+    redirect: "/user/register1"
   },
  //首次登录
   {

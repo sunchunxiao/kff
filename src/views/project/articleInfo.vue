@@ -176,6 +176,7 @@
 
         </div>
       </div>
+      <FooterInfo></FooterInfo>
     </div>
   </div>
 
@@ -185,6 +186,7 @@
 
 <script>
   import HeaderBar from '@/components/layout/headerBar.vue'
+  import FooterInfo from '@/components/layout/footerInfo.vue'
     export default {
         name: "article-info",
       data(){
@@ -219,7 +221,7 @@
         }
       },
         components: {
-          HeaderBar,
+          HeaderBar,FooterInfo
         }
     }
 </script>

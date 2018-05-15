@@ -65,14 +65,17 @@
     text-align: center;
     padding-top:20%;
   }
+  .ul{
+    padding-bottom: 23%;
+  }
 .onecenter ul li{
   list-style: disc;
   font-size:15px;
   color:#333333;
-  margin: 3rem 0 1rem 3rem;
+  margin: 3rem 0 2rem 3rem;
 }
 .longBtn{
-  width: 80%;
+  width: 77%;
   margin-left: 9%;
 }
   .address{
@@ -127,6 +130,7 @@
         <span class="copyLink">复制链接</span>
       </ul>
     </div>
+    <Qf></Qf>
   </div>
 </template>
 
@@ -134,6 +138,7 @@
   import { MessageBox } from 'mint-ui';
   import {getCode} from '@/service/user';
   import {register} from '@/service/user';
+  import Qf from './qf.vue';
 
   export default {
     name: "register1",
@@ -148,6 +153,9 @@
         checkCode:'',
         picLyanzhengma:''
       }
+    },
+    components: {
+      Qf
     },
     created(){
 

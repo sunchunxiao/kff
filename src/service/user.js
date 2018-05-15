@@ -34,7 +34,7 @@ export const getCode = (params = {}) => {
 
 //第一期注册
 export const register = (params = {}) => {
-  return request('kff/user/registerInva', {
+  return request('/kff/user/registerInva', {
     body: {
       ...params
     }
@@ -42,7 +42,7 @@ export const register = (params = {}) => {
 }
 // 验证码登录
 export const phoneAvailable = (params = {}) => {
-  return request(`/kff/LoginDynamicValidata/send`, {
+  return request(`/kff/dynamicValidateCode/send`, {
     body: {
       ...params
     },

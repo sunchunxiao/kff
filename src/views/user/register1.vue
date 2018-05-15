@@ -55,7 +55,6 @@
         margin-top:2rem;
       }
       button{
-        width:87px;
         height:2.5rem;
         line-height:2.5rem;
         font-size:1rem;
@@ -178,16 +177,21 @@
             dynamicVerifyCode:this.code
           }
           register(params).then(res=>{
-            // if(res.code==0){
+            //0是不成功 1是注册成功
+            if(res.data.reStatus==0){
               // MessageBox({
               //   title: '提示',
               //   message: '注册成功',
               //   showConfirmButton: true
               // });
+              alert(res.data.reason)
+              this.code="";
+            }
+            else{
               console.log(res.data)
-              // this.$router.push('/user/registerSuccess');
-            // }
-            console.log("第一个接口调试");
+              this.$router.push('/user/registerSuccess');
+            }
+
           })
 
 
@@ -237,7 +241,7 @@
           if(this.show){//倒计时内只能点一次
             getCode({
               phone:this.phone,
-              // module:"register"
+              module:"register"
             });
           }
           const TIME_COUNT = 10;
