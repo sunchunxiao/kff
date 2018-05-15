@@ -13,7 +13,6 @@ export const login = (params = {}) => {
   })
 }
 
-
 //getCode 获取验证码
 export const getCode = (params = {}) => {
   return request('/kff/dynamicValidateCode/send', {

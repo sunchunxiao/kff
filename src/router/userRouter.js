@@ -36,11 +36,11 @@ export const userRouter = [
 
   //新用户注册
   {
-    path: "/user/register1",
+    path: "/user/registerSmp",
     meta: {
       title: '注册',
     },
-    component: (resolve) => require(['@/views/user/register1.vue'], resolve)
+    component: (resolve) => require(['@/views/user/registerSmp.vue'], resolve)
   },
   //注册成功
   {
@@ -49,6 +49,14 @@ export const userRouter = [
       title: '注册',
     },
     component: (resolve) => require(['@/views/user/registerSuccess.vue'], resolve)
+  },
+  //个人专属海报
+  {
+    path: "/user/personalPoster",
+    meta: {
+      title: '注册',
+    },
+    component: (resolve) => require(['@/views/user/personalPoster.vue'], resolve)
   },
   //什么是区分
   {

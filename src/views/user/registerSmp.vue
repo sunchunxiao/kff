@@ -5,22 +5,18 @@
   }
     .registerBac{
       width: 100%;
-      /*height: 211px;*/
-    }
-    .registerBac img{
-      width: 100%;
+      height: 18rem;
+      background-image: url("../../assets/register/register.png");
+      background-size: 100% 100%;
+
     }
   .register{
     background:#ffffff;
     box-shadow:0 2px 11px 0 rgba(103,166,255,0.27);
     width:80%;
-    height:50%;
-    position: absolute;
-    left: 0;
-    top: 17.5rem;
-    right: 0;
-    bottom: 0;
+    height:55%;
     margin: 0 auto;
+    margin-top: -3rem;
   }
     .register-content{
       padding: 1rem;
@@ -101,13 +97,12 @@
     font-size:12px;
     color:#999999;
     text-align: center;
-    padding-top:100%;
+    padding-top:10%;
   }
 </style>
 <template>
   <div>
     <div class="registerBac">
-      <img src="../../assets/register/register.png" alt="">
     </div>
     <div class="register">
         <div class="register-content">
@@ -126,7 +121,7 @@
                   </div>
                   <button @click="getcode">获取验证码<span v-show="!show">({{count}}S)</span></button>
                 </div>
-                <mt-button type="primary" class="longBtn" @click.native="register1">立即注册</mt-button>
+                <mt-button type="primary" class="longBtn" @click.native="registerSmp">立即注册</mt-button>
                 </div>
                 <div class="onecenter">
                   <a href="###">已有账户？</a>
@@ -146,7 +141,7 @@
   import Qf from './qf.vue';
 
   export default {
-        name: "register1",
+        name: "registerSmp",
         data(){
           return {
             phone: "",
@@ -167,7 +162,7 @@
     },
       methods:{
         //提交注册
-        register1() {
+        registerSmp() {
           let params ={
             phoneNumber:this.phone,
             //图片生成的

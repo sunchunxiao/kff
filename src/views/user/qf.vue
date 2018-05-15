@@ -6,7 +6,7 @@
     }
     .qf-title img{
       width: 100%;
-      padding-top: 2rem;
+      padding-top: 6rem;
     }
     .qf-title-info{
       font-size:15px;
@@ -53,12 +53,18 @@
 
     }
   .map{
+    width: 41%;
     position: absolute;
     font-size:1.5rem;
     font-weight: bold;
     color:#333333;
-    left: 28%;
-    top: 5%;
+    /*left: 28%;*/
+    /*top: 5%;*/
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
 
   }
   .img1{
@@ -80,7 +86,7 @@
   }
   /*合作*/
   .cooperation{
-    width: 50%;
+    width: 53%;
     margin: 0 auto;
     overflow: hidden;
     font-size:12px;
@@ -91,6 +97,7 @@
     width:50px;
   }
   .right{
+    width: 100px;
     float: left;
   }
 </style>

@@ -5,22 +5,23 @@
   }
   .registerBac{
     width: 100%;
-    /*height: 211px;*/
+    height: 18rem;
+    background-image: url("../../assets/register/registerSuccess.png");
+    background-size: 100% 100%;
   }
-  .registerBac img{
-    width: 100%;
-  }
+
   .register{
     background:#ffffff;
     box-shadow:0 2px 11px 0 rgba(103,166,255,0.27);
     width:80%;
     height:10%;
-    position: absolute;
-    left: 0;
-    top: 17rem;
-    right: 0;
-    bottom: 0;
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*top: 17rem;*/
+    /*right: 0;*/
+    /*bottom: 0;*/
     margin: 0 auto;
+    margin-top: -2.5rem;
   }
   .register-content{
     position: relative;
@@ -63,7 +64,7 @@
     font-size:12px;
     color:#999999;
     text-align: center;
-    padding-top:20%;
+    padding-top:10%;
   }
   .ul{
     padding-bottom: 23%;
@@ -72,7 +73,7 @@
   list-style: disc;
   font-size:15px;
   color:#333333;
-  margin: 3rem 0 2rem 3rem;
+  margin: 2rem 0 2rem 3rem;
 }
 .longBtn{
   width: 77%;
@@ -99,13 +100,12 @@
     height:32px;
     line-height: 32px;
     text-align: center;
-
   }
 </style>
 <template>
   <div>
     <div class="registerBac">
-      <img src="../../assets/register/registerSuccess.png" alt="">
+      <!--<img src="../../assets/register/registerSuccess.png" alt="">-->
     </div>
     <div class="register">
       <div class="register-content">
@@ -124,7 +124,7 @@
     <div class="onecenter">
       <ul class="ul">
         <li class="li">邀请好友注册，赚取更多的FIND</li>
-        <mt-button type="primary" class="longBtn" @click.native="register1">一键生成好友注册专属海报</mt-button>
+        <mt-button type="primary" class="longBtn" @click.native="registerSuc">一键生成好友注册专属海报</mt-button>
         <li class="li">邀请链接</li>
         <span class="address">地址</span>
         <span class="copyLink">复制链接</span>
@@ -141,7 +141,7 @@
   import Qf from './qf.vue';
 
   export default {
-    name: "register1",
+    name: "registerSmp",
     data(){
       return {
         phone: "",
@@ -157,8 +157,10 @@
     components: {
       Qf
     },
-    created(){
-
+    methods:{
+      registerSuc(){
+          this.$router.push('/user/personalPoster');
+      }
     }
 
   }

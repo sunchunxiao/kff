@@ -150,37 +150,34 @@
 
   }
   .sponsor{
-    /*width: 50%;*/
-    /*margin: 0 auto;*/
-    margin-top: 1rem;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 3rem;
     text-align: center;
     position: relative;
-    height: 9rem;
+    height: 6rem;
   }
   .img1{
-    width: 15%;
+    display: block;
+    width: 27%;
+    border-radius: 50%;
   }
   .sponsor1{
     position: absolute;
     left: 130px;
   }
-  .sponsor2{
-    position: absolute;
-    left: 135px;
-  }
-  .sponsor3{
-    position: absolute;
-    left: 145px;
-  }
+
   .sponsor4{
     position: absolute;
-    left: 155px;
+    left: -40px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: 0 auto;
   }
   .zan{
     text-align: center;
-    position: absolute;
-    bottom: -3rem;
-    left: 12.5rem;
+
   }
 
 </style>
@@ -192,13 +189,12 @@
     />
     <div class="evaluation">
       <div class="evaluation-title">
-        <h2>EOS，来自未来的区块链操作系统！！
-          仔细品读</h2>
+        <h2>{{articleTitle}}</h2>
       </div>
     </div>
     <div class="evaluation-info">
       <div class="evaluation-info-title">
-        <img class="evaluation-info-img" src="../../assets/image/rose.png" alt="">
+        <img class="evaluation-info-img" :src="src" alt="">
         <div class="evaluation-info-p">
           <p class="name">老柚子</p>
           <span class="info">EOS早期投资人，EOS节点发起人</span>
@@ -216,10 +212,7 @@
             <div class="crack-tag1" ><span class="span-name">EOS</span></div>
             <span class="crack-tag3">编辑于 2015-07-15</span>
             <div class="sponsor">
-              <img class="sponsor1 img1" src="../../assets/image/rose.png" alt="">
-              <img class="sponsor2 img1" src="../../assets/image/rose.png" alt="">
-              <img class="sponsor3 img1" src="../../assets/image/rose.png" alt="">
-              <img class="sponsor4 img1" src="../../assets/image/rose.png" alt="">
+              <img class="sponsor4 img1" :src="item" v-for="(item,index) in imgUrls" :style="fun(index)" alt="">
 
             </div>
             <p class="zan">68人已赞助</p>
@@ -228,49 +221,67 @@
         </div>
       </div>
     </div>
-
-
   </div>
 </template>
 
 <script>
   import HeaderBar from '@/components/layout/headerBar.vue'
   import FooterInfo from '@/components/layout/footerInfo.vue'
+  import {article} from '@/service/home';
   export default {
     name: "article-info",
     data(){
       return  {
-        storeList:[
-          {
-            title:"项目定位",
-            percent:"50",
-            store:"8.2"
-          },
-          {
-            title:"技术框架",
-            percent:"60",
-            store:"8.1"
-          },
-          {
-            title:"团队实力",
-            percent:"80",
-            store:"8.6"
-          },
-          {
-            title:"项目进度",
-            percent:"20",
-            store:"6.7"
-          },
-          {
-            title:"投资风险",
-            percent:"35",
-            store:"3.6"
-          }
-        ],
+        title:"",
+        articleTitle:"",
+        src:"",
+        imgUrls:[
+          "http://192.168.10.151:8080/Idcard/10.jpg",
+          "http://192.168.10.151:8080/Idcard/10.jpg",
+          "http://192.168.10.151:8080/Idcard/10.jpg",
+          "http://192.168.10.151:8080/Idcard/10.jpg",
+          "http://192.168.10.151:8080/Idcard/10.jpg",
+          "http://192.168.10.151:8080/Idcard/10.jpg",
+          "http://192.168.10.151:8080/Idcard/10.jpg",
+          "http://192.168.10.151:8080/Idcard/10.jpg",
+
+        ]
       }
     },
     components: {
       HeaderBar,FooterInfo
+    },
+    methods:{
+          fun(index){
+            if(index<=6){
+            var str = "left:"+(index*25-50)+"px";
+            return str;
+          }else{
+              $(".img1").eq(index).css("display","none");
+            }
+      }
+
+    },
+    mounted () {
+      //发送请求
+      let params ={
+        postId:1
+      }
+      article(params).then(res=>{
+          if(res.code==0){
+            // console.log(res.data.articleDetail)
+            var data = res.data.articleDetail
+            console.log(JSON.parse(data.createUserIcon).fileUrl)
+            this.articleTitle = data.postTitle
+            // console.log(JSON.parse(data.postSmallImages).fileUrl)
+            var a = "http://192.168.10.151:8080"+JSON.parse(data.createUserIcon).fileUrl
+
+            this.src = a.url
+            console.log(this.src)
+          }
+
+      })
+
     }
   }
 </script>

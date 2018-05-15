@@ -115,6 +115,71 @@
     margin-top: 1rem;
   }
 
+  /*标签*/
+  .crack-tag1{
+
+    display: inline-block;
+    background-color:#3b88f6;
+    border-radius:35px;
+    width:61px;
+    height:22px;
+    text-align: center;
+    line-height: 22px;
+    /*opacity:0.2;*/
+    margin: 0 0.5rem;
+  }
+  .span-name{
+    font-size:14px;
+    color:black;
+  }
+  .crack{
+    margin: 2rem 0;
+  }
+  .crack-tag2{
+    font-size:14px;
+    color:#3b88f6;
+    letter-spacing:0;
+    margin-left: 2rem;
+  }
+  .crack-tag3{
+    position: absolute;
+    right: 1.5rem;
+    font-size:10px;
+    color:#c2c2c2;
+    letter-spacing:0;
+
+  }
+  .sponsor{
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 3rem;
+    text-align: center;
+    position: relative;
+    height: 6rem;
+  }
+  .img1{
+    display: block;
+    width: 27%;
+    border-radius: 50%;
+  }
+  .sponsor1{
+    position: absolute;
+    left: 130px;
+  }
+
+  .sponsor4{
+    position: absolute;
+    left: -40px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: 0 auto;
+  }
+  .zan{
+    text-align: center;
+
+  }
+
 </style>
 
 <template>
@@ -140,7 +205,7 @@
     <div>
       <h3>综合评分</h3>
       <span class="storeCommon">8.1</span>
-      <Progress :percent="80" :stroke-width="10"  hide-info> </Progress>
+      <Progress :percent="80" :stroke-width="10"  hide-info></Progress>
       <div class="store-info">
         <div  class="store-info1">
           <div class="storeList" v-for="item in storeList">
@@ -172,11 +237,17 @@
           <p>在EOS引力区的知识星球里有一个人，精明地推测出老猫分批地积累了上百万个EOS，值得投资，注意仓位！</p>
         </div>
         <!--已经赞助-->
-        <div>
+        <div class="crack" >
+          <div class="crack-tag1" ><span class="span-name">EOS</span></div>
+          <span class="crack-tag3">编辑于 2015-07-15</span>
+          <div class="sponsor">
+            <img class="sponsor4 img1" :src="item" v-for="(item,index) in imgUrls" :style="fun(index)" alt="">
 
+          </div>
+          <p class="zan">68人已赞助</p>
         </div>
       </div>
-      <FooterInfo></FooterInfo>
+      <!--<FooterInfo></FooterInfo>-->
     </div>
   </div>
 
@@ -191,6 +262,7 @@
         name: "article-info",
       data(){
         return  {
+          title:"",
           storeList:[
           {
             title:"项目定位",
@@ -218,7 +290,29 @@
             store:"3.6"
           }
         ],
+          imgUrls:[
+            "http://192.168.10.151:8080/Idcard/10.jpg",
+            "http://192.168.10.151:8080/Idcard/10.jpg",
+            "http://192.168.10.151:8080/Idcard/10.jpg",
+            "http://192.168.10.151:8080/Idcard/10.jpg",
+            "http://192.168.10.151:8080/Idcard/10.jpg",
+            "http://192.168.10.151:8080/Idcard/10.jpg",
+            "http://192.168.10.151:8080/Idcard/10.jpg",
+
+          ]
         }
+      },
+      methods:{
+
+        fun(index){
+          if(index<=6){
+            var str = "left:"+(index*25-50)+"px";
+            return str;
+          }else{
+            $(".img1").eq(index).css("display","none");
+          }
+        }
+
       },
         components: {
           HeaderBar,FooterInfo
