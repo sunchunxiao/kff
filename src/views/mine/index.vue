@@ -143,12 +143,7 @@ p{
 
       </div>
     </div>
-    <!--<div class="userInfo">-->
-      <!--<div class="name">{{name}}</div>-->
-      <!--<div class="description">{{description}}</div>-->
-    <!--</div>-->
-    <!--<category-Num :data="categoryData1"></category-Num>-->
-    <!--<hr/>-->
+
     <category-Num :data="categoryData2"></category-Num>
     <div class="balance">
       <span class="balance-money font">KFF余额</span>

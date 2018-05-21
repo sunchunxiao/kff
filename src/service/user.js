@@ -48,7 +48,6 @@ export const phoneAvailable = (params = {}) => {
   })
 }
 
-
 // 验证码登录
 // export const phoneAvailable = (params = {}) => {
 //   return request(`/kff/user/register/phoneAvailable`, {

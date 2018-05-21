@@ -44,13 +44,6 @@
     color:#3b88f6;
   }
 
-  /*.mint-navbar .mint-tab-item.is-selected{*/
-    /*border: none;*/
-  /*}*/
-  /*.mint-button-text{*/
-    /*background-color: #fff;*/
-  /*}*/
-
 
 
 </style>

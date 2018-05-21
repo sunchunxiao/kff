@@ -9,7 +9,7 @@ import util from '@/utils/common'
 const specialCode = []
 
 let defaultOpts = {
-  method: 'post',
+  method: 'get',
   credentials: 'same-origin',
   headers: {
     'Content-Type': 'application/json; charset=UTF-8'

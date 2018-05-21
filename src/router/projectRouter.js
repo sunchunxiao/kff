@@ -67,6 +67,15 @@ export const projectRouter = [
     },
     component: (resolve) => require(['@/views/project/article.vue'], resolve)
   },
+  //文章
+  {
+    path: '/project/article1',
+    meta: {
+      title: '文章'
+    },
+    component: (resolve) => require(['@/views/project/article1.vue'], resolve)
+  },
+
   //部分评测
   {
     path: '/project/evaluationLitt',

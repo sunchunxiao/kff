@@ -1,4 +1,11 @@
 <style lang="less" scoped>
+  .titleB{
+    background:#f9f9f9;
+  }
+  .title{
+
+    padding:1rem;
+  }
   h2{
     font-weight: lighter;
     font-size: 20px;
@@ -33,12 +40,16 @@
     padding-left: 1rem;
     width: 220px;
   }
-  .evaluation-info-img{
+  .comimg{
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    float: left;
     border:1px solid #dddddd;
+  }
+  .evaluation-info-img{
+
+    float: left;
+
   }
   .evaluation-info-title{
     overflow: hidden;
@@ -119,18 +130,18 @@
   }
 
   /*标签*/
-   .crack-tag1{
+  .crack-tag1{
 
-     display: inline-block;
-     background-color:#3b88f6;
-     border-radius:35px;
-     width:61px;
-     height:22px;
-     text-align: center;
-     line-height: 22px;
-     /*opacity:0.2;*/
-     margin: 0 0.5rem;
-   }
+    display: inline-block;
+    background-color:#3b88f6;
+    border-radius:35px;
+    width:61px;
+    height:22px;
+    text-align: center;
+    line-height: 22px;
+    /*opacity:0.2;*/
+    margin: 0 0.5rem;
+  }
   .span-name{
     font-size:14px;
     color:black;
@@ -189,9 +200,9 @@
 
 <template>
   <div>
-    <HeaderBar
-      :title="title"
-    />
+    <!--<HeaderBar-->
+      <!--:title="title"-->
+    <!--/>-->
     <div class="evaluation">
       <div class="evaluation-title">
         <h2>{{articleTitle}}</h2>
@@ -199,7 +210,7 @@
     </div>
     <div class="evaluation-info">
       <div class="evaluation-info-title">
-        <img class="evaluation-info-img" :src="src" alt="">
+        <img class="evaluation-info-img comimg" :src="src" alt="">
         <div class="evaluation-info-p">
           <p class="name">{{username}}</p>
           <span class="info">{{userSignature}}</span>
@@ -207,23 +218,22 @@
         <div class="evaluation-follow">+关注</div>
       </div>
       <div>
-          <img class="img" :src="imgsrc" alt="">
-          <p class="p1">{{articleContents}}</p>
-          <!--已经赞助-->
-          <div class="crack" >
-            <div class="crack-tag1" ><span class="span-name">{{tag}}</span></div>
-            <span class="crack-tag3">编辑于 {{timestr}}</span>
-            <div class="sponsor">
-              <img class="sponsor4 img1" :src="item" v-for="(item,index) in imgUrls" :style="fun(index)" alt="">
+        <img class="img" :src="imgsrc" alt="">
+        <p class="p1">{{articleContents}}</p>
+        <!--已经赞助-->
+        <div class="crack" >
+          <div class="crack-tag1" ><span class="span-name">{{tag}}</span></div>
+          <span class="crack-tag3">编辑于 {{timestr}}</span>
+          <div class="sponsor">
+            <img class="sponsor4 img1" :src="item" v-for="(item,index) in imgUrls" :style="fun(index)" alt="">
 
-            </div>
-            <p class="zan">{{donateNum}}人已赞助</p>
-            <router-link :to="{path:'/project/article1',query: {id: 5}}">上一篇</router-link><button>下一篇</button>
           </div>
-        <FooterInfo></FooterInfo>
+          <p class="zan">{{donateNum}}人已赞助</p>
         </div>
+        <FooterInfo></FooterInfo>
       </div>
     </div>
+  </div>
   </div>
 </template>
 
@@ -253,53 +263,53 @@
       HeaderBar,FooterInfo
     },
     methods:{
-          fun(index){
-            if(index<=6){
-            var str = "left:"+(index*25-50)+"px";
-            return str;
-          }else{
-              $(".img1").eq(index).css("display","none");
-            }
+      fun(index){
+        if(index<=6){
+          var str = "left:"+(index*25-50)+"px";
+          return str;
+        }else{
+          $(".img1").eq(index).css("display","none");
+        }
       }
 
     },
     mounted () {
-      // console.log(this.$route.path+"?postId=1")
-      // console.log(this.$route.params)
+      console.log(this.$route.query.id)
+      this.id = this.$route.query.id;
       //发送请求
       var  params ={
-        postId:1
+        postId:this.id
       }
 
       article(params).then(res=>{
         // console.log(params)
-          if(res.code==0){
-            // console.log(res.data.articleDetail)
-            var data = res.data.articleDetail
-            console.log(JSON.parse(data.createUserIcon).fileUrl)
-            this.articleTitle = data.postTitle
-            //头像
-            var icon = "http://192.168.10.151:8080"+JSON.parse(data.createUserIcon).fileUrl
-            this.src = icon;
-            this.imgsrc = "http://192.168.10.151:8080"+JSON.parse(data.postSmallImages).fileUrl
-            this.username = data.createUserName;
-            this.userSignature = data.createUserSignature;
-            //标签
-            this.tag = data.projectCode;
-            //时间
-            this.timestr = data.createTimeStr;
-            //赞助  循环图片
-            var result =  data.commendationList
-             for (let i = 0; i <result.length; i++) {
-              var a ="http://192.168.10.151:8080"+JSON.parse(result[i].sendUserIcon).fileUrl;             this.imgUrls.push(a);
-            }
-            //赞助人数
-            this.donateNum = data.donateNum;
-            //文章介绍
-            this.articleContents = data.article.articleContents;
-
-
+        if(res.code==0){
+          // console.log(res.data.articleDetail)
+          var data = res.data.articleDetail
+          console.log(JSON.parse(data.createUserIcon).fileUrl)
+          this.articleTitle = data.postTitle
+          //头像
+          var icon = "http://192.168.10.151:8080"+JSON.parse(data.createUserIcon).fileUrl
+          this.src = icon;
+          this.imgsrc = "http://192.168.10.151:8080"+JSON.parse(data.postSmallImages).fileUrl
+          this.username = data.createUserName;
+          this.userSignature = data.createUserSignature;
+          //标签
+          this.tag = data.projectCode;
+          //时间
+          this.timestr = data.createTimeStr;
+          //赞助  循环图片
+          var result =  data.commendationList
+          for (let i = 0; i <result.length; i++) {
+            var a ="http://192.168.10.151:8080"+JSON.parse(result[i].sendUserIcon).fileUrl;             this.imgUrls.push(a);
           }
+          //赞助人数
+          this.donateNum = data.donateNum;
+          //文章介绍
+          this.articleContents = data.article.articleContents;
+
+
+        }
 
       })
 

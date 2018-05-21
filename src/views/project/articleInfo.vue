@@ -34,13 +34,16 @@
     width: 220px;
   }
   .evaluation-info-img{
-    width: 32px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
     float: left;
+    border:1px solid #dddddd;
   }
   .evaluation-info-title{
     overflow: hidden;
     position: relative;
-    margin: 2rem 0;
+    margin: 1rem 0;
   }
   .name{
     font-size:14px;
@@ -155,12 +158,14 @@
     margin-top: 3rem;
     text-align: center;
     position: relative;
-    height: 6rem;
+    height: 5rem;
   }
   .img1{
     display: block;
-    width: 27%;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
+    border:1px solid #F4F4F4;
   }
   .sponsor1{
     position: absolute;
@@ -195,27 +200,27 @@
   </div>
   <div class="evaluation-info">
     <div class="evaluation-info-title">
-      <img class="evaluation-info-img" src="../../assets/image/rose.png" alt="">
+      <img class=" evaluation-info-img" :src="src" alt="">
       <div class="evaluation-info-p">
-        <p class="name">老柚子</p>
-        <span class="info">EOS早期投资人，EOS节点发起人</span>
+        <p class="name">{{username}}</p>
+        <span class="info">{{userSignature}}</span>
       </div>
       <div class="evaluation-follow">+关注</div>
     </div>
     <div>
       <h3>综合评分</h3>
-      <span class="storeCommon">8.1</span>
+      <span class="storeCommon">{{totalscore}}</span>
       <Progress :percent="80" :stroke-width="10"  hide-info></Progress>
       <div class="store-info">
         <div  class="store-info1">
           <div class="storeList" v-for="item in storeList">
-            <div class="store-info-title">{{item.title}}<span class="percent">/ {{item.percent}}%</span> </div>
+            <div class="store-info-title">{{item.modelName}}<span class="percent">/ {{item.modelWeight}}%</span> </div>
             <span class="storeCommon">{{item.store}}</span>
-            <Progress :percent="item.percent" :stroke-width="5"  hide-info> </Progress>
+            <Progress :percent="item.modelWeight" :stroke-width="5"  hide-info> </Progress>
           </div>
         </div>
         <div class="store-risk">
-          <p>这个项目非常值得投资，但是涨幅不会超过十倍，还是有很大风险的，打假要注意防范。</p>
+          <p>{{evauationContent}}</p>
         </div>
         <p class="p1">
           自在EOS引力区的知识星球里有一个人，他在知识星球分享了一篇文章《数字会说明，老猫在想什么，写给eos的投资者们》，精明地推测出老猫分批地积累了上百万个EOS，这更能说明老猫看好EOS。道理很简单：因为看好，所以大量持有。
@@ -258,49 +263,63 @@
 <script>
   import HeaderBar from '@/components/layout/headerBar.vue'
   import FooterInfo from '@/components/layout/footerInfo.vue'
+  import {articleInfo} from '@/service/home';
     export default {
         name: "article-info",
       data(){
         return  {
           title:"",
+          src:"",
+          id:"",
+          username:"",
+          userSignature:"",
+          totalscore:"",
+          evauationContent:"",
           storeList:[
-          {
-            title:"项目定位",
-            percent:"50",
-            store:"8.2"
-          },
-          {
-            title:"技术框架",
-            percent:"60",
-            store:"8.1"
-          },
-          {
-            title:"团队实力",
-            percent:"80",
-            store:"8.6"
-          },
-          {
-            title:"项目进度",
-            percent:"20",
-            store:"6.7"
-          },
-          {
-            title:"投资风险",
-            percent:"35",
-            store:"3.6"
-          }
+          // {
+          //   title:"项目定位",
+          //   percent:"50",
+          //   store:"8.2"
+          // },
+          // {
+          //   title:"技术框架",
+          //   percent:"60",
+          //   store:"8.1"
+          // },
+          // {
+          //   title:"团队实力",
+          //   percent:"80",
+          //   store:"8.6"
+          // },
+          // {
+          //   title:"项目进度",
+          //   percent:"20",
+          //   store:"6.7"
+          // },
+          // {
+          //   title:"投资风险",
+          //   percent:"35",
+          //   store:"3.6"
+          // }
         ],
           imgUrls:[
-            "http://192.168.10.151:8080/Idcard/10.jpg",
-            "http://192.168.10.151:8080/Idcard/10.jpg",
-            "http://192.168.10.151:8080/Idcard/10.jpg",
-            "http://192.168.10.151:8080/Idcard/10.jpg",
-            "http://192.168.10.151:8080/Idcard/10.jpg",
-            "http://192.168.10.151:8080/Idcard/10.jpg",
-            "http://192.168.10.151:8080/Idcard/10.jpg",
+            // "http://192.168.10.151:8080/Idcard/10.jpg",
+            // "http://192.168.10.151:8080/Idcard/10.jpg",
+            // "http://192.168.10.151:8080/Idcard/10.jpg",
+            // "http://192.168.10.151:8080/Idcard/10.jpg",
+            // "http://192.168.10.151:8080/Idcard/10.jpg",
+            // "http://192.168.10.151:8080/Idcard/10.jpg",
+            // "http://192.168.10.151:8080/Idcard/10.jpg",
 
           ]
         }
+      },
+      components: {
+        HeaderBar,FooterInfo
+      },
+      mounted:{
+
+          // this.$route.params.postId
       },
       methods:{
 
@@ -312,10 +331,49 @@
             $(".img1").eq(index).css("display","none");
           }
         }
-
       },
-        components: {
-          HeaderBar,FooterInfo
+      created(){
+        let params ={
+          postId:2
         }
+        //测评
+        articleInfo(params).then(res=>{
+          if(res.code==0){
+            // console.log(res.data.projectEvaluationDetailResponse)
+            var data = res.data.projectEvaluationDetailResponse
+            // console.log(JSON.parse(data.post.createUserIcon).fileUrl)
+            this.articleTitle = data.post.postTitle
+            //头像
+            var icon = "http://192.168.10.151:8080"+JSON.parse(data.post.createUserIcon).fileUrl
+            this.src = icon;
+            // this.imgsrc = "http://192.168.10.151:8080"+JSON.parse(data.postSmallImages).fileUrl
+            this.username = data.post.createUserName;
+            this.userSignature = data.post.createUserSignature;
+            //综合评分
+            this.totalscore = data.evaluation.totalScore;
+            //评分
+            this.storeList = data.devaluationModelList;
+            console.log(this.storeList)
+
+            //标签
+            // this.tag = data.projectCode;
+            //时间
+            this.timestr = data.createTimeStr;
+            //赞助  循环图片
+            var result =  data.commendationList
+            for (let i = 0; i <result.length; i++) {
+              var a ="http://192.168.10.151:8080"+JSON.parse(result[i].sendUserIcon).fileUrl;                               this.imgUrls.push(a);
+            }
+            //赞助人数
+            this.donateNum = data.donateNum;
+            //文章介绍
+            this.evauationContent = data.evaluation.evauationContent;
+
+
+          }
+
+        })
+      }
+
     }
 </script>
