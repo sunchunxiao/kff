@@ -206,8 +206,8 @@
         <div class="evaluation-follow">+关注</div>
       </div>
       <div>
-        <h3>项目定位</h3>
-        <span class="storeCommon">8.2</span>
+        <h3>{{title}}</h3>
+        <span class="storeCommon">{{score}}</span>
         <Progress :percent="80" :stroke-width="10"  hide-info> </Progress>
         <div >
           <img class="img" src="../../assets/evaluation/Bitmap@1x.png" alt="">
@@ -239,42 +239,61 @@
 <script>
   import HeaderBar from '@/components/layout/headerBar.vue'
   import FooterInfo from '@/components/layout/footerInfo.vue'
+  import {evaluation} from '@/service/home';
   export default {
     name: "article-info",
     data(){
       return  {
-        storeList:[
-          {
             title:"项目定位",
-            percent:"50",
-            store:"8.2"
-          },
-          {
-            title:"技术框架",
-            percent:"60",
-            store:"8.1"
-          },
-          {
-            title:"团队实力",
-            percent:"80",
-            store:"8.6"
-          },
-          {
-            title:"项目进度",
-            percent:"20",
-            store:"6.7"
-          },
-          {
-            title:"投资风险",
-            percent:"35",
-            store:"3.6"
-          }
-        ],
-        tags:["EOS","打假"]
+            score:"8.2",
+            tags:["EOS","打假"],
+            imgUrls:[],
+            src:""
       }
     },
     components: {
       HeaderBar,FooterInfo
+    },
+   mounted(){
+    let params ={
+      postId:2
     }
+    //测评
+     evaluation(params).then(res=>{
+      if(res.code==0){
+        // console.log(res.data.projectEvaluationDetailResponse)
+        var data = res.data.projectEvaluationDetailResponse
+        this.articleTitle = data.post.postTitle
+        //头像
+        var icon = "http://192.168.10.151:8080"+JSON.parse(data.post.createUserIcon).fileUrl
+        this.src = icon;
+        // this.imgsrc = "http://192.168.10.151:8080"+JSON.parse(data.postSmallImages).fileUrl
+        // this.username = data.post.createUserName;
+        // this.userSignature = data.post.createUserSignature;
+        // //综合评分
+        // this.totalscore = data.evaluation.totalScore;
+        //评分
+        // this.storeList = data.devaluationModelList;
+        // console.log(this.storeList)
+
+        //标签
+        // this.tag = data.projectCode;
+        //时间
+        this.timestr = data.createTimeStr;
+        //赞助  循环图片
+        var result =  data.commendationList
+        for (let i = 0; i <result.length; i++) {
+          var a ="http://192.168.10.151:8080"+JSON.parse(result[i].sendUserIcon).fileUrl;                                     this.imgUrls.push(a);
+        }
+        //赞助人数
+        this.donateNum = data.donateNum;
+        //文章介绍
+        this.evauationContent = data.evaluation.evauationContent;
+
+
+      }
+
+    })
+  }
   }
 </script>

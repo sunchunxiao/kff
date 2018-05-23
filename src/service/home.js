@@ -22,7 +22,7 @@ export const article1 = (params = {}) => {
 
 //测评
 export const articleInfo = (params = {}) => {
-  return request(`/kff/home/shareEvaluationDetail`, {
+  return request(`/kff/home/shareEvaluationPartDetail`, {
     body: {
       ...params
     },
@@ -31,9 +31,9 @@ export const articleInfo = (params = {}) => {
 
 //部分测评
 export const evaluation = (params = {}) => {
-  // return request(`/kff/home/shareArticleDetail`, {
-  //   body: {
-  //     ...params
-  //   },
-  // })
+  return request(`/kff/home/shareEvaluationPartDetail`, {
+    body: {
+      ...params
+    },
+  })
 }

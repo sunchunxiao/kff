@@ -235,12 +235,7 @@
           <img class="img" src="../../assets/evaluation/Bitmap@1x.png" alt="">
         <p class="p1">
           自在EOS引力区的知识星球里有一个人，他在知识星球分享了一篇文章《数字会说明，老猫在想什么，写给eos的投资者们》，精明地推测出老猫分批地积累了上百万个EOS，这更能说明老猫看好EOS。道理很简单：因为看好，所以大量持有。
-        </p>\
-        <!--项目定位-->
-        <div>
-          <div >项目定位</div>
-          <p>在EOS引力区的知识星球里有一个人，精明地推测出老猫分批地积累了上百万个EOS，值得投资，注意仓位！</p>
-        </div>
+        </p>
         <!--已经赞助-->
         <div class="crack" >
           <div class="crack-tag1" ><span class="span-name">EOS</span></div>
@@ -332,7 +327,7 @@
           }
         }
       },
-      created(){
+      mounted(){
         let params ={
           postId:2
         }
