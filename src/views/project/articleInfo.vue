@@ -219,19 +219,22 @@
             <Progress :percent="item.modelWeight" :stroke-width="5"  hide-info> </Progress>
           </div>
         </div>
-        <div class="store-risk">
-          <p>{{evauationContent}}</p>
-        </div>
+
+        <!--风险->
+        <!--<div class="store-risk">-->
+          <!--<p>{{evauationContent}}</p>-->
+        <!--</div>-->
+
         <p class="p1">
           自在EOS引力区的知识星球里有一个人，他在知识星球分享了一篇文章《数字会说明，老猫在想什么，写给eos的投资者们》，精明地推测出老猫分批地积累了上百万个EOS，这更能说明老猫看好EOS。道理很简单：因为看好，所以大量持有。
         </p>
-          <div>
-            <div class="storeList" >
-              <div class="store-info-title">项目定位<span class="percent">/ 20%</span> </div>
-              <span class="storeCommon">8.2</span>
-              <Progress :percent="80" :stroke-width="10"  hide-info> </Progress>
-            </div>
-          </div>
+          <!--<div>-->
+            <!--<div class="storeList" >-->
+              <!--<div class="store-info-title">项目定位<span class="percent">/ 20%</span> </div>-->
+              <!--<span class="storeCommon">8.2</span>-->
+              <!--<Progress :percent="80" :stroke-width="10"  hide-info> </Progress>-->
+            <!--</div>-->
+          <!--</div>-->
           <img class="img" src="../../assets/evaluation/Bitmap@1x.png" alt="">
         <p class="p1">
           自在EOS引力区的知识星球里有一个人，他在知识星球分享了一篇文章《数字会说明，老猫在想什么，写给eos的投资者们》，精明地推测出老猫分批地积累了上百万个EOS，这更能说明老猫看好EOS。道理很简单：因为看好，所以大量持有。
@@ -329,12 +332,12 @@
       },
       mounted(){
         let params ={
-          postId:2
+          postId:3
         }
         //测评
         articleInfo(params).then(res=>{
           if(res.code==0){
-            // console.log(res.data.projectEvaluationDetailResponse)
+            console.log(res.data.projectEvaluationDetailResponse)
             var data = res.data.projectEvaluationDetailResponse
             // console.log(JSON.parse(data.post.createUserIcon).fileUrl)
             this.articleTitle = data.post.postTitle
@@ -347,7 +350,7 @@
             //综合评分
             this.totalscore = data.evaluation.totalScore;
             //评分
-            this.storeList = data.devaluationModelList;
+            this.storeList =data.devaluationModelList;
             console.log(this.storeList)
 
             //标签
