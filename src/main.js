@@ -4,7 +4,6 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import MintUI from 'mint-ui'
-import VueClipboard from 'vue-clipboard2'
 import 'mint-ui/lib/style.css'
 import './css/reset.css'
 import './css/global.css'
@@ -12,6 +11,7 @@ import CryptoJS from 'crypto-js'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
 import $ from 'jquery'
+import VueClipboard from 'vue-clipboard2'
 
 // 复制到剪切板
 Vue.use(VueClipboard)

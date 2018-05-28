@@ -126,8 +126,8 @@
         <li class="li">邀请好友注册，赚取更多的FIND</li>
         <mt-button type="primary" class="longBtn" @click.native="registerSuc">一键生成好友注册专属海报</mt-button>
         <li class="li">邀请链接</li>
-        <span class="address">地址</span>
-        <span class="copyLink">复制链接</span>
+        <input class="address" v-model="message"></input>
+        <button type="button" class="copyLink" v-clipboard:copy="message" v-clipboard:success="onCopy">复制链接</button>
       </ul>
     </div>
     <Qf></Qf>
@@ -136,29 +136,51 @@
 
 <script>
   import { MessageBox } from 'mint-ui';
-  import {getCode} from '@/service/user';
-  import {register} from '@/service/user';
+  import {getCode,register,registerSuccess} from '@/service/user';
+
   import Qf from './qf.vue';
+  import Input from "iview/src/components/input/input";
+  import Button from "iview/src/components/button/button";
 
   export default {
     name: "registerSmp",
     data(){
       return {
         phone: "",
-
+        // address:"",
+        message:"",
         code: "",
         show: true,
         count: '',
         timer: null,
         checkCode:'',
-        picLyanzhengma:''
+        picLyanzhengma:'',
+        token:localStorage.token
       }
     },
     components: {
+      Button,
+      Input,
       Qf
     },
+    mounted(){
+      console.log(localStorage)
+      let params={
+          token:this.token
+      }
+      registerSuccess(params).then(res=>{
+          if (res.code==0){
+              // console.log(res.data.url)
+            this.message = res.data.url
+          }
+      })
+    },
     methods:{
+      onCopy(e){
+        alert(e.text)
+      },
       registerSuc(){
+
           this.$router.push('/user/personalPoster');
       }
     }

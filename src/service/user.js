@@ -39,9 +39,27 @@ export const register = (params = {}) => {
     }
   })
 }
+
+//判断手机号是否被注册
+export const phoneP= (params = {}) => {
+  return request('/kff/user/register/phoneAvailable', {
+    body: {
+      ...params
+    }
+  })
+}
+
 // 验证码登录
 export const phoneAvailable = (params = {}) => {
   return request(`/kff/dynamicValidateCode/send`, {
+    body: {
+      ...params
+    },
+  })
+}
+// 注册成功后
+export const registerSuccess = (params = {}) => {
+  return request(`/kff/user/createUrlInRegister`, {
     body: {
       ...params
     },

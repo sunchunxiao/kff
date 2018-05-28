@@ -294,9 +294,12 @@
       article(params).then(res=>{
         // console.log(params)
           if(res.code==0){
-            // console.log(res.data.articleDetail)
+
             var data = res.data.articleDetail
-            this.m= data.article.articleContents
+            // this.m= data.article.articleContents
+            this.m= data.postShortDesc
+            // $(".evaluation-info-title").after(this.m)
+            console.log(data.postShortDesc)
             //抽出文本的图片
             // var textareaHtml = this.m;
             // var img = textareaHtml.match(/<img[^>]+>/g);
@@ -336,10 +339,10 @@
             // this.m = this.topicList.img
               // }
 
-            console.log(JSON.parse(data.createUserIcon).fileUrl)
+            console.log(data.createUserIcon)
             this.articleTitle = data.postTitle
             //头像
-            var icon = "http://192.168.10.151:8080"+JSON.parse(data.createUserIcon).fileUrl
+            var icon = "http://192.168.10.151:8080"+data.createUserIcon
             this.src = icon;
             // this.imgsrc = "http://192.168.10.151:8080"+JSON.parse(data.postSmallImages).fileUrl
             this.username = data.createUserName;

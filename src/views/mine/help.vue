@@ -6,6 +6,7 @@
       <mt-tab-item id="evaluate">评测规则</mt-tab-item>
       <mt-tab-item id="reward">激励机制</mt-tab-item>
       <mt-tab-item id="description">项目说明</mt-tab-item>
+      <mt-tab-item id="authentication">认证</mt-tab-item>
     </mt-navbar>
 
     <!-- tab-container -->

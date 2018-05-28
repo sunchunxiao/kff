@@ -48,7 +48,7 @@
         width:100%;
         font-size:1.4rem;
         border-bottom:1px solid #e8e8e8;
-        margin-top:2rem;
+        margin-top:1.5rem;
       }
       button{
         height:2.5rem;
@@ -59,7 +59,7 @@
         padding:0 0.6rem;
         position:absolute;
         right:0px;
-        bottom:0.5rem;
+        bottom:5rem;
         background-color: transparent;
         color:#3b88f6;
       }
@@ -77,7 +77,7 @@
     border-bottom: 0;
     position: absolute;
     right: 0px;
-    top: -8%;
+    top: -4%;
   }
   .reg-code{
     position: relative;
@@ -117,10 +117,10 @@
                   <input placeholder="输入手机号" type="tel" v-model="phone" id="telnum" @blur="handleCommentBlur">
                   <div class="reg-code">
                     <input type="text" placeholder="请输入验证码" class="yanzhengma_input" v-model="picLyanzhengma" @blur="checkLpicma"><input type="button" id="code" @click="createCode"  class="verification1" v-model="checkCode"/>
-                    <input placeholder="输入密码" type="password" v-model="password" @blur="regpw">
                     <input placeholder="输入验证码" type="text" v-model="code">
                   </div>
                   <button @click="getcode">获取验证码<span v-show="!show">({{count}}S)</span></button>
+                  <input placeholder="输入密码(8-20位数字字母组合)" type="password" v-model="password" @blur="regpw">
                 </div>
                 <mt-button type="primary" class="longBtn" @click.native="registerSmp">立即注册</mt-button>
                 </div>
@@ -137,8 +137,7 @@
 
 <script>
   import { MessageBox } from 'mint-ui';
-  import {getCode} from '@/service/user';
-  import {register} from '@/service/user';
+  import {getCode,register,phoneP} from '@/service/user';
   import Qf from './qf.vue';
 
   export default {
@@ -152,7 +151,8 @@
             count: '',
             timer: null,
             checkCode:'',
-            picLyanzhengma:''
+            picLyanzhengma:'',
+            invaUIH:""
           }
         },
 
@@ -161,6 +161,10 @@
     },
     components: {
       Qf
+    },
+    mounted(){
+      console.log(this.$route.query.invaUIH)
+      this.invaUIH = this.$route.query.invaUIH
     },
       methods:{
         //提交注册
@@ -172,7 +176,9 @@
             checkCode:this.checkCode,
             //手机验证码
             phoneCode:this.picLyanzhengma,
-            dynamicVerifyCode:this.code
+            dynamicVerifyCode:this.code,
+          //  邀请码
+            invaUIH:this.invaUIH
           }
           register(params).then(res=>{
             //0是不成功 1是注册成功
@@ -186,7 +192,9 @@
               this.code="";
             }
             else{
-              console.log(res.data)
+              console.log(res.data.token)
+              localStorage.setItem("token",res.data.token);
+
               this.$router.push('/user/registerSuccess');
             }
 
@@ -198,22 +206,43 @@
         handleCommentBlur(){
           var phone  = this.phone;
           var myreg = /^1[34578]\d{9}$/;
+          let params={
+            phone:this.phone
+          }
           if(!myreg.test(phone)) {
             MessageBox({
               title: '提示',
               message: '请输入正确的手机号！',
               showConfirmButton: true
             });
+
+          }else{
+            phoneP(params).then(res=>{
+
+              if(res.code==0){
+                if(res.data.isRegister!=0){
+                  MessageBox({
+                    title: '提示',
+                    message: '手机号已被注册',
+                    showConfirmButton: true
+                  });
+                }
+
+              }
+            })
           }
+
+
+
         },
         //密码验证
         regpw(){
           var pw = this.password;
-          var pwreg = /[a-zA-Z\d+]{6,16}/;
+          var pwreg = /[a-zA-Z\d+]{8,20}/;
           if(!pwreg.test(pw)) {
             MessageBox({
               title: '提示',
-              message: '请输入正确的密码！',
+              message: '请输入8-20位数字字母组合！',
               showConfirmButton: true
             });
           }
@@ -224,6 +253,11 @@
            if(this.picLyanzhengma.toUpperCase() != this.checkCode ) { //若输入的验证码与产生的验证码不一致时
             console.log( this.picLyanzhengma.toUpperCase())
             console.log(code)
+             MessageBox({
+               title: '提示',
+               message: '验证码输入错误',
+               showConfirmButton: true
+             });
             this.createCode();//刷新验证码
             this.picLyanzhengma = '';
           }else { //输入正确时

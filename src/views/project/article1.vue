@@ -229,7 +229,7 @@
 
           </div>
           <p class="zan">{{donateNum}}人已赞助</p>
-          <router-link :to="{path:'/project/articleInfo',query: {id: 52}}">上一篇</router-link><button>下一篇</button>
+          <router-link :to="{path:'/project/article',query: {id: 48}}">上一篇</router-link><button>下一篇</button>
         </div>
         <FooterInfo></FooterInfo>
       </div>
