@@ -1,5 +1,5 @@
 <style lang="less" scoped>
-  h2{
+  .evaluation-title>h2{
    font-weight: lighter;
     font-size: 20px;
     display: inline-block;
@@ -83,7 +83,7 @@
   box-shadow:0 2px 10px 0 #e8e8e8;
   border-radius:5px;
   /*width:345px;*/
-  height:244px;
+  height:18rem;
   margin-top: 1rem;
 }
   .store-info1{
@@ -107,7 +107,7 @@
     border:1px solid #f4f4f4;
   }
   .p1{
-    margin-top: 1rem;
+    margin-top: 3rem;
     font-size:13px;
     color:#333333;
     line-height:20px;
@@ -147,7 +147,7 @@
   .crack-tag3{
     position: absolute;
     right: 1.5rem;
-    font-size:10px;
+    font-size:1rem;
     color:#c2c2c2;
     letter-spacing:0;
 
@@ -184,6 +184,9 @@
     text-align: center;
 
   }
+  .v{
+    margin-top: 15px;
+  }
 
 </style>
 
@@ -215,19 +218,18 @@
         <div  class="store-info1">
           <div class="storeList" v-for="item in storeList">
             <div class="store-info-title">{{item.modelName}}<span class="percent">/ {{item.modelWeight}}%</span> </div>
-            <span class="storeCommon">{{item.store}}</span>
+            <span class="storeCommon">{{item.score}}</span>
             <Progress :percent="item.modelWeight" :stroke-width="5"  hide-info> </Progress>
           </div>
         </div>
-
+        <div v-html="m" style="width: 100%" class="v">{{m}}</div>
         <!--风险->
         <!--<div class="store-risk">-->
           <!--<p>{{evauationContent}}</p>-->
         <!--</div>-->
 
-        <p class="p1">
-          自在EOS引力区的知识星球里有一个人，他在知识星球分享了一篇文章《数字会说明，老猫在想什么，写给eos的投资者们》，精明地推测出老猫分批地积累了上百万个EOS，这更能说明老猫看好EOS。道理很简单：因为看好，所以大量持有。
-        </p>
+        <p class="p1"></p>
+
           <!--<div>-->
             <!--<div class="storeList" >-->
               <!--<div class="store-info-title">项目定位<span class="percent">/ 20%</span> </div>-->
@@ -235,10 +237,7 @@
               <!--<Progress :percent="80" :stroke-width="10"  hide-info> </Progress>-->
             <!--</div>-->
           <!--</div>-->
-          <img class="img" src="../../assets/evaluation/Bitmap@1x.png" alt="">
-        <p class="p1">
-          自在EOS引力区的知识星球里有一个人，他在知识星球分享了一篇文章《数字会说明，老猫在想什么，写给eos的投资者们》，精明地推测出老猫分批地积累了上百万个EOS，这更能说明老猫看好EOS。道理很简单：因为看好，所以大量持有。
-        </p>
+          <!--<img class="img" src="../../assets/evaluation/Bitmap@1x.png" alt="">-->
         <!--已经赞助-->
         <div class="crack" >
           <div class="crack-tag1" ><span class="span-name">EOS</span></div>
@@ -249,8 +248,9 @@
           </div>
           <p class="zan">68人已赞助</p>
         </div>
+        <FooterInfo></FooterInfo>
       </div>
-      <!--<FooterInfo></FooterInfo>-->
+
     </div>
   </div>
 
@@ -269,6 +269,8 @@
           title:"",
           src:"",
           id:"",
+          m:"",
+          article:"",
           username:"",
           userSignature:"",
           totalscore:"",
@@ -315,6 +317,16 @@
       components: {
         HeaderBar,FooterInfo
       },
+      updated() {
+        // $('.v').find('img').css('width', '100%');
+        $('.v').find('img').css('width', '100%');
+        $('.v').find('p').css({
+          fontSize: '1.3rem',
+          width:"100%",
+          margin:"5px 0"
+        });
+        $('.v').find('p').css('word-wrap', 'break-word');
+      },
       mounted:{
 
           // this.$route.params.postId
@@ -331,8 +343,10 @@
         }
       },
       mounted(){
+        console.log(this.$route.query.id)
+        this.id = this.$route.query.id;
         let params ={
-          postId:3
+          postId:this.id
         }
         //测评
         articleInfo(params).then(res=>{
@@ -350,8 +364,11 @@
             //综合评分
             this.totalscore = data.evaluation.totalScore;
             //评分
-            this.storeList =data.devaluationModelList;
+            this.storeList =JSON.parse(data.evaluation.professionalEvaDetail);
             console.log(this.storeList)
+            //文章
+            this.m= data.evaluation.evauationContent
+
 
             //标签
             // this.tag = data.projectCode;

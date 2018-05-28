@@ -5,6 +5,7 @@
       v-on:rightClickHandel="rightClickHandel"
       :title="title"
     />
+    <div><router-link>帮助中心</router-link></div>
     <div class="poster">
       <img src="../../assets/image/logo.png" alt="">
     </div>

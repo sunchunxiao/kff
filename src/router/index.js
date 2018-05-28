@@ -20,6 +20,7 @@ const routes = [
   ...projectRouter,
 ]
 const router = new Router({
+  mode:'history',
   routes: routes
 })
 

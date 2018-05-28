@@ -37,3 +37,12 @@ export const evaluation = (params = {}) => {
     },
   })
 }
+
+//讨论
+export const discuss = (params = {}) => {
+  return request(`/kff/home/discussCommentListShare`, {
+    body: {
+      ...params
+    },
+  })
+}

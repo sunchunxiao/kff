@@ -1,6 +1,12 @@
 <style lang="less" scoped>
   .footer{
     width: 100%;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding-top: 5px;
+    background-color: #fff;
     margin: 0 auto;
     overflow: hidden;
   }
@@ -15,10 +21,14 @@
         color:#aaaaaa;
       }
     }
+  .footerS{
+    height: 50px;
+  }
+
 </style>
 
 <template>
-    <div>
+    <div class="footerS">
       <ul class="footer">
         <li><img src="../../assets/footer/zan.png" alt=""><p>赞 125</p></li>
         <li><img src="../../assets/footer/mine.png" alt=""><p>收藏</p></li>

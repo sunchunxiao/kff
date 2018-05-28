@@ -117,6 +117,7 @@
                   <input placeholder="输入手机号" type="tel" v-model="phone" id="telnum" @blur="handleCommentBlur">
                   <div class="reg-code">
                     <input type="text" placeholder="请输入验证码" class="yanzhengma_input" v-model="picLyanzhengma" @blur="checkLpicma"><input type="button" id="code" @click="createCode"  class="verification1" v-model="checkCode"/>
+                    <input placeholder="输入密码" type="password" v-model="password" @blur="regpw">
                     <input placeholder="输入验证码" type="text" v-model="code">
                   </div>
                   <button @click="getcode">获取验证码<span v-show="!show">({{count}}S)</span></button>
@@ -146,6 +147,7 @@
           return {
             phone: "",
             code: "",
+            password:"",
             show: true,
             count: '',
             timer: null,
@@ -165,6 +167,7 @@
         registerSmp() {
           let params ={
             phoneNumber:this.phone,
+            password:this.password,
             //图片生成的
             checkCode:this.checkCode,
             //手机验证码
@@ -199,6 +202,18 @@
             MessageBox({
               title: '提示',
               message: '请输入正确的手机号！',
+              showConfirmButton: true
+            });
+          }
+        },
+        //密码验证
+        regpw(){
+          var pw = this.password;
+          var pwreg = /[a-zA-Z\d+]{6,16}/;
+          if(!pwreg.test(pw)) {
+            MessageBox({
+              title: '提示',
+              message: '请输入正确的密码！',
               showConfirmButton: true
             });
           }

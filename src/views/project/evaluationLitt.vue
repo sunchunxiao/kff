@@ -34,8 +34,11 @@
     width: 220px;
   }
   .evaluation-info-img{
-    width: 32px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
     float: left;
+    border:1px solid #dddddd;
   }
   .evaluation-info-title{
     overflow: hidden;
@@ -149,15 +152,19 @@
 
   }
   .sponsor{
-    /*width: 50%;*/
-    /*margin: 0 auto;*/
-    margin-top: 1rem;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 3rem;
     text-align: center;
     position: relative;
-    height: 9rem;
+    height: 5rem;
   }
   .img1{
-    width: 15%;
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border:1px solid #F4F4F4;
   }
   .sponsor1{
 
@@ -174,31 +181,35 @@
    }
   .sponsor4{
     position: absolute;
-    left: 155px;
+    left: -40px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: 0 auto;
   }
   .zan{
     text-align: center;
-    position: absolute;
-    bottom: -5rem;
-    left: 12.5rem;
-  }
 
+  }
+  .postImg{
+    margin-bottom: 1rem;
+  }
 </style>
 
 <template>
   <div>
-    <HeaderBar
-      :title="title"
-    />
+    <!--<HeaderBar-->
+      <!--:title="title"-->
+    <!--/>-->
     <div class="evaluation">
       <div class="evaluation-title">
-        <h2>EOS评测(PART) - 项目定位</h2>
-        <span class="evaluation-store storeCommon">8.1</span>
+        <h2>{{articleTitle}}</h2>
+        <span class="evaluation-store storeCommon">{{totalscore}}</span>
       </div>
     </div>
     <div class="evaluation-info">
       <div class="evaluation-info-title">
-        <img class="evaluation-info-img" src="../../assets/image/rose.png" alt="">
+        <img class="evaluation-info-img" :src="src" alt="">
         <div class="evaluation-info-p">
           <p class="name">老柚子</p>
           <span class="info">EOS早期投资人，EOS节点发起人</span>
@@ -210,19 +221,18 @@
         <span class="storeCommon">{{score}}</span>
         <Progress :percent="80" :stroke-width="10"  hide-info> </Progress>
         <div >
-          <img class="img" src="../../assets/evaluation/Bitmap@1x.png" alt="">
-          <p class="p1">
-            自在EOS引力区的知识星球里有一个人，他在知识星球分享了一篇文章《数字会说明，老猫在想什么，写给eos的投资者们》，精明地推测出老猫分批地积累了上百万个EOS，这更能说明老猫看好EOS。道理很简单：因为看好，所以大量持有。
-          </p>
+         <div class="postImg">
+           <img class="img" :src="postSmallImages" alt="">
+         </div>
+          <!--<p class="p1">-->
+            <!--自在EOS引力区的知识星球里有一个人，他在知识星球分享了一篇文章《数字会说明，老猫在想什么，写给eos的投资者们》，精明地推测出老猫分批地积累了上百万个EOS，这更能说明老猫看好EOS。道理很简单：因为看好，所以大量持有。-->
+          <!--</p>-->
           <!--已经赞助-->
           <div class="crack" >
-            <div class="crack-tag1" v-for="item in tags"><span class="span-name">{{item}}</span></div>
-            <span class="crack-tag3">编辑于 2015-07-15</span>
+            <div class="crack-tag1"><span class="span-name">{{tag}}</span></div>
+            <span class="crack-tag3">{{timestr}}</span>
             <div class="sponsor">
-              <img class="sponsor1 img1" src="../../assets/image/rose.png" alt="">
-              <img class="sponsor2 img1" src="../../assets/image/rose.png" alt="">
-              <img class="sponsor3 img1" src="../../assets/image/rose.png" alt="">
-              <img class="sponsor4 img1" src="../../assets/image/rose.png" alt="">
+              <img class="sponsor4 img1" :src="item" v-for="(item,index) in imgUrls" :style="fun(index)" alt="">
 
             </div>
             <p class="zan">68人已赞助</p>
@@ -244,19 +254,36 @@
     name: "article-info",
     data(){
       return  {
-            title:"项目定位",
+            title:"",
             score:"8.2",
-            tags:["EOS","打假"],
+            tags:"",
             imgUrls:[],
-            src:""
+            src:"",
+            articleTitle:"",
+            totalscore:"",
+            timestr:"",
+            postSmallImages:"",
+            article:""
+
       }
     },
     components: {
       HeaderBar,FooterInfo
     },
+    methods:{
+
+      fun(index){
+        if(index<=6){
+          var str = "left:"+(index*25-50)+"px";
+          return str;
+        }else{
+          $(".img1").eq(index).css("display","none");
+        }
+      }
+    },
    mounted(){
     let params ={
-      postId:2
+      postId:53
     }
     //测评
      evaluation(params).then(res=>{
@@ -271,25 +298,30 @@
         // this.username = data.post.createUserName;
         // this.userSignature = data.post.createUserSignature;
         // //综合评分
-        // this.totalscore = data.evaluation.totalScore;
-        //评分
-        // this.storeList = data.devaluationModelList;
-        // console.log(this.storeList)
+        this.totalscore = data.evaluation.totalScore;
+        //单项评分
+        var a = JSON.parse(data.evaluation.professionalEvaDetail)[0]
+        this.title =a.modelName;
+        this.score =a.score;
+
+        this.postSmallImages ="http://192.168.10.151:8080"+JSON.parse(data.post.postSmallImages).fileUrl
+        console.log(this.storeList)
 
         //标签
-        // this.tag = data.projectCode;
+        this.tag = data.post.projectCode;
+
         //时间
-        this.timestr = data.createTimeStr;
+        this.timestr = data.post.createTimeStr;
         //赞助  循环图片
         var result =  data.commendationList
         for (let i = 0; i <result.length; i++) {
-          var a ="http://192.168.10.151:8080"+JSON.parse(result[i].sendUserIcon).fileUrl;                                     this.imgUrls.push(a);
+          var b ="http://192.168.10.151:8080"+JSON.parse(result[i].sendUserIcon).fileUrl;                                     this.imgUrls.push(b);
         }
         //赞助人数
         this.donateNum = data.donateNum;
-        //文章介绍
-        this.evauationContent = data.evaluation.evauationContent;
-
+        //文章
+        this.article = data.evaluation.evauationContent
+        $(".crack").before( this.article)
 
       }
 

@@ -229,6 +229,7 @@
 
           </div>
           <p class="zan">{{donateNum}}人已赞助</p>
+          <router-link :to="{path:'/project/articleInfo',query: {id: 52}}">上一篇</router-link><button>下一篇</button>
         </div>
         <FooterInfo></FooterInfo>
       </div>
@@ -274,11 +275,11 @@
 
     },
     mounted () {
-      console.log(this.$route.query.id)
-      this.id = this.$route.query.id;
+      // console.log(this.$route.query.id)
+      // this.id = this.$route.query.id;
       //发送请求
       var  params ={
-        postId:this.id
+        postId:1
       }
 
       article(params).then(res=>{
