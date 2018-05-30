@@ -180,7 +180,6 @@
         alert(e.text)
       },
       registerSuc(){
-
           this.$router.push('/user/personalPoster');
       }
     }

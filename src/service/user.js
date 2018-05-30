@@ -65,6 +65,14 @@ export const registerSuccess = (params = {}) => {
     },
   })
 }
+// 一键生成海报
+export const poster = (params = {}) => {
+  return request(`/kff/user/createPoster`, {
+    body: {
+      ...params
+    },
+  })
+}
 
 // 验证码登录
 // export const phoneAvailable = (params = {}) => {

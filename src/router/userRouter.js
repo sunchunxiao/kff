@@ -56,7 +56,7 @@ export const userRouter = [
     meta: {
       title: '注册',
     },
-    component: (resolve) => require(['@/views/user/personalPoster.vue'], resolve)
+    component: (resolve) => require(['@/views/user/poster.vue'], resolve)
   },
   //什么是区分
   {
