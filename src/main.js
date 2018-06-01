@@ -11,6 +11,7 @@ import CryptoJS from 'crypto-js'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
 import $ from 'jquery'
+//复制到粘贴板
 import VueClipboard from 'vue-clipboard2'
 
 // 复制到剪切板

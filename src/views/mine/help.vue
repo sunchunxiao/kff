@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <HeaderBar :title="title" />
+  <div class="helpA" >
+    <!--<HeaderBar :title="title" />-->
 
-    <mt-navbar v-model="selected">
+    <mt-navbar v-model="selected" @touchmove.prevent>
       <mt-tab-item id="evaluate">评测规则
-        <div class="lineA"><img class="line" src="../../assets/mine/about/line@2x.png" alt=""></div>
+        <div class="lineC"><img class="line" src="../../assets/mine/about/line@2x.png" alt=""></div>
       </mt-tab-item>
       <mt-tab-item id="reward">激励机制
         <div class="lineA"><img class="line" src="../../assets/mine/about/line@2x.png" alt=""></div>
@@ -116,6 +116,9 @@
 </template>
 
 <style lang="less">
+  ::-webkit-scrollbar {/*隐藏滚轮*/
+    display: none;
+  }
   a{
     color: rgb(105,113,131);
   }
@@ -125,6 +128,9 @@
   .lineB{
     display: block;
   }
+  /*.lineC{*/
+    /*display: none;*/
+  /*}*/
   .line{
     position: absolute;
     top: 45px;
@@ -189,17 +195,21 @@
         var index = $(this).index()
         if(index==0){
           $(".lineA").css("display","none")
-          $(".mint-tab-item:eq(0) .lineA").css("display","block")
+          $(".lineC").css("display","none")
+          $(".mint-tab-item:eq(0) .lineC").css("display","block")
         }
         if(index==1){
+          $(".lineC").css("display","none")
           $(".lineA").css("display","none")
           $(".mint-tab-item:eq(1) .lineA").css("display","block")
         }
         if(index==2){
+          $(".lineC").css("display","none")
           $(".lineA").css("display","none")
           $(".mint-tab-item:eq(2) .lineA").css("display","block")
         }
         if(index==3){
+          $(".lineC").css("display","none")
           $(".lineA").css("display","none")
           $(".mint-tab-item:eq(3) .lineA").css("display","block")
         }
