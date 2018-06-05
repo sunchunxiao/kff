@@ -158,8 +158,26 @@
   .preview-peo{
     color: #3b88f6;
   }
-
-
+  .evaluationUl{
+    /*width: 90%;*/
+    /*margin: 0 auto;*/
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .evaluationUl li{
+    width: 32%;
+    /*margin: 0 auto;*/
+    height: 10rem;
+    float: left;
+    /*margin-right: 0.5rem;*/
+    margin-bottom: 0.5rem;
+  }
+  .evaluationUl li img{
+    width: 100%;
+    height: 100%;
+  }
 
 </style>
 
@@ -183,7 +201,11 @@
         <div class="evaluation-follow1">+关注</div>
       </div>
       <p class="evaluation-content">{{postShortDesc}}</p>
-      <img v-for="item in postImg" class="content-img" :src="item" alt="">
+      <ul class="evaluationUl">
+        <li class="evaluationLi" v-for="item in postImg">
+          <img  class="content-img" :src="item" alt="">
+        </li>
+      </ul>
       <div class="crack">
         <div class="crack-tag1"><span class="span-name">{{projectCode}}</span></div>
         <span class="crack-tag2" v-for="item in tagInfo">#{{item.tagSecname}}#</span>
@@ -270,7 +292,9 @@
           var a = JSON.parse(data.post.postSmallImages);
           console.log(a)
           for(let i=0;i<a.length;i++){
-            this.imgUrl ="http://192.168.10.151:8080/"+ JSON.parse(a[i]).fileUrl
+
+            console.log(a)
+            this.imgUrl ="http://192.168.10.151:8080/"+a[i].fileUrl
             this.postImg.push(this.imgUrl)
             console.log(this.postImg)
           }

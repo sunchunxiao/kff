@@ -284,7 +284,7 @@
       $('.v').find('p').css({
         fontSize: '1.3rem',
         width:"100%",
-        margin:"5px 0"
+        margin:"10px 0"
       });
       $('.v').find('p').css('word-wrap', 'break-word');
     },
