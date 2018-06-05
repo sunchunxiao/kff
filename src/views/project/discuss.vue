@@ -83,8 +83,7 @@
   }
   .evaluation-follow img{
     float: left;
-    width: 16px;
-
+    width: 17px;
   }
   .evaluation-follow span{
     font-size:10px;
@@ -119,14 +118,15 @@
     margin: 2rem 0;
   }
   .crack-tag2{
-    font-size:14px;
+    font-size:1rem;
     color:#3b88f6;
     letter-spacing:0;
-    margin-left: 2rem;
+    margin-left: 20px;
   }
   .crack-tag3{
-    position: absolute;
-    right: 1.5rem;
+    /*position: absolute;*/
+    /*right: 1.5rem;*/
+    float: right;
     font-size:10px;
     color:#c2c2c2;
     letter-spacing:0;
@@ -183,11 +183,11 @@
         <div class="evaluation-follow1">+关注</div>
       </div>
       <p class="evaluation-content">{{postShortDesc}}</p>
-      <img class="content-img" :src="imgUrl" alt="">
+      <img v-for="item in postImg" class="content-img" :src="item" alt="">
       <div class="crack">
-        <div class="crack-tag1"><span class="span-name">EOS</span></div>
-        <span class="crack-tag2">#打假#</span>
-        <span class="crack-tag3">发表于 2015-07-15 13:15</span>
+        <div class="crack-tag1"><span class="span-name">{{projectCode}}</span></div>
+        <span class="crack-tag2" v-for="item in tagInfo">#{{item.tagSecname}}#</span>
+        <span class="crack-tag3">发表于 {{timestr}}</span>
       </div>
     </div>
 
@@ -200,8 +200,9 @@
         <img class="evaluation-info-img" :src="commenticon[index]" alt="">
         <div class="evaluation-info-p">
           <p class="name">{{item .commentUserName}}</p>
-          <span class="info">116楼 03.15 11:15</span>
+          <span class="info">{{item.floot}}楼 {{item.createTimeStr}}</span>
         </div>
+        <!--点赞-->
         <div class="evaluation-follow"><img src="../../assets/footer/zan.png" alt=""><span>{{item.praiseNum}}</span></div>
       </div>
       <p class="p-style">{{item.commentContent}}</p>
@@ -209,31 +210,6 @@
 ">
         <!--commentUserName评论人-->
         <span class="preview-peo">{{a.commentUserName}}:@{{a.becommentedUserName}}:</span><span>{{a.commentContent}}</span>
-      </div>
-      <div class="preview">
-        <span class="preview-num">更多10条评论</span>
-      </div>
-    </div>
-    <!--最新评论-->
-    <!--<div class="hot evaluation">-->
-      <!--<div class="hot-comment">最新评论({{commentseSum}})</div>-->
-    <!--</div>-->
-    <!--最新评论条数-->
-    <div class="evaluation-info" v-for="(item,index) in commentseNew">
-      <div class="evaluation-info-title">
-        <img class="evaluation-info-img" :src="commenticon[index]" alt="">
-        <div class="evaluation-info-p">
-          <p class="name">{{item .commentUserName}}</p>
-          <span class="info">116楼 03.15 11:15</span>
-        </div>
-        <div class="evaluation-follow"><img src="../../assets/footer/zan.png" alt=""><span>{{item.praiseNum}}</span></div>
-      </div>
-      <p class="p-style">{{item.commentContent}}</p>
-      <div class="preview">
-        <span class="preview-peo">老柚子:@乌拉圭</span><span>你说的很好可是能不能买呢?</span>
-      </div>
-      <div class="preview">
-        <span class="preview-peo">老柚子:@乌拉圭</span><span>你说的很好可是能不能买呢?</span>
       </div>
       <div class="preview">
         <span class="preview-num">更多10条评论</span>
@@ -251,8 +227,10 @@
     data(){
       return  {
         title:"",
-        tags:"",
+        projectCode:"",
+        tagInfo:"",
         src:"",
+        id:"",
         timestr:"",
         articleTitle:"",
         username:"",
@@ -262,15 +240,17 @@
         commenticon:[],
         commentsehot:[],
         commentseNew:[],
-        commentseSum:""
+        commentseSum:"",
+        postImg:[]
       }
     },
     components: {
       HeaderBar,
     },
     mounted(){
+      this.id = this.$route.query.id;
       let params ={
-        postId:12
+        postId:this.id
       }
       //测评
       discuss(params).then(res=>{
@@ -279,7 +259,7 @@
           var data = res.data.discussShare
           this.articleTitle = data.post.postTitle
           //头像
-          var icon = "http://192.168.10.151:8080"+JSON.parse(data.post.createUserIcon).fileUrl
+          var icon = "http://192.168.10.151:8080"+data.post.createUserIcon
           this.src = icon;
 
           this.username = data.post.createUserName;
@@ -288,29 +268,39 @@
           this.postShortDesc = data.post.postShortDesc;
           //图片
           var a = JSON.parse(data.post.postSmallImages);
-          // console.log(a)
-          this.imgUrl ="http://192.168.10.151:8080"+ a.fileUrl
+          console.log(a)
+          for(let i=0;i<a.length;i++){
+            this.imgUrl ="http://192.168.10.151:8080/"+ JSON.parse(a[i]).fileUrl
+            this.postImg.push(this.imgUrl)
+            console.log(this.postImg)
+          }
 
+          //标签
+          this.projectCode = data.post.projectCode;
+
+          //最多选择标签
+          this.tagInfo = JSON.parse(data.tagInfo);
+          console.log(this.tagInfo)
           //热门评论
           this.commentsehot = data.commentsehot;
           var result = data.commentsehot;
           //热门评论头像
-          for(let i = 0;i<result.length;i++){
-          var b = JSON.parse(data.commentsehot[i].commentUserIcon);
-          var c = "http://192.168.10.151:8080"+b.fileUrl
-          this.commenticon.push(c)
-            console.log(this.commenticon)
+          if(result!=null){
+            for(let i = 0;i<result.length;i++){
+              var b = data.commentsehot[i].commentUserIcon;
+              var c = "http://192.168.10.151:8080"+b
+              this.commenticon.push(c)
+              console.log(this.commenticon)
+            }
           }
+
           //最新评论数量
           this.commentseSum = data.commentseSum
           //最新评论
           this.commentseNew  = data.commentseNew
 
-          //标签
-          // this.tag = data.post.projectCode;
-
-          //时间
-          // this.timestr = data.post.createTimeStr;
+          // 时间
+          this.timestr = data.post.createTimeStr;
 
           //文章
           // this.article = data.evaluation.evauationContent

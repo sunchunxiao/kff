@@ -181,6 +181,11 @@
     margin: 0 auto;
   }
   .zan{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
     text-align: center;
 
   }
@@ -223,11 +228,11 @@
             <span class="crack-tag3">编辑于 {{timestr}}</span>
             <div class="sponsor">
               <img class="sponsor4 img1" :src="item" v-for="(item,index) in imgUrls" :style="fun(index)" alt="">
-
+              <p class="zan">{{donateNum}}人已赞助</p>
             </div>
-            <p class="zan">{{donateNum}}人已赞助</p>
+
           </div>
-        <FooterInfo></FooterInfo>
+        <FooterInfo  :message="post"></FooterInfo>
         </div>
       </div>
     </div>
@@ -255,7 +260,8 @@
         timestr:"",
         imgUrls:[],
         articleContents:"",
-        donateNum:""
+        donateNum:"",
+        post:[]
       }
     },
     components: {
@@ -278,7 +284,7 @@
       $('.v').find('p').css({
         fontSize: '1.3rem',
         width:"100%",
-        margin:"5px 0"
+        margin:"10px 0"
       });
       $('.v').find('p').css('word-wrap', 'break-word');
     },
@@ -296,48 +302,12 @@
           if(res.code==0){
 
             var data = res.data.articleDetail
-            // this.m= data.article.articleContents
-            this.m= data.postShortDesc
-            // $(".evaluation-info-title").after(this.m)
-            console.log(data.postShortDesc)
-            //抽出文本的图片
-            // var textareaHtml = this.m;
-            // var img = textareaHtml.match(/<img[^>]+>/g);
-            // console.log(img)
-            // for(let i=0;i<img.length;i++){
-            //         console.log(img[i])
-            // }
+            //文章内容
+            this.m= data.article.articleContents
 
-            // this.topicList= data.article
-            //
-            // // $(".n").html(m)
-            // // for (var i = 0; i < this.topicList.length; i++) {
-            //   var textareaHtml = this.topicList.articleContents; // 循环，分别取出每个item的富文本内容
-            //   // console.log(textareaHtml)
-            //     var num = 0; // 列表页为显示九宫格，限定num最大为9
-            //     var img = textareaHtml.match(/<img[^>]+>/g); // 利用正则，取出所有img标签，数据格式为数组
-            //
-            //    if (img) { // 判断这条富文本里是否有img，不做判断的话img.length会报错
-            //        if (img.length > 9) { // 限定列表图片显示个数
-            //            num = 9
-            //          } else {
-            //             num = img.length
-            //           }
-            //       }
-            //     var arrImg = '' // 定义空字符串，下面会往里边填充img标签
-            //    for (var j = 0; j < num; j++) {
-            //      // 正则匹配，摘出img标签下的src里的内容，即capture
-            //     　　img[j].replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/gi, function(match, capture) {
-            //             arrImg += '<div class="img-box" style="background: url(\'' + capture + '\') no-repeat center / cover;width:100%;height:100px;float:left;margin: 0 1.5% 10px 1.5%;" ></div>'
-            //           });
-            //     　 // 这边为了不让九宫格里的图片压缩，所以放置在div的背景里
-            //       }
-            //     var newImg = arrImg // 将取出来的img放置到newImg中
-            //
-            //     this.topicList['img'] = newImg; // 给数组对象添加属性，即可在页面里赋值
-            // console.log(this.topicList.img)
-            // this.m = this.topicList.img
-              // }
+
+            //抽出文本的图片
+
 
             console.log(data.createUserIcon)
             this.articleTitle = data.postTitle
@@ -354,13 +324,18 @@
             //赞助  循环图片
             var result =  data.commendationList
              for (let i = 0; i <result.length; i++) {
-              var a ="http://192.168.10.151:8080"+JSON.parse(result[i].sendUserIcon).fileUrl;             this.imgUrls.push(a);
+              var a ="http://192.168.10.151:8080/"+result[i].sendUserIcon;
+              this.imgUrls.push(a);
             }
             //赞助人数
             this.donateNum = data.donateNum;
+
             //文章介绍
             this.articleContents = data.article.articleContents;
-
+           // 底部点赞和评论人数
+            this.post.push({praiseNum:data.praiseNum})
+            this.post.push({commentsNum:data.commentsNum})
+            console.log(this.post)
 
           }
 

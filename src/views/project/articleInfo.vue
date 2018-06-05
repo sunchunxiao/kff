@@ -13,7 +13,7 @@
     margin: 1rem auto;
   }
   .storeCommon{
-    font-size:14px;
+    font-size:1.3rem;
     color:#54c7fc;
     font-weight: bolder;
     /*color:#3b88f6;*/
@@ -22,7 +22,8 @@
     margin-right: 1rem;
   }
   .evaluation-store{
-    font-size:20px;
+    font-weight: 600;
+    font-size:2rem;
   }
   .evaluation-info{
     width: 90%;
@@ -51,7 +52,7 @@
     letter-spacing:0;
   }
   .info{
-    font-size:10px;
+    font-size:1rem;
     color:#888888;
     letter-spacing:0;
   }
@@ -185,16 +186,16 @@
 
   }
   .v{
-    margin-top: 15px;
+    margin-top: 2rem;
   }
 
 </style>
 
 <template>
 <div>
-  <HeaderBar
-    :title="title"
-  />
+  <!--<HeaderBar-->
+    <!--:title="title"-->
+  <!--/>-->
   <div class="evaluation">
     <div class="evaluation-title">
       <h2>EOS测评 - ALL</h2>
@@ -229,7 +230,6 @@
         <!--</div>-->
 
         <p class="p1"></p>
-
           <!--<div>-->
             <!--<div class="storeList" >-->
               <!--<div class="store-info-title">项目定位<span class="percent">/ 20%</span> </div>-->
@@ -246,9 +246,9 @@
             <img class="sponsor4 img1" :src="item" v-for="(item,index) in imgUrls" :style="fun(index)" alt="">
 
           </div>
-          <p class="zan">68人已赞助</p>
+          <p class="zan">{{donateNum}}人已赞助</p>
         </div>
-        <FooterInfo></FooterInfo>
+        <FooterInfo  :message="post"></FooterInfo>
       </div>
 
     </div>
@@ -275,43 +275,10 @@
           userSignature:"",
           totalscore:"",
           evauationContent:"",
-          storeList:[
-          // {
-          //   title:"项目定位",
-          //   percent:"50",
-          //   store:"8.2"
-          // },
-          // {
-          //   title:"技术框架",
-          //   percent:"60",
-          //   store:"8.1"
-          // },
-          // {
-          //   title:"团队实力",
-          //   percent:"80",
-          //   store:"8.6"
-          // },
-          // {
-          //   title:"项目进度",
-          //   percent:"20",
-          //   store:"6.7"
-          // },
-          // {
-          //   title:"投资风险",
-          //   percent:"35",
-          //   store:"3.6"
-          // }
-        ],
-          imgUrls:[
-            // "http://192.168.10.151:8080/Idcard/10.jpg",
-            // "http://192.168.10.151:8080/Idcard/10.jpg",
-            // "http://192.168.10.151:8080/Idcard/10.jpg",
-            // "http://192.168.10.151:8080/Idcard/10.jpg",
-            // "http://192.168.10.151:8080/Idcard/10.jpg",
-            // "http://192.168.10.151:8080/Idcard/10.jpg",
-            // "http://192.168.10.151:8080/Idcard/10.jpg",
-
-          ]
+          storeList:[],
+          imgUrls:[],
+          donateNum:"",
+          post:[]
         }
       },
       components: {
@@ -323,7 +290,7 @@
         $('.v').find('p').css({
           fontSize: '1.3rem',
           width:"100%",
-          margin:"5px 0"
+          margin:"10px 0"
         });
         $('.v').find('p').css('word-wrap', 'break-word');
       },
@@ -356,7 +323,7 @@
             // console.log(JSON.parse(data.post.createUserIcon).fileUrl)
             this.articleTitle = data.post.postTitle
             //头像
-            var icon = "http://192.168.10.151:8080"+JSON.parse(data.post.createUserIcon).fileUrl
+            var icon = "http://192.168.10.151:8080/"+data.post.createUserIcon
             this.src = icon;
             // this.imgsrc = "http://192.168.10.151:8080"+JSON.parse(data.postSmallImages).fileUrl
             this.username = data.post.createUserName;
@@ -377,13 +344,16 @@
             //赞助  循环图片
             var result =  data.commendationList
             for (let i = 0; i <result.length; i++) {
-              var a ="http://192.168.10.151:8080"+JSON.parse(result[i].sendUserIcon).fileUrl;                               this.imgUrls.push(a);
+              var a ="http://192.168.10.151:8080/"+result[i].sendUserIcon;                               this.imgUrls.push(a);
             }
             //赞助人数
-            this.donateNum = data.donateNum;
+            this.donateNum = data.post.donateNum;
             //文章介绍
             this.evauationContent = data.evaluation.evauationContent;
-
+            //底部
+            this.post.push({praiseNum:data.post.praiseNum})
+            this.post.push({commentsNum:data.post.commentsNum})
+            console.log(this.post)
 
           }
 

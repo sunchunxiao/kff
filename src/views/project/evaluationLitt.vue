@@ -220,10 +220,8 @@
         <h3>{{title}}</h3>
         <span class="storeCommon">{{score}}</span>
         <Progress :percent="80" :stroke-width="10"  hide-info> </Progress>
-        <div >
-         <div class="postImg">
-           <img class="img" :src="postSmallImages" alt="">
-         </div>
+        <div v-html="m" style="width: 100%;margin-top: 20px" class="v">{{m}}</div>
+        <div>
           <!--<p class="p1">-->
             <!--自在EOS引力区的知识星球里有一个人，他在知识星球分享了一篇文章《数字会说明，老猫在想什么，写给eos的投资者们》，精明地推测出老猫分批地积累了上百万个EOS，这更能说明老猫看好EOS。道理很简单：因为看好，所以大量持有。-->
           <!--</p>-->
@@ -235,9 +233,9 @@
               <img class="sponsor4 img1" :src="item" v-for="(item,index) in imgUrls" :style="fun(index)" alt="">
 
             </div>
-            <p class="zan">68人已赞助</p>
+            <p class="zan">{{donateNum}}人已赞助</p>
           </div>
-          <FooterInfo></FooterInfo>
+          <FooterInfo  :message="post"></FooterInfo>
         </div>
       </div>
     </div>
@@ -255,15 +253,18 @@
     data(){
       return  {
             title:"",
+            m:"",
             score:"8.2",
-            tags:"",
+            tag:"",
             imgUrls:[],
             src:"",
             articleTitle:"",
             totalscore:"",
             timestr:"",
             postSmallImages:"",
-            article:""
+            article:"",
+            donateNum:"",
+            post:[]
 
       }
     },
@@ -282,9 +283,10 @@
       }
     },
    mounted(){
-    let params ={
-      postId:53
-    }
+     this.id = this.$route.query.id;
+      let params ={
+        postId:this.id
+      }
     //测评
      evaluation(params).then(res=>{
       if(res.code==0){
@@ -292,7 +294,7 @@
         var data = res.data.projectEvaluationDetailResponse
         this.articleTitle = data.post.postTitle
         //头像
-        var icon = "http://192.168.10.151:8080"+JSON.parse(data.post.createUserIcon).fileUrl
+        var icon = "http://192.168.10.151:8080/"+data.post.createUserIcon
         this.src = icon;
         // this.imgsrc = "http://192.168.10.151:8080"+JSON.parse(data.postSmallImages).fileUrl
         // this.username = data.post.createUserName;
@@ -304,9 +306,6 @@
         this.title =a.modelName;
         this.score =a.score;
 
-        this.postSmallImages ="http://192.168.10.151:8080"+JSON.parse(data.post.postSmallImages).fileUrl
-        console.log(this.storeList)
-
         //标签
         this.tag = data.post.projectCode;
 
@@ -315,13 +314,17 @@
         //赞助  循环图片
         var result =  data.commendationList
         for (let i = 0; i <result.length; i++) {
-          var b ="http://192.168.10.151:8080"+JSON.parse(result[i].sendUserIcon).fileUrl;                                     this.imgUrls.push(b);
+          var b ="http://192.168.10.151:8080/"+result[i].sendUserIcon
+          this.imgUrls.push(b);
         }
         //赞助人数
-        this.donateNum = data.donateNum;
+        this.donateNum = data.post.donateNum;
         //文章
-        this.article = data.evaluation.evauationContent
-        $(".crack").before( this.article)
+        this.m= data.evaluation.evauationContent
+        //底部
+        this.post.push({praiseNum:data.post.praiseNum})
+        this.post.push({commentsNum:data.post.commentsNum})
+        console.log(this.post)
 
       }
 
