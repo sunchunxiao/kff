@@ -27,8 +27,9 @@ axios.interceptors.response.use((res) => {
 // option = {method,body,header}
 const request = (url, options = {}) => {
   //测试地址
-  // var url = "http://47.98.197.101/tzg-rest" + url;
-  var url = "http://192.168.10.151:803" + url;
+  var url = "http://192.168.10.203" + url;
+  //本地
+  // var url = "http://192.168.10.151:803" + url;
 
   // let originBody = JSON.stringify(options.body)
   // let aesEncode = aes128Encod(originBody)
