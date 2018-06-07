@@ -116,7 +116,7 @@
                 <div class="reg-intro">
                   <input placeholder="输入手机号" type="tel" v-model="phone" id="telnum" @blur="handleCommentBlur">
                   <div class="reg-code">
-                    <input type="text" placeholder="请输入验证码" class="yanzhengma_input" v-model="picLyanzhengma" @blur="checkLpicma"><input type="button" id="code" @click="createCode"  class="verification1" v-model="checkCode"/>
+                    <input type="text" placeholder="图片验证码" class="yanzhengma_input" v-model="picLyanzhengma" @blur="checkLpicma"><input type="button" id="code" @click="createCode"  class="verification1" v-model="checkCode"/>
                     <input placeholder="输入验证码" type="text" v-model="code">
                   </div>
                   <button @click="getcode">获取验证码<span v-show="!show">({{count}}S)</span></button>
@@ -183,25 +183,34 @@
           }
           if(myreg.test(this.phone)){
             if(this.picLyanzhengma!=""){
-              register(params).then(res=>{
-                //0是不成功 1是注册成功
-                if(res.data.reStatus==0){
-                  // MessageBox({
-                  //   title: '提示',
-                  //   message: '注册成功',
-                  //   showConfirmButton: true
-                  // });
-                  alert(res.data.reason)
-                  this.code="";
-                }
-                else{
-                  console.log(res.data.token)
-                  localStorage.setItem("token",res.data.token);
+              if(this.code!=""){
+                register(params).then(res=>{
+                  //0是不成功 1是注册成功
+                  if(res.data.reStatus==0){
+                    // MessageBox({
+                    //   title: '提示',
+                    //   message: '注册成功',
+                    //   showConfirmButton: true
+                    // });
+                    alert(res.data.reason)
+                    this.code="";
+                  }
+                  else{
+                    console.log(res.data.token)
+                    localStorage.setItem("token",res.data.token);
 
-                  this.$router.push('/user/registerSuccess');
-                }
+                    this.$router.push('/user/registerSuccess');
+                  }
 
-              })
+                })
+              }else{
+                MessageBox({
+                  title: '提示',
+                  message: '请输入短信验证码！',
+                  showConfirmButton: true
+                });
+              }
+
             }else{
               MessageBox({
                 title: '提示',
@@ -249,8 +258,6 @@
               }
             })
           }
-
-
 
         },
         //密码验证
