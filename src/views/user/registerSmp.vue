@@ -181,28 +181,43 @@
           //  邀请码
             invaUIH:this.invaUIH
           }
-          // if(myreg.test(phone)){
-          //
-          // }
-          register(params).then(res=>{
-            //0是不成功 1是注册成功
-            if(res.data.reStatus==0){
-              // MessageBox({
-              //   title: '提示',
-              //   message: '注册成功',
-              //   showConfirmButton: true
-              // });
-              alert(res.data.reason)
-              this.code="";
-            }
-            else{
-              console.log(res.data.token)
-              localStorage.setItem("token",res.data.token);
+          if(myreg.test(this.phone)){
+            if(this.picLyanzhengma!=""){
+              register(params).then(res=>{
+                //0是不成功 1是注册成功
+                if(res.data.reStatus==0){
+                  // MessageBox({
+                  //   title: '提示',
+                  //   message: '注册成功',
+                  //   showConfirmButton: true
+                  // });
+                  alert(res.data.reason)
+                  this.code="";
+                }
+                else{
+                  console.log(res.data.token)
+                  localStorage.setItem("token",res.data.token);
 
-              this.$router.push('/user/registerSuccess');
+                  this.$router.push('/user/registerSuccess');
+                }
+
+              })
+            }else{
+              MessageBox({
+                title: '提示',
+                message: '请输入图片验证码！',
+                showConfirmButton: true
+              });
             }
 
-          })
+          }else{
+            MessageBox({
+              title: '提示',
+              message: '请输入正确的手机号！',
+              showConfirmButton: true
+            });
+          }
+
 
         },
         //手机号验证
