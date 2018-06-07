@@ -306,7 +306,7 @@
               module:"register"
             });
           }
-          const TIME_COUNT = 10;
+          const TIME_COUNT = 60;
           if (!this.timer) {
             this.count = TIME_COUNT;
             this.show = false;
