@@ -169,6 +169,7 @@
       methods:{
         //提交注册
         registerSmp() {
+          var myreg = /^1[34578]\d{9}$/;
           let params ={
             phoneNumber:this.phone,
             password:this.password,
@@ -180,6 +181,9 @@
           //  邀请码
             invaUIH:this.invaUIH
           }
+          // if(myreg.test(phone)){
+          //
+          // }
           register(params).then(res=>{
             //0是不成功 1是注册成功
             if(res.data.reStatus==0){
@@ -199,7 +203,6 @@
             }
 
           })
-
 
         },
         //手机号验证
@@ -253,11 +256,11 @@
            if(this.picLyanzhengma.toUpperCase() != this.checkCode ) { //若输入的验证码与产生的验证码不一致时
             console.log( this.picLyanzhengma.toUpperCase())
             console.log(code)
-             MessageBox({
-               title: '提示',
-               message: '验证码输入错误',
-               showConfirmButton: true
-             });
+             // MessageBox({
+             //   title: '提示',
+             //   message: '验证码输入错误',
+             //   showConfirmButton: true
+             // });
             this.createCode();//刷新验证码
             this.picLyanzhengma = '';
           }else { //输入正确时
