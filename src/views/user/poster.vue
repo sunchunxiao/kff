@@ -21,7 +21,10 @@
         poster(params).then(res=>{
           if (res.code==0){
             console.log(res.data.url)
-            this.src = "http://192.168.10.151:8080/"+res.data.url;
+			//线上
+			this.src = "http://app.qufen.top/"+res.data.url;
+			//本地
+            //this.src = "http://192.168.10.151:8080/"+res.data.url;
             console.log(this.src)
 
           }

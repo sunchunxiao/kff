@@ -120,7 +120,7 @@
                     <input placeholder="输入验证码" type="text" v-model="code">
                   </div>
                   <button @click="getcode">获取验证码<span v-show="!show">({{count}}S)</span></button>
-                  <input placeholder="输入密码(8-20位数字字母组合)" type="password" v-model="password" @blur="regpw">
+                  <input placeholder="输入密码(8-20位数字字母组合)" type="password" v-model="password">
                 </div>
                 <mt-button type="primary" class="longBtn" @click.native="registerSmp">立即注册</mt-button>
                 </div>
@@ -170,6 +170,7 @@
         //提交注册
         registerSmp() {
           var myreg = /^1[34578]\d{9}$/;
+          var pwreg = /[a-zA-Z\d+]{8,20}/;
           let params ={
             phoneNumber:this.phone,
             password:this.password,
@@ -184,25 +185,34 @@
           if(myreg.test(this.phone)){
             if(this.picLyanzhengma!=""){
               if(this.code!=""){
-                register(params).then(res=>{
-                  //0是不成功 1是注册成功
-                  if(res.data.reStatus==0){
-                    // MessageBox({
-                    //   title: '提示',
-                    //   message: '注册成功',
-                    //   showConfirmButton: true
-                    // });
-                    alert(res.data.reason)
-                    this.code="";
-                  }
-                  else{
-                    console.log(res.data.token)
-                    localStorage.setItem("token",res.data.token);
+                if(pwreg.test(this.password)){
+                  register(params).then(res=>{
+                    //0是不成功 1是注册成功
+                    if(res.data.reStatus==0){
+                      // MessageBox({
+                      //   title: '提示',
+                      //   message: '注册成功',
+                      //   showConfirmButton: true
+                      // });
+                      alert(res.data.reason)
+                      this.code="";
+                    }
+                    else{
+                      console.log(res.data.token)
+                      localStorage.setItem("token",res.data.token);
 
-                    this.$router.push('/user/registerSuccess');
-                  }
+                      this.$router.push('/user/registerSuccess');
+                    }
 
-                })
+                  })
+                }else{
+                  MessageBox({
+                    title: '提示',
+                    message: '请输入8-20位数字字母组合！',
+                    showConfirmButton: true
+                  });
+                }
+
               }else{
                 MessageBox({
                   title: '提示',
@@ -261,17 +271,17 @@
 
         },
         //密码验证
-        regpw(){
-          var pw = this.password;
-          var pwreg = /[a-zA-Z\d+]{8,20}/;
-          if(!pwreg.test(pw)) {
-            MessageBox({
-              title: '提示',
-              message: '请输入8-20位数字字母组合！',
-              showConfirmButton: true
-            });
-          }
-        },
+        // regpw(){
+        //   var pw = this.password;
+          // var pwreg = /[a-zA-Z\d+]{8,20}/;
+        //   if(!pwreg.test(pw)) {
+        //     MessageBox({
+        //       title: '提示',
+        //       message: '请输入8-20位数字字母组合！',
+        //       showConfirmButton: true
+        //     });
+        //   }
+        // },
         //图片验证
         checkLpicma(){
           this.picLyanzhengma.toUpperCase();//取得输入的验证码并转化为大写
