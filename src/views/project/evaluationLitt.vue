@@ -212,7 +212,7 @@
         <img class="evaluation-info-img" :src="src" alt="">
         <div class="evaluation-info-p">
           <p class="name">老柚子<img src="../../assets/evaluation/initial@2x.png"/></p>
-          
+
           <span class="info">EOS早期投资人，EOS节点发起人</span>
         </div>
         <div class="evaluation-follow">+关注</div>
@@ -294,12 +294,12 @@
       if(res.code==0){
         // console.log(res.data.projectEvaluationDetailResponse)
         var data = res.data.projectEvaluationDetailResponse
-        
+
         //头像加V
         this.img
         this.articleTitle = data.post.postTitle
         //头像
-        var icon = "http://192.168.10.151:8080/"+data.post.createUserIcon
+        var icon = "http://app.qufen.top/"+data.post.createUserIcon
         this.src = icon;
         // this.imgsrc = "http://192.168.10.151:8080"+JSON.parse(data.postSmallImages).fileUrl
         // this.username = data.post.createUserName;
@@ -316,11 +316,11 @@
 
         //时间
         this.timestr = data.post.createTimeStr;
-        
+
         //赞助  循环图片
         var result =  data.commendationList
         for (let i = 0; i <result.length; i++) {
-          var b ="http://192.168.10.151:8080/"+result[i].sendUserIcon
+          var b ="http://app.qufen.top/"+result[i].sendUserIcon
           this.imgUrls.push(b);
         }
         //赞助人数

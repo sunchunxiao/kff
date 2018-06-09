@@ -290,7 +290,7 @@
           console.log(JSON.parse(data.createUserIcon).fileUrl)
           this.articleTitle = data.postTitle
           //头像
-          var icon = "http://192.168.10.151:8080"+JSON.parse(data.createUserIcon).fileUrl
+          var icon = "http://app.qufen.top/"+data.createUserIcon
           this.src = icon;
           this.imgsrc = "http://192.168.10.151:8080"+JSON.parse(data.postSmallImages).fileUrl
           this.username = data.createUserName;

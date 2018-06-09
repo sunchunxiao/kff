@@ -281,7 +281,7 @@
           var data = res.data.discussShare
           this.articleTitle = data.post.postTitle
           //头像
-          var icon = "http://192.168.10.151:8080"+data.post.createUserIcon
+          var icon = "http://app.qufen.top/"+data.post.createUserIcon
           this.src = icon;
 
           this.username = data.post.createUserName;
@@ -294,7 +294,7 @@
           for(let i=0;i<a.length;i++){
 
             console.log(a)
-            this.imgUrl ="http://192.168.10.151:8080/"+a[i].fileUrl
+            this.imgUrl ="http://app.qufen.top/"+a[i].fileUrl
             this.postImg.push(this.imgUrl)
             console.log(this.postImg)
           }
@@ -312,7 +312,7 @@
           if(result!=null){
             for(let i = 0;i<result.length;i++){
               var b = data.commentsehot[i].commentUserIcon;
-              var c = "http://192.168.10.151:8080"+b
+              var c = "http://app.qufen.top/"+b
               this.commenticon.push(c)
               console.log(this.commenticon)
             }

@@ -312,7 +312,10 @@
             console.log(data.createUserIcon)
             this.articleTitle = data.postTitle
             //头像
-            var icon = "http://192.168.10.151:8080"+data.createUserIcon
+            //线上
+            var icon = "http://app.qufen.top/"+data.createUserIcon
+            //本地
+            // var icon = "http://192.168.10.151:8080"+data.createUserIcon
             this.src = icon;
             // this.imgsrc = "http://192.168.10.151:8080"+JSON.parse(data.postSmallImages).fileUrl
             this.username = data.createUserName;
@@ -324,7 +327,10 @@
             //赞助  循环图片
             var result =  data.commendationList
              for (let i = 0; i <result.length; i++) {
-              var a ="http://192.168.10.151:8080/"+result[i].sendUserIcon;
+              //线上
+               var a ="http://app.qufen.top/"+result[i].sendUserIcon;
+               //本地
+              // var a ="http://192.168.10.151:8080/"+result[i].sendUserIcon;
               this.imgUrls.push(a);
             }
             //赞助人数
