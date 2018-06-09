@@ -110,7 +110,7 @@
               <img src="../../assets/register/logo@2x.png" alt="">
               <div class="qf-register">
                 <div class="register-title">区分注册</div>
-                <span class="register-title-listen">听听其他投资者的声音，分布式解锁区块链</span>
+                <span class="register-title-listen">投资区块链，一定要“区分”！</span>
               </div>
               <div>
                 <div class="reg-intro">
@@ -130,7 +130,7 @@
             </div>
         </div>
     </div>
-    <div class="understanding">- 全方位了解区块链项目，做个成熟的价值投资者 -</div>
+    <div class="understanding">- 在这里读懂区块链项目，寻找价值币 -</div>
     <Qf></Qf>
   </div>
 </template>

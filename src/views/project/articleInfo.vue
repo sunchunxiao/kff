@@ -347,7 +347,7 @@
               //线上
               var a ="http://app.qufen.top/"+result[i].sendUserIcon;
               //本地
-              var a ="http://192.168.10.151:8080/"+result[i].sendUserIcon;                               this.imgUrls.push(a);
+//            var a ="http://192.168.10.151:8080/"+result[i].sendUserIcon;                               this.imgUrls.push(a);
             }
             //赞助人数
             this.donateNum = data.post.donateNum;
