@@ -74,5 +74,13 @@ export const userRouter = [
       title: '忘记密码',
     },
     component: (resolve) => require(['@/views/user/forgetPwd.vue'], resolve)
+  },
+  //注册协议
+  {
+    path: "/user/agreement",
+    meta: {
+      title: '忘记密码',
+    },
+    component: (resolve) => require(['@/views/user/agreement.vue'], resolve)
   }
 ]
