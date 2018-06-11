@@ -47,6 +47,16 @@
     font-size:14px;
     color:#333333;
     letter-spacing:0;
+    position: relative;
+  }
+  .name p{
+  	display: inline-block;
+  	margin-right: 5px;
+  }
+  .name img{
+  	position: absolute;
+  	width: 8%;
+  	/*left: 4rem;*/
   }
   .info{
     font-size:10px;
@@ -121,7 +131,7 @@
     font-size:1rem;
     color:#3b88f6;
     letter-spacing:0;
-    margin-left: 20px;
+    margin-left: 18px;
   }
   .crack-tag3{
     /*position: absolute;*/
@@ -195,7 +205,9 @@
       <div class="evaluation-info-title">
         <img class="evaluation-info-img" :src="src" alt="">
         <div class="evaluation-info-p">
-          <p class="name">{{username}}</p>
+          <div class="name">
+          	<p >{{username}}</p><img class="imgV" src=""/>
+          </div>
           <span class="info">{{userSignature}}</span>
         </div>
         <div class="evaluation-follow1">+关注</div>
@@ -279,6 +291,21 @@
         if(res.code==0){
           // console.log(res.data.projectEvaluationDetailResponse)
           var data = res.data.discussShare
+          //头像加V
+        var cuser = data.cUsertype
+        if(cuser==4){
+//      	$(".imgV").attr("src","../../../static/elevation/initial@2x.png")
+        }
+        if(cuser==1){
+        	$(".imgV").attr("src","../../../static/elevation/initial@2x.png")
+        }
+        if(cuser==2){
+        	$(".imgV").attr("src","../../../static/elevation/media@2x.png")
+        }
+        if(cuser==3){
+        	$(".imgV").attr("src","../../../static/elevation/progress@2x.png")
+        }
+          
           this.articleTitle = data.post.postTitle
           //头像
           var icon = "http://app.qufen.top/"+data.post.createUserIcon

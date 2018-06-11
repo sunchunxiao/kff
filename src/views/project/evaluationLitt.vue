@@ -49,6 +49,16 @@
     font-size:14px;
     color:#333333;
     letter-spacing:0;
+    position: relative;
+  }
+  .name p{
+  	display: inline-block;
+  	margin-right: 5px;
+  }
+  .name img{
+  	position: absolute;
+  	width: 8%;
+  	/*left: 4rem;*/
   }
   .info{
     font-size:10px;
@@ -117,7 +127,7 @@
     width: 100%;
     margin-top: 1rem;
   }
-//标签
+/*标签*/
   .crack-tag1{
 
     display: inline-block;
@@ -189,7 +199,10 @@
   }
   .zan{
     text-align: center;
-
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
   }
   .postImg{
     margin-bottom: 1rem;
@@ -211,7 +224,9 @@
       <div class="evaluation-info-title">
         <img class="evaluation-info-img" :src="src" alt="">
         <div class="evaluation-info-p">
-          <p class="name">老柚子<img src="../../assets/evaluation/initial@2x.png"/></p>
+          <div class="name">
+          	<p >{{username}}</p><img class="imgV" src=""/>
+          </div>
 
           <span class="info">EOS早期投资人，EOS节点发起人</span>
         </div>
@@ -232,9 +247,9 @@
             <span class="crack-tag3">{{timestr}}</span>
             <div class="sponsor">
               <img class="sponsor4 img1" :src="item" v-for="(item,index) in imgUrls" :style="fun(index)" alt="">
-
+							<p class="zan">{{donateNum}}人已赞助</p>
             </div>
-            <p class="zan">{{donateNum}}人已赞助</p>
+            
           </div>
           <FooterInfo  :message="post"></FooterInfo>
         </div>
@@ -258,6 +273,7 @@
             score:"8.2",
             imgV:"",
             tag:"",
+            username:"",
             imgUrls:[],
             src:"",
             articleTitle:"",
@@ -296,11 +312,25 @@
         var data = res.data.projectEvaluationDetailResponse
 
         //头像加V
-        this.img
+        var cuser = data.cUsertype
+        if(cuser==0){
+//      	$(".imgV").attr("src","../../../static/elevation/initial@2x.png")
+        }
+        if(cuser==1){
+        	$(".imgV").attr("src","../../../static/elevation/initial@2x.png")
+        }
+        if(cuser==2){
+        	$(".imgV").attr("src","../../../static/elevation/media@2x.png")
+        }
+        if(cuser==3){
+        	$(".imgV").attr("src","../../../static/elevation/progress@2x.png")
+        }
         this.articleTitle = data.post.postTitle
         //头像
         var icon = "http://app.qufen.top/"+data.post.createUserIcon
         this.src = icon;
+        
+        this.username = data.post.createUserName;
         // this.imgsrc = "http://192.168.10.151:8080"+JSON.parse(data.postSmallImages).fileUrl
         // this.username = data.post.createUserName;
         // this.userSignature = data.post.createUserSignature;
@@ -310,7 +340,7 @@
         var a = JSON.parse(data.evaluation.professionalEvaDetail)[0]
         this.title =a.modelName;
         this.score =a.score;
-
+		
         //标签
         this.tag = data.post.projectCode;
 

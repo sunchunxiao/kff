@@ -172,7 +172,7 @@
     position: relative;
   }
   .mint-navbar .mint-tab-item.is-selected{
-    border-bottom: none;
+    border-bottom: none!important;
   }
 </style>
 

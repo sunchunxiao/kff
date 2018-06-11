@@ -45,10 +45,20 @@
     position: relative;
     margin: 1rem 0;
   }
-  .name{
+   .name{
     font-size:14px;
     color:#333333;
     letter-spacing:0;
+    position: relative;
+  }
+  .name p{
+  	display: inline-block;
+  	margin-right: 5px;
+  }
+  .name img{
+  	position: absolute;
+  	width: 8%;
+  	/*left: 4rem;*/
   }
   .info{
     font-size:10px;
@@ -211,7 +221,10 @@
       <div class="evaluation-info-title">
         <img class="evaluation-info-img" :src="src" alt="">
         <div class="evaluation-info-p">
-          <p class="name">{{username}}</p>
+          <div class="name">
+          	<p >{{username}}</p>
+          	<img class="imgV" src=""/>
+          </div>
           <span class="info">{{userSignature}}</span>
         </div>
         <div class="evaluation-follow">+关注</div>
@@ -302,22 +315,33 @@
           if(res.code==0){
 
             var data = res.data.articleDetail
+            
+            //头像加V
+        var cuser = data.cUsertype
+        if(cuser==0){
+//      	$(".imgV").attr("src","../../../static/elevation/initial@2x.png")
+        }
+        if(cuser==1){
+        	$(".imgV").attr("src","../../../static/elevation/initial@2x.png")
+        }
+        if(cuser==2){
+        	$(".imgV").attr("src","../../../static/elevation/media@2x.png")
+        }
+        if(cuser==3){
+        	$(".imgV").attr("src","../../../static/elevation/progress@2x.png")
+        }
+            
             //文章内容
             this.m= data.article.articleContents
-
-
             //抽出文本的图片
-
-
             console.log(data.createUserIcon)
             this.articleTitle = data.postTitle
             //头像
             //线上
             var icon = "http://app.qufen.top/"+data.createUserIcon
             //本地
-            // var icon = "http://192.168.10.151:8080"+data.createUserIcon
+//             var icon = "http://192.168.10.151:8080"+data.createUserIcon
             this.src = icon;
-            // this.imgsrc = "http://192.168.10.151:8080"+JSON.parse(data.postSmallImages).fileUrl
             this.username = data.createUserName;
             this.userSignature = data.createUserSignature;
             //标签
@@ -330,7 +354,7 @@
               //线上
                var a ="http://app.qufen.top/"+result[i].sendUserIcon;
                //本地
-              // var a ="http://192.168.10.151:8080/"+result[i].sendUserIcon;
+//               var a ="http://192.168.10.151:8080/"+result[i].sendUserIcon;
               this.imgUrls.push(a);
             }
             //赞助人数
