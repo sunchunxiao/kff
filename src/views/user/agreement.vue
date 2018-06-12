@@ -1,7 +1,7 @@
 <template>
 	<div class="agreement">
 		<div class="agreementCon">
-			<h1>区分注册协议</h1>
+			<!--<h1>区分注册协议</h1>-->
 			<p class="agreeFont agreeMargin">欢迎您来到区分</p>
 			<p class="agreeMargin p">请您仔细阅读以下条款，如果您对本协议的任何条款表示异议，您可以选择不进入区分。当您注册成功，无论是进入区分，还是在区分上发布任何内容（即「内容」），均意味着您（即「用户」）完全接受本协议项下的全部条款。</p>
 			<h3 class="agreeMargin">一. 使用规则</h3>
@@ -86,7 +86,7 @@
 			<li>如果不同意区分对本协议相关条款所做的修改，用户有权并应当停止使用区分。如果用户继续使用区分，则视为用户接受区分对本协议相关条款所做的修改。</li>
 		</ol>
 		</div>
-		
+
 	</div>
 </template>
 
@@ -94,39 +94,5 @@
 </script>
 
 <style lang="less">
-	.agreement {
-		.agreementCon {
-			width: 90%;
-			margin: 0 auto;
-			h1 {
-				text-align: center;
-			}
-		}
-	}
-	
-	.agreeFont {
-		font-size: 1.2rem;
-	}
-	
-	ol {
-		padding-left: 8%;
-	}
-	
-	ol>li {
-		font-size: 1rem;
-		list-style: decimal;
-		line-height: 1.5rem;
-	}
-	ul{
-		padding-left: 8%;
-	}
-	ul>li{
-		list-style: circle;
-	}
-	.agreeMargin{
-		margin-top: 1rem;
-	}
-	.p{
-		text-indent: 2rem;
-	}
+	@import './user.less';
 </style>

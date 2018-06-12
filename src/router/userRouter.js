@@ -82,5 +82,14 @@ export const userRouter = [
       title: '忘记密码',
     },
     component: (resolve) => require(['@/views/user/agreement.vue'], resolve)
+  },
+  //评测模型
+  {
+    path: "/user/model",
+    meta: {
+      title: '忘记密码',
+    },
+    component: (resolve) => require(['@/views/user/evaluation-model.vue'], resolve)
   }
+  
 ]
