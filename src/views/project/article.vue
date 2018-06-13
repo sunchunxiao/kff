@@ -338,9 +338,9 @@
             this.articleTitle = data.postTitle
             //头像
             //线上
-            var icon = "http://app.qufen.top/"+data.createUserIcon
+//          var icon = "http://app.qufen.top/"+data.createUserIcon
             //本地
-//             var icon = "http://192.168.10.151:8080"+data.createUserIcon
+               var icon = "http://192.168.10.151:8080"+data.createUserIcon
             this.src = icon;
             this.username = data.createUserName;
             this.userSignature = data.createUserSignature;
@@ -352,9 +352,9 @@
             var result =  data.commendationList
              for (let i = 0; i <result.length; i++) {
               //线上
-               var a ="http://app.qufen.top/"+result[i].sendUserIcon;
+//             var a ="http://app.qufen.top/"+result[i].sendUserIcon;
                //本地
-//               var a ="http://192.168.10.151:8080/"+result[i].sendUserIcon;
+                 var a ="http://192.168.10.151:8080/"+result[i].sendUserIcon;
               this.imgUrls.push(a);
             }
             //赞助人数

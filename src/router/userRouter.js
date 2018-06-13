@@ -83,6 +83,14 @@ export const userRouter = [
     },
     component: (resolve) => require(['@/views/user/agreement.vue'], resolve)
   },
+  //下载
+  {
+    path: "/user/download",
+    meta: {
+      title: '下载',
+    },
+    component: (resolve) => require(['@/views/user/download.vue'], resolve)
+  },
   //评测模型
   {
     path: "/user/model",

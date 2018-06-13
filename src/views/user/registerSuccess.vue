@@ -54,6 +54,8 @@
     position: absolute;
     right: 1rem;
     top: 1.5rem;
+    border: none;
+    cursor: pointer;
   }
   .down{
     font-size:15px;
@@ -105,7 +107,6 @@
 <template>
   <div>
     <div class="registerBac">
-      <!--<img src="../../assets/register/registerSuccess.png" alt="">-->
     </div>
     <div class="register">
       <div class="register-content">
@@ -114,7 +115,7 @@
           <div class="qf-register">
             <div class="register-title">区分注册</div>
             <span class="register-title-listen">下载App,开始区分之旅!</span>
-            <div class="download"><span class="down">下载</span></div>
+            <button class="download" @click="down"><span class="down">下载</span></button>
           </div>
 
         </div>
@@ -181,6 +182,9 @@
       },
       registerSuc(){
           this.$router.push('/user/personalPoster');
+      },
+      down(){
+      	this.$router.push('/user/download')
       }
     }
 
