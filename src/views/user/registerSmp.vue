@@ -3,14 +3,14 @@
 		font-size: 13px;
 		color: #cccccc;
 	}
-	
+
 	.registerBac {
 		width: 100%;
 		height: 18rem;
 		background-image: url("../../assets/register/register.png");
 		background-size: 100% 100%;
 	}
-	
+
 	.register {
 		background: #ffffff;
 		box-shadow: 0 2px 11px 0 rgba(103, 166, 255, 0.27);
@@ -19,32 +19,32 @@
 		margin: 0 auto;
 		margin-top: -3rem;
 	}
-	
+
 	.register-content {
 		padding: 1rem;
 	}
-	
+
 	.register-content img {
 		width: 25px;
 		height: 29px;
 	}
-	
+
 	.qf-register {
 		display: inline-block;
 	}
-	
+
 	.register-title {
 		font-size: 16px;
 		color: #1e75ff;
 		text-align: left;
 	}
-	
+
 	.register-title-listen {
 		font-size: 10px;
 		color: #666666;
 		-webkit-transform: scale(0.8);
 	}
-	
+
 	.reg-intro {
 		width: 90%;
 		margin-left: 5%;
@@ -70,12 +70,12 @@
 			color: #3b88f6;
 		}
 	}
-	
+
 	.yanzhengma_input {
 		width: 80px;
 		margin-right: 10px;
 	}
-	
+
 	#code {
 		width: 23%;
 		font-size: 14px;
@@ -87,16 +87,19 @@
 		right: 0px;
 		top: -4%;
 	}
-	
+
 	.reg-code {
 		position: relative;
 	}
-	
+
 	.longBtn {
 		margin-top: 9%;
-		color: #fff!important;
+
 	}
-	
+  .longBtn  .mint-button-text{
+    color: #fff!important;
+  }
+
 	.onecenter {
 		text-align: center;
 		margin-top: 2%;
@@ -105,7 +108,7 @@
 			color: #3b88f6;
 		}
 	}
-	
+
 	.understanding {
 		font-size: 12px;
 		color: #999999;
