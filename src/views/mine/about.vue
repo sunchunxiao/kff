@@ -33,10 +33,16 @@
   </div>
 </template>
 
-<style>
+<style lang="less">
   .about{
     height: 100%;
     background-color: #f2f2f2;
+    .mint-header{
+    	background-color:#fff!important;
+    }
+    .mint-button{
+    	overflow: inherit!important;
+    }
   }
   .poster {
     /*width: 90%;*/
