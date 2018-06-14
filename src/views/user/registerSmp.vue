@@ -95,8 +95,8 @@
 	.longBtn {
 		margin-top: 9%;
 	}
-  .mint-button-text{
-    color: #fff!important;
+  .registerSmp .mint-button-text{
+    color: #fff;
   }
 
 	.onecenter {
@@ -116,7 +116,7 @@
 	}
 </style>
 <template>
-	<div>
+	<div class="registerSmp">
 		<div class="registerBac">
 		</div>
 		<div class="register">

@@ -130,7 +130,7 @@
     color: #fff;
   }
 
-  .mint-button-text {
+  .topicIndex .mint-button-text {
     font-size: 12px;
     padding-bottom: 1px;
   }

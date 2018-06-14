@@ -50,7 +50,7 @@
     /*width: 90%;*/
     margin: 0 auto;
   }
-  .mint-button-text{
+  .about .mint-button-text{
     color:#3b88f6;
   }
   .helpInfo{
