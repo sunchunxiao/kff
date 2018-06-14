@@ -128,22 +128,22 @@
     margin-top: 1rem;
   }
 /*标签*/
-  .crack-tag1{
-
-    display: inline-block;
-    background-color:#3b88f6;
-    border-radius:35px;
-    width:61px;
-    height:22px;
-    text-align: center;
-    line-height: 22px;
-    /*opacity:0.2;*/
-    margin: 0 0.5rem;
-  }
-  .span-name{
-    font-size:14px;
-    color:black;
-  }
+  .crack-tag1 {
+		display: inline-block;
+		background-color: #d8e7fd;
+		border-radius: 35px;
+		width: 61px;
+		height: 22px;
+		text-align: center;
+		line-height: 22px;
+		/*opacity:0.2;*/
+		margin: 0 0.5rem;
+	}
+	
+	.span-name {
+		font-size: 14px;
+		color: #3b88f6;
+	}
   .crack{
     margin: 2rem 0;
   }
@@ -228,7 +228,7 @@
           	<p >{{username}}</p><img class="imgV" src=""/>
           </div>
 
-          <span class="info">EOS早期投资人，EOS节点发起人</span>
+          <span class="info">{{userSignature}}</span>
         </div>
         <div class="evaluation-follow">+关注</div>
       </div>
@@ -279,6 +279,7 @@
             articleTitle:"",
             totalscore:"",
             timestr:"",
+            userSignature:"",
             postSmallImages:"",
             article:"",
             donateNum:"",
@@ -327,13 +328,13 @@
         }
         this.articleTitle = data.post.postTitle
         //头像
-        var icon = "http://app.qufen.top/"+data.post.createUserIcon
+        var icon = data.post.createUserIcon
         this.src = icon;
         
         this.username = data.post.createUserName;
         // this.imgsrc = "http://192.168.10.151:8080"+JSON.parse(data.postSmallImages).fileUrl
         // this.username = data.post.createUserName;
-        // this.userSignature = data.post.createUserSignature;
+           this.userSignature = data.post.createUserSignature;
         // //综合评分
         this.totalscore = data.evaluation.totalScore;
         //单项评分
@@ -350,7 +351,7 @@
         //赞助  循环图片
         var result =  data.commendationList
         for (let i = 0; i <result.length; i++) {
-          var b ="http://app.qufen.top/"+result[i].sendUserIcon
+          var b = result[i].sendUserIcon
           this.imgUrls.push(b);
         }
         //赞助人数

@@ -191,20 +191,17 @@
 					<span>微信号</span>
 					<span>Telegram</span>
 					<span>微博</span>
-					<span>Twitter</span>
-					<span>facebook</span>
+					
 					<span>商务邮箱</span>
 				</div>
 				<div class="right">
 					<p>
 						<a href="https://t.me/qufenfind">:https://t.me/qufenfind</a>
 					</p>
-					<p>:计算机第几集</p>
 					<p>:djdin@weibo.com</p>
 					<p>
 						<a href="http://weibo.com/qufenfind">:http://weibo.com/qufenfind</a>
 					</p>
-					<p>:djdinkosko.com</p>
 					<p>:business@qufen.top</p>
 				</div>
 			</div>

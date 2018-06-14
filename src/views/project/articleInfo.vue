@@ -154,7 +154,7 @@
 
 	.crack-tag1 {
 		display: inline-block;
-		background-color: #3b88f6;
+		background-color: #d8e7fd;
 		border-radius: 35px;
 		width: 61px;
 		height: 22px;
@@ -163,10 +163,10 @@
 		/*opacity:0.2;*/
 		margin: 0 0.5rem;
 	}
-
+	
 	.span-name {
 		font-size: 14px;
-		color: black;
+		color: #3b88f6;
 	}
 
 	.crack {
@@ -333,10 +333,6 @@
 			});
 			$('.v').find('p').css('word-wrap', 'break-word');
 		},
-		mounted: {
-
-			// this.$route.params.postId
-		},
 		methods: {
 
 			fun(index) {
@@ -377,11 +373,11 @@
 					// console.log(JSON.parse(data.post.createUserIcon).fileUrl)
 					this.articleTitle = data.post.postTitle
 					//头像
-					var icon = "http://app.qufen.top/" + data.post.createUserIcon
-          // var icon = "http://192.168.10.151:8080" + data.post.createUserIcon
+					var icon = data.post.createUserIcon
 					this.src = icon;
-					// this.imgsrc = "http://192.168.10.151:8080"+JSON.parse(data.postSmallImages).fileUrl
+					//用户名
 					this.username = data.post.createUserName;
+					//用户签名
 					this.userSignature = data.post.createUserSignature;
 					//综合评分
 					this.totalscore = data.evaluation.totalScore;
@@ -399,9 +395,7 @@
 					var result = data.commendationList
 					for(let i = 0; i < result.length; i++) {
 						//线上
-						var a = "http://app.qufen.top/" + result[i].sendUserIcon;
-						//本地
-						//            var a ="http://192.168.10.151:8080/"+result[i].sendUserIcon;                               this.imgUrls.push(a);
+						var a = result[i].sendUserIcon;
 					}
 					//赞助人数
 					this.donateNum = data.post.donateNum;

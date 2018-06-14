@@ -1,10 +1,10 @@
 <template>
   <div class="about">
-    <HeaderBar
+    <!--<HeaderBar
       :rightOptions="rightOptions"
       v-on:rightClickHandel="rightClickHandel"
       :title="title"
-    />
+    />-->
     <div class="poster">
       <!--<img src="../../assets/image/logo.png" alt="">-->
       <div>
@@ -24,9 +24,11 @@
       <div>
         <div class="contact">联系我们</div>
         <div class="contactIcon">
-          <img src="../../assets/mine/about/telegram@2x.png" alt="">
-          <img src="../../assets/mine/about/weixin@2x.png" alt="">
-          <img src="../../assets/mine/about/weibo@2x.png" alt="">
+          <a href=" https://t.me/qufenfind"><img src="../../assets/mine/about/telegram@2x.png" alt=""></a>
+          <!--微信 qufenfind-->
+          <a href="###"><img src="../../assets/mine/about/weixin@2x.png" alt=""></a>
+          <!--微博-->
+          <a href="https://weibo.com/qufenfind"><img src="../../assets/mine/about/weibo@2x.png" alt=""></a>
         </div>
       </div>
     </div>
@@ -83,11 +85,10 @@
     margin:  0 auto;
     display: flex;
     justify-content: space-between;
-    margin-top: 1rem;
+    margin-top: 2rem;
   }
   .contactIcon img{
-    width: 20%;
-    height: 20%;
+    width: 66%;
   }
 </style>
 
