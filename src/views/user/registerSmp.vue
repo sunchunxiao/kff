@@ -94,9 +94,8 @@
 
 	.longBtn {
 		margin-top: 9%;
-
 	}
-  .longBtn  .mint-button-text{
+  .mint-button-text{
     color: #fff!important;
   }
 
