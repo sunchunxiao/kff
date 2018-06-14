@@ -94,6 +94,7 @@
 	
 	.longBtn {
 		margin-top: 9%;
+		color: #fff!important;
 	}
 	
 	.onecenter {
