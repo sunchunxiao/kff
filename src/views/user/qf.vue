@@ -4,63 +4,63 @@
 		margin: 0 auto;
 		padding-top: 10%;
 	}
-	
+
 	.qf-title img {
 		width: 100%;
 		padding-top: 6rem;
 	}
-	
+
 	.qf-title-info {
 		font-size: 15px;
 		color: #999999;
 		letter-spacing: 0;
 		margin: 2rem 0;
 	}
-	
+
 	.qf-title-content {
 		width: 90%;
 		margin: 0 auto;
 	}
-	
+
 	.font {
 		font-size: 13px;
 		color: #333333;
 	}
-	
+
 	.qf-article {
 		letter-spacing: 0;
 		line-height: 23px;
 	}
-	
+
 	.qf-index-com {
 		background: #3b88f6;
 		border-radius: 100px;
 		text-align: center;
 		height: 22px;
 		line-height: 22px;
-		font-size: 13px;
+		font-size: 1rem;
 		color: #ffffff;
 		margin: 1rem 0;
 	}
-	
+
 	.qf-index {
 		width: 72px;
 	}
-	
+
 	.qf-index1 {
 		width: 47px;
 	}
-	
+
 	.qf-title-map {
 		width: 78%;
 		margin: 2rem auto 0;
 		position: relative;
 	}
-	
+
 	.qf-title-map img {
 		width: 100%;
 	}
-	
+
 	.map {
 		width: 41%;
 		position: absolute;
@@ -76,20 +76,20 @@
 		bottom: 0;
 		margin: 0 auto;
 	}
-	
+
 	.img1 {
 		width: 85%;
 		margin: 1rem auto 0;
 	}
-	
+
 	.img1 img {
 		width: 100%;
 	}
-	
+
 	ol {
 		padding-left: 5%;
 	}
-	
+
 	li {
 		font-size: 13px;
 		color: #333333;
@@ -98,7 +98,7 @@
 		list-style: decimal;
 	}
 	/*合作*/
-	
+
 	.cooperation {
 		width: 53%;
 		margin: 0 auto;
@@ -107,22 +107,22 @@
 		color: #999999;
 		margin-bottom: 2rem;
 	}
-	
+
 	.left {
 		float: left;
 		width: 50px;
 	}
-	
+
 	.right {
 		width: 100px;
 		float: left;
 	}
-	
+
 	.register-img {
 		width: 100%;
 		margin-top: 1rem;
 	}
-	
+
 	.register-img1 {
 		width: 20%;
 		margin-top: 3rem;
@@ -134,6 +134,15 @@
 		width: 50%!important;
 		/*margin-top: 2rem;*/
 	}
+  .mainB{
+    margin-bottom: 1rem;
+  }
+  .help-title{
+    color: #3b88f6;
+  }
+  .helpEvaluation{
+    width: 100%;
+  }
 </style>
 
 <template>
@@ -149,7 +158,16 @@
 			<!--分数-->
 			<img class="register-img" src="../../assets/register/register-1.png" alt="" />
 			<div class="qf-index qf-index-com">区分指数</div>
-			<p class="font">多维度评测用户影响力，保证区分生态的健康发展。</p>
+			<p class="font mainB">多维度评测用户影响力，保证区分生态的健康发展。</p>
+      <div>
+        <div class="qf-index qf-index-com">注册奖励</div>
+        <div class="mainB">新用户注册及邀请好友注册都将获得区分的FIND奖励，明细如下：</div>
+        <img class="helpEvaluation mainB" src="../../assets/mine/help/register1.png" alt="">
+        <div>MO: 用户注册奖励</div>
+        <div>M1: 一级好友邀请</div>
+        <div class="mainB" >M2: 用户注册奖励</div>
+        <p class="mainB" >区分的前5w用户为区分的“创世节点”，将获得区分的创世奖励。</p>
+      </div>
 			<div class="qf-title-map">
 				<img src="../../assets/register/other.png" alt="">
 				<span class="map">区分生态图</span>
@@ -178,7 +196,7 @@
 				<li>在区分贡献有价值的内容（如评测、讨论、文章等），将赚取更多的FIND；</li>
 				<li>未明确事宜，请关注区分官方公告，最终解释权归区分官方所有。</li>
 			</ol>
-			
+
 			<div class="qf-title-map">
 				<img src="../../assets/register/other.png" alt="">
 				<span class="map">联系我们</span>
@@ -191,7 +209,7 @@
 					<span>微信号</span>
 					<span>Telegram</span>
 					<span>微博</span>
-					
+
 					<span>商务邮箱</span>
 				</div>
 				<div class="right">

@@ -114,6 +114,7 @@
 		text-align: center;
 		padding-top: 10%;
 	}
+
 </style>
 <template>
 	<div class="registerSmp">

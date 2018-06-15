@@ -61,7 +61,7 @@
           <p class="mainB" >在注册之后发放注册奖励，不过需要用户实名注册之后，才会开始线性发放。</p>
           <h3 class="help-title">2.内容贡献奖励</h3>
           <div class="mainB" >“区分”对于价值内容的贡献者给予FIND奖励，主要通过点赞来进行筛选。</div>
-          <img class="helpEvaluation mainB" src="../../assets/mine/help/content.png" alt="">
+          <img class="helpEvaluation mainB" src="../../assets/mine/help/content.jpg" alt="">
           <div class="mainB">当用户在区分上浏览内容时，会给予有价值的内容点赞。“区分”将奖励内容贡献者。为了“区分”生态的健康发展，“区分”引进了“区分指数”，避免机器人和水军对区分平台的内容造成恶劣影响。</div>
           <p class="mainB">用户的内容贡献奖励将直接发放到用户账户中。</p>
           <p>每个用户的点赞次数不限，但是有效赞（平台奖励）的次数有限。</p>
