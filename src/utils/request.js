@@ -27,7 +27,7 @@ axios.interceptors.response.use((res) => {
 // option = {method,body,header}
 const request = (url, options = {}) => {
   //测试地址
-	var url = "http://app.qufen.top/wap" + url;
+	var url = "http://m.qufen.top/wap" + url;
   //本地
 //	  var url = "http://192.168.10.151:803" + url;
   //本地
