@@ -1,5 +1,5 @@
 <template>
-	<div class="down">
+	<div class="kffdownload">
 		<div class="downContent">
 			<div class="down-logo">
 				<img class="dlog1" src="../../assets/down/1024@2x.png" />
@@ -17,7 +17,7 @@
 </script>
 
 <style lang="less">
-	.down {
+	.kffdownload {
 		height: 100%;
 		background-color: #127deb;
 	}
