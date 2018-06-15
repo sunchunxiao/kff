@@ -9,8 +9,8 @@
       <!--<img src="../../assets/image/logo.png" alt="">-->
       <div>
         <div class="helpInfo">
-          <div><img src="../../assets/mine/about/logo@2x.png" alt=""></div>
-          <h1>区分</h1>
+          <div><img class="helpImg" src="../../assets/mine/about/aboutLogo.png" alt=""></div>
+          <!--<h1>区分</h1>-->
           <!--<p>全球首家以分布式测评为核心的区块链投资平台</p>-->
         </div>
         <div class="helpContent">
@@ -21,7 +21,7 @@
 
         </div>
       </div>
-      <div>
+      <div class="aboutFooter">
         <div class="contact">联系我们</div>
         <div class="contactIcon">
           <a href=" https://t.me/qufenfind"><img src="../../assets/mine/about/telegram@2x.png" alt=""></a>
@@ -38,7 +38,7 @@
 <style lang="less">
   .about{
     height: 100%;
-    background-color: #f2f2f2;
+    background-color: #f6f6f6;
     .mint-header{
     	background-color:#fff!important;
     }
@@ -54,16 +54,18 @@
     color:#3b88f6;
   }
   .helpInfo{
+  	background-image: url(../../assets/mine/about/bac.png);
+  	background-size: 100% 100%;
     text-align: center;
-    padding: 2rem 0;
+    padding: 3rem 0;
   }
   .helpContent{
     background-color: #fff;
-    padding: 2rem 1rem;
+    padding: 1rem;
   }
   .helpContent p{
     color: rgb(74,74,74);
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin: 1rem 0;
   }
   .about h2{
@@ -79,6 +81,9 @@
     text-align: center;
     margin-top: 1rem;
   }
+  .helpImg{
+  	width: 34%;
+  }
   .contactIcon{
     /*float: left;*/
     width: 50%;
@@ -87,8 +92,14 @@
     justify-content: space-between;
     margin-top: 2rem;
   }
+  .contactIcon a{
+  	width: 31px;
+  }
   .contactIcon img{
-    width: 66%;
+    width: 100%;
+  }
+  .aboutFooter{
+  	background-color: #f6f6f6;
   }
 </style>
 
