@@ -7,13 +7,26 @@
 			</div>
 			<div class="downH">投资区块链，一定要 <span class="down-qf">”区分“</span></div>
 			<img class="downearth" src="../../assets/down/down-5.png"/>
-			<div class="downBtn"><button><img src="../../assets/down/iOS.png"/><span>iphone下载</span></button></div>
-			<div class="downBtn2"><button><img src="../../assets/down/Android.png"/><span>Android下载</span></button></div>
+    <div class="downBtn">  <a href="http://pic.qufen.top/qufen_beta_v0.7.apk"><button><img src="../../assets/down/iOS.png"/><span>iphone下载</span></button></a></div>
+			<div class="downBtn2"><Button  @click="instance"><img src="../../assets/down/Android.png"/><span>Android下载</span></Button></div>
 		</div>
 	</div>
 </template>
 
 <script>
+  import { MessageBox } from 'mint-ui';
+  export default {
+    name: 'download',
+    methods: {
+      instance () {
+        MessageBox({
+          title: 'IOS-全力开发中',
+          showConfirmButton: true
+        });
+
+      }
+    }
+  }
 </script>
 
 <style lang="less">
@@ -21,7 +34,7 @@
 		height: 100%;
 		background-color: #127deb;
 	}
-	
+
 	.downContent {
 		width: 90%;
 		margin: 0 auto;
@@ -52,17 +65,21 @@
 		.downBtn{
 			text-align: center;
 			margin-bottom: 10px;
-			
+      button{
+        line-height: 3rem;
+      }
 		}
 		.downBtn2{
 			text-align: center;
-			
+      a{
+        padding: 1rem 0.5rem;
+      }
 		}
 		button{
 			border-radius: 5px;
 			width: 17rem;
 			height: 3.5rem;
-			line-height: 4rem;
+			line-height: 3rem;
 			background-color: #fff;
 			border: none;
 			img{
@@ -76,5 +93,5 @@
 			}
 		}
 	}
-	
+
 </style>

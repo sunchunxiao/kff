@@ -128,7 +128,6 @@
   import {getCode} from '@/service/user';
   import {register} from '@/service/user';
 
-
   export default {
     name: 'register',
     data() {
