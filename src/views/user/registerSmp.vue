@@ -3,14 +3,14 @@
 		font-size: 13px;
 		color: #cccccc;
 	}
-
+	
 	.registerBac {
 		width: 100%;
 		height: 18rem;
 		background-image: url("../../assets/register/register.png");
 		background-size: 100% 100%;
 	}
-
+	
 	.register {
 		background: #ffffff;
 		box-shadow: 0 2px 11px 0 rgba(103, 166, 255, 0.27);
@@ -19,32 +19,32 @@
 		margin: 0 auto;
 		margin-top: -3rem;
 	}
-
+	
 	.register-content {
 		padding: 1rem;
 	}
-
+	
 	.register-content img {
 		width: 25px;
 		height: 29px;
 	}
-
+	
 	.qf-register {
 		display: inline-block;
 	}
-
+	
 	.register-title {
 		font-size: 16px;
 		color: #1e75ff;
 		text-align: left;
 	}
-
+	
 	.register-title-listen {
 		font-size: 10px;
 		color: #666666;
 		-webkit-transform: scale(0.8);
 	}
-
+	
 	.reg-intro {
 		width: 90%;
 		margin-left: 5%;
@@ -70,13 +70,10 @@
 			color: #3b88f6;
 		}
 	}
-
-	.yanzhengma_input {
-		width: 80px;
-		margin-right: 10px;
-	}
-
-	#code {
+	
+	.yanzhengma_input {}
+	
+	.code1 {
 		width: 23%;
 		font-size: 14px;
 		letter-spacing: 3px;
@@ -85,20 +82,48 @@
 		border-bottom: 0;
 		position: absolute;
 		right: 0px;
-		top: -4%;
+		top: 10%;
 	}
-
+	/*图片验证码*/
+	
+	.code {
+		/*width: 400px;*/
+		/*margin: 0 auto;*/
+	}
+	
+	.input-val {
+		width: 80px;
+		margin-right: 10px;
+		/*background: #ffffff;
+		height: 2.8rem;
+		padding: 0 2%;
+		border-radius: 5px;
+		border: none;
+		border: 1px solid rgba(0, 0, 0, .2);
+		font-size: 1.0625rem;*/
+	}
+	
+	#canvas {
+		width: 79px;
+		float: right;
+		display: inline-block;
+		/*border: 1px solid #ccc;*/
+		border-radius: 5px;
+		cursor: pointer;
+	}
+	
 	.reg-code {
 		position: relative;
 	}
-
+	
 	.longBtn {
 		margin-top: 9%;
 	}
-  .registerSmp .mint-button-text{
-    color: #fff;
-  }
-
+	
+	.registerSmp .mint-button-text {
+		color: #fff;
+	}
+	
 	.onecenter {
 		text-align: center;
 		margin-top: 2%;
@@ -107,14 +132,13 @@
 			color: #3b88f6;
 		}
 	}
-
+	
 	.understanding {
 		font-size: 12px;
 		color: #999999;
 		text-align: center;
 		padding-top: 10%;
 	}
-
 </style>
 <template>
 	<div class="registerSmp">
@@ -132,7 +156,10 @@
 						<div class="reg-intro">
 							<input placeholder="输入手机号" type="tel" v-model="phone" id="telnum" @blur="handleCommentBlur">
 							<div class="reg-code">
-								<input type="text" placeholder="图片验证码" class="yanzhengma_input" v-model="picLyanzhengma" @blur="checkLpicma"><input type="button" id="code" @click="createCode" class="verification1" v-model="checkCode" />
+								<div class="code">
+									<input class="input-val" type="text" value="" placeholder="请输入图片验证码" />
+									<canvas id="canvas" class="code1" width="100" height="43" @click="draw1"></canvas>
+								</div>
 								<input placeholder="输入验证码" type="text" v-model="code">
 							</div>
 							<button @click="getcode">获取验证码<span v-show="!show">({{count}}S)</span></button>
@@ -166,74 +193,159 @@
 				show: true,
 				count: '',
 				timer: null,
-				checkCode: '',
 				picLyanzhengma: '',
-				invaUIH: ""
-			}
-		},
+				invaUIH: "",
+				show_num: []
 
-		created() {
-			this.createCode()
+			}
 		},
 		components: {
 			Qf
 		},
 		mounted() {
+			this.draw1();
 			console.log(this.$route.query.invaUIH)
 			this.invaUIH = this.$route.query.invaUIH
 		},
 		methods: {
+			//图片验证码
+			btn() {
+				var val = $(".input-val").val().toLowerCase();
+				var num = this.show_num.join("");
+				if(val == '') {
+					alert('请输入验证码！');
+				} else if(val == num) {
+					alert('提交成功！');
+					$(".input-val").val('');
+					this.draw(this.show_num);
+
+				} else {
+					alert('验证码错误！请重新输入！');
+					$(".input-val").val('');
+					this.draw(this.show_num);
+				}
+			},
+			draw1() {
+				this.draw(this.show_num);
+			},
+			draw(show_num) {
+				var canvas_width = $('#canvas').width();
+				var canvas_height = $('#canvas').height();
+				var canvas = document.getElementById("canvas"); //获取到canvas的对象，演员
+				var context = canvas.getContext("2d"); //获取到canvas画图的环境，演员表演的舞台
+				canvas.width = canvas_width;
+				canvas.height = canvas_height;
+				var sCode = "A,B,C,E,F,G,H,J,K,L,M,N,P,Q,R,S,T,W,X,Y,Z,1,2,3,4,5,6,7,8,9,0";
+				var aCode = sCode.split(",");
+				var aLength = aCode.length; //获取到数组的长度
+
+				for(var i = 0; i <= 3; i++) {
+					var j = Math.floor(Math.random() * aLength); //获取到随机的索引值
+					var deg = Math.random() * 30 * Math.PI / 180; //产生0~30之间的随机弧度
+					var txt = aCode[j]; //得到随机的一个内容
+					show_num[i] = txt.toLowerCase();
+					var x = 7 + i * 14; //文字在canvas上的x坐标
+					var y = 18 + Math.random() * 8; //文字在canvas上的y坐标
+					context.font = "bold 23px 微软雅黑";
+
+					context.translate(x, y);
+					context.rotate(deg);
+
+					context.fillStyle = this.randomColor();
+					context.fillText(txt, 0, 0);
+
+					context.rotate(-deg);
+					context.translate(-x, -y);
+				}
+				for(var i = 0; i <= 5; i++) { //验证码上显示线条
+					context.strokeStyle = this.randomColor();
+					context.beginPath();
+					context.moveTo(Math.random() * canvas_width, Math.random() * canvas_height);
+					context.lineTo(Math.random() * canvas_width, Math.random() * canvas_height);
+					context.stroke();
+				}
+				for(var i = 0; i <= 30; i++) { //验证码上显示小点
+					context.strokeStyle = this.randomColor();
+					context.beginPath();
+					var x = Math.random() * canvas_width;
+					var y = Math.random() * canvas_height;
+					context.moveTo(x, y);
+					context.lineTo(x + 1, y + 1);
+					context.stroke();
+				}
+			},
+			randomColor() { //得到随机的颜色值
+				var r = Math.floor(Math.random() * 256);
+				var g = Math.floor(Math.random() * 256);
+				var b = Math.floor(Math.random() * 256);
+				return "rgb(" + r + "," + g + "," + b + ")";
+			},
 			//提交注册
 			registerSmp() {
 				var myreg = /^1[34578]\d{9}$/;
 				var pwreg = /[a-zA-Z\d+]{8,20}/;
+				//输入框
+				var val = $(".input-val").val().toLowerCase();
+				//图片生成的
+				var num = this.show_num.join("");
+				console.log(val, num)
 				let params = {
 					phoneNumber: this.phone,
 					password: this.password,
 					//图片生成的
-					checkCode: this.checkCode,
+					checkCode: num,
+					phoneCode: val,
 					//手机验证码
-					phoneCode: this.picLyanzhengma,
 					dynamicVerifyCode: this.code,
 					//  邀请码
 					invaUIH: this.invaUIH
 				}
 				if(myreg.test(this.phone)) {
-					if(this.picLyanzhengma != "") {
-						if(this.code != "") {
-							if(pwreg.test(this.password)) {
-								register(params).then(res => {
-									//0是不成功 1是注册成功
-									if(res.data.reStatus == 0) {
-										// MessageBox({
-										//   title: '提示',
-										//   message: '注册成功',
-										//   showConfirmButton: true
-										// });
-										alert(res.data.reason)
-										this.code = "";
-									} else {
-										console.log(res.data.token)
-										localStorage.setItem("token", res.data.token);
+					if(val != "") {
+						if(val == num) {
+							if(this.code != "") {
+								if(pwreg.test(this.password)) {
+									register(params).then(res => {
+										//0是不成功 1是注册成功
+										if(res.data.reStatus == 0) {
+											// MessageBox({
+											//   title: '提示',
+											//   message: '注册成功',
+											//   showConfirmButton: true
+											// });
+											alert(res.data.reason)
+											this.code = "";
+										} else {
+											console.log(res.data.token)
+											localStorage.setItem("token", res.data.token);
 
-										this.$router.push('/user/registerSuccess');
-									}
+											this.$router.push('/user/registerSuccess');
+										}
 
-								})
+									})
+								} else {
+									MessageBox({
+										title: '提示',
+										message: '请输入8-20位数字字母组合！',
+										showConfirmButton: true
+									});
+								}
+
 							} else {
 								MessageBox({
 									title: '提示',
-									message: '请输入8-20位数字字母组合！',
+									message: '请输入短信验证码！',
 									showConfirmButton: true
 								});
 							}
-
 						} else {
 							MessageBox({
 								title: '提示',
-								message: '请输入短信验证码！',
+								message: '图片验证码输入不正确！',
 								showConfirmButton: true
 							});
+//							this.draw1();//刷新验证码
+//						    $(".input-val").val('');
 						}
 
 					} else {
@@ -247,7 +359,7 @@
 				} else {
 					MessageBox({
 						title: '提示',
-						message: '请输入正确的手机号！',
+						message: '请输入手机号！',
 						showConfirmButton: true
 					});
 				}
@@ -269,7 +381,6 @@
 
 				} else {
 					phoneP(params).then(res => {
-
 						if(res.code == 0) {
 							if(res.data.isRegister != 0) {
 								MessageBox({
@@ -284,49 +395,7 @@
 				}
 
 			},
-			//密码验证
-			// regpw(){
-			//   var pw = this.password;
-			// var pwreg = /[a-zA-Z\d+]{8,20}/;
-			//   if(!pwreg.test(pw)) {
-			//     MessageBox({
-			//       title: '提示',
-			//       message: '请输入8-20位数字字母组合！',
-			//       showConfirmButton: true
-			//     });
-			//   }
-			// },
-			//图片验证
-			checkLpicma() {
-				this.picLyanzhengma.toUpperCase(); //取得输入的验证码并转化为大写
-				if(this.picLyanzhengma.toUpperCase() != this.checkCode) { //若输入的验证码与产生的验证码不一致时
-					console.log(this.picLyanzhengma.toUpperCase())
-					console.log(code)
-					// MessageBox({
-					//   title: '提示',
-					//   message: '验证码输入错误',
-					//   showConfirmButton: true
-					// });
-					this.createCode(); //刷新验证码
-					this.picLyanzhengma = '';
-				} else { //输入正确时
-					return true;
-				}
-			},
-			//图片验证码
-			createCode() {
-				var code = $("#code");
-				code = "";
-				var codeLength = 4; //验证码的长度
-				var random = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
-					'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); //随机数
-				for(var i = 0; i < codeLength; i++) { //循环操作
-					var index = Math.floor(Math.random() * 36); //取得随机数的索引（0~35）
-					code += random[index]; //根据索引取得随机数加到code上
-				}
-				this.checkCode = code; //把code值赋给验证码
-				// console.log(this.checkCode)
-			},
+
 			//手机验证码
 			getcode() {
 

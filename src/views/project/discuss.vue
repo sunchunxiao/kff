@@ -11,7 +11,7 @@
 	}
 	
 	.evaluation-title {
-		width: 90%;
+		width: 87%;
 		margin: 1rem auto;
 	}
 	
@@ -25,7 +25,7 @@
 	}
 	
 	.evaluation-info {
-		width: 90%;
+		width: 87%;
 		margin: 1rem auto 0;
 	}
 	

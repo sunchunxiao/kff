@@ -43,7 +43,7 @@
       props:["message"],
         name: "footer-info",
         mounted () {
-        console.log(this.message)
+        console.log(this.message[0],this.message[1])
         }
     }
 </script>

@@ -31,7 +31,7 @@
 	}
 
 	.evaluation-info {
-		width: 90%;
+		width: 87%;
 		margin: 1rem auto 0;
 	}
 
@@ -82,7 +82,7 @@
 	.evaluation-follow {
 		position: absolute;
 		right: 0;
-		top: 0.5rem;
+		top: 0;
 		font-size: 12px;
 		color: #ffffff;
 		text-align: center;
@@ -94,7 +94,6 @@
 		line-height: 20px;
 	}
 	/*综合评分*/
-
 	h3 {
 		float: left;
 	}
@@ -107,14 +106,16 @@
 
 	.store-info {
 		background: #ffffff;
-		box-shadow: 0 2px 10px 0 #e8e8e8;
-		border-radius: 5px;
+		/*box-shadow: 0 2px 10px 0 #e8e8e8;*/
+		/*border-radius: 5px;*/
 		/*width:345px;*/
-		height: 18rem;
+/*		height: 18rem;*/
 		margin-top: 1rem;
 	}
 
 	.store-info1 {
+		box-shadow: 0 2px 10px 0 #e8e8e8;
+		border-radius: 5px;
 		padding: 1rem;
 	}
 
@@ -161,9 +162,9 @@
 		text-align: center;
 		line-height: 22px;
 		/*opacity:0.2;*/
-		margin: 0 0.5rem;
+		/*margin: 0 0.5rem;*/
 	}
-	
+
 	.span-name {
 		font-size: 14px;
 		color: #3b88f6;
@@ -182,7 +183,7 @@
 
 	.crack-tag3 {
 		position: absolute;
-		right: 1.5rem;
+		right: 2.5rem;
 		font-size: 1rem;
 		color: #c2c2c2;
 		letter-spacing: 0;
@@ -235,7 +236,7 @@
 		<!--/>-->
 		<div class="evaluation">
 			<div class="evaluation-title">
-				<h2>EOS测评 - ALL</h2>
+				<h2>{{articleTitle}}</h2>
 				<span class="evaluation-store storeCommon">8.1</span>
 			</div>
 		</div>
@@ -308,6 +309,7 @@
 				src: "",
 				id: "",
 				m: "",
+				articleTitle:'',
 				article: "",
 				username: "",
 				userSignature: "",
@@ -325,7 +327,10 @@
 		},
 		updated() {
 			// $('.v').find('img').css('width', '100%');
-			$('.v').find('img').css('width', '100%');
+			$('.v').find('img').css({
+				width:'100%',
+				height:'100%',
+				});
 			$('.v').find('p').css({
 				fontSize: '1.3rem',
 				width: "100%",
@@ -334,7 +339,6 @@
 			$('.v').find('p').css('word-wrap', 'break-word');
 		},
 		methods: {
-
 			fun(index) {
 				if(index <= 6) {
 					var str = "left:" + (index * 25 - 50) + "px";
@@ -404,8 +408,7 @@
 					//底部
 					this.post.push({
 						praiseNum: data.post.praiseNum
-					})
-					this.post.push({
+					},{
 						commentsNum: data.post.commentsNum
 					})
 					console.log(this.post)
