@@ -29,7 +29,7 @@ const request = (url, options = {}) => {
   //测试地址
 	var url = "https://app.qufen.top/wap" + url;
   //本地
-	//   var url = "http://192.168.10.151:803" + url;
+//	   var url = "http://192.168.10.151:803" + url;
   //本地
 	// var url = "http://192.168.10.123:8083" + url;
 

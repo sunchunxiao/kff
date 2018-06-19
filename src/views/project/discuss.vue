@@ -319,16 +319,16 @@
 					var data = res.data.discussShare
 					//头像加V
 					var cuser = data.cUsertype
-					if(cuser == 4) {
-						//      	$(".imgV").attr("src","../../../static/elevation/initial@2x.png")
-					}
 					if(cuser == 1) {
-						$(".imgV").attr("src", "../../../static/elevation/initial@2x.png")
+						$(".imgV").css("display","none")
 					}
 					if(cuser == 2) {
-						$(".imgV").attr("src", "../../../static/elevation/media@2x.png")
+						$(".imgV").attr("src", "../../../static/elevation/initial@2x.png")
 					}
 					if(cuser == 3) {
+						$(".imgV").attr("src", "../../../static/elevation/media@2x.png")
+					}
+					if(cuser == 4) {
 						$(".imgV").attr("src", "../../../static/elevation/progress@2x.png")
 					}
 
