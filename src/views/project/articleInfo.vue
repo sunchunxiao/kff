@@ -403,6 +403,10 @@
 					}
 					//赞助人数
 					this.donateNum = data.post.donateNum;
+			    //如果赞助人数为0则不显示图片和赞助人数
+          if(this.donateNum==0){
+            $(".sponsor").css("display","none")
+          }
 					//文章介绍
 					this.evauationContent = data.evaluation.evauationContent;
 					//底部

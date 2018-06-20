@@ -330,7 +330,7 @@
 					//头像加V
 					var cuser = data.cUsertype
 					if(cuser == 1) {
-						     	$(".imgV").css("display","none")
+					  $(".imgV").css("display","none")
 					}
 					if(cuser == 2) {
 						$(".imgV").attr("src", "../../../static/elevation/initial@2x.png")
@@ -365,6 +365,10 @@
 					}
 					//赞助人数
 					this.donateNum = data.donateNum;
+          //如果赞助人数为0则不显示图片和赞助人数
+					if(this.donateNum==0){
+              $(".sponsor").css("display","none")
+          }
 
 					//文章介绍
 					this.articleContents = data.article.articleContents;

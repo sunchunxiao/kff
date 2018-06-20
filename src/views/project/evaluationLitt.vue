@@ -235,7 +235,7 @@
 
 <template>
 	<div>
-		
+
 		<div class="evaluation">
 			<div class="evaluation-title">
 				<h2>{{articleTitle}}</h2>
@@ -391,6 +391,10 @@
 					}
 					//赞助人数
 					this.donateNum = data.post.donateNum;
+          //如果赞助人数为0则不显示图片和赞助人数
+          if(this.donateNum==0){
+            $(".sponsor").css("display","none")
+          }
 					//文章
 					this.m = data.evaluation.evauationContent
 					//底部
