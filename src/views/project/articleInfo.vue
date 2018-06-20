@@ -284,9 +284,9 @@
 						<span class="crack-tag3">编辑于 2015-07-15</span>
 						<div class="sponsor">
 							<img class="sponsor4 img1" :src="item" v-for="(item,index) in imgUrls" :style="fun(index)" alt="">
-
+              <p class="zan">{{donateNum}}人已赞助</p>
 						</div>
-						<p class="zan">{{donateNum}}人已赞助</p>
+
 					</div>
 					<FooterInfo :message="post"></FooterInfo>
 				</div>
