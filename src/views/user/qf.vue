@@ -110,7 +110,7 @@
 
 	.left {
 		float: left;
-		width: 50px;
+		width: 61px;
 	}
 
 	.right {
@@ -208,7 +208,7 @@
 				<div class="left">
 					<span>微信号</span>
 					<span>Telegram</span>
-					<span>微博</span>
+					<span>微博</span><br>
 
 					<span>商务邮箱</span>
 				</div>
@@ -216,11 +216,11 @@
 					<p>
 						<a href="https://t.me/qufenfind">qufenfind</a>
 					</p>
-					<p> https://t.me/qufenfind</p>
+					<p><a href="https://t.me/qufenfind">  https://t.me/qufenfind</a></p>
 					<p>
-						<a href="http://weibo.com/qufenfind">:http://weibo.com/qufenfind</a>
+						<a href="http://weibo.com/qufenfind"> http://weibo.com/qufenfind</a>
 					</p>
-					<p>:business@qufen.top</p>
+					<p>business@qufen.top</p>
 				</div>
 			</div>
 		</div>
