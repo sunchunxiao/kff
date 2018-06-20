@@ -100,7 +100,7 @@
 	/*合作*/
 
 	.cooperation {
-		width: 53%;
+		width: 60%;
 		margin: 0 auto;
 		overflow: hidden;
 		font-size: 12px;
@@ -214,9 +214,9 @@
 				</div>
 				<div class="right">
 					<p>
-						<a href="https://t.me/qufenfind">:https://t.me/qufenfind</a>
+						<a href="https://t.me/qufenfind">qufenfind</a>
 					</p>
-					<p>:djdin@weibo.com</p>
+					<p> https://t.me/qufenfind</p>
 					<p>
 						<a href="http://weibo.com/qufenfind">:http://weibo.com/qufenfind</a>
 					</p>
