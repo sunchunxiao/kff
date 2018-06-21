@@ -94,13 +94,6 @@
 	.input-val {
 		width: 80px;
 		margin-right: 10px;
-		/*background: #ffffff;
-		height: 2.8rem;
-		padding: 0 2%;
-		border-radius: 5px;
-		border: none;
-		border: 1px solid rgba(0, 0, 0, .2);
-		font-size: 1.0625rem;*/
 	}
 	
 	#canvas {
@@ -174,6 +167,7 @@
 			</div>
 		</div>
 		<div class="understanding">- 在这里读懂区块链项目，寻找价值币 -</div>
+		<div style="color: red;text-align: center;margin-top: 1rem;" >内测期间不开放注册</div>
 		<Qf></Qf>
 	</div>
 </template>
