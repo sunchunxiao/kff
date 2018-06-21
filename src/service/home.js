@@ -46,3 +46,12 @@ export const discuss = (params = {}) => {
     },
   })
 }
+
+//分享
+export const share = (params = {}) => {
+  return request(`kff/weiXinShare/getJsApiTicket`, {
+    body: {
+      ...params
+    },
+  })
+}

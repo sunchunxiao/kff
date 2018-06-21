@@ -17,6 +17,7 @@ import VueClipboard from 'vue-clipboard2'
 // 复制到剪切板
 Vue.use(VueClipboard)
 Vue.use(iView)
+
 Vue.config.productionTip = false
 
 // 加载插件

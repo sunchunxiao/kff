@@ -67,6 +67,7 @@ export const projectRouter = [
     },
     component: (resolve) => require(['@/views/project/article.vue'], resolve)
   },
+
   //文章
   {
     path: '/project/article1',

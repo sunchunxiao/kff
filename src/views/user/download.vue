@@ -11,9 +11,6 @@
 			</div>
 			<!--安卓下载-->
 			<div class="downBtn2">
-				<!--<a href="http://pic.qufen.top/qufen_beta_v0.7.apk">
-					<Button @click="android"><img src="../../assets/down/Android.png"/><span>Android下载</span></Button>
-				</a>-->
 					<Button @click="android"><img src="../../assets/down/Android.png"/><span>Android下载</span></Button>
 
 			</div>
