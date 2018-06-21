@@ -9,15 +9,23 @@
 			<div class="wdown">
 				<img class="downearth" src="../../assets/down/down-5.png" />
 			</div>
-      <!--安卓下载-->
-      <div class="downBtn2">
-        <a href="http://pic.qufen.top/qufen_beta_v0.7.apk"><Button><img src="../../assets/down/Android.png"/><span>Android下载</span></Button></a>
-      </div>
+			<!--安卓下载-->
+			<div class="downBtn2">
+				<!--<a href="http://pic.qufen.top/qufen_beta_v0.7.apk">
+					<Button @click="android"><img src="../../assets/down/Android.png"/><span>Android下载</span></Button>
+				</a>-->
+					<Button @click="android"><img src="../../assets/down/Android.png"/><span>Android下载</span></Button>
+
+			</div>
 			<div class="downBtn">
 				<button @click="instance"><img src="../../assets/down/iOS.png"/><span>iphone下载</span></button>
 			</div>
-
-
+      <!--微信下载提示在浏览器上打开的遮罩层-->
+			<div class="weixin-tip">
+				<p>
+					<img src="../../assets/down/down.png" alt="在浏览器打开" />
+				</p>
+			</div>
 		</div>
 	</div>
 </template>
@@ -26,6 +34,7 @@
 	import { MessageBox } from 'mint-ui';
 	export default {
 		name: 'download',
+
 		methods: {
 			instance() {
 				MessageBox({
@@ -34,27 +43,67 @@
 				});
 
 			},
-			// android(){
-			// 	if(navigator.userAgent.match(/android/i)){
-			// 		window.location.href='com.baidu.tieba://app';//android app协议
-			// 		window.setTimeout(function(){
-			// 			window.location.href = 'https://pic.qufen.top/qufen_beta_v0.7.apk'
-			// 		})
-			// 	}
-			// }
+			is_weixin() {
+				var ua = navigator.userAgent.toLowerCase();
+				if(ua.match(/MicroMessenger/i) == "micromessenger") {
+					console.log(11)
+					return true;
+				} else {
+					console.log(22)
+					window.location.href = "http://pic.qufen.top/qufen_beta_v0.7.apk"
+					return false;
+				}
+			},
+			android() {
+				var winHeight = $(window).height();
+				console.log(winHeight)
+				this.is_weixin()
+				var isWeixin = this.is_weixin();
+				console.log(isWeixin)
+				if(isWeixin) {
+					$(".weixin-tip").css("height", winHeight);
+					$(".weixin-tip").show();
+				}
+			}
 		}
 	}
 </script>
 
 <style lang="less">
+	.weixin-tip img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	.weixin-tip {
+		display: none;
+		position: fixed;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		background: rgba(0, 0, 0, 0.8);
+		filter: alpha(opacity=80);
+		height: 100%;
+		width: 100%;
+		z-index: 100;
+	}
+
+	.weixin-tip p {
+		text-align: center;
+		margin-top: 10%;
+		padding: 0 5%;
+	}
+
 	.kffdownload {
 		height: 100%;
 		background-color: #127deb;
 	}
-	.wdown{
-		width: 85%;
+
+	.wdown {
+		width: 80%;
 		margin: 1rem auto 0;
 	}
+
 	.downContent {
 		width: 90%;
 		margin: 0 auto;
@@ -84,7 +133,7 @@
 		}
 		.downBtn {
 			text-align: center;
-			margin-top: 2rem;
+			margin-top: 1rem;
 			margin-bottom: 10px;
 			button {
 				line-height: 3rem;
@@ -92,6 +141,7 @@
 		}
 		.downBtn2 {
 			text-align: center;
+			margin-top: 1rem;
 			a {
 				padding: 1rem 0.5rem;
 			}

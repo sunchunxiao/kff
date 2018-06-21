@@ -289,6 +289,21 @@
 			HeaderBar,
 			FooterInfo
 		},
+		mounted(){
+			wx.onMenuShareweixin({  
+		        title: '区分', // 分享标题  
+		        desc: '投资区块链一定要区分', // 分享描述  
+		        link: '', // 分享链接  
+		        imgUrl: '', // 分享图标  
+		        success: function () { 
+		        	console.log(111)
+		           // 用户确认分享后执行的回调函数  
+		        },  
+		        cancel: function () {   
+		           // 用户取消分享后执行的回调函数  
+		        }  
+		    });  
+		},
 		methods: {
 			fun(index) {
 				if(index <= 6) {
