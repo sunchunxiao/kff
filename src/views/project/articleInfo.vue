@@ -94,6 +94,7 @@
 		line-height: 20px;
 	}
 	/*综合评分*/
+
 	h3 {
 		float: left;
 	}
@@ -109,7 +110,7 @@
 		/*box-shadow: 0 2px 10px 0 #e8e8e8;*/
 		/*border-radius: 5px;*/
 		/*width:345px;*/
-/*		height: 18rem;*/
+		/*		height: 18rem;*/
 		margin-top: 1rem;
 	}
 
@@ -237,7 +238,7 @@
 		<div class="evaluation">
 			<div class="evaluation-title">
 				<h2>{{articleTitle}}</h2>
-				<span class="evaluation-store storeCommon">8.1</span>
+				<span class="evaluation-store storeCommon">{{totalscore}}</span>
 			</div>
 		</div>
 		<div class="evaluation-info">
@@ -284,7 +285,7 @@
 						<span class="crack-tag3">编辑于 2015-07-15</span>
 						<div class="sponsor">
 							<img class="sponsor4 img1" :src="item" v-for="(item,index) in imgUrls" :style="fun(index)" alt="">
-              <p class="zan">{{donateNum}}人已赞助</p>
+							<p class="zan">{{donateNum}}人已赞助</p>
 						</div>
 
 					</div>
@@ -301,6 +302,7 @@
 	import HeaderBar from '@/components/layout/headerBar.vue'
 	import FooterInfo from '@/components/layout/footerInfo.vue'
 	import { articleInfo } from '@/service/home';
+	// import '../../assets/js/share1'
 	export default {
 		name: "article-info",
 		data() {
@@ -309,7 +311,7 @@
 				src: "",
 				id: "",
 				m: "",
-				articleTitle:'',
+				articleTitle: '',
 				article: "",
 				username: "",
 				userSignature: "",
@@ -328,9 +330,9 @@
 		updated() {
 			// $('.v').find('img').css('width', '100%');
 			$('.v').find('img').css({
-				width:'100%',
-				height:'100%',
-				});
+				width: '100%',
+				height: '100%',
+			});
 			$('.v').find('p').css({
 				fontSize: '1.3rem',
 				width: "100%",
@@ -349,21 +351,22 @@
 			}
 		},
 		mounted() {
-			console.log(this.$route.query.id)
+
+			// console.log(this.$route.query.id)
 			this.id = this.$route.query.id;
-			let params = {
+			var params = {
 				postId: this.id
 			}
 			//测评
 			articleInfo(params).then(res => {
 				if(res.code == 0) {
-					console.log(res.data.projectEvaluationDetailResponse)
+					// console.log(res.data.projectEvaluationDetailResponse)
 					var data = res.data.projectEvaluationDetailResponse
 
 					//头像加V
 					var cuser = data.cUsertype
 					if(cuser == 1) {
-						$(".imgV").css("display","none")
+						$(".imgV").css("display", "none")
 					}
 					if(cuser == 2) {
 						$(".imgV").attr("src", "../../../static/elevation/initial@2x.png")
@@ -387,7 +390,11 @@
 					this.totalscore = data.evaluation.totalScore;
 					//评分
 					this.storeList = JSON.parse(data.evaluation.professionalEvaDetail);
-					console.log(this.storeList)
+					//自定义维度
+					if(this.storeList == null) {
+						console.log(111)
+						$(".store-info1").css("display", "none")
+					}
 					//文章
 					this.m = data.evaluation.evauationContent
 
@@ -403,19 +410,19 @@
 					}
 					//赞助人数
 					this.donateNum = data.post.donateNum;
-			    //如果赞助人数为0则不显示图片和赞助人数
-          if(this.donateNum==0){
-            $(".sponsor").css("display","none")
-          }
+					//如果赞助人数为0则不显示图片和赞助人数
+					if(this.donateNum == 0) {
+						$(".sponsor").css("display", "none")
+					}
 					//文章介绍
 					this.evauationContent = data.evaluation.evauationContent;
 					//底部
 					this.post.push({
 						praiseNum: data.post.praiseNum
-					},{
+					}, {
 						commentsNum: data.post.commentsNum
 					})
-					console.log(this.post)
+					// console.log(this.post)
 
 				}
 

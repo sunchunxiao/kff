@@ -23,7 +23,6 @@ Vue.config.productionTip = false
 // 加载插件
 Vue.use(MintUI)
 
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

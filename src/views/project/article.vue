@@ -263,7 +263,8 @@
 <script>
 	import HeaderBar from '@/components/layout/headerBar.vue'
 	import FooterInfo from '@/components/layout/footerInfo.vue'
-	import { article } from '@/service/home';
+	import { article,share} from '@/service/home';
+	// import '../../assets/js/share1'
 	export default {
 		name: "article-info",
 		data() {
