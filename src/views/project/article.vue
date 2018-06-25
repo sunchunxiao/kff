@@ -1,7 +1,5 @@
 <style lang="less">
 @import 'css/project.css';
-
-
 	.percent {
 		display: inline-block;
 		width: 100px;
@@ -59,7 +57,7 @@
 					</div>
 					<span class="info">{{userSignature}}</span>
 				</div>
-				<div class="evaluation-follow">+关注a</div>
+				<div class="evaluation-follow">+关注</div>
 			</div>
 			<!--<div v-for="item in topicList">{{item}}</div>-->
 			<div v-html="m" style="width: 100%" class="v">{{m}}</div>

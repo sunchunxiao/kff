@@ -1,7 +1,6 @@
 <style lang="less">
 	@import 'css/project.css';
 	/*综合评分*/
-
 	.evaluation-info {
 		h3 {
 			float: left;
