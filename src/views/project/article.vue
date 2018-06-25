@@ -1,6 +1,6 @@
 <style lang="less">
 @import 'css/project.css';
-	
+
 
 	.percent {
 		display: inline-block;
@@ -34,7 +34,7 @@
 		width: 100%;
 		margin-top: 1rem;
 	}
-	
+
 </style>
 
 <template>
@@ -88,7 +88,6 @@
 	import FooterInfo from '@/components/layout/footerInfo.vue'
 	import Headerdown from '@/components/layout/headerdown.vue'
 	import { article,share} from '@/service/home';
-	// import '../../assets/js/share1'
 	export default {
 		name: "article-info",
 		data() {

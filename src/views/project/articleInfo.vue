@@ -1,7 +1,7 @@
 <style lang="less">
 	@import 'css/project.css';
 	/*综合评分*/
-	
+
 	.evaluation-info {
 		h3 {
 			float: left;
@@ -31,7 +31,7 @@
 			}
 		}
 	}
-	
+
 	/*.store-risk {
 		width: 100%;
 		padding: 1rem 1.5rem;
@@ -39,7 +39,7 @@
 		border-radius: 6px;
 		border: 1px solid #f4f4f4;
 	}*/
-	
+
 	.p1 {
 		margin-top: 3rem;
 		font-size: 13px;
@@ -47,7 +47,7 @@
 		line-height: 20px;
 		text-align: justify;
 	}
-	
+
 	.img {
 		width: 100%;
 		margin-top: 1rem;
@@ -122,8 +122,6 @@
 	import FooterInfo from '@/components/layout/footerInfo.vue'
 	import Headerdown from '@/components/layout/headerdown.vue'
 	import { articleInfo } from '@/service/home';
-	import '../../assets/js/wxapi.js'
-	// import '../../assets/js/share1'
 	export default {
 		name: "article-info",
 		data() {
