@@ -42,7 +42,7 @@
     <div class="footerContent">
       <img src="../../assets/project/LOGO@2x.png" alt="">
       <img class="footerImg2" src="../../assets/project/nav.png" alt="">
-      <span class="open" @click="next">载APP</span>
+      <span class="open" @click="next">下载APP</span>
     </div>
   </div>
 </template>
