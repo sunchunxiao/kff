@@ -18,7 +18,7 @@
 		width: 100%;
 		margin-top: 1rem;
 	}
-	
+
 	.img1 {
 		display: block;
 		width: 32px;
@@ -26,7 +26,7 @@
 		border-radius: 50%;
 		border: 1px solid #F4F4F4;
 	}
-	
+
 </style>
 
 <template>
@@ -193,12 +193,8 @@
 					//文章
 					this.m = data.evaluation.evauationContent
 					//底部
-					this.post.push({
-						praiseNum: data.post.praiseNum
-					}, {
-						commentsNum: data.post.commentsNum
-					})
-					console.log(this.post)
+          this.post.push(data.post.praiseNum,data.post.commentsNum)
+					// console.log(this.post)
 
 				}
 

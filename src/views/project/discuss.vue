@@ -217,7 +217,6 @@
 
 					//最多选择标签
 					this.tagInfo = JSON.parse(data.tagInfo);
-					// console.log(this.tagInfo)
 					//热门评论
 					this.commentsehot = data.commentsehot;
 					var result = data.commentsehot;
@@ -229,7 +228,6 @@
 							console.log(this.commenticon)
 						}
 					}
-
 					//最新评论数量
 					this.commentseSum = data.commentseSum
 					//最新评论

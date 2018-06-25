@@ -234,11 +234,7 @@
 					//文章介绍
 					this.evauationContent = data.evaluation.evauationContent;
 					//底部
-					this.post.push({
-						praiseNum: data.post.praiseNum
-					}, {
-						commentsNum: data.post.commentsNum
-					})
+					this.post.push(data.post.praiseNum,data.post.commentsNum)
 					// console.log(this.post)
 
 				}

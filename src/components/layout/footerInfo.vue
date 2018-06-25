@@ -30,10 +30,10 @@
 <template>
     <div class="footerS">
       <ul class="footer">
-        <li><img src="../../assets/footer/zan.png" alt=""><p>赞{{message[0].praiseNum}}</p></li>
+        <li><img src="../../assets/footer/zan.png" alt=""><p>赞{{message[0]}}</p></li>
         <li><img src="../../assets/footer/mine.png" alt=""><p>收藏</p></li>
         <li><img src="../../assets/footer/赞助@3x.png" alt=""><p>赞助</p></li>
-        <li><img src="../../assets/footer/preview.png" alt=""><p>评论{{message[1].commentsNum}}</p></li>
+        <li><img src="../../assets/footer/preview.png" alt=""><p>评论{{message[1]}}</p></li>
       </ul>
     </div>
 </template>
@@ -43,7 +43,7 @@
       props:["message"],
         name: "footer-info",
         mounted () {
-        console.log(this.message[0],this.message[1])
+        console.log(this.message[0])
         }
     }
 </script>

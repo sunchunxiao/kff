@@ -59,9 +59,7 @@
 				</div>
 				<div class="evaluation-follow">+关注</div>
 			</div>
-			<!--<div v-for="item in topicList">{{item}}</div>-->
 			<div v-html="m" style="width: 100%" class="v">{{m}}</div>
-			<!--<div v-html="m" class="z">{{m}}</div>-->
 			<div>
 				<!--已经赞助-->
 				<div class="crack">
@@ -199,12 +197,8 @@
 					//文章介绍
 					this.articleContents = data.article.articleContents;
 					// 底部点赞和评论人数
-					this.post.push({
-						praiseNum: data.praiseNum
-					},{
-						commentsNum: data.commentsNum
-					})
-					console.log(this.post)
+          this.post.push(data.post.praiseNum,data.post.commentsNum)
+					// console.log(this.post)
 
 				}
 
