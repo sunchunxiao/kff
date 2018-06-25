@@ -59,7 +59,7 @@
 					</div>
 					<span class="info">{{userSignature}}</span>
 				</div>
-				<div class="evaluation-follow">+关注</div>
+				<div class="evaluation-follow">+关注a</div>
 			</div>
 			<!--<div v-for="item in topicList">{{item}}</div>-->
 			<div v-html="m" style="width: 100%" class="v">{{m}}</div>

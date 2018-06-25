@@ -29,9 +29,6 @@ const request = (url, options = {}) => {
 	var url = "https://app.qufen.top/wap" + url;
   //本地
 	//    var url = "http://192.168.10.151:803" + url;
-  // var url = "http://192.168.10.199:8083" + url;
-  //本地
-	// var url = "http://192.168.10.123:8083" + url;
 
   // let originBody = JSON.stringify(options.body)
   // let aesEncode = aes128Encod(originBody)
