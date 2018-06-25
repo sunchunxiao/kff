@@ -235,7 +235,8 @@
 
 <template>
 	<div>
-
+		<!--头部下载app-->
+    	<Headerdown></Headerdown>
 		<div class="evaluation">
 			<div class="evaluation-title">
 				<h2>{{articleTitle}}</h2>
@@ -284,6 +285,7 @@
 <script>
 	import HeaderBar from '@/components/layout/headerBar.vue'
 	import FooterInfo from '@/components/layout/footerInfo.vue'
+	import Headerdown from '@/components/layout/headerdown.vue'
 	import { evaluation } from '@/service/home';
 	export default {
 		name: "article-info",
@@ -310,7 +312,8 @@
 		},
 		components: {
 			HeaderBar,
-			FooterInfo
+			FooterInfo,
+			Headerdown
 		},
 		updated() {
 			// $('.v').find('img').css('width', '100%');

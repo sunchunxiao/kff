@@ -1,145 +1,45 @@
-<style lang="less" scoped>
-	.evaluation-title>h2 {
-		font-weight: lighter;
-		font-size: 20px;
-		display: inline-block;
-	}
-
-	.evaluation {
-		border-top: 1px solid #dddddd;
-		border-bottom: 1px solid #dddddd;
-	}
-
-	.evaluation-title {
-		width: 90%;
-		margin: 1rem auto;
-	}
-
-	.storeCommon {
-		font-size: 1.3rem;
-		color: #54c7fc;
-		font-weight: bolder;
-		/*color:#3b88f6;*/
-		letter-spacing: 0;
-		float: right;
-		margin-right: 1rem;
-	}
-
-	.evaluation-store {
-		font-weight: 600;
-		font-size: 2rem;
-	}
-
-	.evaluation-info {
-		width: 87%;
-		margin: 1rem auto 0;
-	}
-
-	.evaluation-info-p {
-		float: left;
-		padding-left: 1rem;
-		width: 220px;
-	}
-
-	.evaluation-info-img {
-		width: 35px;
-		height: 35px;
-		border-radius: 50%;
-		float: left;
-		border: 1px solid #dddddd;
-	}
-
-	.evaluation-info-title {
-		overflow: hidden;
-		position: relative;
-		margin: 1rem 0;
-	}
-
-	.name {
-		font-size: 14px;
-		color: #333333;
-		letter-spacing: 0;
-		position: relative;
-	}
-
-	.name p {
-		display: inline-block;
-		margin-right: 5px;
-	}
-
-	.name img {
-		position: absolute;
-		width: 8%;
-		/*left: 4rem;*/
-	}
-
-	.info {
-		font-size: 1rem;
-		color: #888888;
-		letter-spacing: 0;
-	}
-
-	.evaluation-follow {
-		position: absolute;
-		right: 0;
-		top: 0;
-		font-size: 12px;
-		color: #ffffff;
-		text-align: center;
-		background: #3b88f6;
-		border: 1px solid #3b88f6;
-		border-radius: 2px;
-		width: 43px;
-		height: 20px;
-		line-height: 20px;
-	}
+<style lang="less">
+	@import 'css/project.css';
 	/*综合评分*/
-
-	h3 {
-		float: left;
+	
+	.evaluation-info {
+		h3 {
+			float: left;
+		}
+		.store-info-title {
+			font-size: 14px;
+			color: #666666;
+			float: left;
+		}
+		.store-info {
+			background: #ffffff;
+			margin-top: 1rem;
+		}
+		.store-info1 {
+			box-shadow: 0 2px 10px 0 #e8e8e8;
+			border-radius: 5px;
+			padding: 1rem;
+			.storeList {
+				margin-top: 0.5rem;
+				.percent {
+					display: inline-block;
+					width: 100px;
+					margin-left: 5px;
+					font-size: 12px;
+					color: #888888;
+				}
+			}
+		}
 	}
-
-	.store-info-title {
-		font-size: 14px;
-		color: #666666;
-		float: left;
-	}
-
-	.store-info {
-		background: #ffffff;
-		/*box-shadow: 0 2px 10px 0 #e8e8e8;*/
-		/*border-radius: 5px;*/
-		/*width:345px;*/
-		/*		height: 18rem;*/
-		margin-top: 1rem;
-	}
-
-	.store-info1 {
-		box-shadow: 0 2px 10px 0 #e8e8e8;
-		border-radius: 5px;
-		padding: 1rem;
-	}
-
-	.percent {
-		display: inline-block;
-		width: 100px;
-		margin-left: 5px;
-		font-size: 12px;
-		color: #888888;
-	}
-
-	.storeList {
-		margin-top: 0.5rem;
-	}
-
-	.store-risk {
+	
+	/*.store-risk {
 		width: 100%;
 		padding: 1rem 1.5rem;
 		background: #f8f3f4;
 		border-radius: 6px;
 		border: 1px solid #f4f4f4;
-	}
-
+	}*/
+	
 	.p1 {
 		margin-top: 3rem;
 		font-size: 13px;
@@ -147,86 +47,10 @@
 		line-height: 20px;
 		text-align: justify;
 	}
-
+	
 	.img {
 		width: 100%;
 		margin-top: 1rem;
-	}
-	/*标签*/
-
-	.crack-tag1 {
-		display: inline-block;
-		background-color: #d8e7fd;
-		border-radius: 35px;
-		width: 61px;
-		height: 22px;
-		text-align: center;
-		line-height: 22px;
-		/*opacity:0.2;*/
-		/*margin: 0 0.5rem;*/
-	}
-
-	.span-name {
-		font-size: 14px;
-		color: #3b88f6;
-	}
-
-	.crack {
-		margin: 2rem 0;
-	}
-
-	.crack-tag2 {
-		font-size: 14px;
-		color: #3b88f6;
-		letter-spacing: 0;
-		margin-left: 2rem;
-	}
-
-	.crack-tag3 {
-		position: absolute;
-		right: 2.5rem;
-		font-size: 1rem;
-		color: #c2c2c2;
-		letter-spacing: 0;
-	}
-
-	.sponsor {
-		width: 50%;
-		margin: 0 auto;
-		margin-top: 3rem;
-		text-align: center;
-		position: relative;
-		height: 5rem;
-	}
-
-	.img1 {
-		display: block;
-		width: 32px;
-		height: 32px;
-		border-radius: 50%;
-		border: 1px solid #F4F4F4;
-	}
-
-	.sponsor1 {
-		position: absolute;
-		left: 130px;
-	}
-
-	.sponsor4 {
-		position: absolute;
-		left: -40px;
-		right: 0;
-		top: 0;
-		bottom: 0;
-		margin: 0 auto;
-	}
-
-	.zan {
-		text-align: center;
-	}
-
-	.v {
-		margin-top: 2rem;
 	}
 </style>
 
@@ -235,7 +59,9 @@
 		<!--<HeaderBar-->
 		<!--:title="title"-->
 		<!--/>-->
-		<div class="evaluation">
+		<!--头部下载app-->
+		<Headerdown></Headerdown>
+		<div class="evaluation pad-top">
 			<div class="evaluation-title">
 				<h2>{{articleTitle}}</h2>
 				<span class="evaluation-store storeCommon">{{totalscore}}</span>
@@ -271,14 +97,7 @@
 					<!--</div>-->
 
 					<p class="p1"></p>
-					<!--<div>-->
-					<!--<div class="storeList" >-->
-					<!--<div class="store-info-title">项目定位<span class="percent">/ 20%</span> </div>-->
-					<!--<span class="storeCommon">8.2</span>-->
-					<!--<Progress :percent="80" :stroke-width="10"  hide-info> </Progress>-->
-					<!--</div>-->
-					<!--</div>-->
-					<!--<img class="img" src="../../assets/evaluation/Bitmap@1x.png" alt="">-->
+
 					<!--已经赞助-->
 					<div class="crack">
 						<div class="crack-tag1"><span class="span-name">EOS</span></div>
@@ -301,7 +120,9 @@
 <script>
 	import HeaderBar from '@/components/layout/headerBar.vue'
 	import FooterInfo from '@/components/layout/footerInfo.vue'
+	import Headerdown from '@/components/layout/headerdown.vue'
 	import { articleInfo } from '@/service/home';
+	import '../../assets/js/wxapi.js'
 	// import '../../assets/js/share1'
 	export default {
 		name: "article-info",
@@ -325,7 +146,8 @@
 		},
 		components: {
 			HeaderBar,
-			FooterInfo
+			FooterInfo,
+			Headerdown
 		},
 		updated() {
 			// $('.v').find('img').css('width', '100%');
@@ -398,8 +220,6 @@
 					//文章
 					this.m = data.evaluation.evauationContent
 
-					//标签
-					// this.tag = data.projectCode;
 					//时间
 					this.timestr = data.createTimeStr;
 					//赞助  循环图片

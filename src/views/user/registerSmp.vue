@@ -176,6 +176,7 @@
 	import { MessageBox } from 'mint-ui';
 	import { getCode, register, phoneP } from '@/service/user';
 	import Qf from './qf.vue';
+	 import {encrypt as aes128Encod} from '../../utils/aesEncode'
 
 	export default {
 		name: "registerSmp",
@@ -276,6 +277,8 @@
 			},
 			//提交注册
 			registerSmp() {
+				let aesEncode = aes128Encod(this.password)
+				console.log(aesEncode)
 				var myreg = /^1[34578]\d{9}$/;
 				var pwreg = /[a-zA-Z\d+]{8,20}/;
 				//输入框
@@ -285,7 +288,7 @@
 				console.log(val, num)
 				let params = {
 					phoneNumber: this.phone,
-					password: this.password,
+					password: aesEncode,
 					//图片生成的
 					checkCode: num,
 					phoneCode: val,

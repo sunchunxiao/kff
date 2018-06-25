@@ -1,109 +1,5 @@
-<style lang="less" scoped>
-	h2 {
-		font-weight: lighter;
-		font-size: 20px;
-		display: inline-block;
-	}
-	
-	.evaluation {
-		border-top: 1px solid #dddddd85;
-		border-bottom: 1px solid #dddddd85;
-	}
-	
-	.evaluation-title {
-		width: 87%;
-		margin: 1rem auto;
-	}
-	
-	.evaluation-store {
-		font-size: 20px;
-		font-weight: bolder;
-		color: #3b88f6;
-		letter-spacing: 0;
-		float: right;
-		margin-right: 1rem;
-	}
-	
-	.evaluation-info {
-		width: 87%;
-		margin: 1rem auto 0;
-	}
-	
-	.evaluation-info-p {
-		float: left;
-		padding-left: 1rem;
-		width: 220px;
-	}
-	
-	.evaluation-info-img {
-		width: 35px;
-		height: 35px;
-		border-radius: 50%;
-		float: left;
-		border: 1px solid #dddddd;
-	}
-	
-	.evaluation-info-title {
-		/*width: 90%;*/
-		margin: 1rem auto;
-		overflow: hidden;
-		position: relative;
-	}
-	
-	.name {
-		font-size: 14px;
-		color: #333333;
-		letter-spacing: 0;
-		position: relative;
-	}
-	
-	.name p {
-		display: inline-block;
-		margin-right: 5px;
-	}
-	
-	.name img {
-		position: absolute;
-		width: 8%;
-		/*left: 4rem;*/
-	}
-	
-	.info {
-		font-size: 10px;
-		color: #888888;
-		letter-spacing: 0;
-	}
-	
-	.evaluation-follow {
-		position: absolute;
-		right: 10px;
-		top: 0.5rem;
-		font-size: 12px;
-		color: #ffffff;
-		text-align: center;
-		/*background:#3b88f6;*/
-		/*border:1px solid #3b88f6;*/
-		border-radius: 2px;
-		width: 17px;
-		height: 35px;
-		line-height: 20px;
-	}
-	
-	.evaluation-follow1 {
-		position: absolute;
-		right: 0;
-		top: 0.5rem;
-		font-size: 12px;
-		color: #ffffff;
-		text-align: center;
-		background: #3b88f6;
-		border: 1px solid #3b88f6;
-		border-radius: 2px;
-		width: 43px;
-		height: 20px;
-		line-height: 20px;
-	}
-	
+<style lang="less">
+	@import 'css/project.css';
 	.evaluation-follow img {
 		float: left;
 		width: 17px;
@@ -127,42 +23,6 @@
 		width: 100%;
 	}
 	
-	.crack-tag1 {
-		display: inline-block;
-		background-color: #d8e7fd;
-		border-radius: 35px;
-		width: 61px;
-		height: 22px;
-		text-align: center;
-		line-height: 22px;
-		/*opacity:0.2;*/
-		margin: 0 0.5rem;
-	}
-	
-	.span-name {
-		font-size: 14px;
-		color: #3b88f6;
-	}
-	
-	.crack {
-		margin: 2rem 0;
-	}
-	
-	.crack-tag2 {
-		font-size: 1rem;
-		color: #3b88f6;
-		letter-spacing: 0;
-		margin-left: 18px;
-	}
-	
-	.crack-tag3 {
-		/*position: absolute;*/
-		/*right: 1.5rem;*/
-		float: right;
-		font-size: 10px;
-		color: #c2c2c2;
-		letter-spacing: 0;
-	}
 	/*热门评论*/
 	
 	.hot-comment {
@@ -194,26 +54,23 @@
 	}
 	
 	.evaluationUl {
-		/*width: 90%;*/
-		/*margin: 0 auto;*/
 		overflow: hidden;
 		display: flex;
-		justify-content: space-between;
+		/*justify-content: space-between;*/
 		flex-wrap: wrap;
 	}
 	
 	.evaluationUl li {
-		width: 32%;
+		width: 33%;
 		/*margin: 0 auto;*/
-		height: 10rem;
+		height: 9rem;
 		float: left;
-		/*margin-right: 0.5rem;*/
 		margin-bottom: 0.5rem;
 	}
 	
 	.evaluationUl li img {
-		width: 100%;
-		height: 100%;
+		width: 94%;
+		height: 94%;
 	}
 </style>
 
@@ -222,7 +79,9 @@
 		<!--<HeaderBar-->
 		<!--:title="title"-->
 		<!--/>-->
-		<div class="evaluation">
+		<!--头部下载app-->
+    	<Headerdown></Headerdown>
+		<div class="evaluation pad-top">
 			<div class="evaluation-title">
 				<h2>{{articleTitle}}</h2>
 			</div>
@@ -236,7 +95,7 @@
 					</div>
 					<span class="info">{{userSignature}}</span>
 				</div>
-				<div class="evaluation-follow1">+关注</div>
+				<div class="evaluation-follow">+关注</div>
 			</div>
 			<p class="evaluation-content">{{postShortDesc}}</p>
 			<ul class="evaluationUl">
@@ -246,8 +105,8 @@
 			</ul>
 			<div class="crack">
 				<div class="crack-tag1"><span class="span-name">{{projectCode}}</span></div>
-				<span class="crack-tag2" v-for="item in tagInfo">#{{item.tagSecname}}#</span>
-				<span class="crack-tag3">发表于 {{timestr}}</span>
+				<span class="crack-tag2" v-for="item in tagInfo">#{{item.tagName}}#</span>
+				<div class="crack-tag3">发表于 {{timestr}}</div>
 			</div>
 		</div>
 
@@ -281,6 +140,7 @@
 
 <script>
 	import HeaderBar from '@/components/layout/headerBar.vue'
+	import Headerdown from '@/components/layout/headerdown.vue'
 	import { discuss } from '@/service/home';
 	export default {
 		name: "article-info",
@@ -305,7 +165,7 @@
 			}
 		},
 		components: {
-			HeaderBar,
+			HeaderBar,Headerdown
 		},
 		mounted() {
 			this.id = this.$route.query.id;

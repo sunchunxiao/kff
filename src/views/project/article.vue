@@ -1,97 +1,6 @@
-<style lang="less" scoped>
-	h2 {
-		font-weight: lighter;
-		font-size: 20px;
-		display: inline-block;
-	}
-
-	.evaluation {
-		border-top: 1px solid #dddddd;
-		border-bottom: 1px solid #dddddd;
-	}
-
-	.evaluation-title {
-		width: 90%;
-		margin: 1rem auto;
-	}
-
-	.storeCommon {
-		font-size: 14px;
-		color: #54c7fc;
-		font-weight: bolder;
-		/*color:#3b88f6;*/
-		letter-spacing: 0;
-		float: right;
-		margin-right: 1rem;
-	}
-
-	.evaluation-store {
-		font-size: 20px;
-	}
-
-	.evaluation-info {
-		width: 87%;
-		margin: 1rem auto 0;
-	}
-
-	.evaluation-info-p {
-		float: left;
-		padding-left: 1rem;
-		width: 220px;
-	}
-
-	.evaluation-info-img {
-		width: 35px;
-		height: 35px;
-		border-radius: 50%;
-		float: left;
-		border: 1px solid #dddddd;
-	}
-
-	.evaluation-info-title {
-		overflow: hidden;
-		position: relative;
-		margin: 1rem 0;
-	}
-
-	.name {
-		font-size: 14px;
-		color: #333333;
-		letter-spacing: 0;
-		position: relative;
-	}
-
-	.name p {
-		display: inline-block;
-		margin-right: 5px;
-	}
-
-	.name img {
-		position: absolute;
-		width: 8%;
-		/*left: 4rem;*/
-	}
-
-	.info {
-		font-size: 10px;
-		color: #888888;
-		letter-spacing: 0;
-	}
-
-	.evaluation-follow {
-		position: absolute;
-		right: 0;
-		top:0;
-		font-size: 12px;
-		color: #ffffff;
-		text-align: center;
-		background: #3b88f6;
-		border: 1px solid #3b88f6;
-		border-radius: 2px;
-		width: 43px;
-		height: 20px;
-		line-height: 20px;
-	}
+<style lang="less">
+@import 'css/project.css';
+	
 
 	.percent {
 		display: inline-block;
@@ -125,95 +34,7 @@
 		width: 100%;
 		margin-top: 1rem;
 	}
-	/*标签*/
-
-	.crack-tag1 {
-		display: inline-block;
-		background-color: #d8e7fd;
-		border-radius: 35px;
-		width: 61px;
-		height: 22px;
-		text-align: center;
-		line-height: 22px;
-		/*opacity:0.2;*/
-		/*margin: 0 0.5rem;*/
-	}
-
-	.span-name {
-		font-size: 14px;
-		color: #3b88f6;
-	}
-
-	.crack {
-		margin: 2rem 0;
-	}
-
-	.crack-tag2 {
-		font-size: 14px;
-		color: #3b88f6;
-		letter-spacing: 0;
-		margin-left: 2rem;
-	}
-
-	.crack-tag3 {
-		position: absolute;
-		right: 2.5rem;
-		font-size: 1rem;
-		color: #c2c2c2;
-		letter-spacing: 0;
-	}
-
-	.sponsor {
-		width: 50%;
-		margin: 0 auto;
-		margin-top: 3rem;
-		text-align: center;
-		position: relative;
-		height: 5rem;
-	}
-
-	.img1 {
-		display: block;
-		width: 32px;
-		height: 32px;
-		border-radius: 50%;
-		border: 1px solid #F4F4F4;
-	}
-
-	.sponsor1 {
-		position: absolute;
-		left: 130px;
-	}
-
-	.sponsor4 {
-		position: absolute;
-		left: -40px;
-		right: 0;
-		top: 0;
-		bottom: 0;
-		margin: 0 auto;
-	}
-
-	.zan {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		margin: 0 auto;
-		text-align: center;
-	}
-
-	img {
-		-ms-interpolation-mode: bicubic;
-	}
-
-	img {
-		width: 100%
-	}
-
-	.v p img {
-		width: 100%!important;
-	}
+	
 </style>
 
 <template>
@@ -221,7 +42,9 @@
 		<!--<HeaderBar-->
 		<!--:title="title"-->
 		<!--/>-->
-		<div class="evaluation">
+		<!--头部下载app-->
+    	<Headerdown></Headerdown>
+		<div class="evaluation pad-top">
 			<div class="evaluation-title">
 				<h2>{{articleTitle}}</h2>
 			</div>
@@ -263,6 +86,7 @@
 <script>
 	import HeaderBar from '@/components/layout/headerBar.vue'
 	import FooterInfo from '@/components/layout/footerInfo.vue'
+	import Headerdown from '@/components/layout/headerdown.vue'
 	import { article,share} from '@/service/home';
 	// import '../../assets/js/share1'
 	export default {
@@ -288,7 +112,8 @@
 		},
 		components: {
 			HeaderBar,
-			FooterInfo
+			FooterInfo,
+			Headerdown
 		},
 		mounted(){
 
@@ -369,10 +194,10 @@
 					}
 					//赞助人数
 					this.donateNum = data.donateNum;
-          //如果赞助人数为0则不显示图片和赞助人数
+         			 //如果赞助人数为0则不显示图片和赞助人数
 					if(this.donateNum==0){
-              $(".sponsor").css("display","none")
-          }
+              		$(".sponsor").css("display","none")
+          			}
 
 					//文章介绍
 					this.articleContents = data.article.articleContents;

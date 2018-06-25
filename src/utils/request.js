@@ -5,7 +5,6 @@ import util from '@/utils/common'
 // import {Base64} from 'js-base64';
 // import {encrypt as aes128Encod} from './aesEncode'
 
-
 const specialCode = []
 
 let defaultOpts = {
