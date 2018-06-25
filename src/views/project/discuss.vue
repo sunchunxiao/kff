@@ -111,7 +111,7 @@
 		</div>
 
 		<div class="hot evaluation">
-			<div class="hot-comment">热门评论(2)</div>
+			<div class="hot-comment">热门评论</div>
 		</div>
 		<!--讨论详情-->
 		<div class="evaluation-info" v-for="(item,index) in commentsehot">
@@ -229,9 +229,13 @@
 						}
 					}
 					//最新评论数量
-					this.commentseSum = data.commentseSum
+					// this.commentseSum = data.commentseSum
+          // console.log(this.commentseSum )
 					//最新评论
-					this.commentseNew = data.commentseNew
+					// this.commentseNew = data.commentseNew
+          if(this.commentsehot == null){
+              $(".hot").css("display","none")
+          }
 
 					// 时间
 					this.timestr = data.post.createTimeStr;
