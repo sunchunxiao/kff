@@ -59,7 +59,7 @@
 					<!--已经赞助-->
 					<div class="crack">
 						<div class="crack-tag1"><span class="span-name">{{tag}}</span></div>
-						<span class="crack-tag3">{{timestr}}</span>
+						<span class="crack-tag3">编辑于 {{timestr}}</span>
 						<div class="sponsor">
 							<img class="sponsor4 img1" :src="item" v-for="(item,index) in imgUrls" :style="fun(index)" alt="">
 							<p class="zan">{{donateNum}}人已赞助</p>
@@ -160,10 +160,9 @@
 					//头像
 					var icon = data.post.createUserIcon
 					this.src = icon;
-
+					//用户名
 					this.username = data.post.createUserName;
-					// this.imgsrc = "http://192.168.10.151:8080"+JSON.parse(data.postSmallImages).fileUrl
-					// this.username = data.post.createUserName;
+					//用户签名
 					this.userSignature = data.post.createUserSignature;
 					// //综合评分
 					this.totalscore = data.evaluation.totalScore;
@@ -175,8 +174,10 @@
 					//标签
 					this.tag = data.post.projectCode;
 
-					//时间
-					this.timestr = data.post.createTimeStr;
+					//时间  字符串切割
+					var arr = data.post.createTimeStr.split(" ")
+					console.log(arr[0])
+					this.timestr = arr[0];
 
 					//赞助  循环图片
 					var result = data.commendationList
@@ -194,7 +195,6 @@
 					this.m = data.evaluation.evauationContent
 					//底部
           this.post.push(data.post.praiseNum,data.post.commentsNum)
-					// console.log(this.post)
 
 				}
 

@@ -1,5 +1,5 @@
 <style lang="less">
-@import 'css/project.css';
+	@import 'css/project.css';
 	.percent {
 		display: inline-block;
 		width: 100px;
@@ -7,11 +7,11 @@
 		font-size: 12px;
 		color: #888888;
 	}
-
+	
 	.storeList {
 		margin-top: 0.5rem;
 	}
-
+	
 	.store-risk {
 		width: 100%;
 		padding: 1rem 1.5rem;
@@ -19,7 +19,7 @@
 		border-radius: 6px;
 		border: 1px solid #f4f4f4;
 	}
-
+	
 	.p1 {
 		margin-top: 1rem;
 		font-size: 13px;
@@ -27,12 +27,11 @@
 		line-height: 20px;
 		text-align: justify;
 	}
-
+	
 	.img {
 		width: 100%;
 		margin-top: 1rem;
 	}
-
 </style>
 
 <template>
@@ -41,7 +40,7 @@
 		<!--:title="title"-->
 		<!--/>-->
 		<!--头部下载app-->
-    	<Headerdown></Headerdown>
+		<Headerdown></Headerdown>
 		<div class="evaluation pad-top">
 			<div class="evaluation-title">
 				<h2>{{articleTitle}}</h2>
@@ -83,7 +82,7 @@
 	import HeaderBar from '@/components/layout/headerBar.vue'
 	import FooterInfo from '@/components/layout/footerInfo.vue'
 	import Headerdown from '@/components/layout/headerdown.vue'
-	import { article,share} from '@/service/home';
+	import { article, share } from '@/service/home';
 	export default {
 		name: "article-info",
 		data() {
@@ -110,7 +109,7 @@
 			FooterInfo,
 			Headerdown
 		},
-		mounted(){
+		mounted() {
 
 		},
 		methods: {
@@ -128,12 +127,12 @@
 			// $('.v').find('img').css('width', '100%');
 			$('.v').find('img').css({
 				width: '100%',
-				height:'100%'
-				});
+				height: '100%'
+			});
 			$('.v').find('p').css({
 				fontSize: '1.3rem',
 				width: "100%",
-				margin: "10px 0"
+				margin: "1rem 0"
 			});
 			$('.v').find('p').css('word-wrap', 'break-word');
 		},
@@ -154,7 +153,7 @@
 					//头像加V
 					var cuser = data.cUsertype
 					if(cuser == 1) {
-					  $(".imgV").css("display","none")
+						$(".imgV").css("display", "none")
 					}
 					if(cuser == 2) {
 						$(".imgV").attr("src", "../../../static/elevation/initial@2x.png")
@@ -178,26 +177,28 @@
 					this.userSignature = data.createUserSignature;
 					//标签
 					this.tag = data.projectCode;
-					//时间
-					this.timestr = data.createTimeStr;
+					//时间  字符串切割
+					var arr = data.createTimeStr.split(" ")
+					console.log(arr[0])
+					this.timestr = arr[0];
 					//赞助  循环图片
 					var result = data.commendationList
 					for(let i = 0; i < result.length; i++) {
 						//本地
-						var a =  result[i].sendUserIcon;
+						var a = result[i].sendUserIcon;
 						this.imgUrls.push(a);
 					}
 					//赞助人数
 					this.donateNum = data.donateNum;
-         			 //如果赞助人数为0则不显示图片和赞助人数
-					if(this.donateNum==0){
-              		$(".sponsor").css("display","none")
-          			}
+					//如果赞助人数为0则不显示图片和赞助人数
+					if(this.donateNum == 0) {
+						$(".sponsor").css("display", "none")
+					}
 
 					//文章介绍
 					this.articleContents = data.article.articleContents;
 					// 底部点赞和评论人数
-          this.post.push(data.post.praiseNum,data.post.commentsNum)
+					this.post.push(data.praiseNum, data.commentsNum)
 					// console.log(this.post)
 
 				}

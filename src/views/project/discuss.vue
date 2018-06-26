@@ -4,13 +4,13 @@
 		float: left;
 		width: 17px;
 	}
-
+	
 	.evaluation-follow span {
 		font-size: 10px;
 		color: #3b88f6;
 		margin-left: -5px;
 	}
-
+	
 	.evaluation-content {
 		font-size: 1.5rem;
 		color: #333333;
@@ -18,18 +18,17 @@
 		line-height: 20px;
 		margin: 2rem 0;
 	}
-
+	
 	.content-img {
 		width: 100%;
 	}
-
 	/*热门评论*/
-
+	
 	.hot-comment {
 		width: 90%;
 		margin: 1rem auto;
 	}
-
+	
 	.p-style {
 		font-size: 15px;
 		color: #333333;
@@ -37,7 +36,7 @@
 		line-height: 20px;
 		text-align: justify;
 	}
-
+	
 	.preview {
 		font-size: 13px;
 		/*color:#3b88f6;*/
@@ -48,18 +47,18 @@
 		/*border-top: 1px dotted  #dddddd;*/
 		border-bottom: 1px dotted #dddddd;
 	}
-
+	
 	.preview-peo {
 		color: #3b88f6;
 	}
-
+	
 	.evaluationUl {
 		overflow: hidden;
 		display: flex;
 		/*justify-content: space-between;*/
 		flex-wrap: wrap;
 	}
-
+	
 	.evaluationUl li {
 		width: 33%;
 		/*margin: 0 auto;*/
@@ -67,7 +66,7 @@
 		float: left;
 		margin-bottom: 0.5rem;
 	}
-
+	
 	.evaluationUl li img {
 		width: 94%;
 		height: 94%;
@@ -80,7 +79,7 @@
 		<!--:title="title"-->
 		<!--/>-->
 		<!--头部下载app-->
-    	<Headerdown></Headerdown>
+		<Headerdown></Headerdown>
 		<div class="evaluation pad-top">
 			<div class="evaluation-title">
 				<h2>{{articleTitle}}</h2>
@@ -125,8 +124,7 @@
 				<div class="evaluation-follow"><img src="../../assets/footer/zan.png" alt=""><span>{{item.praiseNum}}</span></div>
 			</div>
 			<p class="p-style">{{item.commentContent}}</p>
-			<div class="preview" v-for="a in item.childCommentsList
-">
+			<div class="preview" v-for="a in item.childCommentsList">
 				<!--commentUserName评论人-->
 				<span class="preview-peo">{{a.commentUserName}}:@{{a.becommentedUserName}}:</span><span>{{a.commentContent}}</span>
 			</div>
@@ -165,7 +163,8 @@
 			}
 		},
 		components: {
-			HeaderBar,Headerdown
+			HeaderBar,
+			Headerdown
 		},
 		mounted() {
 			this.id = this.$route.query.id;
@@ -180,7 +179,7 @@
 					//头像加V
 					var cuser = data.cUsertype
 					if(cuser == 1) {
-						$(".imgV").css("display","none")
+						$(".imgV").css("display", "none")
 					}
 					if(cuser == 2) {
 						$(".imgV").attr("src", "../../../static/elevation/initial@2x.png")
@@ -228,21 +227,20 @@
 							console.log(this.commenticon)
 						}
 					}
+					//热门评论如果是没有，不显示
+					if(this.commentsehot == null) {
+						$(".hot").css("display", "none")
+					}
 					//最新评论数量
 					// this.commentseSum = data.commentseSum
-          // console.log(this.commentseSum )
+					// console.log(this.commentseSum )
 					//最新评论
 					// this.commentseNew = data.commentseNew
-          if(this.commentsehot == null){
-              $(".hot").css("display","none")
-          }
 
-					// 时间
-					this.timestr = data.post.createTimeStr;
-
-					//文章
-					// this.article = data.evaluation.evauationContent
-					// $(".crack").before( this.article)
+					//时间  字符串切割
+					var arr = data.post.createTimeStr.split(" ")
+					console.log(arr[0])
+					this.timestr = arr[0];
 
 				}
 

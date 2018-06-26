@@ -95,12 +95,12 @@
 					<!--<p>{{evauationContent}}</p>-->
 					<!--</div>-->
 
-					<p class="p1"></p>
+					<!--<p class="p1"></p>-->
 
 					<!--已经赞助-->
 					<div class="crack">
 						<div class="crack-tag1"><span class="span-name">EOS</span></div>
-						<span class="crack-tag3">编辑于 2015-07-15</span>
+						<span class="crack-tag3">编辑于 {{timestr}}</span>
 						<div class="sponsor">
 							<img class="sponsor4 img1" :src="item" v-for="(item,index) in imgUrls" :style="fun(index)" alt="">
 							<p class="zan">{{donateNum}}人已赞助</p>
@@ -138,7 +138,8 @@
 				storeList: [],
 				imgUrls: [],
 				donateNum: "",
-				post: []
+				post: [],
+        timestr:""
 			}
 		},
 		components: {
@@ -155,7 +156,7 @@
 			$('.v').find('p').css({
 				fontSize: '1.3rem',
 				width: "100%",
-				margin: "10px 0"
+				margin: "1rem 0"
 			});
 			$('.v').find('p').css('word-wrap', 'break-word');
 		},
@@ -217,8 +218,11 @@
 					//文章
 					this.m = data.evaluation.evauationContent
 
-					//时间
-					this.timestr = data.createTimeStr;
+					//时间  字符串切割
+					var arr = data.post.createTimeStr.split(" ")
+					console.log(arr[0])
+					this.timestr = arr[0];
+
 					//赞助  循环图片
 					var result = data.commendationList
 					for(let i = 0; i < result.length; i++) {
