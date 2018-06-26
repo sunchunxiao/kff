@@ -132,6 +132,7 @@
     /*display: none;*/
   /*}*/
   .line{
+  	width: 50%;
     position: absolute;
     top: 45px;
     left:0;
@@ -213,20 +214,7 @@
           $(".lineA").css("display","none")
           $(".mint-tab-item:eq(3) .lineA").css("display","block")
         }
-        // console.log($(".mint-tab-item").width())
-        // var width = $(".mint-tab-item").width()
-        // $(".lineA").css("display","block");
-        // $(".line1").css({
-        //   // left:index*95+25+"px"
-        //   left:index*width+30+"px"
-        // })
-        // $(".lineA").css("display","block");
-        // if($(this).hasClass("is-selected")){
-        //   console.log(111)
-        //
-        //   console.log(index*10+30)
-        //
-        // }
+       
 
       })
     },

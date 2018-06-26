@@ -1,10 +1,10 @@
 <template>
   <div class="about">
-    <!--<HeaderBar
-      :rightOptions="rightOptions"
-      v-on:rightClickHandel="rightClickHandel"
-      :title="title"
-    />-->
+    <!--<HeaderBar-->
+      <!--:rightOptions="rightOptions"-->
+      <!--v-on:rightClickHandel="rightClickHandel"-->
+      <!--:title="title"-->
+    <!--/>-->
     <div class="poster">
       <!--<img src="../../assets/image/logo.png" alt="">-->
       <div>
