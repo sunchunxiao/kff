@@ -14,11 +14,10 @@ $.ajax({
   url:"https://m.qufen.top/wap/kff/wXShare/sign",
   data:{
     // url:"http://localhost:5000/project/"+a+"?"+b+"",
-    url:"url"
+    url:url
   },
   dataType:"json",
   success(data){
-    console.log("哈哈哈哈")
     console.log(data)
     wx.config({
           debug: false, // 开启调试模式,开发时可以开启
@@ -52,9 +51,9 @@ wx.ready(function () {
     imgUrl: imgUrl,// 分享图标
     // 用户确认分享后执行的回调函数
     success: function () {
-      var params = new URLSearchParams();
-      params.append('token', window.localStorage.getItem('token'));
-      params.append('type', 'share');
+      // var params = new URLSearchParams();
+      // params.append('token', window.localStorage.getItem('token'));
+      // params.append('type', 'share');
       alert("分享成功")
     },
     // 用户取消分享后执行的回调函数
