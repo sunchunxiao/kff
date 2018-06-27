@@ -18,6 +18,7 @@ $.ajax({
   },
   dataType:"json",
   success(data){
+    console.log(111)
     console.log(data)
     wx.config({
           debug: false, // 开启调试模式,开发时可以开启
