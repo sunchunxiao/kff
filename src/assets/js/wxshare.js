@@ -14,7 +14,7 @@ $.ajax({
   url:"https://m.qufen.top/wap/kff/wXShare/sign",
   data:{
     // url:"http://localhost:5000/project/"+a+"?"+b+"",
-    url:url
+    url:"url"
   },
   dataType:"json",
   success(data){
