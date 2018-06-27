@@ -49,7 +49,7 @@ export const discuss = (params = {}) => {
 
 //分享
 export const share = (params = {}) => {
-  return request(`kff/weiXinShare/getJsApiTicket`, {
+  return request(`/kff/wXShare/sign`, {
     body: {
       ...params
     },
