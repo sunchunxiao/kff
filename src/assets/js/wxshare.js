@@ -33,8 +33,8 @@ wx.ready(function () {
   // 1 判断当前版本是否支持指定 JS 接口，支持批量判断
   wx.checkJsApi({
     jsApiList: [
-      'getNetworkType',
-      'previewImage',
+      // 'getNetworkType',
+      // 'previewImage',
       'onMenuShareAppMessage'
     ],
     success: function (res) {
