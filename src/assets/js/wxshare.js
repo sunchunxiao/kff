@@ -5,16 +5,16 @@ import wx from 'weixin-js-sdk'
 
 let url = window.location.href
 console.log(url)
-var a = url.split("/project")[1].split("/")[1].split("?")[0]
-var b = url.split("/project")[1].split("/")[1].split("?")[1]
+// var a = url.split("/project")[1].split("/")[1].split("?")[0]
+// var b = url.split("/project")[1].split("/")[1].split("?")[1]
 // console.log("http://localhost:5000/project/"+a+"?"+b+"",)
-console.log("https://m.qufen.top/wap/project/"+a+"?"+b+"")
+// console.log("https://m.qufen.top/wap/project/"+a+"?"+b+"")
 $.ajax({
   // url:"http://192.168.10.151:803/kff/wXShare/sign",
   url:"https://m.qufen.top/wap/kff/wXShare/sign",
   data:{
     // url:"http://localhost:5000/project/"+a+"?"+b+"",
-    url:"https://m.qufen.top/wap/project/"+a+"?"+b+""
+    url:url
   },
   dataType:"json",
   success(data){
