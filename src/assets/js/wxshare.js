@@ -4,7 +4,7 @@ import wx from 'weixin-js-sdk'
 // if (ua.indexOf('micromessenger') < 0) {return false}
 
 let url = window.location.href
-// console.log(url)
+console.log(url)
 var a = url.split("/project")[1].split("/")[1].split("?")[0]
 var b = url.split("/project")[1].split("/")[1].split("?")[1]
 // console.log("http://localhost:5000/project/"+a+"?"+b+"",)
@@ -18,6 +18,7 @@ $.ajax({
   },
   dataType:"json",
   success(data){
+    console.log("哈哈哈哈")
     console.log(data)
     wx.config({
           debug: false, // 开启调试模式,开发时可以开启
@@ -30,11 +31,25 @@ $.ajax({
   }
 })
 wx.ready(function () {
+  // 1 判断当前版本是否支持指定 JS 接口，支持批量判断
+  wx.checkJsApi({
+    jsApiList: [
+      'getNetworkType',
+      'previewImage'
+    ],
+    success: function (res) {
+      alert(1)
+    }
+  });
+  var title = '表头';
+  var desc = '线下商场与线上商城，同步更新，同享优惠。现在注册，立享150元优惠券，3月更多活动，精彩不断。';
+  var imgUrl = 'http://p3.pstatp.com/large/pgc-image/152887919766950e17bb4bc'
+
   wx.onMenuShareAppMessage({ // 分享给朋友
-    title: "文章分享",       // 分享标题
-    desc: "求子区块链一定要区分",   // 分享描述
+    title: title,       // 分享标题
+    desc: desc,   // 分享描述
     link: url,       // 分享链接 默认以当前链接
-    imgUrl: 'https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1763222384,388956083&fm=58',// 分享图标
+    imgUrl: imgUrl,// 分享图标
     // 用户确认分享后执行的回调函数
     success: function () {
       var params = new URLSearchParams();
@@ -45,6 +60,24 @@ wx.ready(function () {
     // 用户取消分享后执行的回调函数
     cancel: function () {
       alert('分享到朋友取消');
+    },
+    fail: function (res) {
+      alert('失败');
+    }
+  });
+
+  wx.onMenuShareTimeline({
+    title: title,
+    link: url,
+    imgUrl: imgUrl,
+    trigger: function (res) {
+      // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
+    },
+    success: function (res) {
+    },
+    cancel: function (res) {
+    },
+    fail: function (res) {
     }
   });
 
