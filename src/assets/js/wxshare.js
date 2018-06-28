@@ -4,7 +4,7 @@ import wx from 'weixin-js-sdk'
 // if (ua.indexOf('micromessenger') < 0) {return false}
 
 let url = window.location.href.split('#')[0]
-console.log(url)
+console.log(JSON.parse(localStorage.data).title)
 // var a = url.split("/project")[1].split("/")[1].split("?")[0]
 // var b = url.split("/project")[1].split("/")[1].split("?")[1]
 // console.log("http://localhost:5000/project/"+a+"?"+b+"",)
@@ -20,13 +20,13 @@ $.ajax({
   success(data){
     console.log(data)
     wx.config({
-          debug: false,
-          appId: "wxd207589d26688a4a",   // 必填，公众号的唯一标识   由接口返回
-          timestamp: data.timestamp, // 必填，生成签名的时间戳 由接口返回
-          nonceStr: data.nonceStr,    // 必填，生成签名的随机串 由接口返回
-          signature: data.signature,   // 必填，签名 由接口返回
-          jsApiList: ['checkJsApi','onMenuShareAppMessage', 'onMenuShareTimeline'] // 此处填你所用到的方法
-        });
+      debug: false,
+      appId: "wxd207589d26688a4a",   // 必填，公众号的唯一标识   由接口返回
+      timestamp: data.timestamp, // 必填，生成签名的时间戳 由接口返回
+      nonceStr: data.nonceStr,    // 必填，生成签名的随机串 由接口返回
+      signature: data.signature,   // 必填，签名 由接口返回
+      jsApiList: ['checkJsApi','onMenuShareAppMessage', 'onMenuShareTimeline'] // 此处填你所用到的方法
+  });
   }
 })
 wx.ready(function () {
@@ -41,14 +41,14 @@ wx.ready(function () {
       'onMenuShareTimeline',
     ],
     success: function (res) {
-      alert(window.location.href.split('#')[0])
-      alert(JSON.stringify(res));
+      console.log(JSON.stringify(res));
     }
   });
   let url = window.location.href.split('#')[0]
-  var title = '表头';
-  var desc = '线下商场与线上商城，同步更新，同享优惠。现在注册，立享150元优惠券，3月更多活动，精彩不断。';
-  var imgUrl = 'http://p3.pstatp.com/large/pgc-image/152887919766950e17bb4bc'
+  var title = JSON.parse(localStorage.data).title;
+  var desc = '投资区块链一定更要区分';
+  var imgUrl = JSON.parse(localStorage.data).imgurl
+
   wx.onMenuShareAppMessage({ // 分享给朋友
     title: title,       // 分享标题
     desc: desc,   // 分享描述
@@ -85,8 +85,7 @@ wx.ready(function () {
     }
   });
   wx.error(function(res){
-
-    alert("error")
+    console.log("error")
     // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
   });
 

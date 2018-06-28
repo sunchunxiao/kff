@@ -103,7 +103,8 @@
 				imgUrls: [],
 				articleContents: "",
 				donateNum: "",
-				post: []
+				post: [],
+        imgUrlwx:''
 			}
 		},
 		components: {
@@ -137,7 +138,6 @@
 			$('.v').find('p').css('word-wrap', 'break-word');
 		},
 		mounted() {
-
 			// console.log(this.$route.query.id)
 			this.id = this.$route.query.id;
 
@@ -168,8 +168,8 @@
 
 					//文章内容
 					this.m = data.article.articleContents
-					//抽出文本的图片
-					// console.log(data.createUserIcon)
+
+          //标题
 					this.articleTitle = data.postTitle
 					//头像
 					var icon = data.createUserIcon
@@ -200,7 +200,21 @@
 					this.articleContents = data.article.articleContents;
 					// 底部点赞和评论人数
 					this.post.push(data.praiseNum, data.commentsNum)
-					// console.log(this.post)
+
+          var imgUrl = JSON.parse(data.postSmallImages)
+          console.log(imgUrl)
+
+          if(imgUrl.length==0){
+            this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
+          }else{
+            this.imgUrlwx = imgUrl[0].fileUrl
+          }
+          var wxData = {
+					  title:this.articleTitle,
+            imgurl:this.imgUrlwx
+          }
+          console.log(wxData)
+          localStorage.setItem("data",JSON.stringify(wxData));
 
 				}
 
