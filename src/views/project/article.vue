@@ -214,7 +214,7 @@
             imgurl:this.imgUrlwx
           }
           // console.log(wxData)
-          // localStorage.setItem("data",JSON.stringify(wxData));
+          localStorage.setItem("data",JSON.stringify(wxData));
 
 				}
 
