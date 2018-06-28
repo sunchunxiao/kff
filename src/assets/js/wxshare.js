@@ -38,7 +38,7 @@ wx.ready(function () {
       'onMenuShareAppMessage'
     ],
     success: function (res) {
-      alert(res)
+      console.log(res)
     }
   });
   var title = '表头';
