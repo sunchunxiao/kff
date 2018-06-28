@@ -79,6 +79,7 @@
 	import FooterInfo from '@/components/layout/footerInfo.vue'
 	import Headerdown from '@/components/layout/headerdown.vue'
 	import { evaluation } from '@/service/home';
+  import '../../assets/js/wxshare'
 	export default {
 		name: "article-info",
 		data() {

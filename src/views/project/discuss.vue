@@ -4,13 +4,13 @@
 		float: left;
 		width: 17px;
 	}
-	
+
 	.evaluation-follow span {
 		font-size: 10px;
 		color: #3b88f6;
 		margin-left: -5px;
 	}
-	
+
 	.evaluation-content {
 		font-size: 1.5rem;
 		color: #333333;
@@ -18,17 +18,17 @@
 		line-height: 20px;
 		margin: 2rem 0;
 	}
-	
+
 	.content-img {
 		width: 100%;
 	}
 	/*热门评论*/
-	
+
 	.hot-comment {
 		width: 90%;
 		margin: 1rem auto;
 	}
-	
+
 	.p-style {
 		font-size: 15px;
 		color: #333333;
@@ -36,7 +36,7 @@
 		line-height: 20px;
 		text-align: justify;
 	}
-	
+
 	.preview {
 		font-size: 13px;
 		/*color:#3b88f6;*/
@@ -47,18 +47,18 @@
 		/*border-top: 1px dotted  #dddddd;*/
 		border-bottom: 1px dotted #dddddd;
 	}
-	
+
 	.preview-peo {
 		color: #3b88f6;
 	}
-	
+
 	.evaluationUl {
 		overflow: hidden;
 		display: flex;
 		/*justify-content: space-between;*/
 		flex-wrap: wrap;
 	}
-	
+
 	.evaluationUl li {
 		width: 33%;
 		/*margin: 0 auto;*/
@@ -66,7 +66,7 @@
 		float: left;
 		margin-bottom: 0.5rem;
 	}
-	
+
 	.evaluationUl li img {
 		width: 94%;
 		height: 94%;
@@ -140,6 +140,7 @@
 	import HeaderBar from '@/components/layout/headerBar.vue'
 	import Headerdown from '@/components/layout/headerdown.vue'
 	import { discuss } from '@/service/home';
+  import '../../assets/js/wxshare'
 	export default {
 		name: "article-info",
 		data() {

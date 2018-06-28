@@ -202,7 +202,7 @@
 					this.post.push(data.praiseNum, data.commentsNum)
 
           var imgUrl = JSON.parse(data.postSmallImages)
-          console.log(imgUrl)
+          // console.log(imgUrl)
 
           if(imgUrl.length==0){
             this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
@@ -213,8 +213,8 @@
 					  title:this.articleTitle,
             imgurl:this.imgUrlwx
           }
-          console.log(wxData)
-          localStorage.setItem("data",JSON.stringify(wxData));
+          // console.log(wxData)
+          // localStorage.setItem("data",JSON.stringify(wxData));
 
 				}
 
