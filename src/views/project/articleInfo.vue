@@ -99,7 +99,7 @@
 
 					<!--已经赞助-->
 					<div class="crack">
-						<div class="crack-tag1"><span class="span-name">EOS</span></div>
+						<div class="crack-tag1"><span class="span-name">{{tag}}</span></div>
 						<span class="crack-tag3">编辑于 {{timestr}}</span>
 						<div class="sponsor">
 							<img class="sponsor4 img1" :src="item" v-for="(item,index) in imgUrls" :style="fun(index)" alt="">
@@ -129,6 +129,7 @@
 				src: "",
 				id: "",
 				m: "",
+				tag:'',
 				articleTitle: '',
 				article: "",
 				username: "",
@@ -217,7 +218,8 @@
 					}
 					//文章
 					this.m = data.evaluation.evauationContent
-
+					//标签
+					this.tag = data.post.projectCode;
 					//时间  字符串切割
 					var arr = data.post.createTimeStr.split(" ")
 					console.log(arr[0])

@@ -279,7 +279,7 @@
 			registerSmp() {
 				let aesEncode = aes128Encod(this.password)
 				// console.log(aesEncode)
-				var myreg = /^1[34578]\d{9}$/;
+				var myreg = /^1[345678]\d{9}$/;
 				var pwreg = /[a-zA-Z\d+]{8,20}/;
 				//输入框
 				var val = $(".input-val").val().toLowerCase();
@@ -365,7 +365,7 @@
 			//手机号验证
 			handleCommentBlur() {
 				var phone = this.phone;
-				var myreg = /^1[34578]\d{9}$/;
+				var myreg = /^1[345678]\d{9}$/;
 				let params = {
 					phone: this.phone
 				}
