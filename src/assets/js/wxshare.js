@@ -50,7 +50,7 @@ wx.ready(function () {
   var imgUrl = "https://pic.qufen.top/posts20180628204925934317"
 
   wx.onMenuShareAppMessage({ // 分享给朋友
-    title: localStorage.data.title,       // 分享标题
+    title: title,       // 分享标题
     desc: desc,   // 分享描述
     link: window.location.href.split('#')[0],       // 分享链接 默认以当前链接
     imgUrl: imgUrl,// 分享图标
