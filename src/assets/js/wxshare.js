@@ -4,7 +4,7 @@ import wx from 'weixin-js-sdk'
 // if (ua.indexOf('micromessenger') < 0) {return false}
 
 let url = window.location.href.split('#')[0]
-console.log(JSON.parse(localStorage.data))
+console.log((JSON.parse(localStorage.data)).title)
 // var a = url.split("/project")[1].split("/")[1].split("?")[0]
 // var b = url.split("/project")[1].split("/")[1].split("?")[1]
 // console.log("http://localhost:5000/project/"+a+"?"+b+"",)
