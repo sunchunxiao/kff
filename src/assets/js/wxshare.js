@@ -45,9 +45,9 @@ wx.ready(function () {
     }
   });
   let url = window.location.href.split('#')[0]
-  var title = "区分";
+  var title =(JSON.parse(localStorage.data)).title;
   var desc = '投资区块链一定更要区分';
-  var imgUrl = "https://pic.qufen.top/posts20180628204925934317"
+  var imgUrl = (JSON.parse(localStorage.data)).imgurl
 
   wx.onMenuShareAppMessage({ // 分享给朋友
     title: title,       // 分享标题
