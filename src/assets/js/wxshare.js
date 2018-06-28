@@ -4,7 +4,7 @@ import wx from 'weixin-js-sdk'
 // if (ua.indexOf('micromessenger') < 0) {return false}
 
 let url = window.location.href.split('#')[0]
-console.log((JSON.parse(localStorage.data)).title)
+// console.log((JSON.parse(localStorage.data)).title)
 // var a = url.split("/project")[1].split("/")[1].split("?")[0]
 // var b = url.split("/project")[1].split("/")[1].split("?")[1]
 // console.log("http://localhost:5000/project/"+a+"?"+b+"",)
@@ -45,10 +45,11 @@ wx.ready(function () {
     }
   });
   let url = window.location.href.split('#')[0]
-  var title =(JSON.parse(localStorage.data)).title;
+  // var title =(JSON.parse(localStorage.data)).title;
+  var title = "区分"
   var desc = '投资区块链一定更要区分';
-  var imgUrl = (JSON.parse(localStorage.data)).imgurl
-
+  // var imgUrl = (JSON.parse(localStorage.data)).imgurl
+  var imgUrl = "https://pic.qufen.top/posts20180628204925934317"
   wx.onMenuShareAppMessage({ // 分享给朋友
     title: title,       // 分享标题
     desc: desc,   // 分享描述
