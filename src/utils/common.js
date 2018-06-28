@@ -3,6 +3,7 @@
  */
 
 import router from '@/router/index'
+import request from "./request";
 
 //跳转到登录
 export const jumpToLogin = (recordRedirect = true) => {
@@ -12,3 +13,5 @@ export const jumpToLogin = (recordRedirect = true) => {
   }
   router.push({path})
 }
+
+// export default util

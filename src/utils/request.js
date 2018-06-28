@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {Toast} from 'mint-ui';
-import util from '@/utils/common'
+import {jumpToLogin} from '@/utils/common'
 // import Md5 from 'js-md5';
 // import {Base64} from 'js-base64';
 // import {encrypt as aes128Encod} from './aesEncode'
@@ -28,7 +28,7 @@ const request = (url, options = {}) => {
   //测试地址
 	  var url = "/wap" + url;
   //本地
-//	     var url = "http://192.168.10.151:803" + url;
+	//      var url = "http://192.168.10.151:803" + url;
 
   // let originBody = JSON.stringify(options.body)
   // let aesEncode = aes128Encod(originBody)
@@ -63,7 +63,7 @@ const request = (url, options = {}) => {
       } else {
         Toast(res.data.message)
         if (res.data.code === specialCode) {
-          util.jumpToLogin()
+          jumpToLogin()
         }
         return Promise.reject(res.data)
       }
