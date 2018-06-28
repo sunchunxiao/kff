@@ -3,7 +3,7 @@ import wx from 'weixin-js-sdk'
 // const ua = window.navigator.userAgent.toLowerCase()
 // if (ua.indexOf('micromessenger') < 0) {return false}
 
-let url = window.location.href.split('#')[0]
+let url = window.location.href.split('&')[0]
 // console.log((JSON.parse(localStorage.data)).title)
 // var a = url.split("/project")[1].split("/")[1].split("?")[0]
 // var b = url.split("/project")[1].split("/")[1].split("?")[1]
@@ -53,7 +53,7 @@ wx.ready(function () {
   wx.onMenuShareAppMessage({ // 分享给朋友
     title: title,       // 分享标题
     desc: desc,   // 分享描述
-    link: window.location.href.split('#')[0],       // 分享链接 默认以当前链接
+    link: window.location.href.split('&')[0],       // 分享链接 默认以当前链接
     imgUrl: imgUrl,// 分享图标
     // 用户确认分享后执行的回调函数
     success: function () {
