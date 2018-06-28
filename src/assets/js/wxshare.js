@@ -5,7 +5,10 @@ import wx from 'weixin-js-sdk'
 
 let url = window.location.href.split('#')[0]
 console.log(url)
-
+// var a = url.split("/project")[1].split("/")[1].split("?")[0]
+// var b = url.split("/project")[1].split("/")[1].split("?")[1]
+// console.log("http://localhost:5000/project/"+a+"?"+b+"",)
+// console.log("https://m.qufen.top/wap/project/"+a+"?"+b+"")
 $.ajax({
   // url:"http://192.168.10.151:803/kff/wXShare/sign",
   url:"https://m.qufen.top/wap/kff/wXShare/sign",
@@ -17,8 +20,8 @@ $.ajax({
   success(data){
     console.log(data)
     wx.config({
-          debug: true,
-          appId: "wxa034b7003154ee6c",   // 必填，公众号的唯一标识   由接口返回
+          debug: false,
+          appId: "wxd207589d26688a4a",   // 必填，公众号的唯一标识   由接口返回
           timestamp: data.timestamp, // 必填，生成签名的时间戳 由接口返回
           nonceStr: data.nonceStr,    // 必填，生成签名的随机串 由接口返回
           signature: data.signature,   // 必填，签名 由接口返回
