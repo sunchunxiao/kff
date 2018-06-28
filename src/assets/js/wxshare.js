@@ -45,7 +45,6 @@ wx.ready(function () {
     }
   });
   let url = window.location.href.split('#')[0]
-  console.log(url)
   var title = '表头';
   var desc = '线下商场与线上商城，同步更新，同享优惠。现在注册，立享150元优惠券，3月更多活动，精彩不断。';
   var imgUrl = 'http://p3.pstatp.com/large/pgc-image/152887919766950e17bb4bc'
@@ -85,7 +84,7 @@ wx.ready(function () {
     }
   });
   wx.error(function(res){
-    alert.log("error")
+    alert("error")
     // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
   });
 
