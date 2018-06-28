@@ -45,15 +45,15 @@ wx.ready(function () {
     }
   });
   let url = window.location.href.split('#')[0]
-  // var title = ;
+  var title = "区分";
   var desc = '投资区块链一定更要区分';
-  // var imgUrl =
+  var imgUrl = "https://pic.qufen.top/posts20180628204925934317"
 
   wx.onMenuShareAppMessage({ // 分享给朋友
-    title: JSON.parse(localStorage.data).title,       // 分享标题
+    title: localStorage.data.title,       // 分享标题
     desc: desc,   // 分享描述
     link: window.location.href.split('#')[0],       // 分享链接 默认以当前链接
-    imgUrl: JSON.parse(localStorage.data).imgurl,// 分享图标
+    imgUrl: imgUrl,// 分享图标
     // 用户确认分享后执行的回调函数
     success: function () {
       // var params = new URLSearchParams();
