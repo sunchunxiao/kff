@@ -280,7 +280,8 @@
 				let aesEncode = aes128Encod(this.password)
 				// console.log(aesEncode)
 				var myreg = /^1[345678]\d{9}$/;
-				var pwreg = /[a-zA-Z\d+]{8,20}/;
+				var pwreg = /[a-zA-Z0-9]{8,20}/;
+        // var pwreg = /[\d]+[a-zA-Z]{8,20}/;
 				//输入框
 				var val = $(".input-val").val().toLowerCase();
 				//图片生成的
@@ -311,7 +312,6 @@
 											//   showConfirmButton: true
 											// });
 											alert(res.data.reason)
-											this.code = "";
 										} else {
 											console.log(res.data.token)
 											localStorage.setItem("token", res.data.token);
@@ -378,6 +378,7 @@
 
 				} else {
 					phoneP(params).then(res => {
+
 						if(res.code == 0) {
 							if(res.data.isRegister != 0) {
 								MessageBox({
@@ -387,7 +388,10 @@
 								});
 							}
 
-						}
+						}else{
+             alert(res.msg)
+
+            }
 					})
 				}
 
