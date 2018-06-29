@@ -129,7 +129,7 @@
 		},
 		updated() {
 		  console.log(this.imgUrl)
-      alert(window.location.href)
+      console.log(window.location.href)
       if(this.imgUrl.length==0){
         this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
       }else{
