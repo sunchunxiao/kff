@@ -11,13 +11,13 @@ export function wechatShare(shareData) {
 
   }
   let data = { ...defaultData, ...shareData }
-  console.log(window.location.href)
+  console.log(window.location.href.split("&")[0])
   $.ajax({
     // url:"http://192.168.10.151:803/kff/wXShare/sign",
     url:"https://m.qufen.top/wap/kff/wXShare/sign",
     data:{
       // url:"http://localhost:5000/project/"+a+"?"+b+"",
-      url:window.location.href
+      url:window.location.href.split("&")[0]
     },
     dataType:"json",
     success(data){
