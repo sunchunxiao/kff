@@ -283,8 +283,7 @@
 				let aesEncode = aes128Encod(this.password)
 				// console.log(aesEncode)
 				var myreg = /^1[345678]\d{9}$/;
-				var pwreg = /[a-zA-Z0-9]{8,20}/;
-        // var pwreg = /[\d]+[a-zA-Z]{8,20}/;
+        var pwreg = /[a-zA-Z0-9]{8,20}/;
 				//输入框
 				var val = $(".input-val").val().toLowerCase();
 				//图片生成的
@@ -309,16 +308,14 @@
 									register(params).then(res => {
 										//0是不成功 1是注册成功
 										if(res.data.reStatus == 0) {
-											// MessageBox({
-											//   title: '提示',
-											//   message: '注册成功',
-											//   showConfirmButton: true
-											// });
-											alert(res.data.reason)
+											MessageBox({
+											  title: '提示',
+											  message: res.data.reason,
+											  showConfirmButton: true
+											});
+											// alert(res.data.reason)
 										} else {
-											console.log(res.data.token)
 											localStorage.setItem("token", res.data.token);
-
 											this.$router.push('/user/registerSuccess');
 										}
 
