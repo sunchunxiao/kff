@@ -126,6 +126,13 @@
 
 		},
 		updated() {
+		  // console.log(this.articleTitle,)
+      wechatShare({
+        title: this.articleTitle,
+        content: '投资区块链一定要区分',
+        link: window.location.href,
+        logo: 'https://pic.qufen.top/posts20180628204925934317',
+      })
 			// $('.v').find('img').css('width', '100%');
 			$('.v').find('img').css({
 				width: '100%',
@@ -139,13 +146,6 @@
 			$('.v').find('p').css('word-wrap', 'break-word');
 		},
 		mounted() {
-      wechatShare({
-        title: '区分',
-        content: '投资一定要区分',
-        link: window.location.href,
-        logo: 'https://pic.qufen.top/posts20180628204925934317',
-      }),
-
 			// console.log(this.$route.query.id)
 			this.id = this.$route.query.id;
 
