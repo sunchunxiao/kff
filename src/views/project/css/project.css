@@ -16,6 +16,10 @@ S.evaluation-title>h2 {
 .evaluation-title {
 	width: 90%;
 	margin: 1rem auto;
+  overflow: hidden;
+}
+.evaluation-title>h2{
+  float: left;
 }
 
 .storeCommon {

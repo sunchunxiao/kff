@@ -165,7 +165,6 @@
 
 			article(params).then(res => {
 				if(res.code == 0) {
-
 					var data = res.data.articleDetail
 
 					//头像加V
