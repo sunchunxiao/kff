@@ -53,7 +53,7 @@
 			<div>
 				<h3>{{title}}</h3>
 				<span class="storeCommon">{{score}}</span>
-				<Progress :percent="80" :stroke-width="10" hide-info> </Progress>
+				<Progress :percent="score*10" :stroke-width="10" hide-info> </Progress>
 				<div v-html="m" style="width: 100%;margin-top: 20px" class="v">{{m}}</div>
 				<div>
 					<!--已经赞助-->
@@ -112,14 +112,11 @@
 			Headerdown
 		},
 		updated() {
-      console.log(this.imgUrl)
-      console.log(this.postShortDesc,this.articleTitle)
       if(this.imgUrl.length==0){
         this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
       }else{
         this.imgUrlwx = this.imgUrl[0].fileUrl
       }
-      console.log(this.imgUrlwx)
       wechatShare({
         title: this.articleTitle,
         content: this.postShortDesc,
@@ -165,14 +162,18 @@
 					if(cuser == 1) {
 						$(".imgV").css("display", "none")
 					}
+					//项目方
 					if(cuser == 2) {
-						$(".imgV").attr("src", "../../../static/elevation/initial@2x.png")
+            $(".imgV").attr("src", "../../../static/elevation/progress@2x.png")
 					}
+					//评测媒体
 					if(cuser == 3) {
 						$(".imgV").attr("src", "../../../static/elevation/media@2x.png")
 					}
+					//机构号
 					if(cuser == 4) {
-						$(".imgV").attr("src", "../../../static/elevation/progress@2x.png")
+            $(".imgV").attr("src", "../../../static/elevation/initial@2x.png")
+
 					}
 					this.articleTitle = data.post.postTitle
 					//头像

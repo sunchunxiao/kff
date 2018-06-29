@@ -80,13 +80,13 @@
 			<div>
 				<h3>综合评分</h3>
 				<span class="storeCommon">{{totalscore}}</span>
-				<Progress :percent="80" :stroke-width="10" hide-info></Progress>
+				<Progress :percent="totalscore*10" :stroke-width="10" hide-info></Progress>
 				<div class="store-info">
 					<div class="store-info1">
 						<div class="storeList" v-for="item in storeList">
 							<div class="store-info-title">{{item.modelName}}<span class="percent">/ {{item.modelWeight}}%</span> </div>
 							<span class="storeCommon">{{item.score}}</span>
-							<Progress :percent="item.modelWeight" :stroke-width="5" hide-info> </Progress>
+							<Progress :percent="item.score*10"  :stroke-width="5" hide-info> </Progress>
 						</div>
 					</div>
 					<div v-html="m" style="width: 100%" class="v">{{m}}</div>
@@ -153,8 +153,8 @@
 			Headerdown
 		},
 		updated() {
-		  console.log(this.imgUrl)
-		  console.log(this.postShortDesc,this.articleTitle)
+		  // console.log(this.imgUrl)
+		  // console.log(this.postShortDesc,this.articleTitle)
 		  //  如果有缩略图
       if(this.imgUrl.length==0){
         this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
@@ -162,7 +162,7 @@
         this.imgUrlwx = this.imgUrl[0].fileUrl
 
       }
-      console.log(this.imgUrlwx)
+      // console.log(this.imgUrlwx)
       wechatShare({
         title: this.articleTitle,
         content: this.postShortDesc,
@@ -209,14 +209,17 @@
 					if(cuser == 1) {
 						$(".imgV").css("display", "none")
 					}
+					//项目方
 					if(cuser == 2) {
-						$(".imgV").attr("src", "../../../static/elevation/initial@2x.png")
+            $(".imgV").attr("src", "../../../static/elevation/progress@2x.png")
 					}
+					//评测媒体
 					if(cuser == 3) {
 						$(".imgV").attr("src", "../../../static/elevation/media@2x.png")
 					}
 					if(cuser == 4) {
-						$(".imgV").attr("src", "../../../static/elevation/progress@2x.png")
+            $(".imgV").attr("src", "../../../static/elevation/initial@2x.png")
+
 					}
 					// console.log(JSON.parse(data.post.createUserIcon).fileUrl)
 					this.articleTitle = data.post.postTitle

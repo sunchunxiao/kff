@@ -120,7 +120,7 @@
 	.onecenter {
 		text-align: center;
 		margin-top: 2%;
-		a {
+		span {
 			font-size: 12px;
 			color: #3b88f6;
 		}
@@ -161,7 +161,7 @@
 						<mt-button type="primary" class="longBtn" @click.native="registerSmp">立即注册</mt-button>
 					</div>
 					<div class="onecenter">
-						<a href="###">已有账户？</a>
+						<span  @click="next">已有账户？</span>
 					</div>
 				</div>
 			</div>
@@ -203,6 +203,9 @@
 			this.invaUIH = this.$route.query.invaUIH
 		},
 		methods: {
+      next(){
+        this.$router.push('/user/download')
+      },
 			//图片验证码
 			btn() {
 				var val = $(".input-val").val().toLowerCase();
