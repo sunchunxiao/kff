@@ -83,7 +83,7 @@
 	import FooterInfo from '@/components/layout/footerInfo.vue'
 	import Headerdown from '@/components/layout/headerdown.vue'
 	import { article} from '@/service/home';
-	import '../../assets/js/wxshare'
+	import { wechatShare } from '../../assets/js/wxshare'
 
 	export default {
 		name: "article-info",
@@ -114,6 +114,7 @@
 		},
 
 		methods: {
+
 			fun(index) {
 				if(index <= 6) {
 					var str = "left:" + (index * 25 - 50) + "px";
@@ -138,6 +139,13 @@
 			$('.v').find('p').css('word-wrap', 'break-word');
 		},
 		mounted() {
+      wechatShare({
+        title: '区分',
+        content: '投资一定要区分',
+        link: window.location.href,
+        logo: 'https://pic.qufen.top/posts20180628204925934317',
+      }),
+
 			// console.log(this.$route.query.id)
 			this.id = this.$route.query.id;
 
