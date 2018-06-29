@@ -139,7 +139,7 @@
       wechatShare({
         title: this.articleTitle,
         content: this.postShortDesc,
-        link: window.location.href,
+        link: window.location.href.split("&")[0],
         logo:this.imgUrlwx ,
       })
 			// $('.v').find('img').css('width', '100%');
