@@ -104,7 +104,9 @@
 				articleContents: "",
 				donateNum: "",
 				post: [],
-        imgUrlwx:''
+        imgUrl:'',
+        imgUrlwx:'',
+        postShortDesc:''
 			}
 		},
 		components: {
@@ -126,12 +128,19 @@
 
 		},
 		updated() {
-		  // console.log(this.articleTitle,)
+		  console.log(this.imgUrl)
+      alert(window.location.href)
+      if(this.imgUrl.length==0){
+        this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
+      }else{
+        this.imgUrlwx = this.imgUrl[0].fileUrl
+      }
+
       wechatShare({
         title: this.articleTitle,
-        content: '投资区块链一定要区分',
+        content: this.postShortDesc,
         link: window.location.href,
-        logo: 'https://pic.qufen.top/posts20180628204925934317',
+        logo:this.imgUrlwx ,
       })
 			// $('.v').find('img').css('width', '100%');
 			$('.v').find('img').css({
@@ -176,6 +185,8 @@
 
 					//文章内容
 					this.m = data.article.articleContents
+          //缩略问
+          this.postShortDesc = data.postShortDesc
 
           //标题
 					this.articleTitle = data.postTitle
@@ -209,20 +220,10 @@
 					// 底部点赞和评论人数
 					this.post.push(data.praiseNum, data.commentsNum)
 
-          var imgUrl = JSON.parse(data.postSmallImages)
-          // console.log(imgUrl)
+          this.imgUrl = JSON.parse(data.postSmallImages)
 
-          if(imgUrl.length==0){
-            this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
-          }else{
-            this.imgUrlwx = imgUrl[0].fileUrl
-          }
-          var wxData = {
-					  title:this.articleTitle,
-            imgurl:this.imgUrlwx
-          }
-          // console.log(wxData)
-          localStorage.setItem("data",JSON.stringify(wxData));
+
+
 
 				}
 
