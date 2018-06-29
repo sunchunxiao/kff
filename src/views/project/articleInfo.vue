@@ -153,14 +153,16 @@
 			Headerdown
 		},
 		updated() {
-		  // console.log(this.imgUrl)
-		  // console.log(this.postShortDesc,this.articleTitle)
+		  console.log(this.imgUrl)
+		  console.log(this.postShortDesc,this.articleTitle)
 		  //  如果有缩略图
       if(this.imgUrl.length==0){
         this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
       }else{
         this.imgUrlwx = this.imgUrl[0].fileUrl
+
       }
+      console.log(this.imgUrlwx)
       wechatShare({
         title: this.articleTitle,
         content: this.postShortDesc,
