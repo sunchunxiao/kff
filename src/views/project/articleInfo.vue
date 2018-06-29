@@ -102,7 +102,7 @@
 						<div class="crack-tag1"><span class="span-name">{{tag}}</span></div>
 						<span class="crack-tag3">编辑于 {{timestr}}</span>
 						<div class="sponsor">
-							<img class="sponsor4 img1" :src="item" v-for="(item,index) in imgUrls" :style="fun(index)" alt="">
+							<img class="sponsor4 project-img1" :src="item" v-for="(item,index) in imgUrls" :style="fun(index)" alt="">
 							<p class="zan">{{donateNum}}人已赞助</p>
 						</div>
 
@@ -187,7 +187,7 @@
 					var str = "left:" + (index * 25 - 50) + "px";
 					return str;
 				} else {
-					$(".img1").eq(index).css("display", "none");
+					$(".project-img1").eq(index).css("display", "none");
 				}
 			}
 		},
