@@ -121,7 +121,7 @@
 	import FooterInfo from '@/components/layout/footerInfo.vue'
 	import Headerdown from '@/components/layout/headerdown.vue'
 	import { articleInfo } from '@/service/home';
-  import '../../assets/js/wxshare'
+  import { wechatShare } from '../../assets/js/wxshare'
 	export default {
 		name: "article-info",
 		data() {
@@ -141,7 +141,10 @@
 				imgUrls: [],
 				donateNum: "",
 				post: [],
-        timestr:""
+        timestr:"",
+        imgUrl:'',
+        imgUrlwx:'',
+        postShortDesc:''
 			}
 		},
 		components: {
@@ -150,7 +153,21 @@
 			Headerdown
 		},
 		updated() {
-			// $('.v').find('img').css('width', '100%');
+		  // console.log(this.imgUrl)
+		  // console.log(this.postShortDesc,this.articleTitle)
+		  //  如果有缩略图
+      if(this.imgUrl.length==0){
+        this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
+      }else{
+        this.imgUrlwx = this.imgUrl[0].fileUrl
+      }
+      wechatShare({
+        title: this.articleTitle,
+        content: this.postShortDesc,
+        link: window.location.href,
+        logo:this.imgUrlwx
+      })
+
 			$('.v').find('img').css({
 				width: '100%',
 				height: '100%',
@@ -243,6 +260,10 @@
 					//底部
 					this.post.push(data.post.praiseNum,data.post.commentsNum)
 					// console.log(this.post)
+          //缩略图
+          this.imgUrl = JSON.parse(data.post.postSmallImages)
+          //缩略文章
+          this.postShortDesc = data.post.postShortDesc
 
 				}
 

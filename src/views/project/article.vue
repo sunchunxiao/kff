@@ -128,14 +128,12 @@
 
 		},
 		updated() {
-		  // console.log(this.imgUrl)
-      console.log(window.location.href)
+
       if(this.imgUrl.length==0){
         this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
       }else{
         this.imgUrlwx = this.imgUrl[0].fileUrl
       }
-
       wechatShare({
         title: this.articleTitle,
         content: this.postShortDesc,
@@ -185,8 +183,7 @@
 
 					//文章内容
 					this.m = data.article.articleContents
-          //缩略问
-          this.postShortDesc = data.postShortDesc
+
 
           //标题
 					this.articleTitle = data.postTitle
@@ -219,10 +216,10 @@
 					this.articleContents = data.article.articleContents;
 					// 底部点赞和评论人数
 					this.post.push(data.praiseNum, data.commentsNum)
-
+          //缩略图
           this.imgUrl = JSON.parse(data.postSmallImages)
-
-
+          //缩略文章
+          this.postShortDesc = data.postShortDesc
 
 
 				}

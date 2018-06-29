@@ -1,7 +1,7 @@
 import wx from 'weixin-js-sdk'
 
 // const ua = window.navigator.userAgent.toLowerCase()
-// if (ua.indexOf('micromessenger') < 0) {return false}
+// if (ua.indexOf('micromessenger') < 0){return false}
 export function wechatShare(shareData) {
   var defaultData = {
     title: "",
@@ -11,7 +11,6 @@ export function wechatShare(shareData) {
 
   }
   let data = { ...defaultData, ...shareData }
-  alert(window.location.href)
   $.ajax({
     // url:"http://192.168.10.151:803/kff/wXShare/sign",
     url:"https://m.qufen.top/wap/kff/wXShare/sign",
@@ -21,14 +20,13 @@ export function wechatShare(shareData) {
     },
     dataType:"json",
     success(data){
-      console.log(data)
       wx.config({
         debug: false,
         appId: "wxd207589d26688a4a",   // 必填，公众号的唯一标识   由接口返回
         timestamp: data.timestamp, // 必填，生成签名的时间戳 由接口返回
         nonceStr: data.nonceStr,    // 必填，生成签名的随机串 由接口返回
         signature: data.signature,   // 必填，签名 由接口返回
-        jsApiList: ['checkJsApi','onMenuShareAppMessage', 'onMenuShareTimeline'] // 此处填你所用到的方法
+        jsApiList: ['checkJsApi','onMenuShareAppMessage', 'onMenuShareTimeline','onMenuShareQQ','onMenuShareQZone'] // 此处填你所用到的方法
       });
     }
   })
@@ -46,11 +44,8 @@ export function wechatShare(shareData) {
         console.log(JSON.stringify(res));
       }
     });
-    // let url = window.location.href.split('&')[0]
-    // var title = "区分"
-    // var desc = '投资区块链一定更要区分';
-    // var imgUrl = "https://pic.qufen.top/posts20180628204925934317"
-    wx.onMenuShareAppMessage({ // 分享给朋友
+    // 分享给朋友
+    wx.onMenuShareAppMessage({
       title:  data.title,       // 分享标题
       desc: data.content,   // 分享描述
       link: data.link,       // 分享链接 默认以当前链接
@@ -60,17 +55,17 @@ export function wechatShare(shareData) {
         // var params = new URLSearchParams();
         // params.append('token', window.localStorage.getItem('token'));
         // params.append('type', 'share');
-        alert("分享成功")
+        console.log("分享成功")
       },
       // 用户取消分享后执行的回调函数
       cancel: function () {
-        alert('分享到朋友取消');
+        console.log('分享到朋友取消');
       },
       fail: function (res) {
-        alert('失败');
+        console.log('失败');
       }
     });
-
+    //分享到朋友圈
     wx.onMenuShareTimeline({
       title: data.title,
       link:  data.link,
@@ -84,6 +79,32 @@ export function wechatShare(shareData) {
       cancel: function (res) {
       },
       fail: function (res) {
+      }
+    });
+    //分享到QQ
+    wx.onMenuShareQQ({
+      title: data.title, // 分享标题
+      desc:  data.content, // 分享描述
+      link: data.link, // 分享链接
+      imgUrl: data.logo, // 分享图标
+      success: function () {
+// 用户确认分享后执行的回调函数
+      },
+      cancel: function () {
+// 用户取消分享后执行的回调函数
+      }
+    });
+    //分享到QQ空间
+    wx.onMenuShareQZone({
+      title: data.title, // 分享标题
+      desc:data.content, // 分享描述
+      link:data.link, // 分享链接
+      imgUrl:data.logo, // 分享图标
+      success: function () {
+// 用户确认分享后执行的回调函数
+      },
+      cancel: function () {
+// 用户取消分享后执行的回调函数
       }
     });
     wx.error(function(res){

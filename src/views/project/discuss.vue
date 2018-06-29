@@ -140,7 +140,7 @@
 	import HeaderBar from '@/components/layout/headerBar.vue'
 	import Headerdown from '@/components/layout/headerdown.vue'
 	import { discuss } from '@/service/home';
-  import '../../assets/js/wxshare'
+  import { wechatShare } from '../../assets/js/wxshare'
 	export default {
 		name: "article-info",
 		data() {
@@ -160,13 +160,30 @@
 				commentsehot: [],
 				commentseNew: [],
 				commentseSum: "",
-				postImg: []
+				postImg: [],
+        imgUrl:'',
+        imgUrlwx:'',
+        postShortDesc:''
 			}
 		},
 		components: {
 			HeaderBar,
 			Headerdown
 		},
+    updated() {
+      if(this.imgUrl.length==0){
+        this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
+      }else{
+        this.imgUrlwx = this.imgUrl[0].fileUrl
+      }
+
+      wechatShare({
+        title: this.articleTitle,
+        content: this.postShortDesc,
+        link: window.location.href,
+        logo:this.imgUrlwx ,
+      })
+    },
 		mounted() {
 			this.id = this.$route.query.id;
 			let params = {
@@ -242,7 +259,10 @@
 					var arr = data.post.createTimeStr.split(" ")
 					console.log(arr[0])
 					this.timestr = arr[0];
-
+          //缩略图
+          this.imgUrl = JSON.parse(data.post.postSmallImages)
+          //缩略文章
+          this.postShortDesc = data.post.postShortDesc
 				}
 
 			})
