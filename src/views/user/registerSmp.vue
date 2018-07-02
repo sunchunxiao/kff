@@ -198,14 +198,6 @@
 		components: {
 			Qf
 		},
-    updated() {
-      // wechatShare({
-      //   title: "做区分创世节点，领取5w注册糖果包",
-      //   content: "注册即送5w，每邀请一个好友再送2500 FIND。深度了解区块链项目，听听其他投资者的声音",
-      //   link: window.location.href,
-      //   logo:"https://pic.qufen.top/posts20180628204925934317" ,
-      // })
-    },
 		mounted() {
       wechatShare({
         title: "做区分创世节点，领取5w注册糖果包",
@@ -218,7 +210,6 @@
 			this.invaUIH = this.$route.query.invaUIH
 		},
 		methods: {
-
       next(){
         this.$router.push('/user/download')
       },
