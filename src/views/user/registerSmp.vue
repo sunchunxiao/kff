@@ -176,7 +176,8 @@
 	import { MessageBox } from 'mint-ui';
 	import { getCode, register, phoneP } from '@/service/user';
 	import Qf from './qf.vue';
-	 import {encrypt as aes128Encod} from '../../utils/aesEncode'
+  import {encrypt as aes128Encod} from '../../utils/aesEncode'
+  import { wechatShare } from '../../assets/js/wxshare'
 
 	export default {
 		name: "registerSmp",
@@ -190,13 +191,21 @@
 				timer: null,
 				picLyanzhengma: '',
 				invaUIH: "",
-				show_num: []
+				show_num: [],
 
 			}
 		},
 		components: {
 			Qf
 		},
+    updated() {
+      wechatShare({
+        title: "做区分创世节点，领取5w注册糖果包",
+        content: "注册即送5w，每邀请一个好友再送2500 FIND。深度了解区块链项目，听听其他投资者的声音",
+        link: window.location.href,
+        logo:"https://pic.qufen.top/posts20180628204925934317" ,
+      })
+    },
 		mounted() {
 			this.draw1();
 			console.log(this.$route.query.invaUIH)
