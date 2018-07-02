@@ -2,6 +2,7 @@ import wx from 'weixin-js-sdk'
 
 // const ua = window.navigator.userAgent.toLowerCase()
 // if (ua.indexOf('micromessenger') < 0){return false}
+console.log(window.location.href)
 export function wechatShare(shareData) {
   var defaultData = {
     title: "",
