@@ -148,11 +148,12 @@
 				height: '100%'
 			});
 			$('.v').find('p').css({
-				fontSize: '1.3rem',
+//				fontSize: '1.3rem',
 				width: "100%",
 				margin: "1rem 0"
 			});
 			$('.v').find('p').css('word-wrap', 'break-word');
+			
 		},
 		mounted() {
 			// console.log(this.$route.query.id)

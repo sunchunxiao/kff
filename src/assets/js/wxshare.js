@@ -9,7 +9,6 @@ export function wechatShare(shareData) {
     content: "",
     link: "",
     logo: ""//分享出来的图片的
-
   }
   let data = { ...defaultData, ...shareData }
   $.ajax({

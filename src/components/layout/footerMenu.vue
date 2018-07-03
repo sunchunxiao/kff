@@ -14,7 +14,7 @@
       }
       .mint-tab-item-label {
         font-size: 20px;
-        -webkit-transform: scale(0.8);
+        /*-webkit-transform: scale(0.8);*/
       }
     }
   }
