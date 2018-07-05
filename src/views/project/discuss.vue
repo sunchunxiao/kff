@@ -55,7 +55,6 @@
 	.evaluationUl {
 		overflow: hidden;
 		display: flex;
-		/*justify-content: space-between;*/
 		flex-wrap: wrap;
 	}
 

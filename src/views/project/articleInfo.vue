@@ -31,14 +31,6 @@
 		}
 	}
 
-	/*.store-risk {
-		width: 100%;
-		padding: 1rem 1.5rem;
-		background: #f8f3f4;
-		border-radius: 6px;
-		border: 1px solid #f4f4f4;
-	}*/
-
 	.p1 {
 		margin-top: 3rem;
 		font-size: 13px;
@@ -62,8 +54,8 @@
 		<Headerdown></Headerdown>
 		<div class="evaluation pad-top">
 			<div class="evaluation-title">
-				<h2>{{articleTitle}}</h2>
-				<span class="evaluation-store storeCommon">{{totalscore}}</span>
+				<h2>{{articleTitle}} <span class="evaluation-store storeCommon">{{totalscore}}</span></h2>
+				
 			</div>
 		</div>
 		<div class="evaluation-info">
