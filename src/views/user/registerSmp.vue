@@ -167,7 +167,7 @@
 			</div>
 		</div>
 		<div class="understanding">- 在这里读懂区块链项目，寻找价值币 -</div>
-		<div style="color: red;text-align: center;margin-top: 1rem;" >内测期间不开放注册</div>
+		<!--<div style="color: red;text-align: center;margin-top: 1rem;" >内测期间不开放注册</div>-->
 		<Qf></Qf>
 	</div>
 </template>
