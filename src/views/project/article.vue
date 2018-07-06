@@ -187,7 +187,7 @@
 					if(cuser == 1) {
 						$(".imgV").css("display", "none")
 					}
-					//项目方1
+					//项目方
 					if(cuser == 2) {
             $(".imgV").attr("src", "../../../static/elevation/p.gif")
 					}
