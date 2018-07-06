@@ -158,9 +158,9 @@
        我们致力于成为全球区块链投资者首选内容平台，打造丰富的区块链投资内容生态，构建用户层、内容层、社区层、投资层到数据层的生态闭环。
 			</p>
 			<!--分数-->
-			<img class="register-img" src="../../assets/register/register-1.png" alt="" />
 			<div class="qf-index qf-index-com">区分指数</div>
 			<p class="font mainB">多维度评测用户影响力，保证区分生态的健康发展。</p>
+      <img class="register-img" src="../../assets/register/register-1.png" alt="" />
       <div>
         <div class="qf-index qf-index-com">注册奖励</div>
         <div class="mainB">新用户注册及邀请好友注册都将获得区分的FIND奖励，明细如下：</div>

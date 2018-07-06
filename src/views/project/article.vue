@@ -128,8 +128,22 @@
 
 		},
 		updated() {
-      console.log(this.imgUrl)
-      console.log(this.postShortDesc,this.articleTitle)
+		  $("img").each(function () {
+        // $(this).css("border","1px solid")
+        console.log($(this).attr("src"))
+        var  a = $(this).attr("src")
+        console.log(a.split(".").length)
+        var length = a.split(".").length
+        console.log(a.split(".")[length-1])
+        var type = a.split(".")[length-1]
+        if(a.split(".")[length-1]=="null"){
+          var array=["image/png"]
+          var src = $(this).toDataURL.array[0]
+          $(this).attr("src",src)
+        }
+      })
+      // console.log(this.imgUrl)
+      // console.log(this.postShortDesc,this.articleTitle)
       if(this.imgUrl.length==0){
         this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
       }else{
@@ -175,20 +189,21 @@
 					}
 					//项目方
 					if(cuser == 2) {
-            $(".imgV").attr("src", "../../../static/elevation/progress@2x.png")
+            $(".imgV").attr("src", "../../../static/elevation/p.gif")
 					}
 					//评测媒体
 					if(cuser == 3) {
-						$(".imgV").attr("src", "../../../static/elevation/media@2x.png")
+						$(".imgV").attr("src", "../../../static/elevation/F.gif")
 					}
 					//机构号
 					if(cuser == 4) {
-            $(".imgV").attr("src", "../../../static/elevation/initial@2x.png")
+            $(".imgV").attr("src", "../../../static/elevation/V.gif")
 
 					}
 
 					//文章内容
 					this.m = data.article.articleContents
+
 
 
           //标题

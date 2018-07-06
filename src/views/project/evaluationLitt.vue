@@ -159,22 +159,22 @@
 
 					//头像加V
 					var cuser = data.cUsertype
-					if(cuser == 1) {
-						$(".imgV").css("display", "none")
-					}
-					//项目方
-					if(cuser == 2) {
-            $(".imgV").attr("src", "../../../static/elevation/progress@2x.png")
-					}
-					//评测媒体
-					if(cuser == 3) {
-						$(".imgV").attr("src", "../../../static/elevation/media@2x.png")
-					}
-					//机构号
-					if(cuser == 4) {
-            $(".imgV").attr("src", "../../../static/elevation/initial@2x.png")
+          if(cuser == 1) {
+            $(".imgV").css("display", "none")
+          }
+          //项目方
+          if(cuser == 2) {
+            $(".imgV").attr("src", "../../../static/elevation/p.gif")
+          }
+          //评测媒体
+          if(cuser == 3) {
+            $(".imgV").attr("src", "../../../static/elevation/F.gif")
+          }
+          //机构号
+          if(cuser == 4) {
+            $(".imgV").attr("src", "../../../static/elevation/V.gif")
 
-					}
+          }
 					this.articleTitle = data.post.postTitle
 					//头像
 					var icon = data.post.createUserIcon

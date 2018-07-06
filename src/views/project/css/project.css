@@ -1,3 +1,6 @@
+@media screen and (min-width:321px) and (max-width:414px){span{font-size:12px}}
+@media screen and (min-width:415px) and (max-width:719px){span{font-size:14px}}
+@media screen and (min-width:720px){html{font-size:16px}}
 .evaluation-title>h2 {
 	font-weight: lighter;
 	font-size: 20px;
