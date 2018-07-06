@@ -47,7 +47,7 @@
 					return true;
 				} else {
 					console.log(22)
-					window.location.href = "http://pic.qufen.top/qufen_beta_v0.7.apk"
+					window.location.href = "https://pic.qufen.top/qufen__v1.0.apk"
 					return false;
 				}
 			},

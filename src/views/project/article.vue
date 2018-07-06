@@ -1,5 +1,8 @@
 <style lang="less">
 	@import 'css/project.css';
+  span{
+    font-size: 1rem;
+  }
 	.percent {
 		display: inline-block;
 		width: 100px;
@@ -55,6 +58,7 @@
 						<img class="imgV" src="" />
 					</div>
 					<span class="info">{{userSignature}}</span>
+
 				</div>
 				<div class="evaluation-follow">+关注</div>
 			</div>
@@ -84,6 +88,7 @@
 	import Headerdown from '@/components/layout/headerdown.vue'
 	import { article} from '@/service/home';
 	import { wechatShare } from '../../assets/js/wxshare'
+	
 
 	export default {
 		name: "article-info",
@@ -128,20 +133,21 @@
 
 		},
 		updated() {
-		  $("img").each(function () {
-        // $(this).css("border","1px solid")
-        console.log($(this).attr("src"))
-        var  a = $(this).attr("src")
-        console.log(a.split(".").length)
-        var length = a.split(".").length
-        console.log(a.split(".")[length-1])
-        var type = a.split(".")[length-1]
-        if(a.split(".")[length-1]=="null"){
-          var array=["image/png"]
-          var src = $(this).toDataURL.array[0]
-          $(this).attr("src",src)
-        }
-      })
+		  //   $("img").each(function () {
+      //   var  a = $(this).attr("src")
+      //   var length = a.split(".").length
+      //   var type = a.split(".")[length-1]
+      //   if(a.split(".")[length-1]=="null"){
+      //     type = ".webp"
+      //     var src = a.split(".")[0]+a.split(".")[1]+a.split(".")[2]+type
+      //     console.log(src)
+      //     // var imgFile = new FileReader();
+      //    // console.log($("img").files)
+      //     // var src = "data:" + "image/webp"+";base64," + window.btoa(a);
+      //     // console.log(src)
+      //     // $(this).attr("src",src)
+      //   }
+      // })
       // console.log(this.imgUrl)
       // console.log(this.postShortDesc,this.articleTitle)
       if(this.imgUrl.length==0){
@@ -167,6 +173,7 @@
 				margin: "1rem 0"
 			});
 			$('.v').find('p').css('word-wrap', 'break-word');
+      $('.v').find('p span').css('fontSize', '1.2rem');
 
 		},
 		mounted() {
