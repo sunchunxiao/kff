@@ -51,3 +51,6 @@ h2{
 }
 /*注册的公共样式*/
 
+.mint-msgbox-message{
+  word-wrap: break-word;
+}

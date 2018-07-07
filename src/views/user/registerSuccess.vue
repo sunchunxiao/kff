@@ -3,54 +3,49 @@
 		font-size: 13px;
 		color: #cccccc;
 	}
-	
+
 	.registerBac {
 		width: 100%;
 		height: 18rem;
 		background-image: url("../../assets/register/registerSuccess.png");
 		background-size: 100% 100%;
 	}
-	
+
 	.register {
 		background: #ffffff;
 		box-shadow: 0 2px 11px 0 rgba(103, 166, 255, 0.27);
 		width: 80%;
 		height: 10%;
-		/*position: absolute;*/
-		/*left: 0;*/
-		/*top: 17rem;*/
-		/*right: 0;*/
-		/*bottom: 0;*/
 		margin: 0 auto;
 		margin-top: -2.5rem;
 	}
-	
+
 	.register-content {
 		position: relative;
 		padding: 1rem;
 	}
-	
+
 	.register-content img {
 		width: 25px;
 		height: 29px;
 	}
-	
+
 	.qf-register {
 		display: inline-block;
 	}
-	
+
 	.register-title {
 		font-size: 16px;
 		color: #1e75ff;
 		text-align: left;
 	}
-	
+
 	.register-title-listen {
 		font-size: 10px;
 		color: #666666;
 		-webkit-transform: scale(0.8);
 	}
-	
+
 	.download {
 		background: #3b88f6;
 		border-radius: 4px;
@@ -64,35 +59,35 @@
 		border: none;
 		cursor: pointer;
 	}
-	
+
 	.down {
 		font-size: 15px;
 		color: #ffffff;
 	}
-	
+
 	.understanding {
 		font-size: 12px;
 		color: #999999;
 		text-align: center;
 		padding-top: 10%;
 	}
-	
+
 	.ul {
 		padding-bottom: 23%;
 	}
-	
+
 	.onecenter ul li {
 		list-style: disc;
 		font-size: 15px;
 		color: #333333;
 		margin: 2rem 0 2rem 3rem;
 	}
-	
+
 	.longBtn {
 		width: 77%;
 		margin-left: 9%;
 	}
-	
+
 	.address {
 		display: inline-block;
 		background: #f9f9f9;
@@ -103,7 +98,7 @@
 		margin-left: 9%;
 		text-align: center;
 	}
-	
+
 	.copyLink {
 		display: inline-block;
 		/*background:#3b88f6;*/
@@ -116,6 +111,9 @@
 		line-height: 32px;
 		text-align: center;
 	}
+    .mint-msgbox-message{
+    word-wrap: break-word;
+  }
 </style>
 <template>
 	<div>
@@ -141,7 +139,7 @@
 				<mt-button type="primary" class="longBtn" @click.native="registerSuc">一键生成好友注册专属海报</mt-button>
 				<li class="li">邀请链接</li>
 				<input class="address" v-model="message"></input>
-				<button type="button" class="copyLink" v-clipboard:copy="message" v-clipboard:success="onCopy">复制链接</button>
+				<button type="button" class="copyLink" v-clipboard:copy="message1" v-clipboard:success="onCopy">复制链接</button>
 			</ul>
 		</div>
 		<Qf></Qf>
@@ -164,6 +162,7 @@
 				phone: "",
 				// address:"",
 				message: "",
+        message1:"",
 				code: "",
 				show: true,
 				count: '',
@@ -187,12 +186,17 @@
 				if(res.code == 0) {
 					// console.log(res.data.url)
 					this.message = res.data.url
+          this.message1 = "注册区分领取10wFIND，注册即送50,000FIND≈¥2500,邀请好友再送2500FIND。深度了解区块链项目，听听其他投资者的声音，速戳："+this.message;
 				}
 			})
 		},
 		methods: {
 			onCopy(e) {
-				alert(e.text)
+        MessageBox({
+          title: '复制成功',
+          showConfirmButton: true
+        });
+			// 	alert("注册区分领取10wFIND，注册即送50,000FIND≈¥2500,邀请好友再送2500FIND。深度了解区块链项目，听听其他投资者的声音，速戳："+e.text)
 			},
 			registerSuc() {
 				this.$router.push('/user/personalPoster');

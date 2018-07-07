@@ -88,7 +88,7 @@
 	import Headerdown from '@/components/layout/headerdown.vue'
 	import { article} from '@/service/home';
 	import { wechatShare } from '../../assets/js/wxshare'
-	
+
 
 	export default {
 		name: "article-info",
@@ -133,21 +133,6 @@
 
 		},
 		updated() {
-		  //   $("img").each(function () {
-      //   var  a = $(this).attr("src")
-      //   var length = a.split(".").length
-      //   var type = a.split(".")[length-1]
-      //   if(a.split(".")[length-1]=="null"){
-      //     type = ".webp"
-      //     var src = a.split(".")[0]+a.split(".")[1]+a.split(".")[2]+type
-      //     console.log(src)
-      //     // var imgFile = new FileReader();
-      //    // console.log($("img").files)
-      //     // var src = "data:" + "image/webp"+";base64," + window.btoa(a);
-      //     // console.log(src)
-      //     // $(this).attr("src",src)
-      //   }
-      // })
       // console.log(this.imgUrl)
       // console.log(this.postShortDesc,this.articleTitle)
       if(this.imgUrl.length==0){
