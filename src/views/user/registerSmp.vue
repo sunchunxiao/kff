@@ -409,6 +409,7 @@
 
 				//发送获取验证码的接口请求
 				if(this.show) { //倒计时内只能点一次
+          console.log(111)
 					getCode({
 						phone: this.phone,
 						module: "register"
