@@ -161,7 +161,7 @@
 						<mt-button type="primary" class="longBtn" @click.native="registerSmp">立即注册</mt-button>
 					</div>
 					<div class="onecenter">
-						<span  @click="next">已有账户？</span>
+						<span  @click="next">已有账户？下载APP</span>
 					</div>
 				</div>
 			</div>
