@@ -406,29 +406,44 @@
 
 			//手机验证码
 			getcode() {
+        //输入框
+        var val = $(".input-val").val().toLowerCase();
+        //图片生成的
+        var num = this.show_num.join("");
+        if(val != "") {
+          if(val == num) {
+           console.log(111)
+            //发送获取验证码的接口请求
+            if(this.show) { //倒计时内只能点一次
+              console.log(111)
+              getCode({
+                phone: this.phone,
+                module: "register"
+              });
+            }
+            const TIME_COUNT = 60;
+            if(!this.timer) {
+              this.count = TIME_COUNT;
+              this.show = false;
+              this.timer = setInterval(() => {
+                if(this.count > 0 && this.count <= TIME_COUNT) {
+                  this.count--;
+                } else {
+                  this.show = true;
+                  clearInterval(this.timer);
+                  this.timer = null;
+                }
+              }, 1000)
+            }
+          }else{
+            MessageBox({
+              title: '提示',
+              message: '图形验证码错误',
+              showConfirmButton: true
+            });
+          }
+        }
 
-				//发送获取验证码的接口请求
-				if(this.show) { //倒计时内只能点一次
-          console.log(111)
-					getCode({
-						phone: this.phone,
-						module: "register"
-					});
-				}
-				const TIME_COUNT = 60;
-				if(!this.timer) {
-					this.count = TIME_COUNT;
-					this.show = false;
-					this.timer = setInterval(() => {
-						if(this.count > 0 && this.count <= TIME_COUNT) {
-							this.count--;
-						} else {
-							this.show = true;
-							clearInterval(this.timer);
-							this.timer = null;
-						}
-					}, 1000)
-				}
 
 			}
 		}
