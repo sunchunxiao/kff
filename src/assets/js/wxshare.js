@@ -12,8 +12,8 @@ export function wechatShare(shareData) {
   }
   let data = { ...defaultData, ...shareData }
   $.ajax({
-    // url:"http://192.168.10.151:803/kff/wXShare/sign",
-    url:"https://m.qufen.top/wap/kff/wXShare/sign",
+    url:"http://192.168.10.151:803/kff/wXShare/sign",
+    // url:"https://m.qufen.top/wap/kff/wXShare/sign",
     data:{
       // url:"http://localhost:5000/project/"+a+"?"+b+"",
       url:window.location.href

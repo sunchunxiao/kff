@@ -86,10 +86,7 @@
 	}
 	/*图片验证码*/
 
-	.code {
-		/*width: 400px;*/
-		/*margin: 0 auto;*/
-	}
+
 
 	.input-val {
 		width: 80px;
@@ -100,7 +97,6 @@
 		width: 79px;
 		float: right;
 		display: inline-block;
-		/*border: 1px solid #ccc;*/
 		border-radius: 5px;
 		cursor: pointer;
 	}
@@ -109,7 +105,7 @@
 		position: relative;
 	}
 
-	.longBtn {
+	.registerSmp .longBtn {
 		margin-top: 9%;
 	}
 
@@ -132,6 +128,16 @@
 		text-align: center;
 		padding-top: 10%;
 	}
+	/*.img-code{*/
+		/*width: 100%;*/
+	/*}*/
+	/*.geetest_holder.geetest_wind{*/
+		/*min-width:100%!important;*/
+	/*}*/
+
+	/*.geetest_holder {*/
+		/*width: 100%!important*/
+	/*}*/
 </style>
 <template>
 	<div class="registerSmp">
@@ -147,21 +153,29 @@
 					</div>
 					<div>
 						<div class="reg-intro">
-							<input placeholder="输入手机号" type="tel" v-model="phone" id="telnum" @blur="handleCommentBlur">
+							<input class="phone" placeholder="输入手机号" type="tel" v-model="phone" id="telnum" @blur="handleCommentBlur">
 							<div class="reg-code">
+								<!--图形验证-->
 								<div class="code">
 									<input class="input-val" type="text" value="" placeholder="请输入图片验证码" />
 									<canvas id="canvas" class="code1" width="100" height="43" @click="draw1"></canvas>
 								</div>
+                <!--极验-->
+								<!--<div class="img-code">-->
+									<!--<label>完成验证：</label>-->
+									<!--<div id="captcha">-->
+										<!--<p id="wait" class="show">正在加载验证码......</p>-->
+									<!--</div>-->
+								<!--</div>-->
 								<input placeholder="输入验证码" type="text" v-model="code">
 							</div>
-							<button @click="getcode">获取验证码<span v-show="!show">({{count}}S)</span></button>
+							<button @click="getcode" id="getcode">获取验证码<span v-show="!show">({{count}}S)</span></button>
 							<input placeholder="输入密码(8-20位数字字母组合)" type="password" v-model="password">
 						</div>
 						<mt-button type="primary" class="longBtn" @click.native="registerSmp">立即注册</mt-button>
 					</div>
 					<div class="onecenter">
-						<span  @click="next">已有账户？下载APP</span>
+						<span @click="next">已有账户？下载APP</span>
 					</div>
 				</div>
 			</div>
@@ -176,8 +190,10 @@
 	import { MessageBox } from 'mint-ui';
 	import { getCode, register, phoneP } from '@/service/user';
 	import Qf from './qf.vue';
-  import {encrypt as aes128Encod} from '../../utils/aesEncode'
-  import { wechatShare } from '../../assets/js/wxshare'
+	import { encrypt as aes128Encod } from '../../utils/aesEncode'
+	import { wechatShare } from '../../assets/js/wxshare'
+	// import gt from "../../../static/js/gt.js"
+	// import slid from "../../../static/js/slider.js";
 
 	export default {
 		name: "registerSmp",
@@ -187,7 +203,7 @@
 				code: "",
 				password: "",
 				show: true,
-				count: '',
+				count: "",
 				timer: null,
 				picLyanzhengma: '',
 				invaUIH: "",
@@ -199,20 +215,22 @@
 			Qf
 		},
 		mounted() {
-      wechatShare({
-        title: "做区分创世节点，领取10w注册邀请糖果包",
-        content: "注册即送5w，每邀请一个好友再送2500 FIND。深度了解区块链项目，听听其他投资者的声音",
-        link: window.location.href,
-        logo:"https://pic.qufen.top/posts20180628204925934317" ,
-      })
-			this.draw1();
-			console.log(this.$route.query.invaUIH)
+		  //图形验证码
+      this.draw1()
+
+			wechatShare({
+				title: "做区分创世节点，领取10w注册邀请糖果包",
+				content: "注册即送5w，每邀请一个好友再送2500 FIND。深度了解区块链项目，听听其他投资者的声音",
+				link: window.location.href,
+				logo: "https://pic.qufen.top/posts20180628204925934317",
+			})
+			// console.log(this.$route.query.invaUIH)
 			this.invaUIH = this.$route.query.invaUIH
 		},
 		methods: {
-      next(){
-        this.$router.push('/user/download')
-      },
+			next() {
+				this.$router.push('/user/download')
+			},
 			//图片验证码
 			btn() {
 				var val = $(".input-val").val().toLowerCase();
@@ -222,12 +240,12 @@
 				} else if(val == num) {
 					alert('提交成功！');
 					$(".input-val").val('');
-					this.draw(this.show_num);
+//					this.draw(this.show_num);
 
 				} else {
 					alert('验证码错误！请重新输入！');
 					$(".input-val").val('');
-					this.draw(this.show_num);
+//					this.draw(this.show_num);
 				}
 			},
 			draw1() {
@@ -290,7 +308,7 @@
 				let aesEncode = aes128Encod(this.password)
 				// console.log(aesEncode)
 				var myreg = /^1[345678]\d{9}$/;
-        var pwreg = /[a-zA-Z0-9]{8,20}/;
+				var pwreg = /[a-zA-Z0-9]{8,20}/;
 				//输入框
 				var val = $(".input-val").val().toLowerCase();
 				//图片生成的
@@ -316,9 +334,9 @@
 										//0是不成功 1是注册成功
 										if(res.data.reStatus == 0) {
 											MessageBox({
-											  title: '提示',
-											  message: res.data.reason,
-											  showConfirmButton: true
+												title: '提示',
+												message: res.data.reason,
+												showConfirmButton: true
 											});
 											// alert(res.data.reason)
 										} else {
@@ -348,8 +366,8 @@
 								message: '图片验证码输入不正确！',
 								showConfirmButton: true
 							});
-//							this.draw1();//刷新验证码
-//						    $(".input-val").val('');
+							//							this.draw1();//刷新验证码
+							//						    $(".input-val").val('');
 						}
 
 					} else {
@@ -395,10 +413,10 @@
 								});
 							}
 
-						}else{
-             alert(res.msg)
+						} else {
+							alert(res.msg)
 
-            }
+						}
 					})
 				}
 
@@ -406,44 +424,36 @@
 
 			//手机验证码
 			getcode() {
-        //输入框
-        var val = $(".input-val").val().toLowerCase();
-        //图片生成的
-        var num = this.show_num.join("");
+				//输入框
+				var val = $(".input-val").val().toLowerCase();
         if(val != "") {
-          if(val == num) {
-           console.log(111)
-            //发送获取验证码的接口请求
-            if(this.show) { //倒计时内只能点一次
-              console.log(111)
-              getCode({
-                phone: this.phone,
-                module: "register"
-              });
-            }
-            const TIME_COUNT = 60;
-            if(!this.timer) {
-              this.count = TIME_COUNT;
-              this.show = false;
-              this.timer = setInterval(() => {
-                if(this.count > 0 && this.count <= TIME_COUNT) {
-                  this.count--;
-                } else {
-                  this.show = true;
-                  clearInterval(this.timer);
-                  this.timer = null;
-                }
-              }, 1000)
-            }
-          }else{
-            MessageBox({
-              title: '提示',
-              message: '图形验证码错误',
-              showConfirmButton: true
-            });
-          }
-        }
+				if(this.phone!= "") {
 
+						//发送获取验证码的接口请求
+						if(this.show) { //倒计时内只能点一次
+							console.log(111)
+							getCode({
+								phone: this.phone,
+								module: "register"
+							});
+						}
+						const TIME_COUNT = 60;
+						if(!this.timer) {
+							this.count = TIME_COUNT;
+							this.show = false;
+							this.timer = setInterval(() => {
+								if(this.count > 0 && this.count <= TIME_COUNT) {
+									this.count--;
+								} else {
+									this.show = true;
+									clearInterval(this.timer);
+									this.timer = null;
+								}
+							}, 1000)
+						}
+
+				}
+        }
 
 			}
 		}

@@ -83,7 +83,7 @@
 		margin: 2rem 0 2rem 3rem;
 	}
 
-	.longBtn {
+	.onecenter .longBtn1 {
 		width: 77%;
 		margin-left: 9%;
 	}
@@ -101,7 +101,6 @@
 
 	.copyLink {
 		display: inline-block;
-		/*background:#3b88f6;*/
 		font-size: 13px;
 		color: #3b88f6;
 		border: 1px solid #3b88f6;
@@ -136,7 +135,7 @@
 		<div class="onecenter">
 			<ul class="ul">
 				<li class="li">邀请好友注册，赚取更多的FIND</li>
-				<mt-button type="primary" class="longBtn" @click.native="registerSuc">一键生成好友注册专属海报</mt-button>
+				<mt-button type="primary" class="longBtn1" @click.native="registerSuc">一键生成好友注册专属海报</mt-button>
 				<li class="li">邀请链接</li>
 				<input class="address" v-model="message"></input>
 				<button type="button" class="copyLink" v-clipboard:copy="message1" v-clipboard:success="onCopy">复制链接</button>
