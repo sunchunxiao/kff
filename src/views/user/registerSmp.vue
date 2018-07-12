@@ -3,14 +3,14 @@
 		font-size: 13px;
 		color: #cccccc;
 	}
-
+	
 	.registerBac {
 		width: 100%;
 		height: 18rem;
 		background-image: url("../../assets/register/register.png");
 		background-size: 100% 100%;
 	}
-
+	
 	.register {
 		background: #ffffff;
 		box-shadow: 0 2px 11px 0 rgba(103, 166, 255, 0.27);
@@ -19,32 +19,32 @@
 		margin: 0 auto;
 		margin-top: -3rem;
 	}
-
+	
 	.register-content {
 		padding: 1rem;
 	}
-
+	
 	.register-content img {
 		width: 25px;
 		height: 29px;
 	}
-
+	
 	.qf-register {
 		display: inline-block;
 	}
-
+	
 	.register-title {
 		font-size: 16px;
 		color: #1e75ff;
 		text-align: left;
 	}
-
+	
 	.register-title-listen {
 		font-size: 10px;
 		color: #666666;
 		-webkit-transform: scale(0.8);
 	}
-
+	
 	.reg-intro {
 		width: 90%;
 		margin-left: 5%;
@@ -70,9 +70,9 @@
 			color: #3b88f6;
 		}
 	}
-
+	
 	.yanzhengma_input {}
-
+	
 	.code1 {
 		width: 23%;
 		font-size: 14px;
@@ -85,14 +85,12 @@
 		top: 10%;
 	}
 	/*图片验证码*/
-
-
-
+	
 	.input-val {
 		width: 80px;
 		margin-right: 10px;
 	}
-
+	
 	#canvas {
 		width: 79px;
 		float: right;
@@ -100,19 +98,19 @@
 		border-radius: 5px;
 		cursor: pointer;
 	}
-
+	
 	.reg-code {
 		position: relative;
 	}
-
+	
 	.registerSmp .longBtn {
 		margin-top: 9%;
 	}
-
+	
 	.registerSmp .mint-button-text {
 		color: #fff;
 	}
-
+	
 	.onecenter {
 		text-align: center;
 		margin-top: 2%;
@@ -121,7 +119,7 @@
 			color: #3b88f6;
 		}
 	}
-
+	
 	.understanding {
 		font-size: 12px;
 		color: #999999;
@@ -129,14 +127,13 @@
 		padding-top: 10%;
 	}
 	/*.img-code{*/
-		/*width: 100%;*/
+	/*width: 100%;*/
 	/*}*/
 	/*.geetest_holder.geetest_wind{*/
-		/*min-width:100%!important;*/
+	/*min-width:100%!important;*/
 	/*}*/
-
 	/*.geetest_holder {*/
-		/*width: 100%!important*/
+	/*width: 100%!important*/
 	/*}*/
 </style>
 <template>
@@ -160,12 +157,12 @@
 									<input class="input-val" type="text" value="" placeholder="请输入图片验证码" />
 									<canvas id="canvas" class="code1" width="100" height="43" @click="draw1"></canvas>
 								</div>
-                <!--极验-->
+								<!--极验-->
 								<!--<div class="img-code">-->
-									<!--<label>完成验证：</label>-->
-									<!--<div id="captcha">-->
-										<!--<p id="wait" class="show">正在加载验证码......</p>-->
-									<!--</div>-->
+								<!--<label>完成验证：</label>-->
+								<!--<div id="captcha">-->
+								<!--<p id="wait" class="show">正在加载验证码......</p>-->
+								<!--</div>-->
 								<!--</div>-->
 								<input placeholder="输入验证码" type="text" v-model="code">
 							</div>
@@ -192,6 +189,7 @@
 	import Qf from './qf.vue';
 	import { encrypt as aes128Encod } from '../../utils/aesEncode'
 	import { wechatShare } from '../../assets/js/wxshare'
+	import '../../assets/js/baidu'
 	// import gt from "../../../static/js/gt.js"
 	// import slid from "../../../static/js/slider.js";
 
@@ -215,8 +213,8 @@
 			Qf
 		},
 		mounted() {
-		  //图形验证码
-      this.draw1()
+			//图形验证码
+			this.draw1()
 
 			wechatShare({
 				title: "做区分创世节点，领取10w注册邀请糖果包",
@@ -240,12 +238,12 @@
 				} else if(val == num) {
 					alert('提交成功！');
 					$(".input-val").val('');
-//					this.draw(this.show_num);
+					//					this.draw(this.show_num);
 
 				} else {
 					alert('验证码错误！请重新输入！');
 					$(".input-val").val('');
-//					this.draw(this.show_num);
+					//					this.draw(this.show_num);
 				}
 			},
 			draw1() {
@@ -306,7 +304,7 @@
 			//提交注册
 			registerSmp() {
 				let aesEncode = aes128Encod(this.password)
-				// console.log(aesEncode)
+
 				var myreg = /^1[345678]\d{9}$/;
 				var pwreg = /[a-zA-Z0-9]{8,20}/;
 				//输入框
@@ -426,9 +424,8 @@
 			getcode() {
 				//输入框
 				var val = $(".input-val").val().toLowerCase();
-        if(val != "") {
-				if(this.phone!= "") {
-
+				if(val != "") {
+					if(this.phone != "") {
 						//发送获取验证码的接口请求
 						if(this.show) { //倒计时内只能点一次
 							console.log(111)
@@ -452,8 +449,8 @@
 							}, 1000)
 						}
 
+					}
 				}
-        }
 
 			}
 		}
