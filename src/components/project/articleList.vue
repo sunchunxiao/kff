@@ -46,7 +46,7 @@
         this.artiList = [{
           id: 1,
           itemImg: require("../../assets/image/rose.png"),
-          itemName: "柚子（EOS）",
+          itemName: "EOS",
           articleItem: "EOS，来自未来的区块链操作系统！！",
           descrption: "以太坊系统自身带有一种叫做以太币（Ether）的数字货币。以太币和著名的数字货币比特币（Bitcoin）...",
           descrImg: require("../../assets/image/logo.png"),

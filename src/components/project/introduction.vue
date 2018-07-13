@@ -117,7 +117,7 @@
         this.hoster = {
           id: "1",
           imageUrl: require("../../assets/image/rose.png"),
-          name: "1111",
+          name: "1",
           description: "111",
           isAttention: true,
         }

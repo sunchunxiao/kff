@@ -43,7 +43,7 @@
         this.topicList = [{
           id: 1,
           itemImg: require("../../assets/image/rose.png"),
-          itemName: "柚子（EOS）",
+          itemName: "EOS",
           time: '2018-04-07',
           discussItem: "太空链的团队是不是跑路了，都没人更新代码了！",
           descrption: "以太坊系统自身带有一种叫做以太币（Ether）的数字货币。以太币和著名的数字货币比特币（Bitcoin）...",
@@ -55,7 +55,7 @@
           {
             id: 1,
             itemImg: require("../../assets/image/rose.png"),
-            itemName: "柚子（EOS）",
+            itemName: "EOS",
             time: '2018-04-07',
             discussItem: "太空链的团队是不是跑路了，都没人更新代码了！",
             descrption: "以太坊系统自身带有一种叫做以太币（Ether）的数字货币。以太币和著名的数字货币比特币（Bitcoin）...",

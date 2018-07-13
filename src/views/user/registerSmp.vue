@@ -103,7 +103,7 @@
 		position: relative;
 	}
 	
-	.registerSmp .longBtn {
+	.longBtn {
 		margin-top: 9%;
 	}
 	
