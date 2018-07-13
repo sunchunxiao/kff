@@ -60,7 +60,7 @@
 					<span class="info">{{userSignature}}</span>
 
 				</div>
-				<div class="evaluation-follow">+关注</div>
+				<div class="evaluation-follow discuss-atten">+关注</div>
 			</div>
 			<div v-html="m" style="width: 100%" class="v">{{m}}</div>
 			<div>
@@ -196,9 +196,7 @@
 					//文章内容
 					this.m = data.article.articleContents
 
-
-
-          //标题
+					//标题					
 					this.articleTitle = data.postTitle
 					//头像
 					var icon = data.createUserIcon

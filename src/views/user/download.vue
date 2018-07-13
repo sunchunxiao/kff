@@ -44,10 +44,8 @@
 			is_weixin() {
 				var ua = navigator.userAgent.toLowerCase();
 				if(ua.match(/MicroMessenger/i) == "micromessenger") {
-					console.log(11)
 					return true;
 				} else {
-					console.log(22)
 					window.location.href = "https://pic.qufen.top/qufen__v1.0.apk"
 					return false;
 				}

@@ -48,7 +48,7 @@
 					</div>
 					<span class="info">{{userSignature}}</span>
 				</div>
-				<div class="evaluation-follow">+关注</div>
+				<div class="evaluation-follow discuss-atten">+关注</div>
 			</div>
 			<div>
 				<h3>{{title}}</h3>

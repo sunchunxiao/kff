@@ -22,6 +22,10 @@
 	.content-img {
 		width: 100%;
 	}
+
+	.min {
+		width: 100%;
+	}
 	/*热门评论*/
 
 	.hot-comment {
@@ -59,16 +63,34 @@
 	}
 
 	.evaluationUl li {
-		width: 33%;
+		width: 31%;
 		/*margin: 0 auto;*/
 		height: 9rem;
 		float: left;
+		margin-right: 0.5rem;
 		margin-bottom: 0.5rem;
 	}
 
 	.evaluationUl li img {
-		width: 94%;
+		width: 100%;
 		height: 94%;
+	}
+
+	.evaluationUl li img {
+		transform: scale(1);
+		/*图片原始大小1倍*/
+		transition: all ease 0.5s;
+	}
+	/*图片放大所用时间*/
+
+	.evaluationUl li img.active {
+		transform: scale(0.8);
+		/*图片需要放大3倍*/
+		position: absolute;
+		top: 0;
+    left: 0;
+		/*是相对于前面的容器定位的，此处要放大的图片，不能使用position：relative；以及float，否则会导致z-index无效*/
+		z-index: 100;
 	}
 </style>
 
@@ -93,12 +115,12 @@
 					</div>
 					<span class="info">{{userSignature}}</span>
 				</div>
-				<div class="evaluation-follow">+关注</div>
+				<div class="evaluation-follow discuss-atten">+关注</div>
 			</div>
 			<p class="evaluation-content">{{postShortDesc}}</p>
 			<ul class="evaluationUl">
-				<li class="evaluationLi" v-for="item in postImg">
-					<img class="content-img" :src="item" alt="">
+				<li class="evaluationLi" v-for="(item,index) in postImg">
+					<img @click="imgScc(index)" :class="{'active':index==isChoose}" :src="item" alt="">
 				</li>
 			</ul>
 			<div class="crack">
@@ -139,7 +161,7 @@
 	import HeaderBar from '@/components/layout/headerBar.vue'
 	import Headerdown from '@/components/layout/headerdown.vue'
 	import { discuss } from '@/service/home';
-  import { wechatShare } from '../../assets/js/wxshare'
+	import { wechatShare } from '../../assets/js/wxshare'
 	export default {
 		name: "article-info",
 		data() {
@@ -148,6 +170,7 @@
 				projectCode: "",
 				tagInfo: "",
 				src: "",
+				isChoose: undefined,
 				id: "",
 				timestr: "",
 				articleTitle: "",
@@ -160,28 +183,43 @@
 				commentseNew: [],
 				commentseSum: "",
 				postImg: [],
-        imgUrl:'',
-        imgUrlwx:'',
-        postShortDesc:''
+				imgUrl: '',
+				imgUrlwx: '',
+				postShortDesc: ''
 			}
 		},
 		components: {
 			HeaderBar,
 			Headerdown
 		},
-    updated() {
-      if(this.imgUrl.length==0){
-        this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
-      }else{
-        this.imgUrlwx = this.imgUrl[0].fileUrl
-      }
-      wechatShare({
-        title: this.articleTitle,
-        content: this.postShortDesc,
-        link: window.location.href,
-        logo:this.imgUrlwx ,
-      })
-    },
+		updated() {
+			if(this.imgUrl.length == 0) {
+				this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
+			} else {
+				this.imgUrlwx = this.imgUrl[0].fileUrl
+			}
+			wechatShare({
+				title: this.articleTitle,
+				content: this.postShortDesc,
+				link: window.location.href,
+				logo: this.imgUrlwx,
+			})
+		},
+		methods: {
+			imgScc(index) {
+			  console.log(index)
+
+        if(index==index){
+          this.isChoose = this.isChoose === index ? undefined : index
+          // this.isChoose = !this.isChoose
+        }
+        // if((".evaluationLi img").hasClass("active")){
+        //
+        // }
+
+
+			}
+		},
 		mounted() {
 			this.id = this.$route.query.id;
 			let params = {
@@ -194,22 +232,22 @@
 					var data = res.data.discussShare
 					//头像加V
 					var cuser = data.cUsertype
-          if(cuser == 1) {
-            $(".imgV").css("display", "none")
-          }
-          //项目方
-          if(cuser == 2) {
-            $(".imgV").attr("src", "../../../static/elevation/p.gif")
-          }
-          //评测媒体
-          if(cuser == 3) {
-            $(".imgV").attr("src", "../../../static/elevation/F.gif")
-          }
-          //机构号
-          if(cuser == 4) {
-            $(".imgV").attr("src", "../../../static/elevation/V.gif")
+					if(cuser == 1) {
+						$(".imgV").css("display", "none")
+					}
+					//项目方
+					if(cuser == 2) {
+						$(".imgV").attr("src", "../../../static/elevation/p.gif")
+					}
+					//评测媒体
+					if(cuser == 3) {
+						$(".imgV").attr("src", "../../../static/elevation/F.gif")
+					}
+					//机构号
+					if(cuser == 4) {
+						$(".imgV").attr("src", "../../../static/elevation/V.gif")
 
-          }
+					}
 
 					this.articleTitle = data.post.postTitle
 					//头像
@@ -244,7 +282,7 @@
 						for(let i = 0; i < result.length; i++) {
 							var b = data.commentsehot[i].commentUserIcon;
 							this.commenticon.push(b)
-							console.log(this.commenticon)
+//							console.log(this.commenticon)
 						}
 					}
 					//热门评论如果是没有，不显示
@@ -261,10 +299,10 @@
 					var arr = data.post.createTimeStr.split(" ")
 					console.log(arr[0])
 					this.timestr = arr[0];
-          //缩略图
-          this.imgUrl = JSON.parse(data.post.postSmallImages)
-          //缩略文章
-          this.postShortDesc = data.post.postShortDesc
+					//缩略图
+					this.imgUrl = JSON.parse(data.post.postSmallImages)
+					//缩略文章
+					this.postShortDesc = data.post.postShortDesc
 				}
 
 			})

@@ -2,6 +2,7 @@
 @media screen and (min-width:415px) and (max-width:719px){span{font-size:14px}}
 @media screen and (min-width:720px){html{font-size:16px}}
 .evaluation-title>h2 {
+	width: 100%;
 	font-weight: lighter;
 	font-size: 20px;
 	display: inline-block;
@@ -93,12 +94,15 @@
 	font-size: 12px;
 	color: #ffffff;
 	text-align: center;
-	background: #3b88f6;
-	border: 1px solid #3b88f6;
+	
 	border-radius: 2px;
 	width: 43px;
 	height: 20px;
 	line-height: 20px;
+}
+.discuss-atten{
+	background: #3b88f6;
+	border: 1px solid #3b88f6;
 }
 
 
