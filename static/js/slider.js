@@ -1,6 +1,9 @@
 import { getCode } from '@/service/user';
 var show = true
 var timer = null
+
+const TIME_COUNT = 60;
+var count
 var handler = function(captchaObj) {
 	captchaObj.appendTo('#captcha');
 	captchaObj.onReady(function() {
@@ -29,15 +32,15 @@ var handler = function(captchaObj) {
 							module: "register"
 						});
 					}
-					const TIME_COUNT = 60;
+
 					if(!timer) {
-						var count = TIME_COUNT;
+						 count = TIME_COUNT;
 						show = false;
 						timer = setInterval(() => {
 							if(count > 0 && count <= TIME_COUNT) {
 								console.log(count)
 								count--;
-								return count
+								vm.$emit("count1",count)
 							} else {
 								show = true;
 								clearInterval(timer);

@@ -11,19 +11,19 @@
 			</div>
 			<!--安卓下载-->
 			<div class="downBtn2">
-        <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.secretk.move"><Button ><img src="../../assets/down/Android.png"/><span>Android下载</span></Button></a>
-        <!--<Button @click="android"><img src="../../assets/down/Android.png"/><span>Android下载</span></Button>-->
+        <!--<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.secretk.move"><Button ><img src="../../assets/down/Android.png"/><span>Android下载</span></Button></a>-->
+        <Button @click="android"><img src="../../assets/down/Android.png"/><span>Android下载</span></Button>
 
 			</div>
 			<div class="downBtn">
 				<button @click="instance"><img src="../../assets/down/iOS.png"/><span>iphone下载</span></button>
 			</div>
       <!--微信下载提示在浏览器上打开的遮罩层-->
-			<!--<div class="weixin-tip">-->
-				<!--<p>-->
-					<!--<img src="../../assets/down/down.png" alt="在浏览器打开" />-->
-				<!--</p>-->
-			<!--</div>-->
+			<div class="weixin-tip">
+				<p>
+					<img src="../../assets/down/down.png" alt="在浏览器打开" />
+				</p>
+			</div>
 		</div>
 	</div>
 </template>
@@ -41,28 +41,28 @@
 				});
 
 			},
-			// is_weixin() {
-			// 	var ua = navigator.userAgent.toLowerCase();
-			// 	if(ua.match(/MicroMessenger/i) == "micromessenger") {
-			// 		console.log(11)
-			// 		return true;
-			// 	} else {
-			// 		console.log(22)
-			// 		window.location.href = "https://pic.qufen.top/qufen__v1.0.apk"
-			// 		return false;
-			// 	}
-			// },
-			// android() {
-			// 	var winHeight = $(window).height();
-			// 	console.log(winHeight)
-			// 	this.is_weixin()
-			// 	var isWeixin = this.is_weixin();
-			// 	console.log(isWeixin)
-			// 	if(isWeixin) {
-			// 		$(".weixin-tip").css("height", winHeight);
-			// 		$(".weixin-tip").show();
-			// 	}
-			// }
+			is_weixin() {
+				var ua = navigator.userAgent.toLowerCase();
+				if(ua.match(/MicroMessenger/i) == "micromessenger") {
+					console.log(11)
+					return true;
+				} else {
+					console.log(22)
+					window.location.href = "https://pic.qufen.top/qufen__v1.0.apk"
+					return false;
+				}
+			},
+			android() {
+				var winHeight = $(window).height();
+				console.log(winHeight)
+				this.is_weixin()
+				var isWeixin = this.is_weixin();
+				console.log(isWeixin)
+				if(isWeixin) {
+					$(".weixin-tip").css("height", winHeight);
+					$(".weixin-tip").show();
+				}
+			}
 		}
 	}
 </script>

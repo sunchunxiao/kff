@@ -17,13 +17,13 @@ export const userRouter = [
     component: (resolve) => require(['@/views/user/codeLogin.vue'], resolve)
   },
   //首次注册测试
-  // {
-  //   path: "/user/re",
-  //   meta: {
-  //     title: '登录',
-  //   },
-  //   component: (resolve) => require(['@/views/user/re.vue'], resolve)
-  // },
+  {
+    path: "/user/re",
+    meta: {
+      title: '登录',
+    },
+    component: (resolve) => require(['@/views/user/re.vue'], resolve)
+  },
   //验证码登录
   {
     path: "/user/codeLogin1",
