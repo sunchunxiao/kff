@@ -77,6 +77,7 @@
 	}
 
 	.onecenter ul li {
+    text-align: left;
 		list-style: disc;
 		font-size: 15px;
 		color: #333333;
@@ -177,7 +178,7 @@
 			Qf
 		},
 		mounted() {
-			console.log(localStorage)
+			// console.log(localStorage)
 			let params = {
 				token: this.token
 			}
