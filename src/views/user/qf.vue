@@ -167,7 +167,7 @@
         <img class="helpEvaluation mainB" src="../../assets/mine/help/register1.png" alt="">
         <div>MO: 用户注册奖励</div>
         <div>M1: 一级好友邀请</div>
-        <div class="mainB" >M2: 用户注册奖励</div>
+        <div class="mainB" >M2：二级好友邀请</div>
         <p class="mainB" >区分的前5w用户为区分的“创世节点”，将获得区分的创世奖励。</p>
       </div>
 			<div class="qf-title-map">

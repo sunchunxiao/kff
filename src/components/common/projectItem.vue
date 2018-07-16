@@ -199,7 +199,10 @@
 		right: 8px;
 		top: 3px;
 	}
-
+  .atten-span{
+    font-size:12px;
+    color:#888888;
+  }
 	.photo>img {
 		border-radius: 50%;
 		border: 1px solid #dddddd;
@@ -210,6 +213,14 @@
 		color: #3b88f6;
 		font-weight: bolder;
 	}
+  .projectName-name{
+    font-size:14px;
+    color:#333333;
+  }
+  .projectName-time{
+    font-size:10px;
+    color:#c2c2c2;
+  }
 </style>
 <template>
 	<div>
@@ -228,8 +239,8 @@
 						<img slot="icon" :src="item.itemImg" @click="gotoProjectHome(item.id)">
 					</div>
 					<div class="name">
-						<div class="projectName"><span>{{item.itemName}} </span><span class="atten-span">/ 柚子</span></div>
-						<div class="time">{{item.time}}</div>
+						<div class="projectName"><span class="projectName-name">{{item.itemName}} </span><span class="atten-span">/ 柚子</span></div>
+						<div class="projectName-time">{{item.time}}</div>
 					</div>
 					<div class="btn">
 						<mt-button @click="addAttention(item,index)" :type="item.isAttention ? 'default' : 'primary'">{{item.isAttention ? "已关注" : "+ 关注"}} </mt-button>
