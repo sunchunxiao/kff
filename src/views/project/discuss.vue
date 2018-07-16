@@ -4,43 +4,44 @@
 		float: left;
 		width: 17px;
 	}
-
+	
 	.evaluation-follow span {
 		font-size: 10px;
 		color: #3b88f6;
 		margin-left: -5px;
 	}
-
+	
 	.evaluation-content {
-		font-size: 1.5rem;
+		font-size: 1.3rem;
 		color: #333333;
 		letter-spacing: 0;
 		line-height: 20px;
 		margin: 2rem 0;
 	}
-
+	
 	.content-img {
 		width: 100%;
 	}
-
+	
 	.min {
 		width: 100%;
 	}
 	/*热门评论*/
-
+	
 	.hot-comment {
 		width: 90%;
 		margin: 1rem auto;
 	}
-
+	
 	.p-style {
 		font-size: 15px;
 		color: #333333;
 		letter-spacing: 0;
 		line-height: 20px;
 		text-align: justify;
+		padding-bottom: 10px;
 	}
-
+	
 	.preview {
 		font-size: 13px;
 		/*color:#3b88f6;*/
@@ -51,17 +52,17 @@
 		/*border-top: 1px dotted  #dddddd;*/
 		border-bottom: 1px dotted #dddddd;
 	}
-
+	
 	.preview-peo {
 		color: #3b88f6;
 	}
-
+	
 	.evaluationUl {
 		overflow: hidden;
 		display: flex;
 		flex-wrap: wrap;
 	}
-
+	
 	.evaluationUl li {
 		width: 31%;
 		/*margin: 0 auto;*/
@@ -70,27 +71,41 @@
 		margin-right: 0.5rem;
 		margin-bottom: 0.5rem;
 	}
-
+	
 	.evaluationUl li img {
 		width: 100%;
-		height: 94%;
+		height: 100%;
 	}
-
+	
 	.evaluationUl li img {
 		transform: scale(1);
 		/*图片原始大小1倍*/
 		transition: all ease 0.5s;
 	}
 	/*图片放大所用时间*/
-
+	
 	.evaluationUl li img.active {
 		transform: scale(0.8);
 		/*图片需要放大3倍*/
 		position: absolute;
-		top: 0;
-    left: 0;
+		/*top: 0;*/
+		left: 0;
 		/*是相对于前面的容器定位的，此处要放大的图片，不能使用position：relative；以及float，否则会导致z-index无效*/
 		z-index: 100;
+	}
+	
+	.more-preview {
+		height: 3rem;
+		line-height: 3rem;
+		background: #f4f4f4;
+		border-top-left-radius: 15px;
+		border-top-right-radius: 15px;
+	}
+	
+	.preview-num {
+		padding-left: 2rem;
+		font-size: 13px;
+		color: #aaaaaa;
 	}
 </style>
 
@@ -117,7 +132,8 @@
 				</div>
 				<div class="evaluation-follow discuss-atten">+关注</div>
 			</div>
-			<p class="evaluation-content">{{postShortDesc}}</p>
+			<!--文章内容-->
+			<p class="evaluation-content">{{disscussContents}}</p>
 			<ul class="evaluationUl">
 				<li class="evaluationLi" v-for="(item,index) in postImg">
 					<img @click="imgScc(index)" :class="{'active':index==isChoose}" :src="item" alt="">
@@ -139,7 +155,7 @@
 				<img class="evaluation-info-img" :src="commenticon[index]" alt="">
 				<div class="evaluation-info-p">
 					<p class="name">{{item .commentUserName}}</p>
-					<span class="info">{{item.floot}}楼 {{item.createTimeStr}}</span>
+					<span class="info">{{item.floor}}楼 {{item.createTimeStr}}</span>
 				</div>
 				<!--点赞-->
 				<div class="evaluation-follow"><img src="../../assets/footer/zan.png" alt=""><span>{{item.praiseNum}}</span></div>
@@ -149,11 +165,13 @@
 				<!--commentUserName评论人-->
 				<span class="preview-peo">{{a.commentUserName}}:@{{a.becommentedUserName}}:</span><span>{{a.commentContent}}</span>
 			</div>
-			<div class="preview">
+			<!--<div class="preview more-preview">
 				<span class="preview-num">更多10条评论</span>
-			</div>
+			</div>-->
 		</div>
-
+		<div class=" more-preview">
+			<span class="preview-num">留下你的评论...</span>
+		</div>
 	</div>
 </template>
 
@@ -176,6 +194,7 @@
 				articleTitle: "",
 				username: "",
 				userSignature: "",
+				disscussContents: '',
 				postShortDesc: "",
 				imgUrl: "",
 				commenticon: [],
@@ -185,7 +204,8 @@
 				postImg: [],
 				imgUrl: '',
 				imgUrlwx: '',
-				postShortDesc: ''
+				postShortDesc: '',
+				scrollTop: ""
 			}
 		},
 		components: {
@@ -193,6 +213,20 @@
 			Headerdown
 		},
 		updated() {
+			//点击图片增大后的相对位置
+			if($(".evaluationLi>img").hasClass("active")) {
+				//如果滚动获取滚动的top值
+				if(this.scrollTop) {
+					$(".active").css({
+						top: this.scrollTop
+					})
+				} else {
+					$(".active").css({
+						top: 0
+					})
+				}
+
+			}
 			if(this.imgUrl.length == 0) {
 				this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
 			} else {
@@ -206,21 +240,15 @@
 			})
 		},
 		methods: {
+			handleScroll() {
+				this.scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+			},
 			imgScc(index) {
-			  console.log(index)
-
-        if(index==index){
-          this.isChoose = this.isChoose === index ? undefined : index
-          // this.isChoose = !this.isChoose
-        }
-        // if((".evaluationLi img").hasClass("active")){
-        //
-        // }
-
-
+				this.isChoose = this.isChoose === index ? undefined : index
 			}
 		},
 		mounted() {
+			window.addEventListener('scroll', this.handleScroll)
 			this.id = this.$route.query.id;
 			let params = {
 				postId: this.id
@@ -256,8 +284,8 @@
 
 					this.username = data.post.createUserName;
 					this.userSignature = data.post.createUserSignature;
-					//简介
-					this.postShortDesc = data.post.postShortDesc;
+					//文章内容
+					this.disscussContents = data.discuss.disscussContents;
 					//图片
 					var a = JSON.parse(data.post.postSmallImages);
 					// console.log(a)
@@ -282,7 +310,7 @@
 						for(let i = 0; i < result.length; i++) {
 							var b = data.commentsehot[i].commentUserIcon;
 							this.commenticon.push(b)
-//							console.log(this.commenticon)
+							//							console.log(this.commenticon)
 						}
 					}
 					//热门评论如果是没有，不显示
@@ -297,7 +325,7 @@
 
 					//时间  字符串切割
 					var arr = data.post.createTimeStr.split(" ")
-					console.log(arr[0])
+					//					console.log(arr[0])
 					this.timestr = arr[0];
 					//缩略图
 					this.imgUrl = JSON.parse(data.post.postSmallImages)

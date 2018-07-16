@@ -62,6 +62,7 @@
 				</div>
 				<div class="evaluation-follow discuss-atten">+关注</div>
 			</div>
+			<!--文章内容-->
 			<div v-html="m" style="width: 100%" class="v">{{m}}</div>
 			<div>
 				<!--已经赞助-->

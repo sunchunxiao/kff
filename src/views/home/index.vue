@@ -125,7 +125,7 @@
           id: 1,
           action: "test",
           itemImg: require("../../assets/image/rose.png"),
-          itemName: "柚子（EOS）1111",
+          itemName: "EOS",
           time: '2018-05-07',
           isAttention: false,
           testName: "ALL-整体评测",

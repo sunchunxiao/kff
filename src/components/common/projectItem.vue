@@ -2,8 +2,8 @@
 	.projectItem {
 		padding: 10px 20px;
 		/*border-top: 1px solid;*/
-		border-bottom: 1px solid;
-		margin-bottom: 8px;
+		border-bottom: 1px solid #ddd;
+		/*margin-bottom: 8px;*/
 		overflow: hidden;
 		.action {
 			justify-content: flex-start !important;
@@ -66,22 +66,12 @@
 				align-items: center;
 			}
 		}
-		.row5 {
-			float: right;
-			justify-content: flex-start;
-			.detail {
-				display: flex;
-				align-items: center;
-				img {
-					width: 1.5rem;
-					height: 1.5rem;
-					padding-right: 20%;
-				}
-			}
-			.zan {
-				margin-right: 20px;
-			}
-		}
+		
+	}
+	
+	.projectName {
+		font-size: 14px;
+		color: #333333;
 	}
 	
 	.already {
@@ -115,7 +105,31 @@
 			}
 		}
 	}
-	
+	.row5 {
+			justify-content: flex-start;
+			position: relative;
+			overflow: hidden;
+			padding: 10px 20px;
+			border-bottom: 6px solid #f4f4f4;
+			.detail {
+				display: flex;
+				align-items: center;
+				img {
+					width: 18px;
+					height: 17px;
+					margin-right: 20%;
+				}
+			}
+			.zan {
+				margin-right: 20px;
+				position: absolute;
+				right: 5rem;
+			}
+			.index-preview {
+				position: absolute;
+				right: 2rem;
+			}
+		}
 	.mint-button--normal {
 		padding: 0;
 	}
@@ -145,68 +159,76 @@
 			height: 100%;
 		}
 	}
-	.article-title{
-		padding: 10px 20px;
-		border-bottom: 1px solid #dddddd;;
+	
+	.article-title {
+		float: left;
+		/*padding: 10px 20px;*/
+		/*border-bottom: 1px solid #dddddd;*/
 	}
+	
 	.article-atten {
-		background:#f1f1f1;
+		background: #f1f1f1;
 		border-radius: 35px;
 		width: 131px;
 		height: 22px;
 		position: relative;
 	}
-	.atten-img{
+	
+	.atten-img {
 		display: inline-block;
-		width: 23px ;
+		width: 23px;
 		height: 22px;
 	}
-	.atten-img img{
+	
+	.atten-img img {
 		width: 100%;
 	}
-	.atten-name{
+	
+	.atten-name {
 		font-size: 14px;
-		color:#333333;
+		color: #333333;
 		position: absolute;
 		left: 27px;
 		top: 1px;
 	}
-	.atten-project{
+	
+	.atten-project {
 		font-size: 12px;
-		color:#888888;
+		color: #888888;
 		position: absolute;
 		right: 8px;
 		top: 3px;
 	}
-	.photo>img{
-		border-radius:50%;
+	
+	.photo>img {
+		border-radius: 50%;
 		border: 1px solid #dddddd;
+	}
+	
+	.index-score {
+		font-size: 1.3rem;
+		color: #3b88f6;
+		font-weight: bolder;
 	}
 </style>
 <template>
 	<div>
 
 		<template v-for="(item,index) in itemList">
-			<div class="article-title">
-					<div class="article-atten">
-						<span class="atten-img"><img src="../../assets/evaluation/media@2x.png" /></span>
-						<span class="atten-name">老猫</span>
-						<span class="atten-project">关注了项目</span>
-					</div>
-				</div>
+
 			<div class="projectItem" :key="index">
 				<div class="row action" v-if="isActionTop">
 					<img slot="icon" :src="item.operatorImg" />
 					<span v-if="item.action=='zan'">{{item.operator}}赞同了评测</span>
 					<span v-if="item.action=='test'">{{item.operator}}评论了文章</span>
 				</div>
-				
+
 				<div class="row row1">
 					<div class="photo">
 						<img slot="icon" :src="item.itemImg" @click="gotoProjectHome(item.id)">
 					</div>
 					<div class="name">
-						<div class="projectName">{{item.itemName}} <span>/ 柚子</span></div>
+						<div class="projectName"><span>{{item.itemName}} </span><span class="atten-span">/ 柚子</span></div>
 						<div class="time">{{item.time}}</div>
 					</div>
 					<div class="btn">
@@ -215,7 +237,8 @@
 				</div>
 				<div class="row row2">
 					<div class="test" style="font-size: 16px;color: #333">{{item.testName}}</div>
-					<My-Progress :rate="item.rate"></My-Progress>
+					<!--<My-Progress :rate="item.rate"></My-Progress>-->
+					<div class="index-score">8.5分</div>
 				</div>
 				<div class="row row3">
 					<div class="content">
@@ -226,24 +249,32 @@
 				<div class="image">
 					<img :src="item.descrImg">
 				</div>
-				<div class="row4" v-if="!isActionTop">
-					<div class="testerInfo">
+				<!--<div class="row4" v-if="!isActionTop">-->
+					<!--<div class="testerInfo">
 						<img :src="item.testerImg">
 						<span style="margin-right: 20px" v-if="item.action=='zan'">{{item.tester}}赞同了评测</span>
 						<span style="margin-right: 20px" v-if="item.action=='test'">{{item.tester}}评论了文章</span>
+					</div>-->
+				<!--</div>-->
+				
+			</div>
+			<div class="row row5">
+					<div class="article-title">
+						<div class="article-atten">
+							<span class="atten-img"><img src="../../assets/evaluation/media@2x.png" /></span>
+							<span class="atten-name">老猫</span>
+							<span class="atten-project">发布了评测</span>
+						</div>
 					</div>
-				</div>
-				<div class="row row5">
 					<div class="detail zan">
 						<img @click="zan(index)" src="../../assets/index/zan.png">
 						<label>{{ item.zanNum}}</label>
 					</div>
-					<div class="detail">
+					<div class="detail index-preview">
 						<img src="../../assets/index/review.png">
 						<label>{{ item.commentNum}}</label>
 					</div>
 				</div>
-			</div>
 		</template>
 	</div>
 </template>

@@ -3,14 +3,14 @@
 		font-size: 13px;
 		color: #cccccc;
 	}
-
+	
 	.registerBac {
 		width: 100%;
 		height: 18rem;
 		background-image: url("../../assets/register/register.png");
 		background-size: 100% 100%;
 	}
-
+	
 	.register {
 		background: #ffffff;
 		box-shadow: 0 2px 11px 0 rgba(103, 166, 255, 0.27);
@@ -19,32 +19,32 @@
 		margin: 0 auto;
 		margin-top: -3rem;
 	}
-
+	
 	.register-content {
 		padding: 1rem;
 	}
-
+	
 	.register-content img {
 		width: 25px;
 		height: 29px;
 	}
-
+	
 	.qf-register {
 		display: inline-block;
 	}
-
+	
 	.register-title {
 		font-size: 16px;
 		color: #1e75ff;
 		text-align: left;
 	}
-
+	
 	.register-title-listen {
 		font-size: 10px;
 		color: #666666;
 		-webkit-transform: scale(0.8);
 	}
-
+	
 	.reg-intro {
 		width: 90%;
 		margin-left: 5%;
@@ -70,9 +70,9 @@
 			color: #3b88f6;
 		}
 	}
-
+	
 	.yanzhengma_input {}
-
+	
 	.code1 {
 		width: 23%;
 		font-size: 14px;
@@ -85,12 +85,12 @@
 		top: 10%;
 	}
 	/*图片验证码*/
-
+	
 	.input-val {
 		width: 80px;
 		margin-right: 10px;
 	}
-
+	
 	#canvas {
 		width: 79px;
 		float: right;
@@ -98,19 +98,19 @@
 		border-radius: 5px;
 		cursor: pointer;
 	}
-
+	
 	.reg-code {
 		position: relative;
 	}
-
+	
 	.longBtn {
 		margin-top: 9%;
 	}
-
+	
 	.registerSmp .mint-button-text {
 		color: #fff;
 	}
-
+	
 	.onecenter {
 		text-align: center;
 		margin-top: 2%;
@@ -119,7 +119,7 @@
 			color: #3b88f6;
 		}
 	}
-
+	
 	.understanding {
 		font-size: 12px;
 		color: #999999;
@@ -305,7 +305,7 @@
 			registerSmp() {
 				let aesEncode = aes128Encod(this.password)
 
-				var myreg = /^1[345678]\d{9}$/;
+				var myreg = /^1[23456789]\d{9}$/;
 				var pwreg = /[a-zA-Z0-9]{8,20}/;
 				//输入框
 				var val = $(".input-val").val().toLowerCase();
@@ -320,66 +320,74 @@
 					phoneCode: val,
 					//手机验证码
 					dynamicVerifyCode: this.code,
-					//  邀请码
+					// 邀请码
 					invaUIH: this.invaUIH
 				}
-				if(myreg.test(this.phone)) {
-					if(val != "") {
-						if(val == num) {
-							if(this.code != "") {
-								if(pwreg.test(this.password)) {
-									register(params).then(res => {
-										//0是不成功 1是注册成功
-										if(res.data.reStatus == 0) {
-											MessageBox({
-												title: '提示',
-												message: res.data.reason,
-												showConfirmButton: true
-											});
-											// alert(res.data.reason)
-										} else {
-											localStorage.setItem("token", res.data.token);
-											this.$router.push('/user/registerSuccess');
-										}
+				if(this.phone != "") {
+					if(myreg.test(this.phone)) {
+						if(val != "") {
+							if(val == num) {
+								if(this.code != "") {
+									if(pwreg.test(this.password)) {
+										register(params).then(res => {
+											//0是不成功 1是注册成功
+											if(res.data.reStatus == 0) {
+												MessageBox({
+													title: '提示',
+													message: res.data.reason,
+													showConfirmButton: true
+												});
+												// alert(res.data.reason)
+											} else {
+												localStorage.setItem("token", res.data.token);
+												this.$router.push('/user/registerSuccess');
+											}
 
-									})
+										})
+									} else {
+										MessageBox({
+											title: '提示',
+											message: '请输入8-20位数字字母组合！',
+											showConfirmButton: true
+										});
+									}
+
 								} else {
 									MessageBox({
 										title: '提示',
-										message: '请输入8-20位数字字母组合！',
+										message: '请输入短信验证码！',
 										showConfirmButton: true
 									});
 								}
-
 							} else {
 								MessageBox({
 									title: '提示',
-									message: '请输入短信验证码！',
+									message: '图片验证码输入不正确！',
 									showConfirmButton: true
 								});
+								//							this.draw1();//刷新验证码
+								//						    $(".input-val").val('');
 							}
+
 						} else {
 							MessageBox({
 								title: '提示',
-								message: '图片验证码输入不正确！',
+								message: '请输入图片验证码！',
 								showConfirmButton: true
 							});
-							//							this.draw1();//刷新验证码
-							//						    $(".input-val").val('');
 						}
 
 					} else {
 						MessageBox({
 							title: '提示',
-							message: '请输入图片验证码！',
+							message: '手机号码格式不正确！',
 							showConfirmButton: true
 						});
 					}
-
 				} else {
 					MessageBox({
 						title: '提示',
-						message: '请输入手机号！',
+						message: '手机号码不能为空！',
 						showConfirmButton: true
 					});
 				}
@@ -388,7 +396,7 @@
 			//手机号验证
 			handleCommentBlur() {
 				var phone = this.phone;
-				var myreg = /^1[345678]\d{9}$/;
+				var myreg = /^1[23456789]\d{9}$/;
 				let params = {
 					phone: this.phone
 				}
