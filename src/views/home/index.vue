@@ -73,6 +73,7 @@
   import Recommend from '@/components/home/recommend.vue'
   import Attention from '@/components/home/attention.vue'
   import RankList from '@/components/home/rankList.vue'
+  import {recommend} from '@/service/home';
 
   export default {
     name: 'home',
@@ -94,6 +95,9 @@
         rankList: [],
       }
     },
+    mounted(){
+
+    },
     created() {
       this.queryRecommendList()
       this.queryAttentionList()
@@ -103,40 +107,18 @@
       rightClickHandel() {
         this.$router.push('')
       },
-
+      //推荐
       queryRecommendList() {
         //接口
-        this.recommendList = [{
-          id: 1,
-          action: "zan",
-          itemImg: require("../../assets/image/rose.png"),
-          itemName: "EOS",
-          time: '2018-04-07',
-          isAttention: true,
-          testName: "ALL-整体评测",
-          rate: 85,
-          descrption: "以太坊系统自身带有一种叫做以太币（Ether）的数字货币。以太币和著名的数字货币比特币（Bitcoin）...",
-          descrImg: require("../../assets/image/logo.png"),
-          testerImg: require("../../assets/image/rose.png"),
-          tester: "老猫",
-          zanNum: 200,
-          commentNum: 50,
-        }, {
-          id: 1,
-          action: "test",
-          itemImg: require("../../assets/image/rose.png"),
-          itemName: "EOS",
-          time: '2018-05-07',
-          isAttention: false,
-          testName: "ALL-整体评测",
-          rate: 65,
-          descrption: "区块链投资人、创业者",
-          descrImg: require("../../assets/image/logo.png"),
-          testerImg: require("../../assets/image/rose.png"),
-          tester: "老猫11",
-          zanNum: 300,
-          commentNum: 80,
-        }]
+        let params = {
+          pageIndex:1,
+          pageSize:10
+        }
+        recommend(params).then(res => {
+          console.log(res.data.recommends.rows)
+          this.recommendList = res.data.recommends.rows
+
+        })
       },
       queryAttentionList() {
         //接口

@@ -55,3 +55,12 @@ export const share = (params = {}) => {
     },
   })
 }
+//首页推荐
+export const recommend = (params = {}) => {
+  return request(`/kff/home/recommendList`, {
+    body: {
+      ...params
+    },
+  })
+}
+
