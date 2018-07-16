@@ -58,22 +58,22 @@
 			}
 		}
 		.row4 {
-			border-bottom: 1px solid #ddd;
-			padding-bottom: 5px;
-			margin-bottom: 5px;
+			/*border-bottom: 1px solid #ddd;*/
+			/*padding-bottom: 5px;*/
+			/*margin-bottom: 5px;*/
 			.testerInfo {
 				display: flex;
 				align-items: center;
 			}
 		}
-		
+
 	}
-	
+
 	.projectName {
 		font-size: 14px;
 		color: #333333;
 	}
-	
+
 	.already {
 		background-color: #fff;
 		padding: 0.5rem 0;
@@ -133,21 +133,21 @@
 	.mint-button--normal {
 		padding: 0;
 	}
-	
+
 	.mint-button {
 		border-radius: 1px;
 		width: 43px;
 		height: 20px;
 		font-size: 0;
 	}
-	
+
 	.mt-progress div:nth-child(2) {
 		font-size: 14px;
 		color: #3b88f6;
 		letter-spacing: 0;
 		font-weight: bolder;
 	}
-	
+
 	.image {
 		text-align: center;
 		/*flex: 2;*/
@@ -159,13 +159,13 @@
 			height: 100%;
 		}
 	}
-	
+
 	.article-title {
 		float: left;
 		/*padding: 10px 20px;*/
 		/*border-bottom: 1px solid #dddddd;*/
 	}
-	
+
 	.article-atten {
 		background: #f1f1f1;
 		border-radius: 35px;
@@ -173,17 +173,17 @@
 		height: 22px;
 		position: relative;
 	}
-	
+
 	.atten-img {
 		display: inline-block;
 		width: 23px;
 		height: 22px;
 	}
-	
+
 	.atten-img img {
 		width: 100%;
 	}
-	
+
 	.atten-name {
 		font-size: 14px;
 		color: #333333;
@@ -191,7 +191,7 @@
 		left: 27px;
 		top: 1px;
 	}
-	
+
 	.atten-project {
 		font-size: 12px;
 		color: #888888;
@@ -199,12 +199,12 @@
 		right: 8px;
 		top: 3px;
 	}
-	
+
 	.photo>img {
 		border-radius: 50%;
 		border: 1px solid #dddddd;
 	}
-	
+
 	.index-score {
 		font-size: 1.3rem;
 		color: #3b88f6;
@@ -256,7 +256,7 @@
 						<span style="margin-right: 20px" v-if="item.action=='test'">{{item.tester}}评论了文章</span>
 					</div>-->
 				<!--</div>-->
-				
+
 			</div>
 			<div class="row row5">
 					<div class="article-title">
