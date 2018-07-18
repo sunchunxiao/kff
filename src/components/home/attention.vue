@@ -9,7 +9,7 @@
         </div>
       </div>
     </div>
-    <Project-Item :itemList="attentionList" :isActionTop='true' v-on:addAttention="addAttention"></Project-Item>
+    <!--<Project-Item :itemList="attentionList" :isActionTop='true' v-on:addAttention="addAttention"></Project-Item>-->
   </div>
 </template>
 

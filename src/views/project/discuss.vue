@@ -63,7 +63,7 @@
 		flex-wrap: wrap;
 	}
 	
-	.evaluationUl li {
+	.evaluationUl .evaluationLi{
 		width: 31%;
 		/*margin: 0 auto;*/
 		height: 9rem;
@@ -72,19 +72,19 @@
 		margin-bottom: 0.5rem;
 	}
 	
-	.evaluationUl li img {
+	.evaluationUl .evaluationLi img {
 		width: 100%;
 		height: 100%;
 	}
 	
-	.evaluationUl li img {
+	.evaluationUl .evaluationLi img {
 		transform: scale(1);
 		/*图片原始大小1倍*/
 		transition: all ease 0.5s;
 	}
 	/*图片放大所用时间*/
 	
-	.evaluationUl li img.active {
+	.evaluationUl .evaluationLi img.active {
 		transform: scale(0.8);
 		/*图片需要放大3倍*/
 		position: absolute;
@@ -134,11 +134,14 @@
 			</div>
 			<!--文章内容-->
 			<p class="evaluation-content">{{disscussContents}}</p>
-			<ul class="evaluationUl">
-				<li class="evaluationLi" v-for="(item,index) in postImg">
-					<img @click="imgScc(index)" :class="{'active':index==isChoose}" :src="item" alt="">
-				</li>
-			</ul>
+			<div class="evaluationUl">
+				<!--<li class="evaluationLi" v-for="(item,index) in postImg">-->
+					<div class="evaluationLi" v-for="(item,index) in postImg">
+						<img @click="imgScc(index)" :class="{'active':index==isChoose}" :src="item" alt="">
+					</div>
+					
+				<!--</li>-->
+			</div>
 			<div class="crack">
 				<div class="crack-tag1"><span class="span-name">{{projectCode}}</span></div>
 				<span class="crack-tag2" v-for="item in tagInfo">#{{item.tagName}}#</span>
@@ -250,6 +253,7 @@
 		mounted() {
 			window.addEventListener('scroll', this.handleScroll)
 			this.id = this.$route.query.id;
+			console.log(this.$route.query.id)
 			let params = {
 				postId: this.id
 			}

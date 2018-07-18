@@ -37,7 +37,14 @@ export const mainRouter = [
           title: '我的'
         },
         component: (resolve) => require(['@/views/mine/index.vue'], resolve)
-      }
+      },
+//    {
+//      path: 'mine',
+//      meta: {
+//        title: '我的'
+//      },
+//      component: (resolve) => require(['@/views/home/index1.vue'], resolve)
+//    }
     ]
   }
 ]

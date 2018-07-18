@@ -6,7 +6,8 @@
 </template>
 
 <script>
-  import ProjectItem from '@/components/common/projectItem.vue'
+import ProjectItem from '@/components/common/projectItem.vue'
+//import ProjectItem from '@/components/common/project.vue'
 
   export default {
     name: "recommmend",

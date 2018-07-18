@@ -163,7 +163,7 @@
 
 		},
 		mounted() {
-			// console.log(this.$route.query.id)
+			 console.log(this.$route.query.id)
 			this.id = this.$route.query.id;
 
 			//发送请求
