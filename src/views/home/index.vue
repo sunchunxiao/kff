@@ -93,7 +93,7 @@
 
 		},
 		created() {
-			this.queryRecommendList()
+//			this.queryRecommendList()
 			this.queryAttentionList()
 			this.queryRankList()
 		},
