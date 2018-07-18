@@ -128,14 +128,13 @@
 			}
 			label {
 				font-size: 14px;
-				 color:#aaaaaa;
+				color: #aaaaaa;
 			}
 		}
 		.zan {
 			margin-right: 20px;
 			position: absolute;
 			right: 5rem;
-			
 		}
 		.index-preview {
 			position: absolute;
@@ -169,6 +168,17 @@
 	.image {
 		width: 32%;
 		height: 7rem;
+		text-align: center;
+		/*flex: 2;*/
+		/*align-items: center;*/
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	}
+	.image1 {
+		width: 100%;
+		height: 11rem;
 		text-align: center;
 		/*flex: 2;*/
 		/*align-items: center;*/
@@ -289,7 +299,8 @@
 							<div class="projectName-time">{{item.createTimeStr}}</div>
 						</div>
 						<div class="btn">
-							<mt-button @click="addAttention(item,index)" :type="item.isAttention ? 'default' : 'primary'">{{item.isAttention ? "已关注" : "+ 关注"}} </mt-button>
+							<!--<mt-button @click="addAttention(item,index)" :type="item.isAttention ? 'default' : 'primary'">{{item.isAttention ? "已关注" : "+ 关注"}} </mt-button>-->
+							<mt-button :type="item.isAttention ? 'default' : 'primary'">{{item.isAttention ? "已关注" : "+ 关注"}} </mt-button>
 						</div>
 					</div>
 					<div class="row row2">
@@ -304,9 +315,14 @@
 
 					</div>
 					<div class="recommand-img">
+						<!--一张图的-->
 						<div class="image" v-for="item1 in item.postSmallImagesList">
 							<img :src="item1.fileUrl">
 						</div>
+						<!--<div class="image1"  v-if="item.postSmallImagesList.length<=2" v-for="item1 in item.postSmallImagesList">
+							<img :src="item1.fileUrl">
+						</div>-->
+						
 
 					</div>
 
@@ -352,6 +368,7 @@
 		data() {
 			return {
 				value: 5,
+				postImage: [],
 				pageIndex: 1,
 				pageSize: 10,
 				itemList: [],
@@ -380,10 +397,31 @@
 		components: {
 			'v-loadmore': Loadmore,
 		},
-		mounted() {
-			//			console.log(this.itemList)
+		mounted(){
+//			console.log(this.itemList)
 
 			this.loadPageList(); //初次访问查询列表
+			
+//			this.$nextTick(function(){
+//				$(".projectItem").each(function() {
+//				console.log($(this).find(".image").length)
+//
+//			})
+//		})
+			
+
+		},
+		updated() {
+			$(".projectItem").each(function() {
+				console.log($(this).find(".image").length)
+				if($(this).find(".image").length<=2){
+					$(this).find(".image").css({
+						width:"100%",
+						height:"13rem"
+					})
+				}
+
+			})
 		},
 		methods: {
 			loadBottom() {
@@ -399,8 +437,23 @@
 				}
 				recommend(params).then(res => {
 					console.log(res)
-					//					this.recommendList = res.data.recommends.rows
+//					this.recommendList = res.data.recommends.rows
 
+					for(let i = 0; i < res.data.recommends.rows.length; i++) {
+						this.postImage = res.data.recommends.rows[i].postSmallImagesList
+						//						console.log(this.postImage)
+						if(this.postImage.length <= 2) {
+							//							console.log(i)
+							//							console.log(this.postImage)
+							res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 1)
+							//							
+							$(".recommand-img").addClass("imgg")
+
+						} else if(this.postImage.length >= 3) {
+							console.log(this.postImage)
+							res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 3)
+						}
+					}
 					this.itemList = res.data.recommends.rows;
 					this.totalpage = Math.ceil(res.data.recommends.rowCount / this.pageSize);
 					if(this.totalpage == 1) {
@@ -432,7 +485,25 @@
 				recommend(params).then(res => {
 					console.log(res)
 					//					this.recommendList = res.data.recommends.rows
+					for(var i = 0; i < res.data.recommends.rows.length; i++) {
+						this.postImage = res.data.recommends.rows[i].postSmallImagesList
+						console.log(this.postImage)
+						if(this.postImage.length < 2) {
+							res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 1);
+							//							$("projectItem .recommand-img").eq(i).css({
+							//								display:"block",
+							//							})
 
+							//							$(".image").eq(i).css({
+							//								width:"100%",
+							//								height:"11rem"
+							//							})
+
+						}else if(this.postImage.length >= 3) {
+							console.log(this.postImage)
+							res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 3)
+						}
+					}
 					this.itemList = this.itemList.concat(res.data.recommends.rows);
 					console.log(this.itemList);
 					this.isHaveMore();
