@@ -31,11 +31,12 @@
 				letter-spacing: 0;
 			}
 		}
-		
 	}
+	
 	.mint-tab-item {
-			width: 20%;
-		}
+		width: 20%;
+	}
+	
 	.mint-navbar .mint-tab-item .is-selected {
 		border-bottom: 1px solid #26a2ff;
 		color: #3b88f6;
@@ -90,10 +91,15 @@
 			}
 		},
 		mounted() {
-
+			window.onpageshow = function(event) {
+				//event.persisted 判断浏览器是否有缓存, 有为true, 没有为false
+				if(event.persisted) {
+					window.location.reload();
+				}
+			}
 		},
 		created() {
-//			this.queryRecommendList()
+			//			this.queryRecommendList()
 			this.queryAttentionList()
 			this.queryRankList()
 		},
@@ -102,18 +108,18 @@
 				this.$router.push('')
 			},
 			//推荐
-//			queryRecommendList() {
-				//接口
-				//      let params = {
-				//        pageIndex:2,
-				//        pageSize:10
-				//      }
-				//      recommend(params).then(res => {
-				////        console.log(res.data.recommends.rows)
-				//        this.recommendList = res.data.recommends.rows
-				//
-				//      })
-//			},
+			//			queryRecommendList() {
+			//接口
+			//      let params = {
+			//        pageIndex:2,
+			//        pageSize:10
+			//      }
+			//      recommend(params).then(res => {
+			////        console.log(res.data.recommends.rows)
+			//        this.recommendList = res.data.recommends.rows
+			//
+			//      })
+			//			},
 			queryAttentionList() {
 				//接口
 				this.attentionList = [{

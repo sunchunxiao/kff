@@ -2,7 +2,7 @@
 	.projectItem {
 		padding: 10px 20px;
 		/*border-top: 1px solid;*/
-		border-bottom: 1px solid #ddd;
+		/*border-bottom: 1px solid #ddd;*/
 		/*margin-bottom: 8px;*/
 		overflow: hidden;
 		.action {
@@ -67,19 +67,19 @@
 			}
 		}
 	}
-	
+
 	.test {
 		text-overflow: ellipsis;
 		display: -webkit-box;
 		-webkit-box-orient: vertical;
 		-webkit-line-clamp: 2;
 	}
-	
+
 	.projectName {
 		font-size: 14px;
 		color: #333333;
 	}
-	
+
 	.already {
 		background-color: #fff;
 		padding: 0.5rem 0;
@@ -111,13 +111,13 @@
 			}
 		}
 	}
-	
+
 	.row5 {
 		justify-content: flex-start;
 		position: relative;
 		overflow: hidden;
 		padding: 10px 20px;
-		border-bottom: 6px solid #f4f4f4;
+		border-bottom: 10px solid #f4f4f4;
 		.detail {
 			display: flex;
 			align-items: center;
@@ -141,30 +141,30 @@
 			right: 2rem;
 		}
 	}
-	
+
 	.mint-button--normal {
 		padding: 0;
 	}
-	
+
 	.mint-button {
 		border-radius: 1px;
 		width: 43px;
 		height: 20px;
 		font-size: 0;
 	}
-	
+
 	.mt-progress div:nth-child(2) {
 		font-size: 14px;
 		color: #3b88f6;
 		letter-spacing: 0;
 		font-weight: bolder;
 	}
-	
+
 	.recommand-img {
 		display: flex;
 		justify-content: space-between;
 	}
-	
+
 	.image {
 		width: 32%;
 		height: 7rem;
@@ -176,6 +176,7 @@
 			height: 100%;
 		}
 	}
+
 	.image1 {
 		width: 100%;
 		height: 11rem;
@@ -187,11 +188,11 @@
 			height: 100%;
 		}
 	}
-	
+
 	.article-title {
 		float: left;
 	}
-	
+
 	.article-atten {
 		background: #f1f1f1;
 		border-radius: 35px;
@@ -199,17 +200,17 @@
 		height: 22px;
 		position: relative;
 	}
-	
+
 	.atten-img {
 		display: inline-block;
 		width: 23px;
 		height: 22px;
 	}
-	
+
 	.atten-img img {
 		width: 100%;
 	}
-	
+
 	.atten-name {
 		font-size: 14px;
 		color: #333333;
@@ -217,7 +218,7 @@
 		left: 27px;
 		top: 1px;
 	}
-	
+
 	.atten-project {
 		font-size: 12px;
 		color: #888888;
@@ -225,45 +226,45 @@
 		right: 8px;
 		top: 3px;
 	}
-	
+
 	.atten-span {
 		font-size: 12px;
 		color: #888888;
 	}
-	
+
 	.photo {
 		width: 38px;
 		height: 38px;
 	}
-	
+
 	.photo>img {
 		width: 100%;
 		border-radius: 50%;
 		border: 1px solid #dddddd;
 	}
-	
+
 	.index-score {
 		font-size: 1.3rem;
 		color: #3b88f6;
 		font-weight: bolder;
 	}
-	
+
 	.projectName-name {
 		font-size: 14px;
 		color: #333333;
 	}
-	
+
 	.projectName-time {
 		font-size: 10px;
 		color: #c2c2c2;
 	}
-	
+
 	#content {
 		overflow: scroll;
 	}
-	
+
 	.item {}
-	
+
 	.item .name {
 		height: 200px;
 		background-color: green;
@@ -322,7 +323,6 @@
 						<!--<div class="image1"  v-if="item.postSmallImagesList.length<=2" v-for="item1 in item.postSmallImagesList">
 							<img :src="item1.fileUrl">
 						</div>-->
-						
 
 					</div>
 
@@ -332,7 +332,10 @@
 						<div class="article-atten">
 							<span class="atten-img"><img src="../../assets/evaluation/media@2x.png" /></span>
 							<span class="atten-name">老猫</span>
-							<span class="atten-project">发布了评测</span>
+              <!--选择发表的帖子类型-->
+							<span class="atten-project" v-if="item.postType==1">发布了评测</span>
+              <span class="atten-project" v-if="item.postType==2">发布了爆料</span>
+              <span class="atten-project" v-if="item.postType==3">发布了文章</span>
 						</div>
 					</div>
 					<div class="detail zan">
@@ -378,6 +381,8 @@
 				loading: false,
 				bottomText: '',
 				bottomStatus: '',
+				historyData: [],
+        postType:""
 			}
 		},
 		props: {
@@ -397,27 +402,69 @@
 		components: {
 			'v-loadmore': Loadmore,
 		},
-		mounted(){
-//			console.log(this.itemList)
+		created() {
+			console.log(sessionStorage.getItem("listData"))
+			if(sessionStorage.getItem("listData")) {
+				var state = JSON.parse(sessionStorage.getItem("listData"));
+				sessionStorage.removeItem("listData"); //防止调转回列表页，点击刷新时，继续读缓存
+				this.pageIndex = state.pageIndex;
+				var numID = state.numID;
+				this.historyData = state.historyData;
+				for(var i = 0; i < this.historyData.length; i++) {
+					//填充列表的方法
+				}
+				//改变已查看的商品样式方法
+			} else {
+				this.loadPageList();
+			}
 
-			this.loadPageList(); //初次访问查询列表
-			
-//			this.$nextTick(function(){
-//				$(".projectItem").each(function() {
-//				console.log($(this).find(".image").length)
-//
-//			})
-//		})
-			
+			//			window.onload = function() {　　
+			//				var _offset = sessionStorage.getItem("a");　　
+			//
+			//				$(document).scrollTop(_offset);
+			//				console.log(_offset)
+			//			}
+			this.$nextTick(function() {
+				let position = sessionStorage.getItem("a") //返回页面取出来
+				window.scroll(0, position)
+			})
 
 		},
+		//		beforeRouteLeave(to, from, next) {
+		//			if($(document).scrollTop() != 0) {
+		//				sessionStorage.setItem("a", $(window).scrollTop());
+		//				console.log($(window).scrollTop())
+		//			}
+		//		},
+		mounted() {
+			this.loadPageList(); //初次访问查询列表
+
+			//			this.$nextTick(function(){
+			//				$(".projectItem").each(function() {
+			//				console.log($(this).find(".image").length)
+			//
+			//			})
+			//		})
+
+		},
+		//		beforeUpdate() {
+		//
+		//						this.$nextTick(function() {
+		//							let position = sessionStorage.getItem("a") //返回页面取出来
+		//							window.scroll(0, position)
+		//						})
+		//		},
 		updated() {
+			//			this.$nextTick(function() {
+			//				let position = sessionStorage.getItem("a") //返回页面取出来
+			//				window.scroll(0, position)
+			//			})
 			$(".projectItem").each(function() {
-				console.log($(this).find(".image").length)
-				if($(this).find(".image").length<=2){
+				//				console.log($(this).find(".image").length)
+				if($(this).find(".image").length <= 2) {
 					$(this).find(".image").css({
-						width:"100%",
-						height:"13rem"
+						width: "100%",
+						height: "13rem"
 					})
 				}
 
@@ -430,32 +477,38 @@
 				this.$refs.loadmore.onBottomLoaded(); // 固定方法，查询完要调用一次，用于重新定位
 			},
 			loadPageList() {
+
 				// 查询数据
 				let params = {
 					pageIndex: 1,
 					pageSize: 10
 				}
 				recommend(params).then(res => {
-					console.log(res)
-//					this.recommendList = res.data.recommends.rows
+					//					console.log(res)
+					//					this.recommendList = res.data.recommends.rows
 
 					for(let i = 0; i < res.data.recommends.rows.length; i++) {
+					  this.historyData = res.data.recommends.rows
 						this.postImage = res.data.recommends.rows[i].postSmallImagesList
+            this.postType  = res.data.recommends.rows[i].postType
+            //帖子类型：1-评测；2-讨论；3-文章，4-单项评测
+
 						//						console.log(this.postImage)
 						if(this.postImage.length <= 2) {
 							//							console.log(i)
 							//							console.log(this.postImage)
 							res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 1)
-							//							
+							//
 							$(".recommand-img").addClass("imgg")
 
 						} else if(this.postImage.length >= 3) {
-							console.log(this.postImage)
+							//							console.log(this.postImage)
 							res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 3)
 						}
 					}
 					this.itemList = res.data.recommends.rows;
 					this.totalpage = Math.ceil(res.data.recommends.rowCount / this.pageSize);
+
 					if(this.totalpage == 1) {
 						this.allLoaded = true;
 					}
@@ -486,20 +539,13 @@
 					console.log(res)
 					//					this.recommendList = res.data.recommends.rows
 					for(var i = 0; i < res.data.recommends.rows.length; i++) {
+            this.historyData = res.data.recommends.rows
 						this.postImage = res.data.recommends.rows[i].postSmallImagesList
 						console.log(this.postImage)
 						if(this.postImage.length < 2) {
 							res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 1);
-							//							$("projectItem .recommand-img").eq(i).css({
-							//								display:"block",
-							//							})
 
-							//							$(".image").eq(i).css({
-							//								width:"100%",
-							//								height:"11rem"
-							//							})
-
-						}else if(this.postImage.length >= 3) {
+						} else if(this.postImage.length >= 3) {
 							console.log(this.postImage)
 							res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 3)
 						}
@@ -535,31 +581,47 @@
 			},
 
 			gotoProjectHome(postType, id) {
+				var state = {
+					pageIndex: this.pageIndex,
+					numID: id,
+					historyData: this.historyData
+				};
+				sessionStorage.setItem("listData", JSON.stringify(state));
+				// window.location = 'ToDetail?numID=' + id;
+
+				if($(document).scrollTop() != 0) {
+					sessionStorage.setItem("a", $(window).scrollTop());
+					console.log($(window).scrollTop())
+				}
+
 				//帖子类型：1-评测；2-讨论；3-文章，4-单项评测
-				console.log(postType)
+				//				console.log(postType)
 				if(postType == 1) {
-					this.$router.push({
-						path: "/project/articleInfo",
-						query: {
-							id,
-						}
-					})
+										this.$router.push({
+											path: "/project/articleInfo",
+											query: {
+												id,
+											}
+										})
+					// window.open('/project/articleInfo?id=' + id, "_blank ")
 				}
 				if(postType == 2) {
-					this.$router.push({
-						path: "/project/discuss",
-						query: {
-							id,
-						}
-					})
+										this.$router.push({
+											path: "/project/discuss",
+											query: {
+												id,
+											}
+										})
+					// window.open('/project/discuss?id=' + id, "_blank ")
 				}
 				if(postType == 3) {
-					this.$router.push({
-						path: "/project/article",
-						query: {
-							id,
-						}
-					})
+										this.$router.push({
+											path: "/project/article",
+											query: {
+												id,
+											}
+										})
+					// window.open('/project/article?id=' + id, "_blank ")
 				}
 
 			}

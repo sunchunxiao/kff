@@ -12,11 +12,11 @@
 			<!--安卓下载-->
 			<div class="downBtn2">
         <!--<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.secretk.move"><Button ><img src="../../assets/down/Android.png"/><span>Android下载</span></Button></a>-->
-        <Button @click="android"><img src="../../assets/down/Android.png"/><span>Android下载</span></Button>
+        <Button @click="android"><img class="android-img" src="../../assets/down/Android.png"/><span>Android下载</span></Button>
 
 			</div>
 			<div class="downBtn">
-				<button @click="instance"><img src="../../assets/down/iOS.png"/><span>iphone下载</span></button>
+				<button @click="android"><img  class="ios-img" src="../../assets/down/iOS.png"/><span>iPhone(beta1)下载</span></button>
 			</div>
       <!--微信下载提示在浏览器上打开的遮罩层-->
 			<div class="weixin-tip">
@@ -34,19 +34,25 @@
 		name: 'download',
 
 		methods: {
-			instance() {
-				MessageBox({
-					title: 'IOS-全力开发中',
-					showConfirmButton: true
-				});
-
-			},
+			// instance() {
+			// 	MessageBox({
+			// 		title: 'IOS-全力开发中',
+			// 		showConfirmButton: true
+			// 	});
+            //
+			// },
 			is_weixin() {
 				var ua = navigator.userAgent.toLowerCase();
 				if(ua.match(/MicroMessenger/i) == "micromessenger") {
 					return true;
 				} else {
-					window.location.href = "https://pic.qufen.top/qufen__v1.0.apk"
+				  if(navigator.userAgent.match(/(iPhone|iPad);?/i)){
+            window.location.href = "https://www.pgyer.com/r9sH"
+          }
+          if(navigator.userAgent.match(/android/i)){
+            window.location.href = "https://pic.qufen.top/qufen__v1.0.apk"
+          }
+
 					return false;
 				}
 			},
@@ -133,6 +139,7 @@
 			margin-bottom: 10px;
 			button {
 				line-height: 3rem;
+        position: relative;
 			}
 		}
 		.downBtn2 {
@@ -149,9 +156,22 @@
 			line-height: 3rem;
 			background-color: #fff;
 			border: none;
+      position: relative;
 			img {
 				width: 8%;
+
 			}
+      .android-img{
+        position: absolute;
+        top: 13px;
+        left: 47px;
+      }
+
+      .ios-img{
+        position: absolute;
+        top: 9px;
+        left: 24px;
+      }
 			span {
 				margin-left: 10px;
 				margin-top: 1px;
