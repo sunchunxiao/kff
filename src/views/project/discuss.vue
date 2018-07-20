@@ -4,13 +4,13 @@
 		float: left;
 		width: 17px;
 	}
-	
+
 	.evaluation-follow span {
 		font-size: 10px;
 		color: #3b88f6;
 		margin-left: -5px;
 	}
-	
+
 	.evaluation-content {
 		font-size: 1.3rem;
 		color: #333333;
@@ -18,21 +18,21 @@
 		line-height: 20px;
 		margin: 2rem 0;
 	}
-	
+
 	.content-img {
 		width: 100%;
 	}
-	
+
 	.min {
 		width: 100%;
 	}
 	/*热门评论*/
-	
+
 	.hot-comment {
 		width: 90%;
 		margin: 1rem auto;
 	}
-	
+
 	.p-style {
 		font-size: 15px;
 		color: #333333;
@@ -41,7 +41,7 @@
 		text-align: justify;
 		padding-bottom: 10px;
 	}
-	
+
 	.preview {
 		font-size: 13px;
 		/*color:#3b88f6;*/
@@ -52,17 +52,17 @@
 		/*border-top: 1px dotted  #dddddd;*/
 		border-bottom: 1px dotted #dddddd;
 	}
-	
+
 	.preview-peo {
 		color: #3b88f6;
 	}
-	
+
 	.evaluationUl {
 		overflow: hidden;
 		display: flex;
 		flex-wrap: wrap;
 	}
-	
+
 	.evaluationUl .evaluationLi{
 		width: 31%;
 		/*margin: 0 auto;*/
@@ -71,19 +71,19 @@
 		margin-right: 0.5rem;
 		margin-bottom: 0.5rem;
 	}
-	
+
 	.evaluationUl .evaluationLi img {
 		width: 100%;
 		height: 100%;
 	}
-	
+
 	.evaluationUl .evaluationLi img {
 		transform: scale(1);
 		/*图片原始大小1倍*/
 		transition: all ease 0.5s;
 	}
 	/*图片放大所用时间*/
-	
+
 	.evaluationUl .evaluationLi img.active {
 		transform: scale(0.8);
 		/*图片需要放大3倍*/
@@ -93,7 +93,7 @@
 		/*是相对于前面的容器定位的，此处要放大的图片，不能使用position：relative；以及float，否则会导致z-index无效*/
 		z-index: 100;
 	}
-	
+
 	.more-preview {
 		height: 3rem;
 		line-height: 3rem;
@@ -101,7 +101,7 @@
 		border-top-left-radius: 15px;
 		border-top-right-radius: 15px;
 	}
-	
+
 	.preview-num {
 		padding-left: 2rem;
 		font-size: 13px;
@@ -133,13 +133,13 @@
 				<div class="evaluation-follow discuss-atten">+关注</div>
 			</div>
 			<!--文章内容-->
-			<p class="evaluation-content">{{disscussContents}}</p>
+			<p v-html="disscussContents" class="evaluation-content">{{disscussContents}}</p>
 			<div class="evaluationUl">
 				<!--<li class="evaluationLi" v-for="(item,index) in postImg">-->
 					<div class="evaluationLi" v-for="(item,index) in postImg">
 						<img @click="imgScc(index)" :class="{'active':index==isChoose}" :src="item" alt="">
 					</div>
-					
+
 				<!--</li>-->
 			</div>
 			<div class="crack">
@@ -216,6 +216,12 @@
 			Headerdown
 		},
 		updated() {
+      $('.v').find('p').css({
+        fontSize: '1.3rem',
+        width: "100%",
+        margin: "1rem 0"
+      });
+      $('.v').find('p').css('word-wrap', 'break-word');
 			//点击图片增大后的相对位置
 			if($(".evaluationLi>img").hasClass("active")) {
 				//如果滚动获取滚动的top值

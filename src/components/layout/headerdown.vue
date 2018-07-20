@@ -15,7 +15,7 @@
 			position:relative;
 			img{
 				width: 20%;
-				
+
 			}
 			span{
 				font-size: 1.3rem;
@@ -39,10 +39,10 @@
     </div>-->
     <div class="home-nav">
 			<div class="nav-logo">
-				<img src="../../assets/image/home-logo.png" alt="" />
+				<img @click="go" src="../../assets/image/home-logo.png" alt="" />
 				<span @click="next">下载区分APP</span>
 			</div>
-			
+
 		</div>
 
 </template>
@@ -56,7 +56,7 @@
         		p = $(this).scrollTop();
         		if(t<p&&p!==0){
         			$(".home-nav").slideUp('fast')
-        			
+
         		}else{
         			$(".home-nav").slideDown('fast')
         		}
@@ -64,6 +64,9 @@
         	})
         },
         methods:{
+          go(){
+            this.$router.push('/main/home')
+          },
         	next(){
         	this.$router.push('/user/download')
         	}
