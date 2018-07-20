@@ -65,8 +65,9 @@
         display: -webkit-box;
 				overflow: hidden;
 				text-overflow: ellipsis;
-        /*-webkit-box-flex:7;*/
+        /*! autoprefixer: off */
 				-webkit-box-orient: vertical!important;
+        /*  autoprefixer: on */
 				-webkit-line-clamp: 3;
 			}
 		}
