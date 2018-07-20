@@ -40,6 +40,13 @@
 		}
 		.row2 {
 			margin-bottom: 5px;
+      .test {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
 			.mt-range {
 				height: 20px;
 			}
@@ -53,12 +60,12 @@
 			.content {
 				color: #7e7d7e;
 				line-height: 20px;
-        white-space: normal!important;
-				flex: 7;
+        /*white-space: normal!important;*/
+				/*flex: 7;*/
         display: -webkit-box;
 				overflow: hidden;
 				text-overflow: ellipsis;
-        -webkit-box-flex:7;
+        /*-webkit-box-flex:7;*/
 				-webkit-box-orient: vertical!important;
 				-webkit-line-clamp: 3;
 			}
@@ -71,13 +78,7 @@
 		}
 	}
 
-	.test {
-		overflow: hidden;
-		text-overflow: ellipsis;
-		display: -webkit-box;
-		-webkit-box-orient: vertical;
-		-webkit-line-clamp: 2;
-	}
+
 
 	.projectName {
 		font-size: 14px;
