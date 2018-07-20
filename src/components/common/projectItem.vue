@@ -2,7 +2,7 @@
 	.project {
 		padding-top: 5rem;
 	}
-	
+
 	.projectItem {
 		padding: 10px 20px;
 		/*border-top: 1px solid;*/
@@ -68,7 +68,7 @@
 			}
 		}
 	}
-	
+
 	.test {
 		overflow: hidden;
 		text-overflow: ellipsis;
@@ -76,12 +76,12 @@
 		-webkit-box-orient: vertical;
 		-webkit-line-clamp: 2;
 	}
-	
+
 	.projectName {
 		font-size: 14px;
 		color: #333333;
 	}
-	
+
 	.already {
 		background-color: #fff;
 		padding: 0.5rem 0;
@@ -113,7 +113,7 @@
 			}
 		}
 	}
-	
+
 	.row5 {
 		justify-content: flex-start;
 		position: relative;
@@ -144,30 +144,30 @@
 			top: 11px;
 		}
 	}
-	
+
 	.mint-button--normal {
 		padding: 0;
 	}
-	
+
 	.mint-button {
 		border-radius: 1px;
 		width: 43px;
 		height: 20px;
 		font-size: 0;
 	}
-	
+
 	.mt-progress div:nth-child(2) {
 		font-size: 14px;
 		color: #3b88f6;
 		letter-spacing: 0;
 		font-weight: bolder;
 	}
-	
+
 	.recommand-img {
 		display: flex;
 		justify-content: space-between;
 	}
-	
+
 	.image {
 		width: 32%;
 		height: 7rem;
@@ -179,7 +179,7 @@
 			height: 100%;
 		}
 	}
-	
+
 	.image1 {
 		width: 100%;
 		height: 11rem;
@@ -191,11 +191,11 @@
 			height: 100%;
 		}
 	}
-	
+
 	.article-title {
 		float: left;
 	}
-	
+
 	.article-atten {
 		background: #f1f1f1;
 		border-radius: 35px;
@@ -203,17 +203,17 @@
 		height: 22px;
 		position: relative;
 	}
-	
+
 	.atten-img {
 		display: inline-block;
 		width: 23px;
 		height: 22px;
 	}
-	
+
 	.atten-img img {
 		width: 100%;
 	}
-	
+
 	.atten-name {
 		font-size: 14px;
 		color: #333333;
@@ -221,7 +221,7 @@
 		left: 27px;
 		top: 1px;
 	}
-	
+
 	.atten-project {
 		font-size: 12px;
 		color: #888888;
@@ -229,45 +229,45 @@
 		right: 8px;
 		top: 3px;
 	}
-	
+
 	.atten-span {
 		font-size: 12px;
 		color: #888888;
 	}
-	
+
 	.photo {
 		width: 38px;
 		height: 38px;
 	}
-	
+
 	.photo>img {
 		width: 100%;
 		border-radius: 50%;
 		border: 1px solid #dddddd;
 	}
-	
+
 	.index-score {
 		font-size: 1.3rem;
 		color: #3b88f6;
 		font-weight: bolder;
 	}
-	
+
 	.projectName-name {
 		font-size: 14px;
 		color: #333333;
 	}
-	
+
 	.projectName-time {
 		font-size: 10px;
 		color: #c2c2c2;
 	}
-	
+
 	#content {
 		overflow: scroll;
 	}
-	
+
 	.item {}
-	
+
 	.item .name {
 		height: 200px;
 		background-color: green;
@@ -410,7 +410,7 @@
 			this.loadPageList(); //初次访问查询列表
 		},
 		updated() {
-			
+
 			$(".projectItem").each(function() {
 				//				console.log($(this).find(".image").length)
 				if($(this).find(".image").length <= 2) {
@@ -421,7 +421,7 @@
 				}
 
 			})
-			
+
 		},
 		methods: {
 
@@ -443,19 +443,20 @@
 
 					for(let i = 0; i < res.data.recommends.rows.length; i++) {
 						this.postImage = res.data.recommends.rows[i].postSmallImagesList
-						this.postType = res.data.recommends.rows[i].postType
+						// this.postType = res.data.recommends.rows[i].postType
 						//帖子类型：1-评测；2-讨论；3-文章，4-单项评测
 
-						//						console.log(this.postImage)
+//						console.log(this.postImage)
 						if(this.postImage.length <= 2) {
 							//							console.log(this.postImage)
 							res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 1)
-							
+
 							$(".recommand-img").addClass("imgg")
 
 						} else if(this.postImage.length >= 3) {
 							res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 3)
 						}
+
 					}
 					//遍历数据
 					this.itemList = res.data.recommends.rows;
@@ -473,7 +474,7 @@
 
 				})
 			},
-			
+
 			more() {
 				// 分页查询
 				if(this.totalpage == 1) {
@@ -491,7 +492,7 @@
 				recommend(params).then(res => {
 					//					this.recommendList = res.data.recommends.rows
 					for(var i = 0; i < res.data.recommends.rows.length; i++) {
-						
+
 						this.postImage = res.data.recommends.rows[i].postSmallImagesList
 						//						console.log(this.postImage)
 						if(this.postImage.length <= 2) {
