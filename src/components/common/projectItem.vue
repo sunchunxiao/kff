@@ -448,7 +448,7 @@
 				}
 				recommend(params).then(res => {
           console.log(res.data.recommends.rows,res.data.recommends.rows.length)
-
+          this.itemList = res.data.recommends.rows;
             for(let i = 0; i < res.data.recommends.rows.length;i++) {
 
               if( res.data.recommends.rows[i].postSmallImagesList.length!=0){
@@ -472,7 +472,7 @@
           }
 
 					//遍历数据
-					this.itemList = res.data.recommends.rows;
+
 					this.totalpage = Math.ceil(res.data.recommends.rowCount / this.pageSize);
 
 					if(this.totalpage == 1) {
@@ -504,6 +504,7 @@
 				//				console.log(this.pageIndex);
 				recommend(params).then(res => {
 					//					this.recommendList = res.data.recommends.rows
+          this.itemList = res.data.recommends.rows;
 					for(var i = 0; i < res.data.recommends.rows.length; i++) {
             if( res.data.recommends.rows[i].postSmallImagesList.length!=0){
 
