@@ -297,15 +297,19 @@
 					//文章内容
 					this.disscussContents = data.discuss.disscussContents;
 					//图片
-					var a = JSON.parse(data.post.postSmallImages);
-					// console.log(a)
-					for(let i = 0; i < a.length; i++) {
 
-						// console.log(a)
-						this.imgUrl = a[i].fileUrl
-						this.postImg.push(this.imgUrl)
-						// console.log(this.postImg)
-					}
+					// console.log(a)
+          if(data.post.postSmallImages!=null){
+            var a = JSON.parse(data.post.postSmallImages);
+            for(let i = 0; i < a.length; i++) {
+
+              // console.log(a)
+              this.imgUrl = a[i].fileUrl
+              this.postImg.push(this.imgUrl)
+              // console.log(this.postImg)
+            }
+          }
+
 
 					//标签
 					this.projectCode = data.post.projectCode;
@@ -338,7 +342,7 @@
 					//					console.log(arr[0])
 					this.timestr = arr[0];
 					//缩略图
-					this.imgUrl = JSON.parse(data.post.postSmallImages)
+					// this.imgUrl = JSON.parse(data.post.postSmallImages)
 					//缩略文章
 					this.postShortDesc = data.post.postShortDesc
 				}
