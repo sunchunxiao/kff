@@ -366,6 +366,7 @@
 	//	import MyProgress from '@/components/common/myProgress.vue'
 	import { Loadmore } from 'mint-ui';
 	import { recommend } from '@/service/home';
+  import { wechatShare } from '../../assets/js/wxshare'
 	export default {
 		name: "projectItem",
 		//		components: {
@@ -410,6 +411,12 @@
 			this.loadPageList(); //初次访问查询列表
 		},
 		updated() {
+      wechatShare({
+        title: "区分—— 投资区块链，一定要“区分”",
+        content:"币圈大众点评，深度了解区块链项目，上“区分”就够了。",
+        link: window.location.href,
+        logo: "https://pic.qufen.top/posts20180628204925934317",
+      })
 
 			$(".projectItem").each(function() {
 				//				console.log($(this).find(".image").length)
