@@ -133,7 +133,7 @@
 				<div class="evaluation-follow discuss-atten">+关注</div>
 			</div>
 			<!--文章内容-->
-			<p v-html="disscussContents" class="evaluation-content">{{disscussContents}}</p>
+			<p v-html="disscussContents" class="evaluation-content v">{{disscussContents}}</p>
 			<div class="evaluationUl">
 				<!--<li class="evaluationLi" v-for="(item,index) in postImg">-->
 					<div class="evaluationLi" v-for="(item,index) in postImg">
@@ -172,9 +172,9 @@
 				<span class="preview-num">更多10条评论</span>
 			</div>-->
 		</div>
-		<div class=" more-preview">
-			<span class="preview-num">留下你的评论...</span>
-		</div>
+		<!--<div class=" more-preview">-->
+			<!--<span class="preview-num">留下你的评论...</span>-->
+		<!--</div>-->
 	</div>
 </template>
 
