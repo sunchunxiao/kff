@@ -322,7 +322,7 @@
 					</div>
 					<div class="recommand-img">
 						<!--一张图的-->
-						<div class="image" v-for="item1 in item.postSmallImagesList">
+						<div class="image" v-if="item.postSmallImagesList.length!=0" v-for="item1 in item.postSmallImagesList">
 							<img :src="item1.fileUrl">
 						</div>
 						<!--<div class="image1"  v-if="item.postSmallImagesList.length<=2" v-for="item1 in item.postSmallImagesList">
@@ -449,7 +449,7 @@
 				recommend(params).then(res => {
           console.log(res.data.recommends.rows,res.data.recommends.rows.length)
 
-            for(let i = 0; i < res.data.recommends.rows.length; i++) {
+            for(let i = 0; i < res.data.recommends.rows.length;i++) {
 
               if( res.data.recommends.rows[i].postSmallImagesList.length!=0){
                 console.log(res.data.recommends.rows[i].postSmallImagesList.length)
