@@ -450,23 +450,26 @@
 										console.log(res)
 					//					this.recommendList = res.data.recommends.rows
 
-					for(let i = 0; i < res.data.recommends.rows.length; i++) {
-						this.postImage = res.data.recommends.rows[i].postSmallImagesList
-						// this.postType = res.data.recommends.rows[i].postType
-						//帖子类型：1-评测；2-讨论；3-文章，4-单项评测
+            for(let i = 0; i < res.data.recommends.rows.length; i++) {
+              if( res.data.recommends.rows[i].postSmallImagesList.length!=0){
+              this.postImage = res.data.recommends.rows[i].postSmallImagesList
+              // this.postType = res.data.recommends.rows[i].postType
+              //帖子类型：1-评测；2-讨论；3-文章，4-单项评测
 
 //						console.log(this.postImage)
-						if(this.postImage.length <= 2) {
-							//							console.log(this.postImage)
-							res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 1)
+              if(this.postImage.length <= 2) {
+                //							console.log(this.postImage)
+                res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 1)
 
-							$(".recommand-img").addClass("imgg")
+                $(".recommand-img").addClass("imgg")
 
-						} else if(this.postImage.length >= 3) {
-							res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 3)
-						}
+              } else if(this.postImage.length >= 3) {
+                res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 3)
+              }
 
-					}
+            }
+          }
+
 					//遍历数据
 					this.itemList = res.data.recommends.rows;
 					this.totalpage = Math.ceil(res.data.recommends.rowCount / this.pageSize);
@@ -501,6 +504,7 @@
 				recommend(params).then(res => {
 					//					this.recommendList = res.data.recommends.rows
 					for(var i = 0; i < res.data.recommends.rows.length; i++) {
+            if( res.data.recommends.rows[i].postSmallImagesList.length!=0){
 
 						this.postImage = res.data.recommends.rows[i].postSmallImagesList
 						//						console.log(this.postImage)
@@ -511,6 +515,7 @@
 							//							console.log(this.postImage)
 							res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 3)
 						}
+            }
 					}
 //					this.itemList = res.data.recommends.rows;
 					this.itemList = this.itemList.concat(res.data.recommends.rows);
