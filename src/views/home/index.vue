@@ -35,16 +35,16 @@
 			}
 		}
 	}
-	
+
 	.mint-tab-item {
 		width: 20%;
 	}
-	
+
 	.mint-navbar .mint-tab-item .is-selected {
 		border-bottom: 1px solid #26a2ff;
 		color: #3b88f6;
 	}
-	
+
 </style>
 <template>
 	<div class="find">
@@ -75,7 +75,6 @@
 	import Attention from '@/components/home/attention.vue'
 	import RankList from '@/components/home/rankList.vue'
 	import { recommend } from '@/service/home';
-	import { wechatShare } from '../../assets/js/wxshare'
 
 	export default {
 		name: 'home',
@@ -97,15 +96,7 @@
 				rankList: [],
 			}
 		},
-		updated(){
-			
-			wechatShare({
-				title: "区分—— 投资区块链，一定要“区分”",
-				content:"币圈大众点评，深度了解区块链项目，上“区分”就够了。",
-				link: window.location.href,
-				logo: "https://pic.qufen.top/posts20180628204925934317",
-			})
-		},
+
 		mounted() {
 			window.onpageshow = function(event) {
 				//event.persisted 判断浏览器是否有缓存, 有为true, 没有为false
@@ -122,7 +113,6 @@
 		methods: {
 			down(){
 				this.$router.push('/user/download')
-
 			},
 			rightClickHandel() {
 				this.$router.push('')

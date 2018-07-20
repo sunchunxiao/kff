@@ -170,7 +170,7 @@
 
 	.image {
 		width: 32%;
-		height: 7rem;
+		height: 8rem;
 		text-align: center;
 		/*flex: 2;*/
 		/*align-items: center;*/
@@ -247,8 +247,10 @@
 	}
 
 	.index-score {
+    width: 75px;
 		font-size: 1.3rem;
 		color: #3b88f6;
+    text-align: right;
 		font-weight: bolder;
 	}
 
@@ -423,7 +425,7 @@
 				if($(this).find(".image").length <= 2) {
 					$(this).find(".image").css({
 						width: "100%",
-						height: "13rem"
+						height: "15rem"
 					})
 				}
 
