@@ -24,9 +24,9 @@
       <div class="aboutFooter">
         <div class="contact">联系我们</div>
         <div class="contactIcon">
-          <a href=" https://t.me/qufenfind"><img src="../../assets/mine/about/telegram@2x.png" alt=""></a>
+          <a  v-clipboard:copy="message1" v-clipboard:success="onCopy1"><img src="../../assets/mine/about/telegram@2x.png" alt=""></a>
           <!--微信 qufenfind-->
-          <a href="###"><img src="../../assets/mine/about/weixin@2x.png" alt=""></a>
+          <a  v-clipboard:copy="message" v-clipboard:success="onCopy"><img src="../../assets/mine/about/weixin@2x.png" alt=""></a>
           <!--微博-->
           <a href="https://weibo.com/qufenfind"><img src="../../assets/mine/about/weibo@2x.png" alt=""></a>
         </div>
@@ -105,7 +105,7 @@
 
 <script>
   import HeaderBar from '@/components/layout/headerBar.vue'
-
+	import { MessageBox } from 'mint-ui';
   export default {
     name: 'message',
     components: {
@@ -118,11 +118,27 @@
           rightBtnText: '帮助中心',
         },
         title: this.$route.meta.title,
-        List: []
+        List: [],
+        message:"qufenfind",
+        message1:"https://t.me/qufenfind"
       }
     },
 
     methods: {
+    	onCopy() {
+        MessageBox({
+          title: '微信公众号复制成功',
+          showConfirmButton: true
+        });
+			
+			},
+			onCopy1() {
+        MessageBox({
+          title: '区分find复制成功',
+          showConfirmButton: true
+        });
+			
+			},
       rightClickHandel() {
         this.$router.push('/mine/help')
       }

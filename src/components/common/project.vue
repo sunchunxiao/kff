@@ -1,8 +1,7 @@
 <style lang="less">
-	.project {
+	.project{
 		padding-top: 5rem;
 	}
-	
 	.projectItem {
 		padding: 10px 20px;
 		/*border-top: 1px solid;*/
@@ -62,6 +61,9 @@
 			}
 		}
 		.row4 {
+			/*border-bottom: 1px solid #ddd;*/
+			/*padding-bottom: 5px;*/
+			/*margin-bottom: 5px;*/
 			.testerInfo {
 				display: flex;
 				align-items: center;
@@ -70,7 +72,6 @@
 	}
 	
 	.test {
-		overflow: hidden;
 		text-overflow: ellipsis;
 		display: -webkit-box;
 		-webkit-box-orient: vertical;
@@ -141,7 +142,6 @@
 		.index-preview {
 			position: absolute;
 			right: 2rem;
-			top: 11px;
 		}
 	}
 	
@@ -276,7 +276,7 @@
 </style>
 <template>
 	<div class="main-body" :style="{'-webkit-overflow-scrolling': scrollMode}">
-		<v-loadmore :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore" @bottom-status-change="handleBottomChange">
+		<v-loadmore :bottom-method="loadBottom" :top-method="loadTop" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore" @bottom-status-change="handleBottomChange">
 
 			<!--<ul class="list">
 
@@ -285,7 +285,7 @@
 				</li>
 
 			</ul>-->
-			<template v-for="(item,index) in itemList">
+			<template  v-for="(item,index) in itemList">
 
 				<div class="projectItem" :key="index" @click="gotoProjectHome(item.postType,item.postId)">
 					<div class="row action" v-if="isActionTop">
@@ -304,13 +304,13 @@
 						</div>
 						<div class="btn">
 							<!--<mt-button @click="addAttention(item,index)" :type="item.isAttention ? 'default' : 'primary'">{{item.isAttention ? "已关注" : "+ 关注"}} </mt-button>-->
-							<!--<mt-button :type="item.isAttention ? 'default' : 'primary'">{{item.isAttention ? "已关注" : "+ 关注"}} </mt-button>-->
+							<mt-button :type="item.isAttention ? 'default' : 'primary'">{{item.isAttention ? "已关注" : "+ 关注"}} </mt-button>
 						</div>
 					</div>
 					<div class="row row2">
 						<div class="test" style="font-size: 16px;color: #333">{{item.postTitle}}</div>
 						<!--<My-Progress :rate="item.rate"></My-Progress>-->
-						<div  v-if="item.postType==1" class="index-score">{{item.totalScore}}分</div>
+						<div class="index-score">{{item.totalScore}}</div>
 					</div>
 					<div class="row row3">
 						<div class="content">
@@ -406,11 +406,59 @@
 		components: {
 			'v-loadmore': Loadmore,
 		},
-		mounted(){
-			this.loadPageList(); //初次访问查询列表
+		created() {
+			//			console.log(sessionStorage.getItem("listData"))
+			if(sessionStorage.getItem("listData")) {
+				
+				this.state = JSON.parse(sessionStorage.getItem("listData"));
+				sessionStorage.removeItem("listData"); //防止调转回列表页，点击刷新时，继续读缓存
+//				console.log(this.state)
+				this.pageIndex = this.state.pageIndex;
+//				console.log(this.pageIndex)
+				var numID = this.state.numID;
+				this.historyData = this.state.historyData;
+				for(var i = 0; i < this.historyData.length; i++) {
+					//填充列表的方法
+					//					console.log(this.historyData[i])
+					this.itemList[i] = this.historyData[i]
+				}
+				//改变已查看的商品样式方法
+			} else {
+				this.loadPageList();
+			}
+
+			//			window.onload = function() {　　
+			//				var _offset = sessionStorage.getItem("a");　　
+			//
+			//				$(document).scrollTop(_offset);
+			//				console.log(_offset)
+			//			}
+
 		},
+		//				beforeRouteLeave(to, from, next) {
+		//					if($(document).scrollTop() != 0) {
+		//						sessionStorage.setItem("a", $(window).scrollTop());
+		//						console.log($(window).scrollTop())
+		//					}
+		//				},
+		mounted() {
+			//			this.loadPageList(); //初次访问查询列表
+
+		},
+		//		beforeUpdate() {
+		//
+		//			this.$nextTick(function() {
+		//				let position = sessionStorage.getItem("a") //返回页面取出来
+		//				sessionStorage.removeItem("a");
+		//				window.scroll(0, position)
+		//			})
+		//		},
+		
 		updated() {
-			
+			//			this.$nextTick(function() {
+			//				let position = sessionStorage.getItem("a") //返回页面取出来
+			//				window.scroll(0, position)
+			//			})
 			$(".projectItem").each(function() {
 				//				console.log($(this).find(".image").length)
 				if($(this).find(".image").length <= 2) {
@@ -421,39 +469,50 @@
 				}
 
 			})
-			
+//			this.$nextTick(function() {
+//					let position = sessionStorage.getItem("a") //返回页面取出来
+//					sessionStorage.removeItem("a");
+//					window.scroll(0, position)
+//				})
 		},
 		methods: {
-
+			loadTop() {
+				//下拉出发分页
+				this.upmore();
+				this.$refs.loadmore.onTopLoaded(); // 固定方法，查询完要调用一次，用于重新定位
+			},
 			loadBottom() {
 				// 上拉加载
 				this.more(); // 上拉触发的分页查询
 				this.$refs.loadmore.onBottomLoaded(); // 固定方法，查询完要调用一次，用于重新定位
 			},
 			loadPageList() {
-
+				
 				// 查询数据
 				let params = {
 					pageIndex: 1,
 					pageSize: 10
 				}
 				recommend(params).then(res => {
-										console.log(res)
+					//					console.log(res)
 					//					this.recommendList = res.data.recommends.rows
 
 					for(let i = 0; i < res.data.recommends.rows.length; i++) {
+						this.historyData = res.data.recommends.rows
 						this.postImage = res.data.recommends.rows[i].postSmallImagesList
 						this.postType = res.data.recommends.rows[i].postType
 						//帖子类型：1-评测；2-讨论；3-文章，4-单项评测
 
 						//						console.log(this.postImage)
 						if(this.postImage.length <= 2) {
+							//							console.log(i)
 							//							console.log(this.postImage)
 							res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 1)
-							
+							//
 							$(".recommand-img").addClass("imgg")
 
 						} else if(this.postImage.length >= 3) {
+							//							console.log(this.postImage)
 							res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 3)
 						}
 					}
@@ -473,7 +532,55 @@
 
 				})
 			},
-			
+			//上拉
+			upmore() {
+				sessionStorage.removeItem("listData"); //防止调转回列表页，点击刷新时，继续读缓存
+				console.log(this.state)
+				this.pageIndex = this.state.pageIndex;
+				// 分页查询
+				//				if(this.totalpage == 1) {
+				//					this.pageIndex = 1;
+				//					this.allLoaded = true;
+				//				} else {
+				//					this.pageIndex = parseInt(this.pageIndex) - 1;
+				//					this.allLoaded = false;
+				//				}
+				if(this.pageIndex == 1) {
+					this.allLoaded = true;
+				} else {
+					this.pageIndex = parseInt(this.pageIndex) - 1;
+					this.allLoaded = false;
+				}
+
+				let params = {
+					pageIndex: this.pageIndex,
+					pageSize: 10
+				}
+				//				console.log(this.pageIndex);
+				recommend(params).then(res => {
+					console.log(res)
+					//					this.recommendList = res.data.recommends.rows
+					for(var i = 0; i < res.data.recommends.rows.length; i++) {
+						this.itemList.unshift(res.data.recommends.rows[i]);
+						console.log(this.itemList)
+						this.historyData = res.data.recommends.rows
+						this.postImage = res.data.recommends.rows[i].postSmallImagesList
+						//						console.log(this.postImage)
+						if(this.postImage.length <= 2) {
+							res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 1);
+
+						} else if(this.postImage.length >= 3) {
+							//							console.log(this.postImage)
+							res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 3)
+						}
+					}
+
+					//					console.log(this.itemList);
+					this.isHaveMore();
+
+				})
+
+			},
 			more() {
 				// 分页查询
 				if(this.totalpage == 1) {
@@ -491,7 +598,7 @@
 				recommend(params).then(res => {
 					//					this.recommendList = res.data.recommends.rows
 					for(var i = 0; i < res.data.recommends.rows.length; i++) {
-						
+						this.historyData = res.data.recommends.rows
 						this.postImage = res.data.recommends.rows[i].postSmallImagesList
 						//						console.log(this.postImage)
 						if(this.postImage.length <= 2) {
@@ -502,8 +609,8 @@
 							res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 3)
 						}
 					}
-//					this.itemList = res.data.recommends.rows;
 					this.itemList = this.itemList.concat(res.data.recommends.rows);
+					//					console.log(this.itemList);
 					this.isHaveMore();
 
 				})
@@ -533,6 +640,18 @@
 			},
 
 			gotoProjectHome(postType, id) {
+				console.log(this.pageIndex)
+				var state = {
+					pageIndex: this.pageIndex,
+					numID: id,
+					historyData: this.historyData
+				};
+				sessionStorage.setItem("listData", JSON.stringify(state));
+
+				if($(document).scrollTop() != 0) {
+					sessionStorage.setItem("a", $(window).scrollTop());
+					console.log($(window).scrollTop())
+				}
 
 				//帖子类型：1-评测；2-讨论；3-文章，4-单项评测
 				//				console.log(postType)
@@ -543,7 +662,7 @@
 							id,
 						}
 					})
-					//					 window.open('/project/articleInfo?id=' + id, "_blank ")
+//					 window.open('/project/articleInfo?id=' + id, "_blank ")
 				}
 				if(postType == 2) {
 					this.$router.push({
@@ -552,7 +671,7 @@
 							id,
 						}
 					})
-					//					 window.open('/project/discuss?id=' + id, "_blank ")
+//					 window.open('/project/discuss?id=' + id, "_blank ")
 				}
 				if(postType == 3) {
 					this.$router.push({
@@ -561,7 +680,7 @@
 							id,
 						}
 					})
-					//					 window.open('/project/article?id=' + id, "_blank ")
+//					 window.open('/project/article?id=' + id, "_blank ")
 				}
 
 			}

@@ -45,7 +45,7 @@
 </template>
 
 <script>
-  const tabImageArray = ['home', 'topic', 'message', 'mine']
+const tabImageArray = ['home', 'topic', 'message', 'mine']
   const tabImageBaseUrl = '../../static/tab';   //图片动态加载，故放在static目录下
 
   export default {

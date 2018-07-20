@@ -1,8 +1,9 @@
 <style lang="less">
 	@import 'css/project.css';
-  span{
-    font-size: 1rem;
-  }
+	span {
+		font-size: 1rem;
+	}
+	
 	.percent {
 		display: inline-block;
 		width: 100px;
@@ -10,11 +11,11 @@
 		font-size: 12px;
 		color: #888888;
 	}
-
+	
 	.storeList {
 		margin-top: 0.5rem;
 	}
-
+	
 	.store-risk {
 		width: 100%;
 		padding: 1rem 1.5rem;
@@ -22,7 +23,7 @@
 		border-radius: 6px;
 		border: 1px solid #f4f4f4;
 	}
-
+	
 	.p1 {
 		margin-top: 1rem;
 		font-size: 13px;
@@ -30,7 +31,7 @@
 		line-height: 20px;
 		text-align: justify;
 	}
-
+	
 	.img {
 		width: 100%;
 		margin-top: 1rem;
@@ -87,9 +88,8 @@
 	import HeaderBar from '@/components/layout/headerBar.vue'
 	import FooterInfo from '@/components/layout/footerInfo.vue'
 	import Headerdown from '@/components/layout/headerdown.vue'
-	import { article} from '@/service/home';
+	import { article } from '@/service/home';
 	import { wechatShare } from '../../assets/js/wxshare'
-
 
 	export default {
 		name: "article-info",
@@ -110,15 +110,23 @@
 				articleContents: "",
 				donateNum: "",
 				post: [],
-        imgUrl:'',
-        imgUrlwx:'',
-        postShortDesc:''
+				imgUrl: '',
+				imgUrlwx: '',
+				postShortDesc: ''
 			}
 		},
 		components: {
 			HeaderBar,
 			FooterInfo,
 			Headerdown
+		},
+		beforeRouteLeave(to, from, next) {
+			if(to.path == "/home") {
+				to.meta.keepAlive = true;
+			} else {
+				to.meta.keepAlive = false;
+			}
+			next();
 		},
 
 		methods: {
@@ -134,20 +142,20 @@
 
 		},
 		updated() {
-      // console.log(this.imgUrl)
-      // console.log(this.postShortDesc,this.articleTitle)
-      if(this.imgUrl.length==0){
-        this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
-      }else{
-        this.imgUrlwx = this.imgUrl[0].fileUrl
-      }
-      console.log(this.imgUrlwx)
-      wechatShare({
-        title: this.articleTitle,
-        content: this.postShortDesc,
-        link: window.location.href,
-        logo:this.imgUrlwx ,
-      })
+			// console.log(this.imgUrl)
+			// console.log(this.postShortDesc,this.articleTitle)
+			if(this.imgUrl.length == 0) {
+				this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
+			} else {
+				this.imgUrlwx = this.imgUrl[0].fileUrl
+			}
+			console.log(this.imgUrlwx)
+			wechatShare({
+				title: this.articleTitle,
+				content: this.postShortDesc,
+				link: window.location.href,
+				logo: this.imgUrlwx,
+			})
 			// $('.v').find('img').css('width', '100%');
 			$('.v').find('img').css({
 				width: '100%',
@@ -159,11 +167,11 @@
 				margin: "1rem 0"
 			});
 			$('.v').find('p').css('word-wrap', 'break-word');
-      $('.v').find('p span').css('fontSize', '1.2rem');
+			$('.v').find('p span').css('fontSize', '1.2rem');
 
 		},
 		mounted() {
-			 console.log(this.$route.query.id)
+			console.log(this.$route.query.id)
 			this.id = this.$route.query.id;
 
 			//发送请求
@@ -182,7 +190,7 @@
 					}
 					//项目方
 					if(cuser == 2) {
-            $(".imgV").attr("src", "../../../static/elevation/p.gif")
+						$(".imgV").attr("src", "../../../static/elevation/p.gif")
 					}
 					//评测媒体
 					if(cuser == 3) {
@@ -190,7 +198,7 @@
 					}
 					//机构号
 					if(cuser == 4) {
-            $(".imgV").attr("src", "../../../static/elevation/V.gif")
+						$(".imgV").attr("src", "../../../static/elevation/V.gif")
 
 					}
 
@@ -228,11 +236,10 @@
 					this.articleContents = data.article.articleContents;
 					// 底部点赞和评论人数
 					this.post.push(data.praiseNum, data.commentsNum)
-          //缩略图
-          this.imgUrl = JSON.parse(data.postSmallImages)
-          //缩略文章
-          this.postShortDesc = data.postShortDesc
-
+					//缩略图
+					this.imgUrl = JSON.parse(data.postSmallImages)
+					//缩略文章
+					this.postShortDesc = data.postShortDesc
 
 				}
 

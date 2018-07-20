@@ -13,7 +13,8 @@ export const mainRouter = [
       {
         path: 'home',
         meta: {
-          title: '首页'
+          title: '首页',
+          keepAlive: true
         },
         component: (resolve) => require(['@/views/home/index.vue'], resolve)
       },
@@ -37,14 +38,7 @@ export const mainRouter = [
           title: '我的'
         },
         component: (resolve) => require(['@/views/mine/index.vue'], resolve)
-      },
-//    {
-//      path: 'mine',
-//      meta: {
-//        title: '我的'
-//      },
-//      component: (resolve) => require(['@/views/home/index1.vue'], resolve)
-//    }
+      }
     ]
   }
 ]
