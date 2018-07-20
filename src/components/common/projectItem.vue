@@ -53,12 +53,13 @@
 			.content {
 				color: #7e7d7e;
 				line-height: 20px;
+        white-space: normal!important;
 				flex: 7;
+        display: -webkit-box;
 				overflow: hidden;
 				text-overflow: ellipsis;
-				display: -webkit-box;
         -webkit-box-flex:7;
-				-webkit-box-orient: vertical;
+				-webkit-box-orient: vertical!important;
 				-webkit-line-clamp: 3;
 			}
 		}
