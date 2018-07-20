@@ -44,7 +44,9 @@
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
+        /*! autoprefixer: off */
         -webkit-box-orient: vertical;
+        /*  autoprefixer: on */
         -webkit-line-clamp: 2;
       }
 			.mt-range {
@@ -58,6 +60,7 @@
 		.row3 {
 			margin-bottom: 5px;
 			.content {
+        font-size: 1.1rem;
 				color: #7e7d7e;
 				line-height: 20px;
         /*white-space: normal!important;*/
