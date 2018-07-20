@@ -57,6 +57,7 @@
 				overflow: hidden;
 				text-overflow: ellipsis;
 				display: -webkit-box;
+        -webkit-box-flex:7;
 				-webkit-box-orient: vertical;
 				-webkit-line-clamp: 3;
 			}
