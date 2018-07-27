@@ -114,6 +114,7 @@
 	import Headerdown from '@/components/layout/headerdown.vue'
 	import { articleInfo } from '@/service/home';
   import { wechatShare } from '../../assets/js/wxshare'
+  import '../../assets/js/baidu'
 	export default {
 		name: "article-info",
 		data() {

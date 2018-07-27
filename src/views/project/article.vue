@@ -3,7 +3,7 @@
 	span {
 		font-size: 1rem;
 	}
-	
+
 	.percent {
 		display: inline-block;
 		width: 100px;
@@ -11,11 +11,11 @@
 		font-size: 12px;
 		color: #888888;
 	}
-	
+
 	.storeList {
 		margin-top: 0.5rem;
 	}
-	
+
 	.store-risk {
 		width: 100%;
 		padding: 1rem 1.5rem;
@@ -23,7 +23,7 @@
 		border-radius: 6px;
 		border: 1px solid #f4f4f4;
 	}
-	
+
 	.p1 {
 		margin-top: 1rem;
 		font-size: 13px;
@@ -31,7 +31,7 @@
 		line-height: 20px;
 		text-align: justify;
 	}
-	
+
 	.img {
 		width: 100%;
 		margin-top: 1rem;
@@ -90,6 +90,7 @@
 	import Headerdown from '@/components/layout/headerdown.vue'
 	import { article } from '@/service/home';
 	import { wechatShare } from '../../assets/js/wxshare'
+  import '../../assets/js/baidu'
 
 	export default {
 		name: "article-info",
@@ -205,7 +206,7 @@
 					//文章内容
 					this.m = data.article.articleContents
 
-					//标题					
+					//标题
 					this.articleTitle = data.postTitle
 					//头像
 					var icon = data.createUserIcon

@@ -183,6 +183,7 @@
 	import Headerdown from '@/components/layout/headerdown.vue'
 	import { discuss } from '@/service/home';
 	import { wechatShare } from '../../assets/js/wxshare'
+  import '../../assets/js/baidu'
 	export default {
 		name: "article-info",
 		data() {

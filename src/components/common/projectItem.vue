@@ -373,6 +373,7 @@
 	import { Loadmore } from 'mint-ui';
 	import { recommend } from '@/service/home';
   import { wechatShare } from '../../assets/js/wxshare'
+  import '../../assets/js/baidu'
 	export default {
 		name: "projectItem",
 		//		components: {
