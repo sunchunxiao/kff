@@ -17,17 +17,25 @@
 				width: 20%;
 
 			}
-			span{
-				font-size: 1.3rem;
-				color: #3b88f6;
-				position:absolute;
-				right: 1rem;
-				top: 17px;
-				cursor: pointer;
+			.down{
+        right: 5.5rem;
 			}
+      .down1{
+        right: 0rem;
+        display: inline-block;
+        padding: 0 13px;
+        border-left: 1px solid #ddd;
+      }
 		}
 	}
+.com{
+  font-size: 1.3rem;
+  color: #3b88f6;
+  position:absolute;
+  top: 17px;
+  cursor: pointer;
 
+}
 </style>
 
 <template>
@@ -40,7 +48,8 @@
     <div class="home-nav">
 			<div class="nav-logo">
 				<img @click="go" src="../../assets/image/home-logo.png" alt="" />
-				<span @click="next">下载区分APP</span>
+				<span class="com down" @click="next">下载区分APP</span>
+        <span class="com down1" @click="register">注册</span>
 			</div>
 
 		</div>
@@ -69,7 +78,10 @@
           },
         	next(){
         	this.$router.push('/user/download')
-        	}
+        	},
+          register(){
+            this.$router.push('/user/registerSmp')
+          }
         }
 
     }

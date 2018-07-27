@@ -5,9 +5,6 @@
 
 	.projectItem {
 		padding: 10px 20px;
-		/*border-top: 1px solid;*/
-		/*border-bottom: 1px solid #ddd;*/
-		/*margin-bottom: 8px;*/
 		overflow: hidden;
 		.action {
 			justify-content: flex-start !important;
