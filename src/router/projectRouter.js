@@ -59,6 +59,14 @@ export const projectRouter = [
     },
     component: (resolve) => require(['@/views/project/discuss.vue'], resolve)
   },
+  //讨论
+  {
+    path: '/project/currency',
+    meta: {
+      title: '讨论'
+    },
+    component: (resolve) => require(['@/views/project/currency.vue'], resolve)
+  },
   //文章
   {
     path: '/project/article',

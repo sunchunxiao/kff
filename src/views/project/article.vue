@@ -121,14 +121,6 @@
 			FooterInfo,
 			Headerdown
 		},
-		beforeRouteLeave(to, from, next) {
-			if(to.path == "/home") {
-				to.meta.keepAlive = true;
-			} else {
-				to.meta.keepAlive = false;
-			}
-			next();
-		},
 
 		methods: {
 

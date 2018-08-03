@@ -38,7 +38,7 @@ export const evaluation = (params = {}) => {
   })
 }
 
-//讨论
+//爆料
 export const discuss = (params = {}) => {
   return request(`/kff/home/discussCommentListShare`, {
     body: {
@@ -58,6 +58,15 @@ export const share = (params = {}) => {
 //首页推荐
 export const recommend = (params = {}) => {
   return request(`/kff/home/recommendList`, {
+    body: {
+      ...params
+    },
+  })
+}
+
+//币种快讯
+export const getappnews = (params = {}) => {
+  return request(`kff/newsFlash/getAppNewsFlash`, {
     body: {
       ...params
     },

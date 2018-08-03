@@ -264,7 +264,7 @@
 			let params = {
 				postId: this.id
 			}
-			//测评
+			//爆料
 			discuss(params).then(res => {
 				if(res.code == 0) {
 					// console.log(res.data.projectEvaluationDetailResponse)
