@@ -52,9 +52,26 @@
   .currenyColor{
     color: rgb(84,93,113);
   }
+  .currenyspan{
+    position: relative;
+    display: inline-block;
+    width: 220px;
+    height: 20px;
+    /*line-height:1.4em;*/
+    overflow:hidden;
+  }
+  /*.currenyspan::after{*/
+    /*content:"...";*/
+    /*font-weight:bold;*/
+    /*position:absolute;*/
+    /*bottom:0;*/
+    /*right:0;*/
+  /*}*/
+
   .currency-title{
     margin-bottom: 4rem;
     overflow: hidden;
+
   }
   .currency-title1{
     margin-bottom: 3rem;
@@ -70,9 +87,10 @@
   }
   .v{
     color:rgb(62,67,80);
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
   }
   .original{
+    float: left;
     margin-right: 1.5rem;
     margin-bottom: 2rem;
   }
@@ -84,7 +102,7 @@
         <h2>{{title}}</h2>
     </div>
     <!--我快讯来源-->
-    <div class="currency-title currenyColor"><span style="font-size: 15px">{{site}}</span><span class="currenyTime">{{timestr}}</span></div>
+    <div class="currency-title currenyColor"><span class="currenyspan" style="font-size: 15px">{{site}}</span><span class="currenyTime">{{timestr}}</span></div>
     <div class="currency-wrap">
       <!--文章内容-->
       <div class="v" v-html="currentContent">{{currentContent}}</div>
@@ -108,13 +126,27 @@
         title:'',
         timestr:'',
         site:'',
-        url:''
+        url:'',
+        imgUrl:''
       }
     },
     methods: {
 
     },
     updated() {
+      if($(".v img").attr("src")) {
+        console.log($(".v img").attr("src"))
+        this.imgUrlwx = $(".v img").attr("src")
+      } else {
+        console.log(qqq)
+        this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
+      }
+      wechatShare({
+        title: this.title,
+        content: "投资区块链一定要区分",
+        link: window.location.href,
+        logo: this.imgUrlwx,
+      })
       $('.v').find('img').css({
         width: '100%',
         height: '100%'
@@ -122,8 +154,8 @@
       $('.v').find('p').css({
         fontSize: '1.3rem',
         lineHeight:'2rem',
-        width: "100%",
-        margin: "1rem 0"
+        // width: "100%",
+        // margin: "1rem 0"
       });
       $('.v').find('p').css('word-wrap', 'break-word');
       $('.v').find('p span').css({
@@ -139,7 +171,7 @@
       //发送请求
       var params = {
         // postId: this.id
-        id:2685
+        id:this.id
       }
 
       getappnews(params).then(res => {
@@ -153,7 +185,7 @@
           this.timestr = arr[0];
           this.site = res.data.site
           this.url = res.data.url
-          console.log(this.url)
+          // console.log(this.site)
         }
 
       })
