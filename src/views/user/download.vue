@@ -5,7 +5,7 @@
 				<img class="dlog1" src="../../assets/down/1024@2x.png" />
 				<img class="dlog2" src="../../assets/down/down-6.png" />
 			</div>
-			<div class="downH">投资区块链，一定要 <span class="down-qf">”区分“</span></div>
+			<div class="downH">投资区块链，一定要 <span class="down-qf">"区分"</span></div>
 			<div class="wdown">
 				<img class="downearth" src="../../assets/down/down-5.png" />
 			</div>

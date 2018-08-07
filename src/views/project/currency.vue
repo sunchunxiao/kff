@@ -138,7 +138,6 @@
         console.log($(".v img").attr("src"))
         this.imgUrlwx = $(".v img").attr("src")
       } else {
-        console.log(qqq)
         this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
       }
       wechatShare({
