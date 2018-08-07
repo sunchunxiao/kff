@@ -66,7 +66,7 @@ export const recommend = (params = {}) => {
 
 //币种快讯
 export const getappnews = (params = {}) => {
-  return request(`kff/newsFlash/getAppNewsFlash`, {
+  return request(`/kff/newsFlash/getAppNewsFlash`, {
     body: {
       ...params
     },
