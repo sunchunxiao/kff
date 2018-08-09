@@ -164,7 +164,7 @@
       <div>
         <div class="qf-index qf-index-com">注册奖励</div>
         <div class="mainB">新用户注册及邀请好友注册都将获得区分的FIND奖励，明细如下：</div>
-        <img class="helpEvaluation mainB" src="../../assets/mine/help/register1.png" alt="">
+        <img class="helpEvaluation mainB" src="../../assets/mine/help/register.png" alt="">
         <div>MO: 用户注册奖励</div>
         <div>M1: 一级好友邀请</div>
         <div class="mainB" >M2：二级好友邀请</div>
