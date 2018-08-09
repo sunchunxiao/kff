@@ -123,4 +123,13 @@ export const projectRouter = [
     },
     component: (resolve) => require(['@/views/project/allEvaluate.vue'], resolve)
   },
+  
+  /*导航 币圈必读*/
+  {
+    path: '/project/navigation',
+    meta: {
+      title: '全部测评'
+    },
+    component: (resolve) => require(['@/views/project/navigation.vue'], resolve)
+  },
 ]
