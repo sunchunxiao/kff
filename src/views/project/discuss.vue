@@ -107,6 +107,21 @@
 		font-size: 13px;
 		color: #aaaaaa;
 	}
+	#prep {
+	margin: 1rem 0;
+	white-space: pre-wrap;
+	/*css-3*/
+	white-space: -moz-pre-wrap;
+	/*Mozilla,since1999*/
+	white-space: -pre-wrap;
+	/*Opera4-6*/
+	white-space: -o-pre-wrap;
+	/*Opera7*/
+	word-wrap: break-word;
+	/*InternetExplorer5.5+*/
+    font-size: 1.3rem;
+}
+
 </style>
 
 <template>
@@ -133,7 +148,8 @@
 				<div class="evaluation-follow discuss-atten">+关注</div>
 			</div>
 			<!--文章内容-->
-			<p v-html="disscussContents" class="evaluation-content v">{{disscussContents}}</p>
+			<!--<p v-html="disscussContents" class="evaluation-content v">{{disscussContents}}</p>-->
+			<pre id="prep" v-html>{{disscussContents}}</pre>
 			<div class="evaluationUl">
 				<!--<li class="evaluationLi" v-for="(item,index) in postImg">-->
 					<div class="evaluationLi" v-for="(item,index) in postImg">
