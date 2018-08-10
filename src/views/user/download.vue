@@ -30,9 +30,17 @@
 
 <script>
 	import { MessageBox } from 'mint-ui';
+  import { wechatShare } from '../../assets/js/wxshare'
 	export default {
 		name: 'download',
-
+    mounted(){
+      wechatShare({
+        title: "区分-投资区块链一定要区分",
+        content: "全球首家以分布式评测为核心的区块链投资平台",
+        link: window.location.href,
+        logo: "https://pic.qufen.top/posts20180628204925934317",
+      })
+    },
 		methods: {
 			// instance() {
 			// 	MessageBox({

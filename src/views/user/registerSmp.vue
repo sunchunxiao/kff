@@ -217,7 +217,7 @@
 			this.draw1()
 
 			wechatShare({
-				title: "做区分创世节点，领取6w注册邀请糖果包",
+				title: "做区分创世节点，领取13w注册邀请糖果包",
 				content: "注册即送3w，每邀请一个好友再送1500 FIND。深度了解区块链项目，听听其他投资者的声音",
 				link: window.location.href,
 				logo: "https://pic.qufen.top/posts20180628204925934317",
