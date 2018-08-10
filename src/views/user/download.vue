@@ -11,14 +11,14 @@
 			</div>
 			<!--安卓下载-->
 			<div class="downBtn2">
-        <!--<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.secretk.move"><Button ><img src="../../assets/down/Android.png"/><span>Android下载</span></Button></a>-->
-        <Button @click="android"><img class="android-img" src="../../assets/down/Android.png"/><span>Android下载</span></Button>
+				<!--<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.secretk.move"><Button ><img src="../../assets/down/Android.png"/><span>Android下载</span></Button></a>-->
+				<Button @click="android"><img class="android-img" src="../../assets/down/Android.png"/><span>Android下载</span></Button>
 
 			</div>
 			<div class="downBtn">
 				<button @click="android"><img  class="ios-img" src="../../assets/down/iOS.png"/><span>iPhone(beta1)下载</span></button>
 			</div>
-      <!--微信下载提示在浏览器上打开的遮罩层-->
+			<!--微信下载提示在浏览器上打开的遮罩层-->
 			<div class="weixin-tip">
 				<p>
 					<img src="../../assets/down/down.png" alt="在浏览器打开" />
@@ -39,19 +39,19 @@
 			// 		title: 'IOS-全力开发中',
 			// 		showConfirmButton: true
 			// 	});
-            //
+			//
 			// },
 			is_weixin() {
 				var ua = navigator.userAgent.toLowerCase();
 				if(ua.match(/MicroMessenger/i) == "micromessenger") {
 					return true;
 				} else {
-				  if(navigator.userAgent.match(/(iPhone|iPad);?/i)){
-            window.location.href = "https://www.pgyer.com/r9sH"
-          }
-          if(navigator.userAgent.match(/android/i)){
-            window.location.href = "https://pic.qufen.top/qufen__v1.0.apk"
-          }
+					if(navigator.userAgent.match(/(iPhone|iPad);?/i)) {
+						window.location.href = "https://www.pgyer.com/r9sH"
+					}
+					if(navigator.userAgent.match(/android/i)) {
+						window.location.href = "https://pic.qufen.top/qufen__v1.0.apk"
+					}
 
 					return false;
 				}
@@ -76,7 +76,7 @@
 		max-width: 100%;
 		height: auto;
 	}
-
+	
 	.weixin-tip {
 		display: none;
 		position: fixed;
@@ -89,23 +89,23 @@
 		width: 100%;
 		z-index: 100;
 	}
-
+	
 	.weixin-tip p {
 		text-align: center;
 		margin-top: 10%;
 		padding: 0 5%;
 	}
-
+	
 	.kffdownload {
 		height: 100%;
 		background-color: #127deb;
 	}
-
+	
 	.wdown {
 		width: 80%;
 		margin: 1rem auto 0;
 	}
-
+	
 	.downContent {
 		width: 90%;
 		margin: 0 auto;
@@ -139,7 +139,7 @@
 			margin-bottom: 10px;
 			button {
 				line-height: 3rem;
-        position: relative;
+				position: relative;
 			}
 		}
 		.downBtn2 {
@@ -156,22 +156,20 @@
 			line-height: 3rem;
 			background-color: #fff;
 			border: none;
-      position: relative;
+			position: relative;
 			img {
 				width: 8%;
-
 			}
-      .android-img{
-        position: absolute;
-        top: 13px;
-        left: 47px;
-      }
-
-      .ios-img{
-        position: absolute;
-        top: 9px;
-        left: 24px;
-      }
+			.android-img {
+				position: absolute;
+				top: 13px;
+				left: 47px;
+			}
+			.ios-img {
+				position: absolute;
+				top: 9px;
+				left: 24px;
+			}
 			span {
 				margin-left: 10px;
 				margin-top: 1px;

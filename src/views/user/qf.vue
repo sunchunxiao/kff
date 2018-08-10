@@ -54,7 +54,7 @@
 	.qf-title-map {
 		width: 78%;
 		margin: 2rem auto 0;
-		/*position: relative;*/
+		position: relative;
     overflow: hidden;
     display: flex;
     justify-content: space-between;
