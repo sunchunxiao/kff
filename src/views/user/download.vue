@@ -46,11 +46,13 @@
 				if(ua.match(/MicroMessenger/i) == "micromessenger") {
 					return true;
 				} else {
+				  //苹果
 					if(navigator.userAgent.match(/(iPhone|iPad);?/i)) {
 						window.location.href = "https://www.pgyer.com/r9sH"
 					}
+					//安卓
 					if(navigator.userAgent.match(/android/i)) {
-						window.location.href = "https://pic.qufen.top/qufen__v1.0.apk"
+						window.location.href = "https://pic.qufen.top/qufen_update.apk"
 					}
 
 					return false;
@@ -76,7 +78,7 @@
 		max-width: 100%;
 		height: auto;
 	}
-	
+
 	.weixin-tip {
 		display: none;
 		position: fixed;
@@ -89,23 +91,23 @@
 		width: 100%;
 		z-index: 100;
 	}
-	
+
 	.weixin-tip p {
 		text-align: center;
 		margin-top: 10%;
 		padding: 0 5%;
 	}
-	
+
 	.kffdownload {
 		height: 100%;
 		background-color: #127deb;
 	}
-	
+
 	.wdown {
 		width: 80%;
 		margin: 1rem auto 0;
 	}
-	
+
 	.downContent {
 		width: 90%;
 		margin: 0 auto;
