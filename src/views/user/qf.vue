@@ -54,7 +54,10 @@
 	.qf-title-map {
 		width: 78%;
 		margin: 2rem auto 0;
-		position: relative;
+		/*position: relative;*/
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
 	}
 
 	.qf-title-map img {
@@ -129,10 +132,11 @@
 	}
 	.registerImg{
 		text-align: center;
+    width: 115px;
 	}
 	.register-img2 {
-		width: 50%!important;
-		/*margin-top: 2rem;*/
+		width: 88%!important;
+		margin-top: 6px;
 	}
   .mainB{
     margin-bottom: 1rem;
@@ -142,6 +146,10 @@
   }
   .helpEvaluation{
     width: 100%;
+  }
+  .cx-contact{
+    text-align: center;
+    float: left;
   }
 </style>
 
@@ -200,11 +208,19 @@
 			</ol>
 
 			<div class="qf-title-map">
-				<img src="../../assets/register/other.png" alt="">
-				<span class="map">联系我们</span>
-				<div class="registerImg">
-				<img class="register-img2" src="../../assets/register/register-4.png" />
-			    </div>
+				<!--<img src="../../assets/register/other.png" alt="">-->
+				<div class="cx-contact">
+          <span style="font-size: 1.3rem">联系我们</span>
+          <div class="registerImg">
+            <img  src="../../assets/register/register-4.png" />
+          </div>
+        </div>
+        <div class="cx-contact">
+          <span style="font-size: 1.3rem">微信社区</span>
+          <div class="registerImg">
+            <img class="register-img2" src="../../assets/register/wxsq.png" />
+          </div>
+        </div>
 			</div>
 			<div class="cooperation">
 				<div class="left">
