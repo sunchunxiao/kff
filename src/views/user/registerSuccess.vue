@@ -186,7 +186,7 @@
 				if(res.code == 0) {
 					// console.log(res.data.url)
 					this.message = res.data.url
-          this.message1 = "注册区分领取13wFIND，注册即送30,000FIND,邀请好友再送30,000FIND。深度了解区块链项目，听听其他投资者的声音，速戳："+this.message;
+          this.message1 = "注册区分领取13wFIND，注册即送30,000FIND,邀请好友再送100,000FIND。深度了解区块链项目，听听其他投资者的声音，速戳："+this.message;
 				}
 			})
 		},
