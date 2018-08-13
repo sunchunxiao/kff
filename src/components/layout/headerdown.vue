@@ -14,7 +14,7 @@
 			padding:1rem 0;
 			position:relative;
 			img{
-				width: 20%;
+				width: 100%;
 
 			}
 			.down{
@@ -47,7 +47,9 @@
     </div>-->
     <div class="home-nav">
 			<div class="nav-logo">
-				<img @click="go" src="../../assets/image/home-logo.png" alt="" />
+				<div style="display: inline-block;width: 5.5rem">
+          <img @click="go" src="../../assets/image/home-logo.png" alt="" />
+        </div>
 				<span class="com down" @click="next">下载区分APP</span>
         <span class="com down1" @click="register">注册</span>
 			</div>
