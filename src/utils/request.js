@@ -25,7 +25,7 @@ axios.interceptors.response.use((res) => {
 
 // option = {method,body,header}
 const request = (url, options = {}) => {
-  //测试地址1
+  //测试地址
 	     var url = "/wap" + url;
   //林俊
 // var url = "http://192.168.10.130:8081/wap" + url;
