@@ -7,7 +7,9 @@
 	font-size: 20px;
 	display: inline-block;
 }
-
+.v a{
+  text-decoration: underline;
+}
 .evaluation {
 	border-top: 1px solid #dddddd;
 	border-bottom: 1px solid #dddddd;
