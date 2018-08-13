@@ -39,7 +39,7 @@
 </style>
 
 <template>
-	<div class="cx-article">
+	<div >
 		<!--<HeaderBar-->
 		<!--:title="title"-->
 		<!--/>-->
