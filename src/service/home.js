@@ -73,3 +73,12 @@ export const getappnews = (params = {}) => {
   })
 }
 
+//导航
+export const getNavigtion = (params = {}) => {
+  return request(`/h5/navigation/getNavigtionAndProject`, {
+    body: {
+      ...params
+    },
+  })
+}
+

@@ -56,13 +56,13 @@
 				} else {
 				  //苹果
 					if(navigator.userAgent.match(/(iPhone|iPad);?/i)) {
-						window.location.href = "https://www.pgyer.com/r9sH"
-					}
-					//安卓
-					if(navigator.userAgent.match(/android/i)) {
-						window.location.href = "https://pic.qufen.top/qufen_update.apk"
-					}
 
+            window.location.href = "itms-services://?action=download-manifest&url=https://pic.qufen.top/ipa.plist"
+					}else if(navigator.userAgent.match(/android/i)) {
+						window.location.href = "https://pic.qufen.top/qufen_update.apk"
+					}else{
+            window.location.href = "https://www.pgyer.com/r9sH"
+          }
 					return false;
 				}
 			},
