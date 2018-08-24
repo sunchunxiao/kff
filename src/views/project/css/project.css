@@ -84,7 +84,7 @@
 }
 
 .info {
-	font-size: 10px;
+	font-size: 12px;
 	color: #888888;
 	letter-spacing: 0;
 }
@@ -191,4 +191,32 @@ img {
 
 .v p img {
 	width: 100%!important;
+}
+
+/*热门评论*/
+
+.hot-comment {
+  width: 90%;
+  margin: 1rem auto;
+}
+.evaluation-follow img {
+  float: left;
+  width: 17px;
+}
+.evaluation-follow span {
+  font-size: 10px;
+  color: #3b88f6;
+  margin-left: -5px;
+}
+.previewBottom{
+  padding-bottom: 1rem;
+}
+.p-style {
+  font-size: 15px;
+  color: #333333;
+  letter-spacing: 0;
+  line-height: 20px;
+  text-align: justify;
+  padding-bottom: 10px;
+  padding-left: 4rem;
 }

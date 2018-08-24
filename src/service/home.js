@@ -82,3 +82,23 @@ export const getNavigtion = (params = {}) => {
   })
 }
 
+//评测,文章评论列表接口
+export const  postCommentList= (params = {}) => {
+  return request(`/kff/home/postCommentList`, {
+    body: {
+      ...params
+    },
+  })
+}
+
+//爆料评论列表接口
+export const  discussCommentList= (params = {}) => {
+  return request(`/kff/home/discussCommentList`, {
+    body: {
+      ...params
+    },
+  })
+}
+
+
+

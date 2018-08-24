@@ -1,15 +1,8 @@
 <style lang="less">
 	@import 'css/project.css';
-	.evaluation-follow img {
-		float: left;
-		width: 17px;
-	}
 
-	.evaluation-follow span {
-		font-size: 10px;
-		color: #3b88f6;
-		margin-left: -5px;
-	}
+
+
 
 	.evaluation-content {
 		font-size: 1.3rem;
@@ -26,21 +19,7 @@
 	.min {
 		width: 100%;
 	}
-	/*热门评论*/
 
-	.hot-comment {
-		width: 90%;
-		margin: 1rem auto;
-	}
-
-	.p-style {
-		font-size: 15px;
-		color: #333333;
-		letter-spacing: 0;
-		line-height: 20px;
-		text-align: justify;
-		padding-bottom: 10px;
-	}
 
 	.preview {
 		font-size: 13px;
@@ -264,6 +243,7 @@
 				link: window.location.href,
 				logo: this.imgUrlwx,
 			})
+      document.title=this.articleTitle
 		},
 		methods: {
 			handleScroll() {

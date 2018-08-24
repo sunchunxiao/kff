@@ -9,6 +9,7 @@
     background-color: #fff;
     margin: 0 auto;
     overflow: hidden;
+    z-index: 100;
   }
     .footer li{
       text-align: center;

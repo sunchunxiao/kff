@@ -366,7 +366,7 @@
 
 	</div>
 
-	</div>
+	<!--</div>-->
 </template>
 <script>
 	//	import MyProgress from '@/components/common/myProgress.vue'
