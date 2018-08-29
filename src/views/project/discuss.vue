@@ -214,17 +214,17 @@
 		updated() {
       $('.v').css({
         letterSpacing:'1px',
-        fontSize: '1.3rem',
+        fontSize: '16px',
       })
       $('.v').find('p').css({
-        fontSize: '1.3rem',
+        fontSize: '16px',
         width: "100%",
         margin: "1rem 0",
         letterSpacing:'1px',
       });
       $('.v').find('p').css('word-wrap', 'break-word');
       $('.v').find('p span').css({
-        fontSize: '1.3rem',
+        fontSize: '16px',
         letterSpacing:'1px',
       });
 			//点击图片增大后的相对位置
