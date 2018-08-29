@@ -175,18 +175,26 @@
 				link: window.location.href,
 				logo: this.imgUrlwx,
 			})
-			// $('.v').find('img').css('width', '100%');
+      $('.v').css({
+        letterSpacing:'1px',
+        fontSize: '1.3rem',
+      })
 			$('.v').find('img').css({
 				width: '100%',
 				height: '100%'
 			});
+
 			$('.v').find('p').css({
 				fontSize: '1.3rem',
 				width: "100%",
-				margin: "1rem 0"
+				margin: "1rem 0",
+        letterSpacing:'1px',
 			});
 			$('.v').find('p').css('word-wrap', 'break-word');
-			$('.v').find('p span').css('fontSize', '1.2rem');
+      $('.v').find('p span').css({
+        fontSize: '1.3rem',
+        letterSpacing:'1px',
+      });
       document.title=this.articleTitle
 
 		},

@@ -212,12 +212,21 @@
 			Headerdown
 		},
 		updated() {
+      $('.v').css({
+        letterSpacing:'1px',
+        fontSize: '1.3rem',
+      })
       $('.v').find('p').css({
         fontSize: '1.3rem',
         width: "100%",
-        margin: "1rem 0"
+        margin: "1rem 0",
+        letterSpacing:'1px',
       });
       $('.v').find('p').css('word-wrap', 'break-word');
+      $('.v').find('p span').css({
+        fontSize: '1.3rem',
+        letterSpacing:'1px',
+      });
 			//点击图片增大后的相对位置
 			if($(".evaluationLi>img").hasClass("active")) {
 				//如果滚动获取滚动的top值
