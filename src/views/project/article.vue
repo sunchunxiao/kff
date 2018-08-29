@@ -161,7 +161,6 @@
       'v-loadmore': Loadmore,
 		},
 		updated() {
-
 			// console.log(this.imgUrl)
 			// console.log(this.postShortDesc,this.articleTitle)
 			if(this.imgUrl.length == 0) {
