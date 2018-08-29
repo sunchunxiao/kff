@@ -60,13 +60,6 @@
     /*line-height:1.4em;*/
     overflow:hidden;
   }
-  /*.currenyspan::after{*/
-    /*content:"...";*/
-    /*font-weight:bold;*/
-    /*position:absolute;*/
-    /*bottom:0;*/
-    /*right:0;*/
-  /*}*/
 
   .currency-title{
     margin-bottom: 4rem;

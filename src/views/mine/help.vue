@@ -22,35 +22,37 @@
       <mt-tab-container-item id="evaluate">
         <div class="evaluate-rule">
           <h1 class=" mainB h1">内容简介</h1>
-          <p class="margin-bottom mainB">
-          	<div class="margin-bottom mainB">区分的内容主要包括评测、爆料、文章，区分上的内容是以区块链项目为主体，帮助用户更全面了解区块链行业。 </div>
-          	<div class="margin-bottom mainB">爆料：人人可以参与的部分，在这里可以随时发表你所了解的币圈动态、区块链走向。</div>
-          	<div class="margin-bottom mainB">PC端区分内容管理平台：<a href="https://content.qufen.top/ " class="content-link">https://content.qufen.top/ </a>（官网qufen.top有入口）
-</div>
-          </p>
-          <p class="margin-bottom mainB">为了让更多的人参与到针对区块链项目的分布式评测中，“区分”内提供了对区块链项目的多种评测方式，包括短评和精评。您可以根据需要进行选择。 根据不同用户对于一个区块链项目的评分，综合考虑内容贡献者和筛选人的区分指数，计算出当前项目的综合评分。</p>
-          <p class="margin-bottom mainB">注：区分的评测模型在不断进化和迭代中，初期版本V1.0经过区分团队的研究和实践，仍会有不足之处，后期迭代将由The Finder发现者联盟共同决定。 </p>
-          <div class="help-content">
-            <h3 class="help-title">1.评测方法</h3>
-            <div class="margin-bottom">1.短评 </div>
-            <div class="margin-bottom mainB">当您对区块链项目有一定认知时，可对项目给出自己的评分，以及简单评价。</div>
-            <div class="margin-bottom">2.精评</div>
-            <div  class="margin-bottom mainB">如果您对区块链项目有深度的认知，你可以选择专业评测，贡献深度内容，并进行打分。</div>
-            <div class="margin-bottom mainB">如果您对当前区块链项目有着完整的认知和观点时，可以选择“完整评测”，建议在PC端贡献内容更加专业，你可以使用区分的评测模型，也可以新建自己的评测模型（包括纬度名称、权重、分数，权重之和为1）。</div>
-            <p  class="margin-bottom mainB">“区分”会根据您对各纬度的评分和权重，计算出综合评分。综合评分 = SUM（纬度评分*当前纬度权重）</p>
-            <h3 class="margin-bottom help-title">2.项目评分</h3>
-            <p class="margin-bottom mainB">对于某个区块链项目，除了单份评测报告给予区块链项目的评分，“区分”还将综合考虑当前区块链项目评测的所有参与者，对区块链项目给予一个综合评分。当参与项目评测的人数到达一定数量时，系统会自动对区块链项目进行整体评分，计算公式 </p>
-            <div>如下:</div>
-            <img class="helpEvaluation" src="../../assets/mine/help/computed.png" alt="">
-            <div class="summary">
-             对项目进行整体评分时综合考虑内容贡献者和筛选者的区分指数，最大限度地保证评测的专业性和公正性。项目整体评分可以直观的反映出项目等级，给予投资者相应的投资参考。
+          <div class="helpSize">
+            <div class="mainB">
+            <div class="mainB">区分的内容主要包括评测、爆料、文章，区分上的内容是以区块链项目为主体，帮助用户更全面了解区块链行业。 </div>
+            <div class="mainB">爆料：人人可以参与的部分，在这里可以随时发表你所了解的币圈动态、区块链走向。</div>
+            <div class="mainB">PC端区分内容管理平台：<a href="https://main.qufen.top" class="content-link">https://main.qufen.top</a>（官网qufen.top有入口）
+            </div>
+            </div>
+            <p class=" mainB">为了让更多的人参与到针对区块链项目的分布式评测中，“区分”内提供了对区块链项目的多种评测方式，包括短评和精评。您可以根据需要进行选择。 根据不同用户对于一个区块链项目的评分，综合考虑内容贡献者和筛选人的区分指数，计算出当前项目的综合评分。</p>
+            <p class="mainB">注：区分的评测模型在不断进化和迭代中，初期版本V1.0经过区分团队的研究和实践，仍会有不足之处，后期迭代将由The Finder发现者联盟共同决定。 </p>
+            <div>
+              <h3 class="help-title">1.评测方法</h3>
+              <div class="">1.短评 </div>
+              <div class=" mainB">当您对区块链项目有一定认知时，可对项目给出自己的评分，以及简单评价。</div>
+              <div class="">2.精评</div>
+              <div  class=" mainB">如果您对区块链项目有深度的认知，你可以选择专业评测，贡献深度内容，并进行打分。</div>
+              <div class=" mainB">如果您对当前区块链项目有着完整的认知和观点时，可以选择“完整评测”，建议在PC端贡献内容更加专业，你可以使用区分的评测模型，也可以新建自己的评测模型（包括纬度名称、权重、分数，权重之和为1）。</div>
+              <p  class=" mainB">“区分”会根据您对各纬度的评分和权重，计算出综合评分。综合评分 = SUM（纬度评分*当前纬度权重）</p>
+              <h3 class=" help-title">2.项目评分</h3>
+              <p class=" mainB">对于某个区块链项目，除了单份评测报告给予区块链项目的评分，“区分”还将综合考虑当前区块链项目评测的所有参与者，对区块链项目给予一个综合评分。当参与项目评测的人数到达一定数量时，系统会自动对区块链项目进行整体评分，计算公式 </p>
+              <div>如下:</div>
+              <img class="helpEvaluation" src="../../assets/mine/help/computed.png" alt="">
+              <div class="summary">
+                对项目进行整体评分时综合考虑内容贡献者和筛选者的区分指数，最大限度地保证评测的专业性和公正性。项目整体评分可以直观的反映出项目等级，给予投资者相应的投资参考。
+              </div>
             </div>
           </div>
         </div>
       </mt-tab-container-item>
       <mt-tab-container-item id="reward">
         <h1 class="mainB h1">激励机制</h1>
-        <div class="reward">
+        <div class="helpSize">
           <p class="mainB">为了“区分”生态的健康发展，我们设计了FIND的消耗与获取闭环。初期为了区分生态的健康发展，“区分”对于注册用户给予了FIND奖励。同时鼓励优质内容，区分对贡献优质内容、提供有价值信息的用户给予FIND奖励。</p>
           <h3 class="help-title mainB">1.注册奖励</h3>
           <div class="mainB">新用户注册及邀请好友注册都将获得区分的FIND奖励，明细如下：</div>
@@ -71,6 +73,8 @@
           <p>每个用户的点赞次数不限，但是有效赞（平台奖励）的次数有限。</p>
           <ul class="mainB award">
             <li>用户的有效赞数量 = 区分指数 * 0.1（向下取整）</li>
+            <li>用户有效评论数=区分指数*0.1(向下取整)</li>
+            <li>用户有效分享数=区分指数*0.1(向下取整)</li>
             <li>每个赞的收益 = 基础奖励 * 内容贡献者的区分指数 * 0.01（保留小数）</li>
             <li>点赞人（实名认证）的收益为10 FIND </li>
           </ul>
@@ -85,7 +89,7 @@
       </mt-tab-container-item>
       <mt-tab-container-item id="description">
         <h1 class="mainB h1">区分指数</h1>
-        <div class="reward">
+        <div class="helpSize">
           <p class="mainB">“区分指数”相当于用户在“区分”生态中的算力。“区分指数”对用户在区分平台的影响力，内容贡献的排名和收益都与“区分指数”密切相关。没有区分指数，就无法发放“奖励”。</p>
           <p class="mainB">获得“区分指数”的前提是实名认证成功，请好好经营您的“区分指数”。</p>
           <h3 class="help-title">1.区分指数定义</h3>
@@ -110,7 +114,7 @@
       </mt-tab-container-item>
       <mt-tab-container-item id="authentication">
         <h1 class="mainB h1">实名认证</h1>
-       <div class="reward">
+       <div class="helpSize">
          <p class="mainB">根据相关的法律法规，“区分”邀请您进行实名认证，以便开启您的区分之旅。 </p>
          <p class="mainB">未实名用户的“区分指数”为0，注册奖励和内容奖励将在实名认证之后才会发放。 </p>
          <p class="mainB">实名认证请手持“用于区分认证“纸条，并附上当日日期。如下图所示。</p>
@@ -123,8 +127,15 @@
 </template>
 
 <style lang="less">
+  .helpA .mint-tab-item-label{
+    font-size: 15px;
+  }
+  .he
   ::-webkit-scrollbar {/*隐藏滚轮*/
     display: none;
+  }
+  .helpSize{
+    font-size: 16px;
   }
   a{
     color: rgb(105,113,131);
@@ -135,9 +146,7 @@
   .lineB{
     display: block;
   }
-  /*.lineC{*/
-    /*display: none;*/
-  /*}*/
+
   .line{
   	width: 50%;
     position: absolute;
@@ -160,18 +169,18 @@
   .helpEvaluation{
     width: 100%;
   }
-  .margin-bottom{
-    font-size: 1.1rem;
-    color: rgb(74,74,74);
-  }
+  /*.margin-bottom{*/
+    /*font-size: 1.1rem;*/
+  /*}*/
   .help-title{
     color: mediumvioletred;
   }
-  .help-content{
-    font-size: 1rem;
-  }
+  /*.help-content{*/
+    /*font-size: 1rem;*/
+  /*}*/
   .mainB{
     margin-bottom: 1rem;
+    color: rgb(74,74,74);
   }
   .award{
   	padding-left: 10%;
@@ -183,9 +192,9 @@
   .summary{
     font-size: 1.2rem;
   }
-  .reward{
-    font-size: 1.1rem;
-  }
+  /*.reward{*/
+    /*font-size: 1.1rem;*/
+  /*}*/
   .mint-tab-item{
     position: relative;
   }
