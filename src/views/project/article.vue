@@ -189,10 +189,9 @@
 			$('.v').find('p').css({
 				margin: "1rem 0",
 			});
-      // $('.v').find('p span').css({
-      //   fontSize: '16px',
-      //   letterSpacing:'1px',
-      // });
+      $('.v').find('span').css({
+        fontSize: '16px',
+      });
       document.title=this.articleTitle
 
 		},

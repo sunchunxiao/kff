@@ -149,6 +149,12 @@
         width: '100%',
         height: '100%'
       });
+      $('.v').find('p').css({
+        margin: "1rem 0",
+      });
+      $('.v').find('span').css({
+        fontSize: '16px',
+      });
       // $('.v').find('p').css({
       //   // fontSize: '1.3rem',
       //   lineHeight:'2rem',

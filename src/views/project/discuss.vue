@@ -221,6 +221,9 @@
       $('.v').find('p').css({
         margin: "1rem 0",
       });
+      $('.v').find('span').css({
+        fontSize: '16px',
+      });
 
 			//点击图片增大后的相对位置
 			if($(".evaluationLi>img").hasClass("active")) {
