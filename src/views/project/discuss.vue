@@ -215,18 +215,13 @@
       $('.v').css({
         letterSpacing:'1px',
         fontSize: '16px',
+        wordWrap:'break-word',
+        lineHeight:'26px',
       })
       $('.v').find('p').css({
-        fontSize: '16px',
-        width: "100%",
         margin: "1rem 0",
-        letterSpacing:'1px',
       });
-      $('.v').find('p').css('word-wrap', 'break-word');
-      $('.v').find('p span').css({
-        fontSize: '16px',
-        letterSpacing:'1px',
-      });
+
 			//点击图片增大后的相对位置
 			if($(".evaluationLi>img").hasClass("active")) {
 				//如果滚动获取滚动的top值

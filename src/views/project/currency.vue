@@ -72,7 +72,7 @@
   }
   .currenyFlash{
     color:rgb(62,67,80);
-    font-size: 13px;
+    font-size: 14px;
   }
   .currenyTime{
     font-size: 15px;
@@ -139,21 +139,27 @@
         link: window.location.href,
         logo: this.imgUrlwx,
       })
+      $('.v').css({
+        fontSize: '16px',
+        letterSpacing:'1px',
+        lineHeight:'26px',
+        wordWrap:'break-word'
+      })
       $('.v').find('img').css({
         width: '100%',
         height: '100%'
       });
-      $('.v').find('p').css({
-        fontSize: '1.3rem',
-        lineHeight:'2rem',
-        // width: "100%",
-        // margin: "1rem 0"
-      });
-      $('.v').find('p').css('word-wrap', 'break-word');
-      $('.v').find('p span').css({
-        fontSize:'1.2rem',
-        lineHeight:'2rem',
-      });
+      // $('.v').find('p').css({
+      //   // fontSize: '1.3rem',
+      //   lineHeight:'2rem',
+      //   // width: "100%",
+      //   // margin: "1rem 0"
+      // });
+      // $('.v').find('p').css('word-wrap', 'break-word');
+      // $('.v').find('p span').css({
+      //   fontSize:'1.2rem',
+      //   lineHeight:'2rem',
+      // });
 
     },
     mounted() {

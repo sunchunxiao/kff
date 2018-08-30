@@ -290,22 +290,21 @@
       $('.v').css({
         letterSpacing:'1px',
         fontSize: '16px',
+        wordWrap:'break-word',
+        lineHeight:'26px',
       })
 			$('.v').find('img').css({
 				width: '100%',
 				height: '100%',
 			});
 			$('.v').find('p').css({
-        letterSpacing:'1px',
-				fontSize: '16px',
-				width: "100%",
 				margin: "1rem 0"
 			});
-			$('.v').find('p').css('word-wrap', 'break-word');
-      $('.v').find('p span').css({
-        fontSize: '16px',
-        letterSpacing:'1px',
-      });
+		// 	$('.v').find('p').css('', '');
+      // $('.v').find('p span').css({
+      //   fontSize: '16px',
+      //   letterSpacing:'1px',
+      // });
 
       document.title=this.articleTitle
 		},
