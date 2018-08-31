@@ -8,7 +8,7 @@
 					{{item.navigationTitle}}
 				</div>
 				<ul class="cxUlist">
-					<li v-for="item1 in item.navigationProjects">
+					<li v-for="item1 in item.navigationProjects" @click="next(item1.webUrl)">
 						<div class="nav-row">
 							<div class="photo">
 								<img :src="item1.projectImgPath">
@@ -73,6 +73,9 @@
 		  this.getnavigtion()
     },
 		methods:{
+      next(webUrl){
+        window.location.href = webUrl
+      },
 			getnavigtion(){
 
         getNavigtion().then(res => {
@@ -111,6 +114,7 @@
 	}
 	.nav-row {
 		position: relative;
+    overflow: hidden;
 	}
 	.photo{
 		float: left;

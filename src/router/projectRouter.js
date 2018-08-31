@@ -51,7 +51,7 @@ export const projectRouter = [
     },
     component: (resolve) => require(['@/views/project/articleInfo.vue'], resolve)
   },
-  //讨论
+  //爆料
   {
     path: '/project/discuss',
     meta: {
