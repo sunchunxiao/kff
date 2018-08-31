@@ -62,6 +62,7 @@
 
 <script>
   import { getNavigtion } from '@/service/home';
+  import { wechatShare } from '../../assets/js/wxshare'
 	export default {
 		name: "navigation",
 		data() {
@@ -71,6 +72,15 @@
 		},
     mounted(){
 		  this.getnavigtion()
+    },
+    updated() {
+      wechatShare({
+        title: "区块链导航——区分",
+        content: "了解区块链，一页就够了！",
+        link: window.location.href,
+        logo:"https://pic.qufen.top/posts20180628204925934317",
+      })
+      document.title="区分导航"
     },
 		methods:{
       next(webUrl){
