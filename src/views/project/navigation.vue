@@ -81,7 +81,7 @@
         getNavigtion().then(res => {
 
           if(res.code == 0) {
-            console.log(res.data)
+            // console.log(res.data)
             this.navigations = res.data.navigations
           }
         })
@@ -114,7 +114,7 @@
 	}
 	.nav-row {
 		position: relative;
-    overflow: hidden;
+    /*overflow: hidden;*/
 	}
 	.photo{
 		float: left;
