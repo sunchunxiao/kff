@@ -1,7 +1,5 @@
 /**
- * Created by zhengchangshun on 2018/4/1.
- */
-
+ * Created by sunchunxiao
 /*底部菜单-我的 路由*/
 export const mineRouter = [
   {

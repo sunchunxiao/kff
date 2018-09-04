@@ -7,6 +7,7 @@ import {homeRouter} from './homeRouter'   //底部菜单栏 - 首页 路由
 import {topicRouter} from './topicRouter' //底部菜单栏 - 话题 路由
 import {mineRouter} from './mineRouter'   //底部菜单栏 - 我的 路由
 import {projectRouter} from './projectRouter'   //底部菜单栏 - 我的 路由
+import {redenvelopesRouter} from './redenvelopesRouter'   //底部菜单栏 - 领取红包 路由
 
 Vue.use(Router)
 // 模块路由合并
@@ -18,6 +19,7 @@ const routes = [
   ...topicRouter,
   ...mineRouter,
   ...projectRouter,
+  ...redenvelopesRouter
 ]
 const router = new Router({
   mode:'history',

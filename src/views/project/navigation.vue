@@ -1,5 +1,5 @@
 <template>
-	<div style="background-color: #F1F1F1;height: 100%">
+	<div style="background-color: #F1F1F1;height: initial">
 		<div class="cx-nav"  v-for="item in navigations">
 			<!--币圈必读-->
 			<div class="cx-navwrap">
@@ -14,7 +14,10 @@
 								<img :src="item1.projectImgPath">
 							</div>
 							<div class="name">
-								<div class="projectName"><span class="projectName-name">{{item1.navigationProjectTitle}}</span><span class="atten-span">/ 柚子</span></div>
+								<div class="projectName">
+                  <span class="projectName-name">{{item1.navigationProjectTitle}}</span>
+                  <!--<span class="atten-span">/ 柚子</span>-->
+                </div>
 								<div class="projectName-detail">{{item1.remark}}</div>
 							</div>
 

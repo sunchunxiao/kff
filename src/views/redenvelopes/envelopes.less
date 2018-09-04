@@ -1,0 +1,182 @@
+.enpcommonHeight{
+    height: 100%;
+}
+//点击领红包
+.envelopes {
+    background-image: url(../../assets/envelopes/envelopes2.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    .envelopesWrap {
+        .envelopesWrapper {
+            position: relative;
+            .envelopequfen {
+                width: 100%;
+            }
+        }
+        .envelopeOpen {
+            width: 27%;
+            position: absolute;
+            left: 37%;
+            bottom: -9%;
+        }
+    }
+}
+
+//发送find币
+.findcoin {
+    .findcoinWrap {
+        width: 90%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 100% auto 0;
+        .findcoinWrapper {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            bottom: 35%;
+            .findcoinqufen {
+                width: 100%;
+            }
+        }
+        .findcoinOpen {
+            width: 75%;
+            position: absolute;
+            left: 13%;
+            bottom: 19%;
+        }
+    }
+}
+
+//登录
+.findcoinLogin {
+    background-image: url(../../assets/envelopes/loginbac.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    .reg-tit {
+        font-size: 2rem;
+        color: #ffffff;
+        letter-spacing: 0.23px;
+        text-align: left;
+        padding-top: 4rem;
+        margin-bottom: 2rem;
+        text-indent: 1.4rem;
+    }
+    .reg-intro {
+        width: 90%;
+        margin-left: 5%;
+        position: relative;
+        margin-top: 1rem;
+        input {
+            height: 2.8rem;
+            width: 100%;
+            font-size: 16px;
+//          font-weight: bolder;
+            border-bottom: 1px rgba(255,255,255,0.37) solid;
+            color: #fff;
+            margin-top: 2rem;
+        }
+        button {
+            line-height: 2rem;
+            font-size: 1rem;
+            border: 1px #fff solid;
+            border-radius: 1rem;
+            padding: 0 0.6rem;
+            position: absolute;
+            right: 0px;
+            bottom: 1.3rem;
+            background-color: transparent;
+            color: #fff;
+        }
+    }
+    .longBtn {
+        background-image: url(../../assets/envelopes/bac-icon.png);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        color: rgb(89,81,254);
+        font-weight: bolder;
+        border-radius: 50px;
+//      background-color: rgb(255,255,255);
+        margin-top: 5rem;
+    }
+    .mint-button--primary{
+        background-color: #5e3efb;
+    }
+}
+//邀请奖励
+.invitation{
+    .invitationBacg{
+        width: 100%;
+    }
+    .invitationContent{
+        width: 90%;
+        position: absolute;
+        top: 20%;
+        left: 0;
+        right: 0;
+        margin:  0 auto;
+        .invitationContent-down{
+            width: 90%;
+            background-color:rgb(255,255,255);
+            margin: 0 auto;
+            border-radius: 7px;
+            box-shadow: 0 1px 3px rgba(94,97,255,0.69);
+            .invitationWrap{
+                padding: 1rem;
+                .invitationTitle{
+                    display: flex;
+                    align-items: center;
+                    img{
+                        width: 9%;
+                    }
+                    span{
+                        color: rgb(27,31,46);
+                        font-size: 1.5rem;
+                        font-weight: bolder;
+                        margin-left: 10px;
+                    }
+                }
+                .invitationIcon{
+                    margin-top: 1rem;
+                    .invitationFont{
+                        color: rgb(27,31,46);
+                        font-size: 20px;
+                        font-weight: bolder;
+                    }
+                    .invitationFont1{
+                        color: rgb(88,94,117);
+                        font-size: 15px;
+                    }
+                }
+                .invitationBtn{
+                    width: 70%;
+                    margin: 1rem auto 0;
+                    .btnLogin{
+                        background-image: url(../../assets/envelopes/ba.png);
+                        background-size: 100% 100%;
+                        background-repeat: no-repeat;
+                        height: 4rem;
+                        line-height: 3rem;
+                        text-align: center;                     
+                        font-size: 15px;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .findcoin {
+        .findcoinWrap {
+            .findcoinWrapper {
+                width: 90%;
+                margin: 0 auto;
+            }
+        }
+    }
+}

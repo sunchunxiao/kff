@@ -105,6 +105,7 @@
 <script>
   import HeaderBar from '@/components/layout/headerBar.vue'
   import {login} from '@/service/user'
+  import { MessageBox } from 'mint-ui';
 
   export default {
     name: 'login',

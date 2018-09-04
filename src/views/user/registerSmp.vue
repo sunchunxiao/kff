@@ -126,15 +126,7 @@
 		text-align: center;
 		padding-top: 10%;
 	}
-	/*.img-code{*/
-	/*width: 100%;*/
-	/*}*/
-	/*.geetest_holder.geetest_wind{*/
-	/*min-width:100%!important;*/
-	/*}*/
-	/*.geetest_holder {*/
-	/*width: 100%!important*/
-	/*}*/
+	
 </style>
 <template>
 	<div class="registerSmp">

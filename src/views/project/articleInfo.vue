@@ -126,13 +126,13 @@
         </div>
       </v-loadmore>
     </div>
-    <FooterInfo :message="post"></FooterInfo>
+    <App></App>
 	</div>
 </template>
 
 <script>
 	import HeaderBar from '@/components/layout/headerBar.vue'
-	import FooterInfo from '@/components/layout/footerInfo.vue'
+	import App from '@/components/layout/app.vue'
 	import Headerdown from '@/components/layout/headerdown.vue'
 	import { articleInfo,postCommentList} from '@/service/home';
   import { wechatShare } from '../../assets/js/wxshare'
@@ -175,7 +175,7 @@
 		},
 		components: {
 			HeaderBar,
-			FooterInfo,
+			App,
 			Headerdown,
       'v-loadmore': Loadmore,
 		},

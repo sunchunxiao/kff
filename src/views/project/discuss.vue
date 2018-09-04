@@ -167,6 +167,7 @@
 				<span class="preview-num">更多10条评论</span>
 			</div>-->
 		</div>
+		<App></App>
 		<!--<div class=" more-preview">-->
 			<!--<span class="preview-num">留下你的评论...</span>-->
 		<!--</div>-->
@@ -178,7 +179,8 @@
 	import Headerdown from '@/components/layout/headerdown.vue'
 	import { discuss } from '@/service/home';
 	import { wechatShare } from '../../assets/js/wxshare'
-  import '../../assets/js/baidu'
+	import App from '@/components/layout/app.vue'
+    import '../../assets/js/baidu'
 	export default {
 		name: "article-info",
 		data() {
@@ -209,7 +211,8 @@
 		},
 		components: {
 			HeaderBar,
-			Headerdown
+			Headerdown,
+			App
 		},
 		updated() {
       $('.v').css({
