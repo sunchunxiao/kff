@@ -10,7 +10,7 @@
 	<div class="findcoinLogin enpcommonHeight">
 		<h2 class="reg-tit">欢迎领取！</h2>
 		<div class="reg-intro">
-			<input placeholder="请输入中国大陆11位手机号" type="tel" v-model="phone">
+			<input class="i1" placeholder="请输入中国大陆11位手机号" type="tel" v-model="phone">
 			<input placeholder="请输入验证码" type="text" v-model="code">
 			<button @click="getcode" id="getcode" v-model="code">获取验证码<span v-show="!show">({{count}}S)</span></button>
 		</div>
@@ -43,22 +43,37 @@
 			//登录接口
 			login() {
 				var myreg = /^1[23456789]\d{9}$/;
-				
+
 				if(this.phone != '') {
 					if(myreg.test(this.phone)) {
-						let params = {
-							phoneNumber: this.phone,
-							dynamicVerifyCode: this.code
-						}
-						regAnLogin(params).then(res => {
-							if(res.code == 0) {
-								console.log(res.data)
-								localStorage.setItem("p",this.phone)
-								localStorage.setItem("token",res.data.token)
-								this.$router.push('/redenvelopes/invitation')
+						if(this.code != '') {
+							let params = {
+								phoneNumber: this.phone,
+								dynamicVerifyCode: this.code
 							}
+							regAnLogin(params).then(res => {
+								if(res.code == 0) {
+									console.log(res.data)
+									localStorage.setItem("p", this.phone)
+									localStorage.setItem("token", res.data.token)
+									this.$router.push('/redenvelopes/invitation')
+								}
 
-						})
+							}).catch(function(res) {
+								MessageBox({
+									title: '提示',
+									message: res.msg,
+									showConfirmButton: true
+								});
+							});
+						} else {
+							MessageBox({
+								title: '提示',
+								message: '请输入验证码',
+								showConfirmButton: true
+							});
+						}
+
 					} else {
 						MessageBox({
 							title: '提示',
@@ -88,7 +103,16 @@
 							getCode({
 								phone: this.phone,
 								module: "reganlogin"
+							}).catch(function(res) {
+								console.log($(".i1").html())
+								console.log(res)
+								MessageBox({
+									title: '提示',
+									message: res.msg,
+									showConfirmButton: true
+								});
 							});
+							
 						}
 						const TIME_COUNT = 60;
 						if(!this.timer) {
