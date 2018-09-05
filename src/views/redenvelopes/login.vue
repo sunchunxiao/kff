@@ -12,7 +12,7 @@
 		<div class="reg-intro">
 			<input placeholder="请输入中国大陆11位手机号" type="tel" v-model="phone">
 			<input placeholder="请输入验证码" type="text" v-model="code">
-			<button @click="getcode" id="getcode">获取验证码<span v-show="!show">({{count}}S)</span></button>
+			<button @click="getcode" id="getcode" v-model="code">获取验证码<span v-show="!show">({{count}}S)</span></button>
 		</div>
 		<mt-button type="primary" class="longBtn" @click.native="login">登录</mt-button>
 	</div>
@@ -20,11 +20,12 @@
 
 <script>
 	import HeaderBar from '@/components/layout/headerBar.vue'
-	import { login, getCode } from '@/service/user'
+	import { regAnLogin, getCode } from '@/service/user'
 	import { MessageBox } from 'mint-ui';
-	
+	import eventVue from '../../assets/js/event.js'
+
 	export default {
-		name: 'login',
+		name: 'invitationlogin',
 		components: {
 			HeaderBar,
 		},
@@ -39,6 +40,42 @@
 		},
 
 		methods: {
+			//登录接口
+			login() {
+				var myreg = /^1[23456789]\d{9}$/;
+				
+				if(this.phone != '') {
+					if(myreg.test(this.phone)) {
+						let params = {
+							phoneNumber: this.phone,
+							dynamicVerifyCode: this.code
+						}
+						regAnLogin(params).then(res => {
+							if(res.code == 0) {
+								console.log(res.data)
+								localStorage.setItem("p",this.phone)
+								localStorage.setItem("token",res.data.token)
+								this.$router.push('/redenvelopes/invitation')
+							}
+
+						})
+					} else {
+						MessageBox({
+							title: '提示',
+							message: '手机号格式错误',
+							showConfirmButton: true
+						});
+					}
+
+				} else {
+					MessageBox({
+						title: '提示',
+						message: '请输入手机号',
+						showConfirmButton: true
+					});
+				}
+
+			},
 			//手机验证码
 			getcode() {
 				//输入框
@@ -47,10 +84,10 @@
 					if(myreg.test(this.phone)) {
 						//发送获取验证码的接口请求
 						if(this.show) { //倒计时内只能点一次
-							console.log(111)
+							//							console.log(111)
 							getCode({
 								phone: this.phone,
-								module: "register"
+								module: "reganlogin"
 							});
 						}
 						const TIME_COUNT = 60;
@@ -96,34 +133,6 @@
 			//					});
 			//				}
 			//			},
-			//密码验证
-			regpw() {
-				var pw = this.password;
-				var pwreg = /[a-zA-Z\d+]{6,16}/;
-				if(!pwreg.test(pw)) {
-					MessageBox({
-						title: '提示',
-						message: '请输入正确的密码！',
-						showConfirmButton: true
-					});
-				}
-			},
-			//登录接口
-			login() {
-				this.$router.push('/redenvelopes/invitation')
-				let params = {
-					loginName: this.phone,
-					password: this.password
-				}
-				login(params).then(res => {
-					if(res.code == 0) {
-						console.log("res.data.user");
-						
-					}
-
-				})
-
-			},
 
 		}
 	};

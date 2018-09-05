@@ -1,6 +1,7 @@
-.enpcommonHeight{
+.enpcommonHeight {
     height: 100%;
 }
+
 //点击领红包
 .envelopes {
     background-image: url(../../assets/envelopes/envelopes2.png);
@@ -74,8 +75,7 @@
             height: 2.8rem;
             width: 100%;
             font-size: 16px;
-//          font-weight: bolder;
-            border-bottom: 1px rgba(255,255,255,0.37) solid;
+            border-bottom: 1px rgba(255, 255, 255, 0.37) solid;
             color: #fff;
             margin-top: 2rem;
         }
@@ -96,73 +96,148 @@
         background-image: url(../../assets/envelopes/bac-icon.png);
         background-size: 100% 100%;
         background-repeat: no-repeat;
-        color: rgb(89,81,254);
+        color: rgb(89, 81, 254);
         font-weight: bolder;
         border-radius: 50px;
-//      background-color: rgb(255,255,255);
+        height: 4rem;
         margin-top: 5rem;
     }
-    .mint-button--primary{
+    .mint-button--primary {
         background-color: #5e3efb;
     }
 }
+
 //邀请奖励
-.invitation{
-    .invitationBacg{
+.invitation {
+    .invitationBacg {
         width: 100%;
     }
-    .invitationContent{
+    .invitationContent {
         width: 90%;
         position: absolute;
-        top: 20%;
+        top: 29%;
         left: 0;
         right: 0;
-        margin:  0 auto;
-        .invitationContent-down{
-            width: 90%;
-            background-color:rgb(255,255,255);
-            margin: 0 auto;
+        margin: 0 auto;
+//      .weixin-tip img {}
+        .weixin-tip {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            filter: alpha(opacity=80);
+            height: 100%;
+            width: 100%;
+            z-index: 100;
+            p {
+                text-align: center;
+                margin-top: 10%;
+                padding: 0 5%;
+                img {
+                    max-width: 100%;
+                    height: auto;
+                }
+            }
+        }
+        .invitationContent-down {
+            width: 97%;
+            background-color: rgb(255, 255, 255);
+            margin: 0 auto 3rem;
             border-radius: 7px;
-            box-shadow: 0 1px 3px rgba(94,97,255,0.69);
-            .invitationWrap{
-                padding: 1rem;
-                .invitationTitle{
+            box-shadow: 0 1px 3px rgba(94, 97, 255, 0.69);
+            .invitationWrap {
+                padding: 1.5rem 1rem;
+                .invitationTitle {
                     display: flex;
                     align-items: center;
-                    img{
+                    img {
                         width: 9%;
                     }
-                    span{
-                        color: rgb(27,31,46);
+                    span {
+                        color: rgb(27, 31, 46);
                         font-size: 1.5rem;
                         font-weight: bolder;
                         margin-left: 10px;
                     }
                 }
-                .invitationIcon{
-                    margin-top: 1rem;
-                    .invitationFont{
-                        color: rgb(27,31,46);
+                .invitationIcon {
+                    //                  margin-top: 1rem;
+                    .invitationFont {
+                        color: rgb(27, 31, 46);
                         font-size: 20px;
                         font-weight: bolder;
                     }
-                    .invitationFont1{
-                        color: rgb(88,94,117);
+                    .invitationFont1 {
+                        color: rgb(88, 94, 117);
                         font-size: 15px;
                     }
                 }
-                .invitationBtn{
+                .invitationBtn {
                     width: 70%;
-                    margin: 1rem auto 0;
-                    .btnLogin{
+                    margin: 3rem auto 0;
+                    .btnLogin {
                         background-image: url(../../assets/envelopes/ba.png);
                         background-size: 100% 100%;
                         background-repeat: no-repeat;
                         height: 4rem;
                         line-height: 3rem;
-                        text-align: center;                     
+                        text-align: center;
                         font-size: 15px;
                         color: #fff;
+                    }
+                }
+                .invitationF {
+                    width: 80%;
+                }
+                .invitationKnow {
+                    width: 55%;
+                }
+                .invitationKnowP {
+                    color: rgb(27, 31, 46);
+                    font-size: 14px;
+                    margin-top: 1rem;
+                    line-height: 25px;
+                }
+                .invitationT {
+                    margin: 1rem auto 0;
+                    background-image: url(../../assets/envelopes/title.png);
+                    background-size: 100% 39%;
+                    background-repeat: no-repeat;
+                    height: 2rem;
+                    position: relative;
+                    div {
+                        text-align: center;
+                        position: absolute;
+                        top: -7px;
+                        left: 0;
+                        right: 0;
+                        color: rgb(67, 70, 243);
+                        font-size: 17px;
+                        font-weight: bold;
+                    }
+                }
+                .findCoin {
+                    width: 96%;
+                    margin: 1rem auto 0;
+                    .findLine {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 1rem;
+                        .findImg {
+                            width: 7%;
+                        }
+                        .findSpan {
+                            margin-left: 10px;
+                            font-size: 15px;
+                            color: rgb(27, 31, 46);
+                            .f1 {
+                                color: rgb(67, 70, 243);
+                                font-size: 18px;
+                                font-weight: bold;
+                            }
+                        }
                     }
                 }
             }
