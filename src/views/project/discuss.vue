@@ -306,7 +306,7 @@
 					//图片
 
 					// console.log(a)
-          if(data.post.postSmallImages!=null){
+          if(data.post.postSmallImages!=null&&data.post.postSmallImages.length!=0){
             var a = JSON.parse(data.post.postSmallImages);
             for(let i = 0; i < a.length; i++) {
 
