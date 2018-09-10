@@ -64,8 +64,8 @@
 									localStorage.setItem("token", res.data.token)
 									localStorage.setItem("inva", res.data.invaUIH)
 									this.invaUIH = res.data.invaUIH
-									window.open('/redenvelopes/invitation?invaUIH='+this.invaUIH,"_blank")
-//									this.$router.push('/redenvelopes/invitation?invaUIH='+this.invaUIH)
+//									window.open('/redenvelopes/invitation?invaUIH='+this.invaUIH,"_blank")
+									this.$router.push('/redenvelopes/invitation?invaUIH='+this.invaUIH)
 								}
 
 							}).catch(function(res) {

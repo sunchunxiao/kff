@@ -32,8 +32,8 @@
 		},
 		methods:{
 			receive(){
-//				this.$router.push('/redenvelopes/findcoin?invaUIH='+this.invaUIH)
-				window.open('/redenvelopes/findcoin?invaUIH='+this.invaUIH,"_blank")
+				this.$router.push('/redenvelopes/findcoin?invaUIH='+this.invaUIH)
+//				window.open('/redenvelopes/findcoin?invaUIH='+this.invaUIH,"_blank")
 			}
 			
 		}
