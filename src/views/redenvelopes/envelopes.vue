@@ -16,16 +16,18 @@
 		data() {
 			return {
 				invaUIH:'',
-				token:'',
+				inva:localStorage.inva,
+				token:localStorage.token,
 			}
 		},
 		created(){
 			this.invaUIH = this.$route.query.invaUIH
-			this.token = localStorage.token
-//			if(this.token==undefined){
-//				this.$router.push('/redenvelopes/invitation')
-//			}
 			console.log(this.invaUIH,this.$route.query.invaUIH)
+			
+			if(this.token!=undefined){
+				this.$router.push('/redenvelopes/invitation?invaUIH='+this.inva)
+			}
+			console.log(this.token)
 			document.title = '区分-投资区块链 一定要区分'
 		},
 		methods:{

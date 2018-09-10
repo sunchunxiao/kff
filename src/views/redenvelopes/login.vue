@@ -60,9 +60,9 @@
 							regAnLogin(params).then(res => {
 								
 								if(res.code == 0) {
-//									alert(res.data)
 									localStorage.setItem("p", this.phone)
 									localStorage.setItem("token", res.data.token)
+									localStorage.setItem("inva", res.data.invaUIH)
 									this.invaUIH = res.data.invaUIH
 									this.$router.push('/redenvelopes/invitation?invaUIH='+this.invaUIH)
 								}

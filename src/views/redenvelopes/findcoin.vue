@@ -16,12 +16,19 @@
 		name: "findcoin",
 		data() {
 			return {
-				invaUIH:''
+				invaUIH:'',
+				inva:localStorage.inva,
+				token:localStorage.token,
 			}
 		},
 		created(){
 			this.invaUIH = this.$route.query.invaUIH
 			console.log(this.invaUIH,this.$route.query.invaUIH)
+			
+			console.log(this.inva)
+			if(this.token!=undefined){
+				this.$router.push('/redenvelopes/invitation?invaUIH='+this.inva)
+			}
 			document.title = '区分-投资区块链 一定要区分'
 		},
 		methods: {
