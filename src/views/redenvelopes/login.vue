@@ -104,7 +104,7 @@
 								phone: this.phone,
 								module: "reganlogin"
 							}).catch(function(res) {
-								console.log($(".i1").html())
+//								console.log($(".i1").html())
 								console.log(res)
 								MessageBox({
 									title: '提示',

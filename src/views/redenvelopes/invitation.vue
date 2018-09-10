@@ -1,5 +1,5 @@
 <template>
-	<div class="enpcommonHeight invitation">
+	<div class="enpcommonHeight invitationWrap">
 		<img class="invitationBacg" src="../../assets/envelopes/invitation.png" />
 		<div class="invitationContent">
 			<!--下载app-->

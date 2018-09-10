@@ -18,6 +18,9 @@
 	font-size: 1rem;
 	font-weight: bold;
 }
+.FindContentTitle img{
+	width: 4%;
+}
 .findbBtn{
 	display: inline-block;
 	font-size: 1.2rem;
@@ -44,8 +47,63 @@
 .rewardComment{
 	padding-left: 4rem;
 	overflow: hidden;
+	margin-bottom:2rem;
 }
 /*评论*/
 .childCrack{
+	padding-left: 4rem;
+	margin-bottom: 1rem;
+	overflow: hidden;
+	position: relative;
+}
+.childZan{
+	display: flex;
+	align-items: center;
+	float: left;
+	margin-right: 15px;
 	
+}
+.childZan img{
+	width: 29%;
+}
+.childNum{
+	color: rgb(153,153,153);
+	font-size: 14px;
+	padding-left: 5px;
+}
+.childD{
+	position: absolute;
+	top: 0;
+	right: -20px;
+}
+.toanswer{
+	color: rgb(255,255,255);
+	font-size: 16px;
+	text-align: center;
+	background-color: rgb(59,136,246);
+	padding: 1rem 2rem;
+}
+.name p{
+	color: rgb(57,61,70);
+	font-size: 15px;
+	font-weight: bold;
+}
+/*尽调回答*/
+.rewardFindContent .answerTitle{
+	text-align: left;
+	font-size: 16px;
+	color: rgb(57,61,70);
+	font-weight: bold;
+	
+}
+.rewardFindContent .answerContent{
+	text-align: left;
+	margin-bottom: 1rem;
+}
+.answerBor{
+	border-bottom: 1px solid rgb(232,234,237);
+	padding: 1rem 2rem;
+}
+.borPreview{
+	color: rgb(84,93,113);
 }
