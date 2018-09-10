@@ -15,12 +15,16 @@
 		name: "envelopes",
 		data() {
 			return {
-				
+				invaUIH:''
 			}
+		},
+		created(){
+			this.invaUIH = this.$route.query.invaUIH
+			console.log(this.invaUIH,this.$route.query.invaUIH)
 		},
 		methods:{
 			receive(){
-				this.$router.push('/redenvelopes/findcoin')
+				this.$router.push('/redenvelopes/findcoin?invaUIH='+this.invaUIH)
 			}
 		}
 	}

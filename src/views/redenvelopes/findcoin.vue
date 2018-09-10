@@ -16,12 +16,16 @@
 		name: "findcoin",
 		data() {
 			return {
-
+				invaUIH:''
 			}
+		},
+		created(){
+			this.invaUIH = this.$route.query.invaUIH
+			console.log(this.invaUIH,this.$route.query.invaUIH)
 		},
 		methods: {
 			immediately() {
-				this.$router.push('/redenvelopes/login')
+				this.$router.push('/redenvelopes/login?invaUIH='+this.invaUIH)
 			}
 		}
 	}

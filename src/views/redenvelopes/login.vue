@@ -35,10 +35,14 @@
 				code: '',
 				show: true,
 				count: "",
+				invaUIH:''
 
 			}
 		},
-
+		created(){
+			this.invaUIH = this.$route.query.invaUIH
+			console.log(this.invaUIH,this.$route.query.invaUIH)
+		},
 		methods: {
 			//登录接口
 			login() {
@@ -49,15 +53,16 @@
 						if(this.code != '') {
 							let params = {
 								phoneNumber: this.phone,
-								dynamicVerifyCode: this.code
+								dynamicVerifyCode: this.code,
+								invaUIH:this.invaUIH
 							}
 							regAnLogin(params).then(res => {
 								if(res.code == 0) {
-									console.log(res.data)
+									console.log(res.data.invaUIH)
 									localStorage.setItem("p", this.phone)
 									localStorage.setItem("token", res.data.token)
-									localStorage.setItem("url", res.data.url)
-									this.$router.push('/redenvelopes/invitation')
+									this.invaUIH = res.data.invaUIH
+									this.$router.push('/redenvelopes/invitation?invaUIH='+this.invaUIH)
 								}
 
 							}).catch(function(res) {
