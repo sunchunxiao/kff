@@ -161,29 +161,8 @@
 				</div>
 			</v-loadmore>
 		</div>
-
-		<!--
-		<div class="hot evaluation">
-			<div class="hot-comment">热门评论</div>
-		</div>
-		<div class="evaluation-info" v-for="(item,index) in commentsehot">
-			<div class="evaluation-info-title">
-				<img class="evaluation-info-img" :src="commenticon[index]" alt="">
-				<div class="evaluation-info-p">
-					<p class="name">{{item .commentUserName}}</p>
-					<span class="info">{{item.floor}}楼 {{item.createTimeStr}}</span>
-				</div>
-				<div class="evaluation-follow"><img src="../../assets/footer/zan.png" alt=""><span>{{item.praiseNum}}</span></div>
-			</div>
-			<p class="p-style">{{item.commentContent}}</p>
-			<div class="preview" v-for="a in item.childCommentsList">
-				<span class="preview-peo">{{a.commentUserName}}:@{{a.becommentedUserName}}:</span><span>{{a.commentContent}}</span>
-			</div>
-		</div>-->
-		<App></App>
-		<!--<div class=" more-preview">-->
-		<!--<span class="preview-num">留下你的评论...</span>-->
-		<!--</div>-->
+		<!--<App></App>-->
+		
 	</div>
 </template>
 
@@ -192,7 +171,7 @@
 	import Headerdown from '@/components/layout/headerdown.vue'
 	import { discuss, discussCommentList } from '@/service/home';
 	import { wechatShare } from '../../assets/js/wxshare'
-	import App from '@/components/layout/app.vue'
+//	import App from '@/components/layout/app.vue'
 	import '../../assets/js/baidu'
 	import { Loadmore } from 'mint-ui';
 	import Data from '../../assets/js/date'
@@ -236,7 +215,7 @@
 		components: {
 			HeaderBar,
 			Headerdown,
-			App,
+//			App,
 			'v-loadmore': Loadmore,
 		},
 		mounted() {
