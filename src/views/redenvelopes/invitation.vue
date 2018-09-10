@@ -87,18 +87,16 @@
 		data() {
 			return {
 				msg: '',
-				token:''
+				token:'',
+				url:''
 			}
 		},
 		mounted(){
-			wechatShare({
-				title: "免费领取价值1500RMB的数字货币  ",
-				content: "点击领取空红包",
-				link: window.location.href,
-				logo: "https://pic.qufen.top/posts20180628204925934317",
-			})
+			
 		},
 		created() {
+			this.url = localStorage.url
+			console.log(this.url)
 			this.token = localStorage.token
 			if(this.token!=undefined) {
 				this.msg = localStorage.p
@@ -106,10 +104,18 @@
 				var nPhone = phone.substr(0, 3) + '****' + phone.substring(7, 11)
 				this.msg = nPhone
 			}else{
-				this.$router.push("/redenvelopes/envelopes")
+//				this.$router.push("/redenvelopes/envelopes")
+				this.$router.push(this.url)
 			}
 		},
-
+		updated(){
+			wechatShare({
+				title: "免费领取价值1500RMB的数字货币  ",
+				content: "点击领取空红包",
+				link: this.url,
+				logo: "https://pic.qufen.top/posts20180628204925934317",
+			})
+		},
 		methods: {
 			down(){
 				this.$router.push('/user/download')

@@ -56,6 +56,7 @@
 									console.log(res.data)
 									localStorage.setItem("p", this.phone)
 									localStorage.setItem("token", res.data.token)
+									localStorage.setItem("url", res.data.url)
 									this.$router.push('/redenvelopes/invitation')
 								}
 
