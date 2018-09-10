@@ -39,7 +39,7 @@
 
 			}
 		},
-		created(){
+		mounted(){
 			this.invaUIH = this.$route.query.invaUIH
 			console.log(this.invaUIH,this.$route.query.invaUIH)
 			document.title = '区分-投资区块链 一定要区分'
@@ -47,9 +47,8 @@
 		methods: {
 			//登录接口
 			login() {
-				alert(1)
+//				alert(1)
 				var myreg = /^1[23456789]\d{9}$/;
-
 				if(this.phone != '') {
 					if(myreg.test(this.phone)) {
 						if(this.code != '') {
@@ -59,8 +58,9 @@
 								invaUIH:this.invaUIH
 							}
 							regAnLogin(params).then(res => {
+								
 								if(res.code == 0) {
-									alert(res.data.invaUIH)
+//									alert(res.data)
 									localStorage.setItem("p", this.phone)
 									localStorage.setItem("token", res.data.token)
 									this.invaUIH = res.data.invaUIH
