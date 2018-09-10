@@ -95,8 +95,9 @@
 		
 		created() {
 			this.invaUIH = this.$route.query.invaUIH
-			console.log(this.invaUIH,this.$route.query.invaUIH)
+//			console.log(this.invaUIH,this.$route.query.invaUIH)
 			this.token = localStorage.token
+			
 			if(this.token!=undefined) {
 				this.msg = localStorage.p
 				var phone = this.msg
@@ -108,7 +109,7 @@
 			
 			wechatShare({
 				title: "免费领取价值1500RMB的数字货币  ",
-				content: "点击领取空红包",
+				content: "点击领取红包",
 				link:window.location.href,
 				logo: "https://pic.qufen.top/hongbao.png",
 			})
