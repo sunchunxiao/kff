@@ -47,6 +47,7 @@
 		methods: {
 			//登录接口
 			login() {
+				alert(1)
 				var myreg = /^1[23456789]\d{9}$/;
 
 				if(this.phone != '') {
@@ -59,7 +60,7 @@
 							}
 							regAnLogin(params).then(res => {
 								if(res.code == 0) {
-									console.log(res.data.invaUIH)
+									alert(res.data.invaUIH)
 									localStorage.setItem("p", this.phone)
 									localStorage.setItem("token", res.data.token)
 									this.invaUIH = res.data.invaUIH
