@@ -216,6 +216,7 @@
 			})
 			// console.log(this.$route.query.invaUIH)
 			this.invaUIH = this.$route.query.invaUIH
+			document.title = '区分-投资区块链 一定要区分'
 		},
 		methods: {
 			next() {

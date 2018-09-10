@@ -40,15 +40,10 @@
         link: window.location.href,
         logo: "https://pic.qufen.top/posts20180628204925934317",
       })
+      document.title = '区分-投资区块链 一定要区分'
     },
 		methods: {
-			// instance() {
-			// 	MessageBox({
-			// 		title: 'IOS-全力开发中',
-			// 		showConfirmButton: true
-			// 	});
-			//
-			// },
+			
 			is_weixin() {
 				var ua = navigator.userAgent.toLowerCase();
 				if(ua.match(/MicroMessenger/i) == "micromessenger") {

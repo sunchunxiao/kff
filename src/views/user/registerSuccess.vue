@@ -189,6 +189,7 @@
           this.message1 = "注册区分领取11wFIND，注册即送10,000FIND,邀请好友再送100,000FIND。深度了解区块链项目，听听其他投资者的声音，速戳："+this.message;
 				}
 			})
+			document.title = '区分-投资区块链 一定要区分'
 		},
 		methods: {
 			onCopy(e) {

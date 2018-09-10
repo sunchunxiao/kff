@@ -30,6 +30,7 @@
 
 				}
 			})
+			document.title = '区分-投资区块链 一定要区分'
 		}
 	}
 </script>

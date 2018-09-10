@@ -95,7 +95,7 @@
 						<img class="evaluation-info-img" :src="item.commentUserIcon" alt="">
 						<div class="evaluation-info-p">
 							<p class="name">{{item.commentUserName}}</p>
-							<span class="info">{{item.floor}}楼 {{item.createTimeStr}}</span>
+							<span class="info">{{item.createTimeStr}}</span>
 						</div>
 						<!--点赞-->
 						<div class="evaluation-follow"><img src="../../assets/footer/zan.png" alt=""><span>{{item.praiseNum}}</span></div>
@@ -116,6 +116,7 @@
 	import { article, postCommentList } from '@/service/home';
 	import { wechatShare } from '../../assets/js/wxshare'
 	import '../../assets/js/baidu'
+	import Data from '../../assets/js/date'
 	import { Loadmore } from 'mint-ui';
 
 	export default {
@@ -304,6 +305,31 @@
 						this.hasNext = res.data.newestComments.hasNext
 						if(res.data.newestComments.rows != null) {
 							this.newestComments = res.data.newestComments.rows
+							//调用 Data.customData()
+							var nowdate = Data.customData()
+							//切割当前时间获取当前年份
+							var time = nowdate.split("-")
+							//							console.log(time[0])
+
+							for(let i = 0; i < res.data.newestComments.rows.length; i++) {
+								//时间  字符串切割
+								var arr = res.data.newestComments.rows[i].createTimeStr.split(" ")
+								this.timestr = arr[0];
+								if(nowdate == this.timestr) {
+									var a1 = arr[1].split(":")
+									res.data.newestComments.rows[i].createTimeStr = a1[0] + ":" + a1[1];
+								} else {
+									//年份分割
+									var year = this.timestr.split("-")
+									console.log(year[0])
+									if(time[0] == year[0]) {
+										res.data.newestComments.rows[i].createTimeStr = year[1] + "-" + year[2];
+									} else {
+										res.data.newestComments.rows[i].createTimeStr = arr[0];
+									}
+								}
+
+							}
 
 							if(this.hasNext == false) {
 								this.allLoaded = true;
@@ -338,6 +364,30 @@
 								if(res.data.newestComments.rows != null) {
 									for(var i = 0; i < res.data.newestComments.rows.length; i++) {
 										this.newestComments.push(res.data.newestComments.rows[i]);
+										//调用 Data.customData()
+										var nowdate = Data.customData()
+										//切割当前时间获取当前年份
+										var time = nowdate.split("-")
+										//							console.log(time[0])
+										//时间  字符串切割
+
+										var arr = res.data.newestComments.rows[i].createTimeStr.split(" ")
+										this.timestr = arr[0];
+										if(nowdate == this.timestr) {
+											var a1 = arr[1].split(":")
+											res.data.newestComments.rows[i].createTimeStr = a1[0] + ":" + a1[1];
+										} else {
+											//年份分割
+											var year = this.timestr.split("-")
+											console.log(year[0])
+											if(time[0] == year[0]) {
+												res.data.newestComments.rows[i].createTimeStr = year[1] + "-" + year[2];
+											} else {
+												res.data.newestComments.rows[i].createTimeStr = arr[0];
+											}
+
+										}
+
 									}
 
 								}

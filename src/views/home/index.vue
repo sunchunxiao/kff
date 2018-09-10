@@ -106,9 +106,9 @@
 			}
 		},
 		created() {
-			//			this.queryRecommendList()
 			this.queryAttentionList()
 			this.queryRankList()
+			document.title = '区分-投资区块链 一定要区分'
 		},
 		methods: {
 			down(){
