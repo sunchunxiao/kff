@@ -1,9 +1,5 @@
 <style lang="less">
 	@import 'css/project.css';
-
-
-
-
 	.evaluation-content {
 		font-size: 1.3rem;
 		color: #333333;

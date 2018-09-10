@@ -2,12 +2,13 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import {userRouter} from './userRouter'     //用户相关 路由
 import {commonRouter} from './commonRouter' //404 等
-import {mainRouter} from './mainRouter'   //底部菜单栏 路由
-import {homeRouter} from './homeRouter'   //底部菜单栏 - 首页 路由
-import {topicRouter} from './topicRouter' //底部菜单栏 - 话题 路由
-import {mineRouter} from './mineRouter'   //底部菜单栏 - 我的 路由
-import {projectRouter} from './projectRouter'   //底部菜单栏 - 我的 路由
-import {redenvelopesRouter} from './redenvelopesRouter'   //底部菜单栏 - 领取红包 路由
+import {mainRouter} from './mainRouter'   //路由
+import {homeRouter} from './homeRouter'   //首页 路由
+import {topicRouter} from './topicRouter' //话题 路由
+import {mineRouter} from './mineRouter'   //我的 路由
+import {projectRouter} from './projectRouter'   //我的 路由
+import {redenvelopesRouter} from './redenvelopesRouter'   //领取红包 路由
+import {rewardRouter} from './rewardRouter'   //悬赏 路由
 
 Vue.use(Router)
 // 模块路由合并
@@ -19,7 +20,8 @@ const routes = [
   ...topicRouter,
   ...mineRouter,
   ...projectRouter,
-  ...redenvelopesRouter
+  ...redenvelopesRouter,
+  ...rewardRouter
 ]
 const router = new Router({
   mode:'history',

@@ -23,10 +23,10 @@
 			poster(params).then(res => {
 				if(res.code == 0) {
 					Indicator.close();
-					console.log(res.data.url)
+//					console.log(res.data.url)
 					//线上 路径
 					this.src = res.data.url;
-					console.log(this.src)
+//					console.log(this.src)
 
 				}
 			})
