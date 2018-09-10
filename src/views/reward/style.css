@@ -1,0 +1,51 @@
+.rewardFind{
+	background-color: rgb(246,246,246);
+	border-radius: 4px;
+	margin: 1rem;
+}
+.rewardFindContent{
+	padding: 1rem;
+}
+.rewardFindContent p{
+	font-size: 1.1rem;
+	text-align: center;
+	margin-top: 1rem;
+	color: rgb(57,61,70);
+}
+.FindContentTitle{
+	text-align: center;
+	color: rgb(255,75,75);
+	font-size: 1rem;
+	font-weight: bold;
+}
+.findbBtn{
+	display: inline-block;
+	font-size: 1.2rem;
+	color: #fff;
+	border-radius: 20px;
+	width: 8rem;
+	height: 3rem;
+	line-height: 3rem;
+	text-align: center;
+	background-color: rgb(59,136,246);
+}
+.square{
+	border-top: 12px solid rgb(244,244,244);
+}
+.squareContent{
+	padding: 1rem;
+}
+.rewardBor{
+	color: rgb(59,136,246);
+	font-size: 15px;
+	border-top: 12px solid rgb(244,244,244);
+	padding: 1rem 2rem 2rem;
+}
+.rewardComment{
+	padding-left: 4rem;
+	overflow: hidden;
+}
+/*评论*/
+.childCrack{
+	
+}
