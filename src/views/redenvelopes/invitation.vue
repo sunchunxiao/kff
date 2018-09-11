@@ -89,7 +89,7 @@
 				msg: '',
 				token:'',
 				url:'',
-				invaUIH:''
+				invaUIH:'',
 				inva:localStorage.inva
 			}
 		},
