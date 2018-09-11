@@ -64,9 +64,9 @@
 									localStorage.setItem("p", this.phone)
 									localStorage.setItem("token", res.data.token)
 									localStorage.setItem("inva", res.data.invaUIH)
-//									this.invaUIH = res.data.invaUIH
+									this.invaUIH = res.data.invaUIH
 									this.inva = localStorage.inva
-									alert(res.data.invaUIH)
+
 //									window.open('/redenvelopes/invitation?invaUIH='+this.invaUIH,"_blank")
 //window.location.href = 'https://m.qufen.top/redenvelopes/invitation?invaUIH='+this.invaUIH
 									this.$router.push('/redenvelopes/invitation?invaUIH='+this.invaUIH)
