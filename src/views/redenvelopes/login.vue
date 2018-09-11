@@ -67,8 +67,8 @@
 //									this.invaUIH = res.data.invaUIH
 									this.inva = localStorage.inva
 //									window.open('/redenvelopes/invitation?invaUIH='+this.invaUIH,"_blank")
-window.location.href = 'https://m.qufen.top/redenvelopes/invitation?invaUIH='+this.invaUIH
-//									this.$router.push('/redenvelopes/invitation?invaUIH='+this.inva)
+//window.location.href = 'https://m.qufen.top/redenvelopes/invitation?invaUIH='+this.invaUIH
+									this.$router.push('/redenvelopes/invitation?invaUIH='+this.invaUIH)
 								}
 
 							}).catch(function(res) {

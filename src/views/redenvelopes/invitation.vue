@@ -104,11 +104,12 @@
 				var phone = this.msg
 				var nPhone = phone.substr(0, 3) + '****' + phone.substring(7, 11)
 				this.msg = nPhone
-				window.location.href = 'https://m.qufen.top/redenvelopes/invitation?invaUIH='+this.inva
+				this.$router.push('/redenvelopes/invitation?invaUIH='+this.inva)
+//				window.location.href = 'https://m.qufen.top/redenvelopes/invitation?invaUIH='+this.inva
 			}else{
-				window.location.href = 'https://m.qufen.top/redenvelopes/envelopes?invaUIH='+this.invaUIH
+//				window.location.href = 'https://m.qufen.top/redenvelopes/envelopes?invaUIH='+this.invaUIH
 				
-//				this.$router.push('/redenvelopes/envelopes?invaUIH='+this.invaUIH)
+				this.$router.push('/redenvelopes/envelopes?invaUIH='+this.invaUIH)
 			}
 			
 			wechatShare({
