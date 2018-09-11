@@ -10,7 +10,7 @@ export function wechatShare(shareData) {
     link: "",
     logo: ""//分享出来的图片的
   }
-  let data = { ...defaultData, ...shareData }
+  let data = {...defaultData,...shareData }
   $.ajax({
     // url:"http://192.168.10.151:803/kff/wXShare/sign",
     url:"https://m.qufen.top/wap/kff/wXShare/sign",

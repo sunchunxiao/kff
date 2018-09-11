@@ -35,7 +35,8 @@
 				code: '',
 				show: true,
 				count: "",
-				invaUIH:''
+				invaUIH:'',
+				inva:''
 
 			}
 		},
@@ -63,9 +64,11 @@
 									localStorage.setItem("p", this.phone)
 									localStorage.setItem("token", res.data.token)
 									localStorage.setItem("inva", res.data.invaUIH)
-									this.invaUIH = res.data.invaUIH
+//									this.invaUIH = res.data.invaUIH
+									this.inva = localStorage.inva
 //									window.open('/redenvelopes/invitation?invaUIH='+this.invaUIH,"_blank")
-									this.$router.push('/redenvelopes/invitation?invaUIH='+this.invaUIH)
+window.location.href = 'https://m.qufen.top/redenvelopes/invitation?invaUIH='+this.invaUIH
+//									this.$router.push('/redenvelopes/invitation?invaUIH='+this.inva)
 								}
 
 							}).catch(function(res) {

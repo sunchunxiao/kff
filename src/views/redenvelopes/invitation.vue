@@ -30,7 +30,7 @@
 					<ul class="findCoin">
 						<li class="findLine">
 							<img class="findImg" src="../../assets/envelopes/img.png" />
-							<span class="findSpan">1. 邀请一个好友可以获得<span class="f1">1500FIND</span></span>
+							<span class="findSpan">1.邀请一个好友可以获得<span class="f1">1500FIND</span></span>
 						</li>
 						<li class="findLine">
 							<img class="findImg" src="../../assets/envelopes/img.png" />
@@ -90,6 +90,7 @@
 				token:'',
 				url:'',
 				invaUIH:''
+				inva:localStorage.inva
 			}
 		},
 		
@@ -103,8 +104,11 @@
 				var phone = this.msg
 				var nPhone = phone.substr(0, 3) + '****' + phone.substring(7, 11)
 				this.msg = nPhone
+				window.location.href = 'https://m.qufen.top/redenvelopes/invitation?invaUIH='+this.inva
 			}else{
-				this.$router.push('/redenvelopes/envelopes?invaUIH='+this.invaUIH)
+				window.location.href = 'https://m.qufen.top/redenvelopes/envelopes?invaUIH='+this.invaUIH
+				
+//				this.$router.push('/redenvelopes/envelopes?invaUIH='+this.invaUIH)
 			}
 			
 			wechatShare({

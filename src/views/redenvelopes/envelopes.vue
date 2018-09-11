@@ -22,7 +22,7 @@
 		},
 		created(){
 			this.invaUIH = this.$route.query.invaUIH
-			console.log(this.invaUIH,this.$route.query.invaUIH)
+//			console.log(this.invaUIH,this.$route.query.invaUIH)
 			
 			if(this.token!=undefined){
 				this.$router.push('/redenvelopes/invitation?invaUIH='+this.inva)
