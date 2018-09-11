@@ -91,6 +91,14 @@ export const userRouter = [
     },
     component: (resolve) => require(['@/views/user/agreement.vue'], resolve)
   },
+  //评测模型
+  {
+    path: "/user/model",
+    meta: {
+      title: '忘记密码',
+    },
+    component: (resolve) => require(['@/views/user/evaluation-model.vue'], resolve)
+  },
   //下载
   {
     path: "/user/download",
@@ -99,13 +107,21 @@ export const userRouter = [
     },
     component: (resolve) => require(['@/views/user/download.vue'], resolve)
   },
-  //评测模型
+  //下载新页面
   {
-    path: "/user/model",
+    path: "/user/download/newi",
     meta: {
-      title: '忘记密码',
+      title: '下载'
     },
-    component: (resolve) => require(['@/views/user/evaluation-model.vue'], resolve)
-  }
+    component: (resolve) => require(['@/views/down/ios.vue'], resolve)
+  },
+  //下载新页面
+  {
+    path: "/user/download/newa",
+    meta: {
+      title: '下载'
+    },
+    component: (resolve) => require(['@/views/down/android.vue'], resolve)
+  },
 
 ]
