@@ -36,6 +36,7 @@
 				show: true,
 				count: "",
 				invaUIH:'',
+				invaUIH1:'',
 				inva:''
 
 			}
@@ -64,12 +65,12 @@
 									localStorage.setItem("p", this.phone)
 									localStorage.setItem("token", res.data.token)
 									localStorage.setItem("inva", res.data.invaUIH)
-									this.invaUIH = res.data.invaUIH
+									this.invaUIH1 = res.data.invaUIH
 									this.inva = localStorage.inva
 
 //									window.open('/redenvelopes/invitation?invaUIH='+this.invaUIH,"_blank")
 //window.location.href = 'https://m.qufen.top/redenvelopes/invitation?invaUIH='+this.invaUIH
-									this.$router.push('/redenvelopes/invitation?invaUIH='+this.invaUIH)
+									this.$router.push('/redenvelopes/invitation?invaUIH='+this.invaUIH1)
 								}
 
 							}).catch(function(res) {

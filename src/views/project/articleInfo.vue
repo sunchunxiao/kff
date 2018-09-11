@@ -126,7 +126,7 @@
 				</div>
 			</v-loadmore>
 		</div>
-		<!--<App></App>-->
+		<!--<App :message="post"></App>-->
 	</div>
 </template>
 
@@ -260,8 +260,14 @@
 					//文章介绍
 					this.evauationContent = data.evaluation.evauationContent;
 					//底部
-					this.post.push(data.post.praiseNum, data.post.commentsNum)
-					// console.log(this.post)
+//					this.post.push(data.post.praiseNum, data.post.commentsNum)
+
+					//判断是不是评测   发送另一个组件
+					var a1 = window.location.href
+					var a2 = a1.match("articleInfo")[0]
+					this.post.push(a2,this.id)
+					
+					
 					//缩略图
 					this.imgUrl = JSON.parse(data.post.postSmallImages)
 					//缩略文章

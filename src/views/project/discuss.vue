@@ -161,7 +161,7 @@
 				</div>
 			</v-loadmore>
 		</div>
-		<!--<App></App>-->
+		<!--<App :message="post"></App>-->
 		
 	</div>
 </template>
@@ -197,6 +197,7 @@
 				commentseNew: [],
 				commentseSum: "",
 				postImg: [],
+				post:[],
 				imgUrl: '',
 				imgUrlwx: '',
 				postShortDesc: '',
@@ -253,6 +254,10 @@
 					}
 
 					this.articleTitle = data.post.postTitle
+					console.log(this.articleTitle.length)
+					if(this.articleTitle.length==0){
+						$(".evaluation-title").css("margin",0)
+					}
 					//头像
 					var icon = data.post.createUserIcon
 					this.src = icon;
@@ -300,7 +305,11 @@
 					// console.log(this.commentseSum )
 					//最新评论
 					// this.commentseNew = data.commentseNew
-
+					//判断是不是评测   发送另一个组件
+					var a1 = window.location.href
+					var a2 = a1.match("discuss")[0]
+					this.post.push(a2,this.id)
+					
 					//时间  字符串切割
 					var arr = data.post.createTimeStr.split(" ")
 					//					console.log(arr[0])

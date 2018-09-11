@@ -17,15 +17,11 @@
 		overflow: hidden;
 		z-index: 100;
 	}
-	
-	.footerS {
-		/*height: 50px;*/
-	}
 </style>
 
 <template>
 	<div>
-		<div class="footer"  @click="download">打开App</div>
+		<div class="footer" @click="download">打开App</div>
 	</div>
 </template>
 
@@ -34,40 +30,49 @@
 		props: ["message"],
 		name: "footer-info",
 		mounted() {
-			//      console.log(this.message[0])
+			console.log(this.message[0],this.message[1])
 		},
 		methods: {
 			download() {
-//				if(navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
-//
-//					var browser = navigator.userAgent.toLowerCase();
-//
-//					if(browser.match(/micromessenger/i)) {
-//						//微信内置浏览器
-//						window.location.href = "hengtaixin://";
-//						window.setTimeout(function() {
-//							window.location.href = "https://itunes.apple.com/us/app/cheng-shi-gao-er-fu/id1008696844?mt=8&uo=4";
-//						}, 1000)
-//						return
-//					} else {
-//						window.location.href = "hengtaixin://"; //ios app协议，由ios同事提供
-//						window.setTimeout(function() {
-//							window.location.href = "https://itunes.apple.com/us/app/cheng-shi-gao-er-fu/id1008696844?mt=8&uo=4";
-//						}, 2000)
-//						return
-//					}
-//				}
+				//				if(navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+				//
+				//					var browser = navigator.userAgent.toLowerCase();
+				//
+				//					if(browser.match(/micromessenger/i)) {
+				//						//微信内置浏览器
+				//						window.location.href = "hengtaixin://";
+				//						window.setTimeout(function() {
+				//							window.location.href = "https://itunes.apple.com/us/app/cheng-shi-gao-er-fu/id1008696844?mt=8&uo=4";
+				//						}, 1000)
+				//						return
+				//					} else {
+				//						window.location.href = "hengtaixin://"; //ios app协议，由ios同事提供
+				//						window.setTimeout(function() {
+				//							window.location.href = "https://itunes.apple.com/us/app/cheng-shi-gao-er-fu/id1008696844?mt=8&uo=4";
+				//						}, 2000)
+				//						return
+				//					}
+				//				}
 
 				if(navigator.userAgent.match(/android/i)) {
-					alert(1)
-					//Android
-					 $('body').append("<iframe src='com.secretk.move' style='display:none' target='' ></iframe>");
-//					window.location.href = "app://com.secretk.move"; //安卓协议，由安卓同事提供
-					window.setTimeout(function() {
+					alert(this.message[0])
+					//this.message[0]  3是文章
+					if(this.message[0] == "article") {
+						alert("文章")
+						window.location.href = "find://move/com.secretk.move?pid=2&postId="+ this.message[1]; //安卓协议，由安卓同事提供
+					} else if(this.message[0] == "articleInfo") {
+						alert("评测")
+						window.location.href = "find://move/com.secretk.move?pid=1&postId="+ this.message[1]; //安卓协议，由安卓同事提供
+					} else if(this.message[0] == "discuss") {
+						alert("爆料")
+						window.location.href = "find://move/com.secretk.move?pid=3&postId="+ this.message[1]; //安卓协议，由安卓同事提供
+					} else {
+						window.setTimeout(function() {
+							window.location.href = "https://pic.qufen.top/qufen_update.apk"
+						}, 2000)
+						return
+					}
 
-						window.location.href = "https://pic.qufen.top/qufen_update.apk"
-					}, 2000)
-					return
 				}
 
 			}

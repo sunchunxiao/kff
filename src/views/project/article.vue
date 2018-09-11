@@ -104,7 +104,7 @@
 				</div>
 			</v-loadmore>
 		</div>
-		<!--<App></App>-->
+		<!--<App :message="post"></App>-->
 
 	</div>
 </template>
@@ -159,43 +159,9 @@
 			Headerdown,
 			'v-loadmore': Loadmore,
 		},
-		updated() {
-			// console.log(this.imgUrl)
-			// console.log(this.postShortDesc,this.articleTitle)
-			if(this.imgUrl.length == 0) {
-				this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
-			} else {
-				this.imgUrlwx = this.imgUrl[0].fileUrl
-			}
-			console.log(this.imgUrlwx)
-			wechatShare({
-				title: this.articleTitle,
-				content: this.postShortDesc,
-				link: window.location.href,
-				logo: this.imgUrlwx,
-			})
-			$('.v').css({
-				letterSpacing: '1px',
-				fontSize: '16px',
-				wordWrap: 'break-word',
-				lineHeight: '26px',
-			})
-			$('.v').find('img').css({
-				width: '100%',
-				height: '100%'
-			});
-
-			$('.v').find('p').css({
-				margin: "1rem 0",
-			});
-			$('.v').find('span').css({
-				fontSize: '16px',
-			});
-			document.title = this.articleTitle
-
-		},
+		
 		mounted() {
-			console.log(this.$route.query.id)
+//			console.log(this.$route.query.id)
 			this.id = this.$route.query.id;
 
 			this.preview()
@@ -233,6 +199,7 @@
 
 					//标题
 					this.articleTitle = data.postTitle
+					
 					//头像
 					var icon = data.createUserIcon
 					this.src = icon;
@@ -242,7 +209,7 @@
 					this.tag = data.projectCode;
 					//时间  字符串切割
 					var arr = data.createTimeStr.split(" ")
-					console.log(arr[0])
+//					console.log(arr[0])
 					this.timestr = arr[0];
 					//赞助  循环图片
 					var result = data.commendationList
@@ -261,7 +228,14 @@
 					//文章介绍
 					this.articleContents = data.article.articleContents;
 					// 底部点赞和评论人数
-					this.post.push(data.praiseNum, data.commentsNum)
+//					this.post.push(data.praiseNum, data.commentsNum)
+					
+					//判断是不是文章 的发送另一个组件
+					var a1 = window.location.href
+					var a2 = a1.match("article")[0]
+					this.post.push(a2,this.id)
+					
+					
 					//缩略图
 					this.imgUrl = JSON.parse(data.postSmallImages)
 					//缩略文章
@@ -272,6 +246,44 @@
 			})
 
 		},
+		updated() {
+			// console.log(this.imgUrl)
+			// console.log(this.postShortDesc,this.articleTitle)
+			if(this.imgUrl.length == 0) {
+				this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
+			} else {
+				this.imgUrlwx = this.imgUrl[0].fileUrl
+			}
+//			console.log(this.imgUrlwx)
+			wechatShare({
+				title: this.articleTitle,
+				content: this.postShortDesc,
+				link: window.location.href,
+				logo: this.imgUrlwx,
+			})
+			$('.v').css({
+				letterSpacing: '1px',
+				fontSize: '16px',
+				wordWrap: 'break-word',
+				lineHeight: '26px',
+			})
+			$('.v').find('img').css({
+				width: '100%',
+				height: '100%'
+			});
+
+			$('.v').find('p').css({
+				margin: "1rem 0",
+			});
+			$('.v').find('span').css({
+				fontSize: '16px',
+			});
+			document.title = this.articleTitle
+			
+
+
+		},
+	
 		methods: {
 			fun(index) {
 				if(index <= 6) {
