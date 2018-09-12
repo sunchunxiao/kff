@@ -109,7 +109,7 @@ export const userRouter = [
   },
   //下载新页面
   {
-    path: "/user/download/newi",
+    path: "/user/download/new",
     meta: {
       title: '下载'
     },
