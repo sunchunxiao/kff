@@ -12,3 +12,12 @@ export const rewardDetail = (params = {}) => {
     },
   })
 }
+// 悬赏精彩，全部回答接口
+export const getRewardAnswerList = (params = {}) => {
+  return request(`/H5/rewardActivity/getRewardAnswerList`, {
+    body: {
+      ...params
+    },
+  })
+}
+

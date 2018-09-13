@@ -167,38 +167,37 @@
 			<div>精彩回答</div>
 		</div>
 		<!--讨论详情-->
-		<div @click="answer" class="evaluation-info" v-for="(item,index) in commentsehot">
-			<div class="evaluation-info-title">
-				<img class="evaluation-info-img" :src="commenticon[index]" alt="">
-				<div class="evaluation-info-p">
-					<p class="name">{{item .commentUserName}}</p>
-					<span class="info">{{item.floor}}楼 {{item.createTimeStr}}</span>
+		<v-loadmore :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore" @bottom-status-change="handleBottomChange">
+			<div @click="answer" class="evaluation-info" v-for="(item,index) in commentsehot">
+				<div class="evaluation-info-title">
+					<img class="evaluation-info-img" :src="item.createUserIcon" alt="">
+					<div class="evaluation-info-p">
+						<p class="name">{{item.createUserName}}</p>
+						<span class="info"> {{item.createTimeStr}}</span>
+					</div>
+
+				</div>
+				<p class="p-style">{{item.postShortDesc}}</p>
+
+				<div class="rewardComment">
+					<!--<li class="evaluationLi" v-for="(item,index) in postImg">-->
+					<div class="rewardCommentList" v-for="(item1,index) in item.postSmallImagesList">
+						<img @click="imgScc(index)" :class="{'active':index==isChoose}" :src="item1.fileUrl" alt="">
+					</div>
+				</div>
+				<div class="childCrack">
+					<div class="crack-tag1"><span class="span-name">{{item.projectCode}}</span></div>
+					<span class="crack-tag2" v-for="item1 in item.tagInfos">#{{item1.tagName}}#</span>
+				</div>
+				<div class="childCrack">
+					<div class="childZan"><img src="../../assets/reward/zan.png" alt="" /><span class="childNum">120</span></div>
+					<div class="childZan"><img src="../../assets/reward/preview.png" alt="" /><span class="childNum">120</span></div>
+					<div class="childZan childD"><img src="../../assets/reward/donate.png" alt="" /><span class="childNum">120</span></div>
 				</div>
 
 			</div>
-			<p class="p-style">{{item.commentContent}}</p>
-			<div class="preview" v-for="a in item.childCommentsList">
-				<!--commentUserName评论人-->
-				<span class="preview-peo">{{a.commentUserName}}:@{{a.becommentedUserName}}:</span><span>{{a.commentContent}}</span>
-			</div>
-			<div class=" rewardComment">
-				<!--<li class="evaluationLi" v-for="(item,index) in postImg">-->
-				<div class="rewardCommentList" v-for="(item,index) in postImg">
-					<img @click="imgScc(index)" :class="{'active':index==isChoose}" :src="item" alt="">
-				</div>
-			</div>
-			<div class="childCrack">
-				<div class="crack-tag1"><span class="span-name">{{projectCode}}</span></div>
-				<span class="crack-tag2" v-for="item in tagInfo">#{{item.tagName}}#</span>
-			</div>
-			<div class="childCrack">
-				<div class="childZan"><img src="../../assets/reward/zan.png" alt="" /><span class="childNum">120</span></div>
-				<div class="childZan"><img src="../../assets/reward/preview.png" alt="" /><span class="childNum">120</span></div>
-				<div class="childZan childD"><img src="../../assets/reward/donate.png" alt="" /><span class="childNum">120</span></div>
-			</div>
+		</v-loadmore>
 
-		</div>
-		
 		<!--去回答-->
 		<div @click="download" class="toanswer">去回答</div>
 		<!--<App></App>-->
@@ -211,17 +210,18 @@
 <script>
 	import Headerdown from '@/components/layout/headerdown.vue'
 	import { discuss } from '@/service/home';
-	import {rewardDetail} from '@/service/reward';
+	import { rewardDetail, getRewardAnswerList } from '@/service/reward';
+	import Data from '../../assets/js/date'
 	//	import { wechatShare } from '../../assets/js/wxshare'
-//	import App from '@/components/layout/app.vue'
-	import '../../assets/js/baidu'
+	//	import App from '@/components/layout/app.vue'
+	import { Loadmore } from 'mint-ui';
 	export default {
 		name: "article-info",
 		data() {
 			return {
 				title: "",
 				projectCode: "",
-				tagInfo: "",
+				tagInfo: [],
 				src: "",
 				isChoose: undefined,
 				id: "",
@@ -234,18 +234,22 @@
 				imgUrl: "",
 				commenticon: [],
 				commentsehot: [],
-				commentseNew: [],
-				commentseSum: "",
 				postImg: [],
+				postSmallImagesList: [],
 				imgUrl: '',
 				imgUrlwx: '',
 				postShortDesc: '',
-				scrollTop: ""
+				scrollTop: "",
+				loading: false,
+				allLoaded: false, //是否可以上拉属性，false可以上拉，true为禁止上拉，就是不让往上划加载数据了
+				scrollMode: "auto", //移动端弹性滚动效果，touch为弹性滚动，auto是非弹性滚动
+				hasNext: true,
 			}
 		},
 		components: {
 			Headerdown,
-//			App
+			'v-loadmore': Loadmore,
+			//			App
 		},
 		updated() {
 			$('.v').css({
@@ -288,65 +292,206 @@
 			//			})
 			document.title = this.articleTitle
 		},
-		
+
 		created() {
 			window.addEventListener('scroll', this.handleScroll)
 			this.id = this.$route.query.id;
 			//console.log(this.$route.query.id)
 			//悬赏尽调的接口
 			this.reward()
+			//
+			this.preview()
 
 		},
 		methods: {
+			loadBottom() {
+				// 上拉加载
+				this.previewmore(); // 上拉触发的分页查询
+				this.$refs.loadmore.onBottomLoaded(); // 固定方法，查询完要调用一次，用于重新定位
+			},
+			handleBottomChange(status) {
+				setInterval(() => {
+					this.bottomStatus = status; //上拉状态变换
+				}, 1000)
+
+			},
 			handleScroll() {
 				this.scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
 			},
 			imgScc(index) {
 				this.isChoose = this.isChoose === index ? undefined : index
 			},
+			preview() {
+				let data = {
+					token: this.token,
+					pageIndex: 1,
+					pageSize: 5,
+					rewarId: 2370,
+					types: 1
+				}
+				getRewardAnswerList(data).then(res => {
+					if(res.code == 0) {
+						this.commentsehot = res.data.rows
+						this.hasNext = res.data.hasNext
+
+						if(res.data.rows != null) {
+
+							//调用 Data.customData()
+							var nowdate = Data.customData()
+							//切割当前时间获取当前年份
+							var time = nowdate.split("-")
+							//							console.log(time[0])
+
+							for(let i = 0; i < res.data.rows.length; i++) {
+								//判断标标签不为空
+								if(res.data.rows[i].tagInfos != null && res.data.rows[i].tagInfos.length != 0) {
+									//									console.log(res.data.rows[i].tagInfos)
+									res.data.rows[i].tagInfos = JSON.parse(res.data.rows[i].tagInfos)
+								}
+
+								if(res.data.rows[i].postSmallImagesList != null) {
+
+									if(res.data.rows[i].postSmallImagesList.length != 0) {
+										//										this.postSmallImagesList = res.data.rows[i].postSmallImagesList
+										res.data.rows[i].postSmallImagesList = res.data.rows[i].postSmallImagesList.slice(0, 3)
+
+									}
+								}
+
+								//时间  字符串切割
+								var arr = res.data.rows[i].createTimeStr.split(" ")
+								this.timestr = arr[0];
+
+								if(nowdate == this.timestr) {
+									var a1 = arr[1].split(":")
+									res.data.rows[i].createTimeStr = a1[0] + ":" + a1[1];
+								} else {
+									//年份分割
+									var year = this.timestr.split("-")
+									console.log(year[0])
+									if(time[0] == year[0]) {
+										res.data.rows[i].createTimeStr = year[1] + "-" + year[2];
+									} else {
+										res.data.rows[i].createTimeStr = arr[0];
+									}
+
+								}
+
+							}
+
+							if(this.hasNext == false) {
+								this.allLoaded = true;
+							}
+
+						} else {
+							$(".previewBottom").css("display", "none")
+						}
+
+					}
+				}).catch(function(res) {
+					// $(".previewContent").css('display', "none")
+				});
+			},
+			previewmore() {
+				if(this.newestComments.length != 0) {
+
+					if(this.hasNext == true) {
+						this.pageIndex = parseInt(this.pageIndex) + 1
+						//						alert(this.pageIndex)
+						let data = {
+							token: this.token,
+							pageIndex: this.pageIndex,
+							pageSize: 5,
+							rewarId: 2370,
+							types: 1
+						}
+						getRewardAnswerList(data).then(res => {
+							if(res.code == 0) {
+
+								this.hasNext = res.data.comments.hasNext
+								//							console.log(this.hasNext)
+								if(res.data.comments.rows != null) {
+									for(var i = 0; i < res.data.comments.rows.length; i++) {
+										this.newestComments.push(res.data.comments.rows[i]);
+
+										//调用 Data.customData()
+										var nowdate = Data.customData()
+										//切割当前时间获取当前年份
+										var time = nowdate.split("-")
+										console.log(time[0])
+										//时间  字符串切割
+										var arr = res.data.comments.rows[i].createTimeStr.split(" ")
+										this.timestr = arr[0];
+										if(nowdate == this.timestr) {
+											var a1 = arr[1].split(":")
+											res.data.comments.rows[i].createTimeStr = a1[0] + ":" + a1[1];
+										} else {
+											//年份分割
+											var year = this.timestr.split("-")
+											console.log(year[0])
+											if(time[0] == year[0]) {
+												res.data.comments.rows[i].createTimeStr = year[1] + "-" + year[2];
+											} else {
+												res.data.comments.rows[i].createTimeStr = arr[0];
+											}
+										}
+
+									}
+
+								}
+								if(this.hasNext == false) {
+									this.allLoaded = true;
+								}
+
+							}
+						})
+					} else {
+						this.allLoaded = true;
+					}
+				}
+
+			},
 			reward() {
 				let params = {
-//					token:
-					postId:2
+					postId: 2370
 				}
 				//爆料
 				rewardDetail(params).then(res => {
 					if(res.code == 0) {
-						console.log(res.data)
-						var data = res.data.discussShare
+						var data = res.data
 						//头像加V
-						var cuser = data.cUsertype
-						if(cuser == 1) {
-							$(".imgV").css("display", "none")
-						}
-						//项目方
-						if(cuser == 2) {
-							$(".imgV").attr("src", "../../../static/elevation/p.gif")
-						}
-						//评测媒体
-						if(cuser == 3) {
-							$(".imgV").attr("src", "../../../static/elevation/F.gif")
-						}
-						//机构号
-						if(cuser == 4) {
-							$(".imgV").attr("src", "../../../static/elevation/V.gif")
+						//						var cuser = data.cUsertype
+						//						if(cuser == 1) {
+						//							$(".imgV").css("display", "none")
+						//						}
+						//						//项目方
+						//						if(cuser == 2) {
+						//							$(".imgV").attr("src", "../../../static/elevation/p.gif")
+						//						}
+						//						//评测媒体
+						//						if(cuser == 3) {
+						//							$(".imgV").attr("src", "../../../static/elevation/F.gif")
+						//						}
+						//						//机构号
+						//						if(cuser == 4) {
+						//							$(".imgV").attr("src", "../../../static/elevation/V.gif")
+						//
+						//						}
 
-						}
-
-						this.articleTitle = data.post.postTitle
+						this.articleTitle = data.postTitle
 						//头像
-						var icon = data.post.createUserIcon
+						var icon = data.createUserIcon
 						this.src = icon;
 
-						this.username = data.post.createUserName;
-						this.userSignature = data.post.createUserSignature;
+						this.username = data.createUserName;
+						this.userSignature = data.createUserSignature;
 						//文章内容
-						this.disscussContents = data.discuss.disscussContents;
+						this.disscussContents = data.rewardContents;
 						//图片
 
 						// console.log(a)
-						if(data.post.postSmallImages != null && data.post.postSmallImages.length != 0) {
-							var a = JSON.parse(data.post.postSmallImages);
+						if(data.postSmallImages != null && data.postSmallImages.length != 0) {
+							var a = JSON.parse(data.postSmallImages);
 							for(let i = 0; i < a.length; i++) {
 
 								// console.log(a)
@@ -357,47 +502,24 @@
 						}
 
 						//标签
-						this.projectCode = data.post.projectCode;
-
-						//最多选择标签
-						this.tagInfo = JSON.parse(data.tagInfo);
-						//热门评论
-						this.commentsehot = data.commentsehot;
-						var result = data.commentsehot;
-						//热门评论头像
-						if(result != null) {
-							for(let i = 0; i < result.length; i++) {
-								var b = data.commentsehot[i].commentUserIcon;
-								this.commenticon.push(b)
-								//							console.log(this.commenticon)
-							}
-						}
-						//热门评论如果是没有，不显示
-						if(this.commentsehot == null) {
-							$(".hot").css("display", "none")
-						}
-						//最新评论数量
-						// this.commentseSum = data.commentseSum
-						// console.log(this.commentseSum )
-						//最新评论
-						// this.commentseNew = data.commentseNew
+						this.projectCode = data.projectCode;
 
 						//时间  字符串切割
-						var arr = data.post.createTimeStr.split(" ")
+						var arr = data.createTimeStr.split(" ")
 						//					console.log(arr[0])
 						this.timestr = arr[0];
-						//缩略图
-						// this.imgUrl = JSON.parse(data.post.postSmallImages)
+						console.log(data.tagInfos)
+						this.tagInfo = JSON.parse(data.tagInfos)
 						//缩略文章
-						this.postShortDesc = data.post.postShortDesc
+						this.postShortDesc = data.postShortDesc
 					}
 
 				})
 			},
-			answer(){
+			answer() {
 				this.$router.push('/reward/answer')
 			},
-			download(){
+			download() {
 				this.$router.push('/user/download')
 			}
 

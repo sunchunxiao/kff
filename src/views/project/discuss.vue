@@ -211,6 +211,7 @@
 				newestComments: [],
 				pageIndex: 1,
 				pageSize: 5,
+				hasNext: true,
 			}
 		},
 		components: {

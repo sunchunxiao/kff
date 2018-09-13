@@ -58,5 +58,13 @@ export const mineRouter = [
     },
     component: (resolve) => require(['@/views/mine/help.vue'], resolve)
   },
+  //尽调规则
+  {
+    path: '/mine/regulation',
+    meta: {
+      title: '帮助中心'
+    },
+    component: (resolve) => require(['@/views/mine/regulation.vue'], resolve)
+  },
 
 ]
