@@ -109,11 +109,11 @@
 
 <template>
 	<div>
-		<div class="evaluation">
+		<!--<div class="evaluation">
 			<div class="evaluation-title">
 				<h2>{{articleTitle}}</h2>
 			</div>
-		</div>
+		</div>-->
 		<div class="evaluation-info">
 			<div class="evaluation-info-title">
 				<img class="evaluation-info-img" :src="src" alt="">
@@ -312,7 +312,7 @@
 		methods: {
 			reward() {
 				let params = {
-					postId: 1419
+					postId:this.id
 				}
 				//爆料
 				discuss(params).then(res => {
@@ -338,7 +338,7 @@
 
 						}
 
-						this.articleTitle = data.post.postTitle
+//						this.articleTitle = data.post.postTitle
 						//头像
 						var icon = data.post.createUserIcon
 						this.src = icon;

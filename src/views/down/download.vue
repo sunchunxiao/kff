@@ -55,7 +55,6 @@
 		mounted() {
 			var ua = navigator.userAgent.toLowerCase();
 			if(navigator.userAgent.match(/android/i)) {
-				alert("安卓")
 				$(".iosExplain").css("display", "none")
 			}
 			document.title = '区分-投资区块链 一定要区分'

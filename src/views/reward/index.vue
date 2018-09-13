@@ -146,7 +146,7 @@
 					<div class="FindContentTitle">【 悬赏1000FIND 】</div>
 					<p>优秀的回答这将会在悬赏结束后分享奖金</p>
 					<p>截止时间08.08 12:00，已有12人回答</p>
-					<div @click="download" style="text-align: center;margin-top: 1rem;"><span class="findbBtn">去回答</span></div>
+					<!--<div @click="download" style="text-align: center;margin-top: 1rem;"><span class="findbBtn">去回答</span></div>-->
 				</div>
 			</div>
 		</div>
@@ -168,7 +168,7 @@
 		</div>
 		<!--讨论详情-->
 		<v-loadmore :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore" @bottom-status-change="handleBottomChange">
-			<div @click="answer" class="evaluation-info" v-for="(item,index) in commentsehot">
+			<div @click="answer(item.postId)" class="evaluation-info" v-for="(item,index) in commentsehot">
 				<div class="evaluation-info-title">
 					<img class="evaluation-info-img" :src="item.createUserIcon" alt="">
 					<div class="evaluation-info-p">
@@ -182,7 +182,8 @@
 				<div class="rewardComment">
 					<!--<li class="evaluationLi" v-for="(item,index) in postImg">-->
 					<div class="rewardCommentList" v-for="(item1,index) in item.postSmallImagesList">
-						<img @click="imgScc(index)" :class="{'active':index==isChoose}" :src="item1.fileUrl" alt="">
+						<!--<img @click="imgScc(index)" :class="{'active':index==isChoose}" :src="item1.fileUrl" alt="">-->
+						<img :src="item1.fileUrl" alt="">
 					</div>
 				</div>
 				<div class="childCrack">
@@ -199,7 +200,7 @@
 		</v-loadmore>
 
 		<!--去回答-->
-		<div @click="download" class="toanswer">去回答</div>
+		<!--<div @click="download" class="toanswer">去回答</div>-->
 		<!--<App></App>-->
 		<!--<div class=" more-preview">-->
 		<!--<span class="preview-num">留下你的评论...</span>-->
@@ -516,8 +517,9 @@
 
 				})
 			},
-			answer() {
-				this.$router.push('/reward/answer')
+			answer(id) {
+				console.log(id)
+				this.$router.push('/reward/answer?id='+id)
 			},
 			download() {
 				this.$router.push('/user/download')
