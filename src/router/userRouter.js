@@ -100,28 +100,21 @@ export const userRouter = [
     component: (resolve) => require(['@/views/user/evaluation-model.vue'], resolve)
   },
   //下载
+//{
+//  path: "/user/download",
+//  meta: {
+//    title: '下载',
+//  },
+//  component: (resolve) => require(['@/views/user/download.vue'], resolve)
+//},
+
+  //下载新页面
   {
     path: "/user/download",
     meta: {
-      title: '下载',
-    },
-    component: (resolve) => require(['@/views/user/download.vue'], resolve)
-  },
-  //下载新页面
-  {
-    path: "/user/download/new",
-    meta: {
       title: '下载'
     },
-    component: (resolve) => require(['@/views/down/ios.vue'], resolve)
-  },
-  //下载新页面
-  {
-    path: "/user/download/newa",
-    meta: {
-      title: '下载'
-    },
-    component: (resolve) => require(['@/views/down/android.vue'], resolve)
+    component: (resolve) => require(['@/views/down/download.vue'], resolve)
   },
 
 ]
