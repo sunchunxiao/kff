@@ -13,8 +13,8 @@
 						已领取
 					</div>
 					<div class="invitationIcon">
-						<span class="invitationFont">30000FIND</span>
-						<span class="invitationFont1">≈ 1500.00RMB</span>
+						<span class="invitationFont">10000FIND</span>
+						<span class="invitationFont1">≈ 500.00RMB</span>
 					</div>
 					<div class="invitationBtn">
 						<div @click="down" type="primary" class="btnLogin">下载APP提现</div>
@@ -30,7 +30,7 @@
 					<ul class="findCoin">
 						<li class="findLine">
 							<img class="findImg" src="../../assets/envelopes/img.png" />
-							<span class="findSpan">1.邀请一个好友可以获得<span class="f1">1500FIND</span></span>
+							<span class="findSpan">1.邀请一个好友可以获得<span class="f1">500FIND</span></span>
 						</li>
 						<li class="findLine">
 							<img class="findImg" src="../../assets/envelopes/img.png" />
@@ -112,7 +112,7 @@
 			}
 			
 			wechatShare({
-				title: "免费领取价值1500RMB的数字货币  ",
+				title: "免费领取价值500RMB的数字货币  ",
 				content: "点击领取红包",
 				link:window.location.href,
 				logo: "https://pic.qufen.top/hongbao.png",

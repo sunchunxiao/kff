@@ -109,7 +109,8 @@
 
 <template>
 	<div>
-		<div class="evaluation">
+		<Headerdown></Headerdown>
+		<div class="evaluation pad-top">
 			<div class="evaluation-title">
 				<h2>{{articleTitle}}</h2>
 			</div>
@@ -200,7 +201,7 @@
 		
 		<!--去回答-->
 		<div @click="download" class="toanswer">去回答</div>
-		<App></App>
+		<!--<App></App>-->
 		<!--<div class=" more-preview">-->
 		<!--<span class="preview-num">留下你的评论...</span>-->
 		<!--</div>-->
@@ -210,8 +211,9 @@
 <script>
 	import Headerdown from '@/components/layout/headerdown.vue'
 	import { discuss } from '@/service/home';
+	import {rewardDetail} from '@/service/reward';
 	//	import { wechatShare } from '../../assets/js/wxshare'
-	import App from '@/components/layout/app.vue'
+//	import App from '@/components/layout/app.vue'
 	import '../../assets/js/baidu'
 	export default {
 		name: "article-info",
@@ -243,7 +245,7 @@
 		},
 		components: {
 			Headerdown,
-			App
+//			App
 		},
 		updated() {
 			$('.v').css({
@@ -286,14 +288,7 @@
 			//			})
 			document.title = this.articleTitle
 		},
-		methods: {
-			handleScroll() {
-				this.scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-			},
-			imgScc(index) {
-				this.isChoose = this.isChoose === index ? undefined : index
-			}
-		},
+		
 		created() {
 			window.addEventListener('scroll', this.handleScroll)
 			this.id = this.$route.query.id;
@@ -303,14 +298,21 @@
 
 		},
 		methods: {
+			handleScroll() {
+				this.scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+			},
+			imgScc(index) {
+				this.isChoose = this.isChoose === index ? undefined : index
+			},
 			reward() {
 				let params = {
-					postId: 1419
+//					token:
+					postId:2
 				}
 				//爆料
-				discuss(params).then(res => {
+				rewardDetail(params).then(res => {
 					if(res.code == 0) {
-						//console.log(res.data.projectEvaluationDetailResponse)
+						console.log(res.data)
 						var data = res.data.discussShare
 						//头像加V
 						var cuser = data.cUsertype
