@@ -97,14 +97,6 @@
 		/*InternetExplorer5.5+*/
 		font-size: 1.3rem;
 	}
-	
-	.rewardCommentList {
-		width: 31%;
-		height: 6rem;
-		float: left;
-		margin-right: 0.5rem;
-		margin-bottom: 0.5rem;
-	}
 </style>
 
 <template>
@@ -181,7 +173,7 @@
 
 				<div class="rewardComment" v-if="item.postSmallImagesList">
 					<!--<li class="evaluationLi" v-for="(item,index) in postImg">-->
-					<div  class="rewardCommentList" v-for="(item1,index) in item.postSmallImagesList">
+					<div class="rewardCommentList" v-for="(item1,index) in item.postSmallImagesList">
 						<!--<img @click="imgScc(index)" :class="{'active':index==isChoose}" :src="item1.fileUrl" alt="">-->
 						<img :src="item1.fileUrl" alt="">
 					</div>
@@ -327,7 +319,7 @@
 					token: this.token,
 					pageIndex: 1,
 					pageSize: 5,
-					rewarId: this.id-0,
+					rewarId: this.id - 0,
 					types: 1
 				}
 				getRewardAnswerList(data).then(res => {
@@ -390,7 +382,7 @@
 
 					}
 				}).catch(function(res) {
-					 $(".rewardBor").css('display', "none")
+					$(".rewardBor").css('display', "none")
 				});
 			},
 			previewmore() {
@@ -403,7 +395,7 @@
 							token: this.token,
 							pageIndex: this.pageIndex,
 							pageSize: 5,
-							rewarId: this.id-0,
+							rewarId: this.id - 0,
 							types: 1
 						}
 						getRewardAnswerList(data).then(res => {
@@ -454,7 +446,7 @@
 			},
 			reward() {
 				let params = {
-					postId: this.id-0
+					postId: this.id - 0
 				}
 				//爆料
 				rewardDetail(params).then(res => {

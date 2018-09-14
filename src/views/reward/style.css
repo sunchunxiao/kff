@@ -47,7 +47,7 @@
 .rewardComment{
 	padding-left: 4rem;
 	overflow: hidden;
-	margin-bottom:2rem;
+	margin-bottom:1rem;
 }
 /*评论*/
 .childCrack{
@@ -106,4 +106,15 @@
 }
 .borPreview{
 	color: rgb(84,93,113);
+}
+.rewardCommentList {
+		width: 31%;
+		height: 6rem;
+		float: left;
+		margin-right: 0.5rem;
+		margin-bottom: 0.5rem;
+	}
+.rewardCommentList img{
+	width: 100%;
+	height: 100%;
 }

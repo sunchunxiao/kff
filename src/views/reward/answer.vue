@@ -418,7 +418,7 @@
 
 					}
 				}).catch(function(res) {
-					// $(".previewContent").css('display', "none")
+					 $(".rewardBor").css('display', "none")
 				});
 			},
 			previewmore() {
