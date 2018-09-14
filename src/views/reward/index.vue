@@ -191,8 +191,8 @@
 					<span class="crack-tag2" v-for="item1 in item.tagInfos">#{{item1.tagName}}#</span>
 				</div>
 				<div class="childCrack">
-					<div class="childZan"><img src="../../assets/reward/zan.png" alt="" /><span class="childNum">120</span></div>
-					<div class="childZan"><img src="../../assets/reward/preview.png" alt="" /><span class="childNum">120</span></div>
+					<div class="childZan"><img src="../../assets/reward/zan.png" alt="" /><span class="childNum">{{item.praiseNum}}</span></div>
+					<div class="childZan"><img src="../../assets/reward/preview.png" alt="" /><span class="childNum">{{item.commentsNum}}</span></div>
 					<div class="childZan childD"><img src="../../assets/reward/donate.png" alt="" /><span class="childNum">120</span></div>
 				</div>
 
@@ -213,7 +213,7 @@
 	import { discuss } from '@/service/home';
 	import { rewardDetail, getRewardAnswerList } from '@/service/reward';
 	import Data from '../../assets/js/date'
-//	import { wechatShare } from '../../assets/js/wxshare'
+	//	import { wechatShare } from '../../assets/js/wxshare'
 	//	import App from '@/components/layout/app.vue'
 	import { Loadmore } from 'mint-ui';
 	export default {
@@ -327,7 +327,7 @@
 					token: this.token,
 					pageIndex: 1,
 					pageSize: 5,
-					rewarId: 2370,
+					rewarId: this.id-0,
 					types: 1
 				}
 				getRewardAnswerList(data).then(res => {
@@ -369,7 +369,7 @@
 								} else {
 									//年份分割
 									var year = this.timestr.split("-")
-//									console.log(year[0])
+									//									console.log(year[0])
 									if(time[0] == year[0]) {
 										res.data.rows[i].createTimeStr = year[1] + "-" + year[2];
 									} else {
@@ -390,7 +390,7 @@
 
 					}
 				}).catch(function(res) {
-					// $(".previewContent").css('display', "none")
+					 $(".rewardBor").css('display', "none")
 				});
 			},
 			previewmore() {
@@ -403,7 +403,7 @@
 							token: this.token,
 							pageIndex: this.pageIndex,
 							pageSize: 5,
-							rewarId: 2370,
+							rewarId: this.id-0,
 							types: 1
 						}
 						getRewardAnswerList(data).then(res => {
@@ -454,30 +454,30 @@
 			},
 			reward() {
 				let params = {
-					postId: 2370
+					postId: this.id-0
 				}
 				//爆料
 				rewardDetail(params).then(res => {
 					if(res.code == 0) {
 						var data = res.data
 						//头像加V
-						//						var cuser = data.cUsertype
-						//						if(cuser == 1) {
-						//							$(".imgV").css("display", "none")
-						//						}
-						//						//项目方
-						//						if(cuser == 2) {
-						//							$(".imgV").attr("src", "../../../static/elevation/p.gif")
-						//						}
-						//						//评测媒体
-						//						if(cuser == 3) {
-						//							$(".imgV").attr("src", "../../../static/elevation/F.gif")
-						//						}
-						//						//机构号
-						//						if(cuser == 4) {
-						//							$(".imgV").attr("src", "../../../static/elevation/V.gif")
-						//
-						//						}
+						var cuser = data.usertype
+						if(cuser == 1) {
+							$(".imgV").css("display", "none")
+						}
+						//项目方
+						if(cuser == 2) {
+							$(".imgV").attr("src", "../../../static/elevation/p.gif")
+						}
+						//评测媒体
+						if(cuser == 3) {
+							$(".imgV").attr("src", "../../../static/elevation/F.gif")
+						}
+						//机构号
+						if(cuser == 4) {
+							$(".imgV").attr("src", "../../../static/elevation/V.gif")
+
+						}
 
 						this.articleTitle = data.postTitle
 						//头像
@@ -509,7 +509,7 @@
 						var arr = data.createTimeStr.split(" ")
 						//					console.log(arr[0])
 						this.timestr = arr[0];
-//						console.log(data.tagInfos)
+						//						console.log(data.tagInfos)
 						this.tagInfo = JSON.parse(data.tagInfos)
 						//缩略文章
 						this.postShortDesc = data.postShortDesc
@@ -519,7 +519,7 @@
 			},
 			answer(id) {
 				console.log(id)
-				this.$router.push('/reward/answer?id='+id)
+				this.$router.push('/reward/answer?id=' + id)
 			},
 			download() {
 				this.$router.push('/user/download')

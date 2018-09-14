@@ -452,12 +452,12 @@
 					pageSize: 10
 				}
 				recommend(params).then(res => {
-          console.log(res.data.recommends.rows,res.data.recommends.rows.length)
+//        console.log(res.data.recommends.rows,res.data.recommends.rows.length)
           this.itemList = res.data.recommends.rows;
             for(let i = 0; i < res.data.recommends.rows.length;i++) {
 
               if( res.data.recommends.rows[i].postSmallImagesList.length!=0){
-                console.log(res.data.recommends.rows[i].postSmallImagesList.length)
+//              console.log(res.data.recommends.rows[i].postSmallImagesList.length)
               this.postImage = res.data.recommends.rows[i].postSmallImagesList
               // this.postType = res.data.recommends.rows[i].postType
               //帖子类型：1-评测；2-讨论；3-文章，4-单项评测

@@ -185,6 +185,7 @@
 	//	import App from '@/components/layout/app.vue'
 	import '../../assets/js/baidu'
 	import { Loadmore } from 'mint-ui';
+	import Data from '../../assets/js/date'
 	export default {
 		name: "article-info",
 		data() {
@@ -220,6 +221,7 @@
 				bottomStatus: '',
 				pageIndex: 1,
 				pageSize: 5,
+				postId:0
 			}
 		},
 		components: {
@@ -229,7 +231,7 @@
 		created() {
 			window.addEventListener('scroll', this.handleScroll)
 			this.id = this.$route.query.id;
-			console.log(this.$route.query.id)
+//			console.log(this.$route.query.id)
 			//悬赏尽调的接口
 			this.reward()
 			//评论
@@ -323,7 +325,7 @@
 
 						}
 
-						//						this.articleTitle = data.post.postTitle
+						//						this.articleTitle = data.postTitle
 						//头像
 						var icon = data.createUserIcon
 						this.src = icon;
@@ -332,13 +334,13 @@
 						this.userSignature = data.createUserSignature;
 						//文章内容
 						this.disscussContents = data.disscussContents;
+						//悬调id
+						this.postId = data.postId
+						
 						//图片
-
-						// console.log(a)
 						if(data.postSmallImages != null && data.postSmallImages.length != 0) {
 							var a = JSON.parse(data.postSmallImages);
 							for(let i = 0; i < a.length; i++) {
-
 								// console.log(a)
 								this.imgUrl = a[i].fileUrl
 								this.postImg.push(this.imgUrl)
@@ -395,7 +397,7 @@
 								} else {
 									//年份分割
 									var year = this.timestr.split("-")
-									console.log(year[0])
+//									console.log(year[0])
 									if(time[0] == year[0]) {
 										res.data.comments.rows[i].createTimeStr = year[1] + "-" + year[2];
 									} else {
@@ -483,7 +485,8 @@
 
 			},
 			toreward() {
-//				this.$router.push('/reward/?id=')
+				console.log(this.postId)
+				this.$router.push('/reward/?id='+this.postId)
 			},
 			download() {
 				this.$router.push('/user/download')
