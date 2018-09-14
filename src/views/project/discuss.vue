@@ -161,8 +161,8 @@
 				</div>
 			</v-loadmore>
 		</div>
-		<App :message="post"></App>
-		
+		<!--<App :message="post"></App>-->
+
 	</div>
 </template>
 
@@ -171,7 +171,7 @@
 	import Headerdown from '@/components/layout/headerdown.vue'
 	import { discuss, discussCommentList } from '@/service/home';
 	import { wechatShare } from '../../assets/js/wxshare'
-	import App from '@/components/layout/app.vue'
+//	import App from '@/components/layout/app.vue'
 	import '../../assets/js/baidu'
 	import { Loadmore } from 'mint-ui';
 	import Data from '../../assets/js/date'
@@ -192,12 +192,8 @@
 				disscussContents: '',
 				postShortDesc: "",
 				imgUrl: "",
-				commenticon: [],
-				commentsehot: [],
-				commentseNew: [],
-				commentseSum: "",
 				postImg: [],
-				post:[],
+				post: [],
 				imgUrl: '',
 				imgUrlwx: '',
 				postShortDesc: '',
@@ -217,111 +213,18 @@
 		components: {
 			HeaderBar,
 			Headerdown,
-			App,
+//			App,
 			'v-loadmore': Loadmore,
 		},
 		mounted() {
 			window.addEventListener('scroll', this.handleScroll)
 			this.id = this.$route.query.id;
 			console.log(this.$route.query.id)
+
+			this.discussion()
 			//评论
 			this.preview()
 
-			let params = {
-				postId: this.id
-			}
-			//爆料
-			discuss(params).then(res => {
-				if(res.code == 0) {
-					// console.log(res.data.projectEvaluationDetailResponse)
-					var data = res.data.discussShare
-					//头像加V
-					var cuser = data.cUsertype
-					if(cuser == 1) {
-						$(".imgV").css("display", "none")
-					}
-					//项目方
-					if(cuser == 2) {
-						$(".imgV").attr("src", "../../../static/elevation/p.gif")
-					}
-					//评测媒体
-					if(cuser == 3) {
-						$(".imgV").attr("src", "../../../static/elevation/F.gif")
-					}
-					//机构号
-					if(cuser == 4) {
-						$(".imgV").attr("src", "../../../static/elevation/V.gif")
-
-					}
-
-					this.articleTitle = data.post.postTitle
-					console.log(this.articleTitle.length)
-					if(this.articleTitle.length==0){
-						$(".evaluation-title").css("margin",0)
-					}
-					//头像
-					var icon = data.post.createUserIcon
-					this.src = icon;
-
-					this.username = data.post.createUserName;
-					this.userSignature = data.post.createUserSignature;
-					//文章内容
-					this.disscussContents = data.discuss.disscussContents;
-					//图片
-
-					// console.log(a)
-					if(data.post.postSmallImages != null && data.post.postSmallImages.length != 0) {
-						var a = JSON.parse(data.post.postSmallImages);
-						for(let i = 0; i < a.length; i++) {
-
-							// console.log(a)
-							this.imgUrl = a[i].fileUrl
-							this.postImg.push(this.imgUrl)
-							// console.log(this.postImg)
-						}
-					}
-
-					//标签
-					this.projectCode = data.post.projectCode;
-
-					//最多选择标签
-					this.tagInfo = JSON.parse(data.tagInfo);
-					//热门评论
-					this.commentsehot = data.commentsehot;
-					var result = data.commentsehot;
-					//热门评论头像
-					if(result != null) {
-						for(let i = 0; i < result.length; i++) {
-							var b = data.commentsehot[i].commentUserIcon;
-							this.commenticon.push(b)
-							//							console.log(this.commenticon)
-						}
-					}
-					//热门评论如果是没有，不显示
-					if(this.commentsehot == null) {
-						$(".hot").css("display", "none")
-					}
-					//最新评论数量
-					// this.commentseSum = data.commentseSum
-					// console.log(this.commentseSum )
-					//最新评论
-					// this.commentseNew = data.commentseNew
-					//判断是不是评测   发送另一个组件
-					var a1 = window.location.href
-					var a2 = a1.match("discuss")[0]
-					this.post.push(a2,this.id)
-					
-					//时间  字符串切割
-					var arr = data.post.createTimeStr.split(" ")
-					//					console.log(arr[0])
-					this.timestr = arr[0];
-					//缩略图
-					// this.imgUrl = JSON.parse(data.post.postSmallImages)
-					//缩略文章
-					this.postShortDesc = data.post.postShortDesc
-				}
-
-			})
 		},
 		updated() {
 			$('.v').css({
@@ -365,6 +268,85 @@
 			document.title = this.articleTitle
 		},
 		methods: {
+			discussion() {
+
+				let params = {
+					postId: this.id
+				}
+				//爆料
+				discuss(params).then(res => {
+					if(res.code == 0) {
+						// console.log(res.data.projectEvaluationDetailResponse)
+						var data = res.data.discussDetail
+						//头像加V
+						var cuser = data.userType
+						if(cuser == 1) {
+							$(".imgV").css("display", "none")
+						}
+						//项目方
+						if(cuser == 2) {
+							$(".imgV").attr("src", "../../../static/elevation/p.gif")
+						}
+						//评测媒体
+						if(cuser == 3) {
+							$(".imgV").attr("src", "../../../static/elevation/F.gif")
+						}
+						//机构号
+						if(cuser == 4) {
+							$(".imgV").attr("src", "../../../static/elevation/V.gif")
+
+						}
+
+						this.articleTitle = data.postTitle
+						console.log(this.articleTitle.length)
+						if(this.articleTitle.length == 0) {
+							$(".evaluation-title").css("margin", 0)
+						}
+						//头像
+						var icon = data.createUserIcon
+						this.src = icon;
+
+						this.username = data.createUserName;
+						this.userSignature = data.createUserSignature;
+						//文章内容
+						this.disscussContents = data.disscussContents;
+						//图片
+
+						// console.log(a)
+						if(data.postSmallImages != null && data.postSmallImages.length != 0) {
+							var a = JSON.parse(data.postSmallImages);
+							for(let i = 0; i < a.length; i++) {
+
+								// console.log(a)
+								this.imgUrl = a[i].fileUrl
+								this.postImg.push(this.imgUrl)
+								// console.log(this.postImg)
+							}
+						}
+
+						//标签
+						this.projectCode = data.projectCode;
+
+						//最多选择标签
+						this.tagInfo = JSON.parse(data.tagInfo);
+
+						//判断是不是评测   发送另一个组件
+						//					var a1 = window.location.href
+						//					var a2 = a1.match("discuss")[0]
+						//					this.post.push(a2,this.id)
+
+						//时间  字符串切割
+						var arr = data.createTimeStr.split(" ")
+						//					console.log(arr[0])
+						this.timestr = arr[0];
+						//缩略图
+						// this.imgUrl = JSON.parse(data.post.postSmallImages)
+						//缩略文章
+						this.postShortDesc = data.postShortDesc
+					}
+
+				})
+			},
 			handleScroll() {
 				this.scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
 			},
@@ -388,7 +370,6 @@
 					pageIndex: 1,
 					pageSize: 5,
 					postId: this.id - 0,
-					postType: 1
 				}
 				discussCommentList(data).then(res => {
 					if(res.code == 0) {
@@ -435,7 +416,7 @@
 
 					}
 				}).catch(function(res) {
-					// $(".previewContent").css('display', "none")
+
 				});
 			},
 			previewmore() {

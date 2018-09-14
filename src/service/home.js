@@ -40,7 +40,7 @@ export const evaluation = (params = {}) => {
 
 //爆料
 export const discuss = (params = {}) => {
-  return request(`/kff/home/discussCommentListShare`, {
+  return request(`/kff/home/discussDetail`, {
     body: {
       ...params
     },

@@ -143,7 +143,7 @@
 			<!--  悬赏1000FIND -->
 			<div class="rewardFind">
 				<div class="rewardFindContent">
-					<div class="FindContentTitle">【 悬赏1000FIND 】</div>
+					<div class="FindContentTitle">【 <img src="../../assets/reward/donate.png" alt="" /> 悬赏1000FIND 】</div>
 					<p>优秀的回答这将会在悬赏结束后分享奖金</p>
 					<p>截止时间08.08 12:00，已有12人回答</p>
 					<!--<div @click="download" style="text-align: center;margin-top: 1rem;"><span class="findbBtn">去回答</span></div>-->
@@ -151,7 +151,7 @@
 			</div>
 		</div>
 		<!--悬赏广场-->
-		<div class="square">
+		<!--<div class="square">
 			<div class="evaluation-info-title squareContent">
 				<img class="evaluation-info-img" :src="src" alt="">
 				<div class="evaluation-info-p">
@@ -161,7 +161,7 @@
 					<span class="info">03-28 12:00</span>
 				</div>
 			</div>
-		</div>
+		</div>-->
 		<!--评论-->
 		<div class="rewardBor">
 			<div>精彩回答</div>
@@ -213,7 +213,7 @@
 	import { discuss } from '@/service/home';
 	import { rewardDetail, getRewardAnswerList } from '@/service/reward';
 	import Data from '../../assets/js/date'
-	//	import { wechatShare } from '../../assets/js/wxshare'
+//	import { wechatShare } from '../../assets/js/wxshare'
 	//	import App from '@/components/layout/app.vue'
 	import { Loadmore } from 'mint-ui';
 	export default {
@@ -369,7 +369,7 @@
 								} else {
 									//年份分割
 									var year = this.timestr.split("-")
-									console.log(year[0])
+//									console.log(year[0])
 									if(time[0] == year[0]) {
 										res.data.rows[i].createTimeStr = year[1] + "-" + year[2];
 									} else {
@@ -509,7 +509,7 @@
 						var arr = data.createTimeStr.split(" ")
 						//					console.log(arr[0])
 						this.timestr = arr[0];
-						console.log(data.tagInfos)
+//						console.log(data.tagInfos)
 						this.tagInfo = JSON.parse(data.tagInfos)
 						//缩略文章
 						this.postShortDesc = data.postShortDesc
