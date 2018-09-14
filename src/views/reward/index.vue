@@ -179,9 +179,9 @@
 				</div>
 				<p class="p-style">{{item.postShortDesc}}</p>
 
-				<div class="rewardComment">
+				<div class="rewardComment" v-if="item.postSmallImagesList">
 					<!--<li class="evaluationLi" v-for="(item,index) in postImg">-->
-					<div class="rewardCommentList" v-for="(item1,index) in item.postSmallImagesList">
+					<div  class="rewardCommentList" v-for="(item1,index) in item.postSmallImagesList">
 						<!--<img @click="imgScc(index)" :class="{'active':index==isChoose}" :src="item1.fileUrl" alt="">-->
 						<img :src="item1.fileUrl" alt="">
 					</div>
