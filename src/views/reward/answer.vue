@@ -359,7 +359,7 @@
 						//缩略图
 						// this.imgUrl = JSON.parse(data.post.postSmallImages)
 						//缩略文章
-						this.postShortDesc = data.post.postShortDesc
+						this.postShortDesc = data.postShortDesc
 					}
 
 				})
