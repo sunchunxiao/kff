@@ -1,8 +1,9 @@
 <style lang="less">
+	@import '../../views/project/css/project.css';
 	.project {
 		padding-top: 5rem;
 	}
-
+	
 	.projectItem {
 		padding: 10px 20px;
 		overflow: hidden;
@@ -37,15 +38,15 @@
 		}
 		.row2 {
 			margin-bottom: 5px;
-      .test {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        /*! autoprefixer: off */
-        -webkit-box-orient: vertical;
-        /*  autoprefixer: on */
-        -webkit-line-clamp: 2;
-      }
+			.test {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				/*! autoprefixer: off */
+				-webkit-box-orient: vertical;
+				/*  autoprefixer: on */
+				-webkit-line-clamp: 2;
+			}
 			.mt-range {
 				height: 20px;
 			}
@@ -57,17 +58,17 @@
 		.row3 {
 			margin-bottom: 5px;
 			.content {
-        font-size: 1.1rem;
+				font-size: 1.1rem;
 				color: #7e7d7e;
 				line-height: 20px;
-        /*white-space: normal!important;*/
+				/*white-space: normal!important;*/
 				/*flex: 7;*/
-        display: -webkit-box;
+				display: -webkit-box;
 				overflow: hidden;
 				text-overflow: ellipsis;
-        /*! autoprefixer: off */
+				/*! autoprefixer: off */
 				-webkit-box-orient: vertical!important;
-        /*  autoprefixer: on */
+				/*  autoprefixer: on */
 				-webkit-line-clamp: 3;
 			}
 		}
@@ -78,14 +79,12 @@
 			}
 		}
 	}
-
-
-
+	
 	.projectName {
 		font-size: 14px;
 		color: #333333;
 	}
-
+	
 	.already {
 		background-color: #fff;
 		padding: 0.5rem 0;
@@ -117,7 +116,7 @@
 			}
 		}
 	}
-
+	
 	.row5 {
 		justify-content: flex-start;
 		position: relative;
@@ -141,6 +140,7 @@
 			margin-right: 20px;
 			position: absolute;
 			right: 5rem;
+			top: 9px;
 		}
 		.index-preview {
 			position: absolute;
@@ -148,30 +148,30 @@
 			top: 11px;
 		}
 	}
-
+	
 	.mint-button--normal {
 		padding: 0;
 	}
-
+	
 	.mint-button {
 		border-radius: 1px;
 		width: 43px;
 		height: 20px;
 		font-size: 0;
 	}
-
+	
 	.mt-progress div:nth-child(2) {
 		font-size: 14px;
 		color: #3b88f6;
 		letter-spacing: 0;
 		font-weight: bolder;
 	}
-
+	
 	.recommand-img {
 		display: flex;
 		justify-content: space-between;
 	}
-
+	
 	.image {
 		width: 32%;
 		height: 8rem;
@@ -183,7 +183,7 @@
 			height: 100%;
 		}
 	}
-
+	
 	.image1 {
 		width: 100%;
 		height: 11rem;
@@ -195,11 +195,11 @@
 			height: 100%;
 		}
 	}
-
+	
 	.article-title {
 		float: left;
 	}
-
+	
 	.article-atten {
 		background: #f1f1f1;
 		border-radius: 35px;
@@ -207,17 +207,17 @@
 		height: 22px;
 		position: relative;
 	}
-
+	
 	.atten-img {
 		display: inline-block;
 		width: 23px;
 		height: 22px;
 	}
-
+	
 	.atten-img img {
 		width: 100%;
 	}
-
+	
 	.atten-name {
 		font-size: 14px;
 		color: #333333;
@@ -225,7 +225,7 @@
 		left: 27px;
 		top: 1px;
 	}
-
+	
 	.atten-project {
 		font-size: 12px;
 		color: #888888;
@@ -233,47 +233,47 @@
 		right: 8px;
 		top: 3px;
 	}
-
+	
 	.atten-span {
 		font-size: 12px;
 		color: #888888;
 	}
-
+	
 	.photo {
 		width: 38px;
 		height: 38px;
 	}
-
+	
 	.photo>img {
 		width: 100%;
 		border-radius: 50%;
 		border: 1px solid #dddddd;
 	}
-
+	
 	.index-score {
-    width: 75px;
+		width: 75px;
 		font-size: 1.3rem;
 		color: #3b88f6;
-    text-align: right;
+		text-align: right;
 		font-weight: bolder;
 	}
-
+	
 	.projectName-name {
 		font-size: 14px;
 		color: #333333;
 	}
-
+	
 	.projectName-time {
-		font-size: 10px;
+		font-size: 12px;
 		color: #c2c2c2;
 	}
-
+	
 	#content {
 		overflow: scroll;
 	}
-
+	
 	.item {}
-
+	
 	.item .name {
 		height: 200px;
 		background-color: green;
@@ -283,14 +283,6 @@
 <template>
 	<div class="main-body" :style="{'-webkit-overflow-scrolling': scrollMode}">
 		<v-loadmore :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore" @bottom-status-change="handleBottomChange">
-
-			<!--<ul class="list">
-
-				<li v-for="(item, index) in proCopyright">
-					<div></div>
-				</li>
-
-			</ul>-->
 			<template v-for="(item,index) in itemList">
 
 				<div class="projectItem" :key="index" @click="gotoProjectHome(item.postType,item.postId)">
@@ -305,7 +297,7 @@
 							<img slot="icon" :src="item.createUserIcon">
 						</div>
 						<div class="name">
-							<div class="projectName"><span class="projectName-name">{{item.projectCode}} </span><span class="atten-span">/ 柚子</span></div>
+							<div class="projectName"><span class="projectName-name">{{item.createUserName}} </span></div>
 							<div class="projectName-time">{{item.createTimeStr}}</div>
 						</div>
 						<div class="btn">
@@ -316,7 +308,7 @@
 					<div class="row row2">
 						<div class="test" style="font-size: 16px;color: #333">{{item.postTitle}}</div>
 						<!--<My-Progress :rate="item.rate"></My-Progress>-->
-						<div  v-if="item.postType==1" class="index-score">{{item.totalScore}}分</div>
+						<div v-if="item.postType==1" class="index-score">{{item.totalScore}}分</div>
 					</div>
 					<div class="row row3">
 						<div class="content">
@@ -336,17 +328,21 @@
 					</div>
 
 				</div>
+
 				<div class="row row5">
-					<div class="article-title">
+					<!--<div class="article-title">
 						<div class="article-atten">
 							<span class="atten-img"><img src="../../assets/evaluation/media@2x.png" /></span>
 							<span class="atten-name">老猫</span>
-							<!--选择发表的帖子类型-->
 							<span class="atten-project" v-if="item.postType==1">发布了评测</span>
 							<span class="atten-project" v-if="item.postType==2">发布了爆料</span>
 							<span class="atten-project" v-if="item.postType==3">发布了文章</span>
 						</div>
-					</div>
+					</div>-->
+
+					<!--标签-->
+					<div class="crack-tag1"><span class="span-name">{{item.projectCode}}</span></div>
+
 					<div class="detail zan">
 						<img @click="zan(index)" src="../../assets/index/zan.png">
 						<label>{{ item.praiseNum}}</label>
@@ -369,11 +365,11 @@
 	<!--</div>-->
 </template>
 <script>
-	//	import MyProgress from '@/components/common/myProgress.vue'
 	import { Loadmore } from 'mint-ui';
 	import { recommend } from '@/service/home';
-  import { wechatShare } from '../../assets/js/wxshare'
-  import '../../assets/js/baidu'
+	import { wechatShare } from '../../assets/js/wxshare'
+	import '../../assets/js/baidu'
+	import Data from '../../assets/js/date'
 	export default {
 		name: "projectItem",
 		//		components: {
@@ -394,7 +390,8 @@
 				bottomStatus: '',
 				historyData: [],
 				postType: "",
-				state: ""
+				state: "",
+				timestr: ''
 			}
 		},
 		props: {
@@ -414,16 +411,16 @@
 		components: {
 			'v-loadmore': Loadmore,
 		},
-		mounted(){
+		mounted() {
 			this.loadPageList(); //初次访问查询列表
 		},
 		updated() {
-      wechatShare({
-        title: "区分—— 投资区块链，一定要“区分”",
-        content:"币圈大众点评，深度了解区块链项目，上“区分”就够了。",
-        link: window.location.href,
-        logo: "https://pic.qufen.top/posts20180628204925934317",
-      })
+			wechatShare({
+				title: "区分—— 投资区块链，一定要“区分”",
+				content: "币圈大众点评，深度了解区块链项目，上“区分”就够了。",
+				link: window.location.href,
+				logo: "https://pic.qufen.top/posts20180628204925934317",
+			})
 
 			$(".projectItem").each(function() {
 				//				console.log($(this).find(".image").length)
@@ -452,29 +449,53 @@
 					pageSize: 10
 				}
 				recommend(params).then(res => {
-//        console.log(res.data.recommends.rows,res.data.recommends.rows.length)
-          this.itemList = res.data.recommends.rows;
-            for(let i = 0; i < res.data.recommends.rows.length;i++) {
+					//        console.log(res.data.recommends.rows,res.data.recommends.rows.length)
+					this.itemList = res.data.recommends.rows;
+					//调用 Data.customData()
+					var nowdate = Data.customData()
+					//切割当前时间获取当前年份
+					var time = nowdate.split("-")
+					//					console.log(time[0])
+					for(let i = 0; i < res.data.recommends.rows.length; i++) {
 
-              if( res.data.recommends.rows[i].postSmallImagesList.length!=0){
-//              console.log(res.data.recommends.rows[i].postSmallImagesList.length)
-              this.postImage = res.data.recommends.rows[i].postSmallImagesList
-              // this.postType = res.data.recommends.rows[i].postType
-              //帖子类型：1-评测；2-讨论；3-文章，4-单项评测
+						//时间  字符串切割
+						var arr = res.data.recommends.rows[i].createTimeStr.split(" ")
+						this.timestr = arr[0];
+						//						console.log(arr)
+						if(nowdate == this.timestr) {
+							var a1 = arr[1].split(":")
+							res.data.recommends.rows[i].createTimeStr = a1[0] + ":" + a1[1];
+						} else {
+							//年份分割
+							var year = this.timestr.split("-")
+							//								console.log(year[0])
+							if(time[0] == year[0]) {
+								res.data.recommends.rows[i].createTimeStr = year[1] + "-" + year[2];
+							} else {
+								res.data.recommends.rows[i].createTimeStr = arr[0];
+							}
+						}
 
-//						console.log(this.postImage)
-              if(this.postImage.length <= 2) {
-                //							console.log(this.postImage)
-                res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 1)
+						if(res.data.recommends.rows[i].postSmallImagesList.length != 0) {
 
-                $(".recommand-img").addClass("imgg")
+							this.postImage = res.data.recommends.rows[i].postSmallImagesList
 
-              } else if(this.postImage.length >= 3) {
-                res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 3)
-              }
+							// this.postType = res.data.recommends.rows[i].postType
+							//帖子类型：1-评测；2-讨论；3-文章，4-单项评测
 
-            }
-          }
+							//						console.log(this.postImage)
+							if(this.postImage.length <= 2) {
+								//							console.log(this.postImage)
+								res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 1)
+
+								$(".recommand-img").addClass("imgg")
+
+							} else if(this.postImage.length >= 3) {
+								res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 3)
+							}
+
+						}
+					}
 
 					//遍历数据
 
@@ -506,25 +527,48 @@
 					pageIndex: this.pageIndex,
 					pageSize: 10
 				}
-				//				console.log(this.pageIndex);
+				//				alert(this.pageIndex);
 				recommend(params).then(res => {
-					//					this.recommendList = res.data.recommends.rows
-          this.itemList = res.data.recommends.rows;
+
+					//调用 Data.customData()
+					var nowdate = Data.customData()
+					//切割当前时间获取当前年份
+					var time = nowdate.split("-")
+					//					console.log(time[0])
 					for(var i = 0; i < res.data.recommends.rows.length; i++) {
-            if( res.data.recommends.rows[i].postSmallImagesList.length!=0){
-
-						this.postImage = res.data.recommends.rows[i].postSmallImagesList
-						//						console.log(this.postImage)
-						if(this.postImage.length <= 2) {
-							res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 1);
-
-						} else if(this.postImage.length >= 3) {
-							//							console.log(this.postImage)
-							res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 3)
+						//下拉下一页添加进数组
+						this.itemList.push(res.data.recommends.rows[i]);
+						//时间  字符串切割
+						var arr = res.data.recommends.rows[i].createTimeStr.split(" ")
+						this.timestr = arr[0];
+						//						console.log(arr)
+						if(nowdate == this.timestr) {
+							var a1 = arr[1].split(":")
+							res.data.recommends.rows[i].createTimeStr = a1[0] + ":" + a1[1];
+						} else {
+							//年份分割
+							var year = this.timestr.split("-")
+							//								console.log(year[0])
+							if(time[0] == year[0]) {
+								res.data.recommends.rows[i].createTimeStr = year[1] + "-" + year[2];
+							} else {
+								res.data.recommends.rows[i].createTimeStr = arr[0];
+							}
 						}
-            }
+						if(res.data.recommends.rows[i].postSmallImagesList.length != 0) {
+
+							this.postImage = res.data.recommends.rows[i].postSmallImagesList
+							//						console.log(this.postImage)
+							if(this.postImage.length <= 2) {
+								res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 1);
+
+							} else if(this.postImage.length >= 3) {
+								//							console.log(this.postImage)
+								res.data.recommends.rows[i].postSmallImagesList = this.postImage.slice(0, 3)
+							}
+						}
 					}
-//					this.itemList = res.data.recommends.rows;
+					//					this.itemList = res.data.recommends.rows;
 					this.itemList = this.itemList.concat(res.data.recommends.rows);
 					this.isHaveMore();
 
