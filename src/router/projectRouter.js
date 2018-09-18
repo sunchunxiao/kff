@@ -75,14 +75,14 @@ export const projectRouter = [
     },
     component: (resolve) => require(['@/views/project/article.vue'], resolve)
   },
-
-  //部分评测
+    
+  /*导航 币圈必读*/
   {
-    path: '/project/evaluationLitt',
+    path: '/project/navigation',
     meta: {
-      title: '部分评测'
+      title: '全部测评'
     },
-    component: (resolve) => require(['@/views/project/evaluationLitt.vue'], resolve)
+    component: (resolve) => require(['@/views/project/navigation.vue'], resolve)
   },
 
   {
@@ -114,13 +114,5 @@ export const projectRouter = [
     },
     component: (resolve) => require(['@/views/project/allEvaluate.vue'], resolve)
   },
-  
-  /*导航 币圈必读*/
-  {
-    path: '/project/navigation',
-    meta: {
-      title: '全部测评'
-    },
-    component: (resolve) => require(['@/views/project/navigation.vue'], resolve)
-  },
+
 ]

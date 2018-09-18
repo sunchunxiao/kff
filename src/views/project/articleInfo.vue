@@ -93,7 +93,7 @@
 					<!--已经赞助-->
 					<div class="crack">
 						<div class="crack-tag1"><span class="span-name">{{tag}}</span></div>
-						<span class="crack-tag3">编辑于 {{timestr}}</span>
+						<span class="crack-tag3">编辑于 {{timestr1}}</span>
 						<div class="sponsor">
 							<img class="sponsor4 project-img1" :src="item.sendUserIcon" v-for="(item,index) in imgUrls" :style="fun(index)" alt="">
 							<p class="zan">{{donateNum}}人已赞助</p>
@@ -143,22 +143,20 @@
 		name: "article-info",
 		data() {
 			return {
-				title: "",
 				src: "",
 				id: "",
 				m: "",
 				tag: '',
 				articleTitle: '',
-				article: "",
 				username: "",
 				userSignature: "",
 				totalscore: "",
-				evauationContent: "",
 				storeList: [],
 				imgUrls: [],
 				donateNum: "",
 				post: [],
 				timestr: "",
+				timestr1: "",
 				imgUrl: '',
 				imgUrlwx: '',
 				postShortDesc: '',
@@ -188,16 +186,15 @@
 			//评论
 			this.preview()
 			var params = {
-				postId: this.id
+				postId: this.id-0
 			}
 			//测评
 			articleInfo(params).then(res => {
 				if(res.code == 0) {
-					
-					var data = res.data.projectEvaluationDetailResponse
+					var data = res.data.evaluationDetail
 
 					//头像加V
-					var cuser = data.cUsertype
+					var cuser = data.usertype
 					if(cuser == 1) {
 						$(".imgV").css("display", "none")
 					}
@@ -215,33 +212,37 @@
 
 					}
 					
-					this.articleTitle = data.post.postTitle
+					this.articleTitle = data.postTitle
 					//头像
-					var icon = data.post.createUserIcon
+					var icon = data.createUserIcon
 					this.src = icon;
 					//用户名
-					this.username = data.post.createUserName;
+					this.username = data.createUserName;
 					//用户签名
-					this.userSignature = data.post.createUserSignature;
+					this.userSignature = data.createUserSignature;
 					//综合评分
-					this.totalscore = data.evaluation.totalScore;
+					this.totalscore = data.totalScore;
 					//评分
-					this.storeList = JSON.parse(data.evaluation.professionalEvaDetail);
-					//自定义维度
-					if(this.storeList == null) {
-						
+					if(data.professionalEvaDetail!=null&&data.professionalEvaDetail.length!=0){
+						this.storeList = JSON.parse(data.professionalEvaDetail);
+//						console.log(this.storeList)
+						if(this.storeList.length==0){
+							$(".store-info1").css("display", "none")
+						}
+					}else{
 						$(".store-info1").css("display", "none")
 					}
+					
 					//文章
-					this.m = data.evaluation.evauationContent
+					this.m = data.evauationContent
 					//标签
-					this.tag = data.post.projectCode;
+					this.tag = data.projectCode;
 					//调用 Data.customData()
 					var nowdate = Data.customData()
 					//切割当前时间获取当前年份
 					var time = nowdate.split("-")
 					//时间  字符串切割
-					var arr = data.post.createTimeStr.split(" ")
+					var arr = data.createTimeStr.split(" ")
 
 					this.timestr = arr[0];
 					if(nowdate == this.timestr) {
@@ -260,7 +261,6 @@
 					}
 
 					//赞助  循环图片
-
 					if(data.commendationList != null) {
 						this.imgUrls = data.commendationList
 						for(let i = 0; i < this.imgUrls.length; i++) {
@@ -270,24 +270,22 @@
 					}
 
 					//赞助人数
-					this.donateNum = data.post.donateNum;
+					this.donateNum = data.donateNum;
 					//如果赞助人数为0则不显示图片和赞助人数
 					if(this.donateNum == 0) {
 						$(".sponsor").css("display", "none")
 					}
-					//文章介绍
-					this.evauationContent = data.evaluation.evauationContent;
-					//底部
-//					this.post.push(data.post.praiseNum, data.post.commentsNum)
 
 					//判断是不是评测   发送另一个组件
 					var a1 = window.location.href
 					var a2 = a1.match("articleInfo")[0]
 					this.post.push(a2,this.id)
 					
-					
 					//缩略图
-					this.imgUrl = JSON.parse(data.post.postSmallImages)
+					if(data.postSmallImages!=null&&data.postSmallImages.length!=0){
+						this.imgUrl = JSON.parse(data.postSmallImages)
+					}
+					
 					//缩略文章
 					this.postShortDesc = data.post.postShortDesc
 

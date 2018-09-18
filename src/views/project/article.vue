@@ -123,11 +123,9 @@
 		name: "article-info",
 		data() {
 			return {
-				title: "",
 				articleTitle: "",
 				m: "",
 				id: "",
-				topicList: [],
 				src: "",
 				username: "",
 				userSignature: "",
@@ -136,7 +134,6 @@
 				timestr: "",
 				timestr1: '',
 				imgUrls: [],
-				articleContents: "",
 				donateNum: "",
 				post: [],
 				imgUrl: '',
@@ -177,7 +174,7 @@
 					var data = res.data.articleDetail
 
 					//头像加V
-					var cuser = data.cUsertype
+					var cuser = data.userType
 					if(cuser == 1) {
 						$(".imgV").css("display", "none")
 					}
@@ -196,7 +193,7 @@
 					}
 
 					//文章内容
-					this.m = data.article.articleContents
+					this.m = data.articleContents
 
 					//标题
 					this.articleTitle = data.postTitle
@@ -245,8 +242,6 @@
 						$(".sponsor").css("display", "none")
 					}
 
-					//文章介绍
-					this.articleContents = data.article.articleContents;
 					// 底部点赞和评论人数
 					//					this.post.push(data.praiseNum, data.commentsNum)
 
@@ -256,7 +251,10 @@
 					this.post.push(a2, this.id)
 
 					//缩略图
-					this.imgUrl = JSON.parse(data.postSmallImages)
+					if(data.postSmallImages!=null&&data.postSmallImages.length!=0){
+						this.imgUrl = JSON.parse(data.postSmallImages)
+					}
+					
 					//缩略文章
 					this.postShortDesc = data.postShortDesc
 

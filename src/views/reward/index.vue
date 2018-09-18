@@ -169,7 +169,7 @@
 					</div>
 
 				</div>
-				<p class="p-style"><span v-if="item.rewardMoneyToOne" style="color: red;font-size: 15px;">【 奖励{{item.rewardMoneyToOne}}FIND 】</span>{{item.postShortDesc}}</p>
+				<p class="p-style"><span v-if="item.rewardMoneyToOne" style="color: red;font-size: 14px;">【 奖励{{item.rewardMoneyToOne}}FIND 】</span>{{item.postShortDesc}}</p>
 				<div class="rewardComment" v-if="item.postSmallImagesList">
 					<!--<li class="evaluationLi" v-for="(item,index) in postImg">-->
 					<div class="rewardCommentList" v-for="(item1,index) in item.postSmallImagesList">
