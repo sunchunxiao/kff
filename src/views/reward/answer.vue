@@ -128,7 +128,7 @@
 			</div>
 			<!--文章内容-->
 			<!--<p v-html="disscussContents" class="evaluation-content v">{{disscussContents}}</p>-->
-			<pre id="prep" v-html><span v-if="rewardMoneyToOne" style="color: red;font-size: 1.2rem;">【 奖励{{rewardMoneyToOne}}FIND 】</span>{{disscussContents}}</pre>
+			<pre id="prep" v-html><span v-if="rewardMoneyToOne" style="color: red;font-size: 1.2rem;">【奖励{{rewardMoneyToOne}}FIND】</span>{{disscussContents}}</pre>
 			<div class="evaluationUl">
 				<!--<li class="evaluationLi" v-for="(item,index) in postImg">-->
 				<div class="evaluationLi" v-for="(item,index) in postImg">
