@@ -114,13 +114,14 @@
 	display: inline-block;
 	background-color: #d8e7fd;
 	border-radius: 35px;
-	width: 61px;
+	/*width: 61px;*/
 	height: 22px;
 	text-align: center;
 	line-height: 22px;
 }
 
 .span-name {
+	padding: 0 10px;
 	font-size: 14px;
 	color: #3b88f6;
 }
