@@ -111,7 +111,7 @@
 
 <script>
 	import HeaderBar from '@/components/layout/headerBar.vue'
-//	import App from '@/components/layout/app.vue'
+	//	import App from '@/components/layout/app.vue'
 	import Headerdown from '@/components/layout/headerdown.vue'
 	import { article, postCommentList } from '@/service/home';
 	import { wechatShare } from '../../assets/js/wxshare'
@@ -134,7 +134,7 @@
 				imgsrc: "",
 				tag: "",
 				timestr: "",
-				timestr1:'',
+				timestr1: '',
 				imgUrls: [],
 				articleContents: "",
 				donateNum: "",
@@ -156,13 +156,13 @@
 		},
 		components: {
 			HeaderBar,
-//			App,
+			//			App,
 			Headerdown,
 			'v-loadmore': Loadmore,
 		},
-		
+
 		mounted() {
-//			console.log(this.$route.query.id)
+			//			console.log(this.$route.query.id)
 			this.id = this.$route.query.id;
 
 			this.preview()
@@ -200,7 +200,7 @@
 
 					//标题
 					this.articleTitle = data.postTitle
-					
+
 					//头像
 					var icon = data.createUserIcon
 					this.src = icon;
@@ -208,7 +208,7 @@
 					this.userSignature = data.createUserSignature;
 					//标签
 					this.tag = data.projectCode;
-					
+
 					//调用 Data.customData()
 					var nowdate = Data.customData()
 					//切割当前时间获取当前年份
@@ -218,20 +218,19 @@
 
 					this.timestr = arr[0];
 					if(nowdate == this.timestr) {
-							var a1 = arr[1].split(":")
-							this.timestr1 = a1[0] + ":" + a1[1];
-						} else {
-							//年份分割
-							var year = this.timestr.split("-")
-							
-							if(time[0] == year[0]) {
-								this.timestr1 = year[1] + "-" + year[2];
-							} else {
-								this.timestr1 = arr[0];
-							}
+						var a1 = arr[1].split(":")
+						this.timestr1 = a1[0] + ":" + a1[1];
+					} else {
+						//年份分割
+						var year = this.timestr.split("-")
 
+						if(time[0] == year[0]) {
+							this.timestr1 = year[1] + "-" + year[2];
+						} else {
+							this.timestr1 = arr[0];
 						}
-					
+
+					}
 					//赞助  循环图片
 					var result = data.commendationList
 					for(let i = 0; i < result.length; i++) {
@@ -249,14 +248,13 @@
 					//文章介绍
 					this.articleContents = data.article.articleContents;
 					// 底部点赞和评论人数
-//					this.post.push(data.praiseNum, data.commentsNum)
-					
+					//					this.post.push(data.praiseNum, data.commentsNum)
+
 					//判断是不是文章 的发送另一个组件
 					var a1 = window.location.href
 					var a2 = a1.match("article")[0]
-					this.post.push(a2,this.id)
-					
-					
+					this.post.push(a2, this.id)
+
 					//缩略图
 					this.imgUrl = JSON.parse(data.postSmallImages)
 					//缩略文章
@@ -269,13 +267,13 @@
 		},
 		updated() {
 			// console.log(this.imgUrl)
-			
+
 			if(this.imgUrl.length == 0) {
 				this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
 			} else {
 				this.imgUrlwx = this.imgUrl[0].fileUrl
 			}
-//			console.log(this.imgUrlwx)
+			//			console.log(this.imgUrlwx)
 			wechatShare({
 				title: this.articleTitle,
 				content: this.postShortDesc,
@@ -300,11 +298,9 @@
 				fontSize: '16px',
 			});
 			document.title = this.articleTitle
-			
-
 
 		},
-	
+
 		methods: {
 			fun(index) {
 				if(index <= 6) {
@@ -354,7 +350,7 @@
 								} else {
 									//年份分割
 									var year = this.timestr.split("-")
-									
+
 									if(time[0] == year[0]) {
 										res.data.newestComments.rows[i].createTimeStr = year[1] + "-" + year[2];
 									} else {
@@ -412,7 +408,7 @@
 										} else {
 											//年份分割
 											var year = this.timestr.split("-")
-											
+
 											if(time[0] == year[0]) {
 												res.data.newestComments.rows[i].createTimeStr = year[1] + "-" + year[2];
 											} else {

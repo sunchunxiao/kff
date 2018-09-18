@@ -236,10 +236,28 @@
 					this.m = data.evaluation.evauationContent
 					//标签
 					this.tag = data.post.projectCode;
+					//调用 Data.customData()
+					var nowdate = Data.customData()
+					//切割当前时间获取当前年份
+					var time = nowdate.split("-")
 					//时间  字符串切割
 					var arr = data.post.createTimeStr.split(" ")
 
 					this.timestr = arr[0];
+					if(nowdate == this.timestr) {
+						var a1 = arr[1].split(":")
+						this.timestr1 = a1[0] + ":" + a1[1];
+					} else {
+						//年份分割
+						var year = this.timestr.split("-")
+
+						if(time[0] == year[0]) {
+							this.timestr1 = year[1] + "-" + year[2];
+						} else {
+							this.timestr1 = arr[0];
+						}
+
+					}
 
 					//赞助  循环图片
 

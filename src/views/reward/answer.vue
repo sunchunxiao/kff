@@ -109,12 +109,13 @@
 
 <template>
 	<div>
-		<!--<div class="evaluation">
-			<div class="evaluation-title">
+		<Headerdown></Headerdown>
+		<div class="evaluation">
+			<!--<div class="evaluation-title">
 				<h2>{{articleTitle}}</h2>
-			</div>
-		</div>-->
-		<div class="evaluation-info">
+			</div>-->
+		</div>
+		<div class="evaluation-info pad-top">
 			<div class="evaluation-info-title">
 				<img class="evaluation-info-img" :src="src" alt="">
 				<div class="evaluation-info-p">
@@ -137,7 +138,7 @@
 			<div class="crack">
 				<div class="crack-tag1"><span class="span-name">{{projectCode}}</span></div>
 				<span class="crack-tag2" v-for="item in tagInfo">#{{item.tagName}}#</span>
-				<div class="crack-tag3">发表于 {{timestr}}</div>
+				<div class="crack-tag3">发表于 {{timestr1}}</div>
 				<div class="sponsor">
 					<img class="sponsor4 project-img1" :src="item" v-for="(item,index) in imgUrls" :style="fun(index)" alt="">
 					<p class="zan">3人已赞助</p>
@@ -150,11 +151,10 @@
 					<div class="FindContentTitle">【 <img src="../../assets/reward/donate.png" alt="" /> 悬赏{{rewardMoney}}FIND 】</div>
 					<p class="answerTitle">{{articleTitle}}</p>
 					<p class="answerContent">{{postShortDesc}}</p>
-					<div  style="text-align: right;"><span style="color: rgb(57,61,70);">去围观悬赏>></span></div>
+					<div style="text-align: right;"><span style="color: rgb(57,61,70);">去围观悬赏>></span></div>
 				</div>
 			</div>
 		</div>
-
 		<!--评论-->
 		<div class="rewardBor answerBor">
 			<div class="borPreview">评论</div>
@@ -180,6 +180,7 @@
 </template>
 
 <script>
+	import Headerdown from '@/components/layout/headerdown.vue'
 	import { discuss, discussCommentList } from '@/service/home';
 	//	import { wechatShare } from '../../assets/js/wxshare'
 	//	import App from '@/components/layout/app.vue'
@@ -196,12 +197,13 @@
 				isChoose: undefined,
 				id: "",
 				timestr: "",
+				timestr1:'',
 				articleTitle: "",
 				username: "",
 				userSignature: "",
 				disscussContents: '',
 				postShortDesc: "",
-				rewardMoney:0,
+				rewardMoney: 0,
 				imgUrl: "",
 				postImg: [],
 				imgUrl: '',
@@ -221,17 +223,18 @@
 				bottomStatus: '',
 				pageIndex: 1,
 				pageSize: 5,
-				postId:0
+				postId: 0
 			}
 		},
 		components: {
+			Headerdown,
 			//			App
 			'v-loadmore': Loadmore,
 		},
 		created() {
 			window.addEventListener('scroll', this.handleScroll)
 			this.id = this.$route.query.id;
-//			console.log(this.$route.query.id)
+			//			console.log(this.$route.query.id)
 			//悬赏尽调的接口
 			this.reward()
 			//评论
@@ -336,7 +339,7 @@
 						this.disscussContents = data.disscussContents;
 						//悬调id
 						this.postId = data.postId
-						
+
 						//图片
 						if(data.postSmallImages != null && data.postSmallImages.length != 0) {
 							var a = JSON.parse(data.postSmallImages);
@@ -346,8 +349,8 @@
 								this.postImg.push(this.imgUrl)
 								// console.log(this.postImg)
 							}
-						}else{
-							$(".evaluationUl").css("display","none")
+						} else {
+							$(".evaluationUl").css("display", "none")
 						}
 
 						//标签
@@ -357,10 +360,29 @@
 						this.tagInfo = JSON.parse(data.tagInfos);
 						this.rewardMoney = data.rewardMoney
 
+						//调用 Data.customData()
+						var nowdate = Data.customData()
+						//切割当前时间获取当前年份
+						var time = nowdate.split("-")
 						//时间  字符串切割
 						var arr = data.createTimeStr.split(" ")
-						//					console.log(arr[0])
+
 						this.timestr = arr[0];
+						if(nowdate == this.timestr) {
+							var a1 = arr[1].split(":")
+							this.timestr1 = a1[0] + ":" + a1[1];
+						} else {
+							//年份分割
+							var year = this.timestr.split("-")
+
+							if(time[0] == year[0]) {
+								this.timestr1 = year[1] + "-" + year[2];
+							} else {
+								this.timestr1 = arr[0];
+							}
+
+						}
+
 						//缩略图
 						// this.imgUrl = JSON.parse(data.post.postSmallImages)
 						//缩略文章
@@ -400,7 +422,7 @@
 								} else {
 									//年份分割
 									var year = this.timestr.split("-")
-//									console.log(year[0])
+									//									console.log(year[0])
 									if(time[0] == year[0]) {
 										res.data.comments.rows[i].createTimeStr = year[1] + "-" + year[2];
 									} else {
@@ -421,16 +443,15 @@
 
 					}
 				}).catch(function(res) {
-					 $(".rewardBor").css('display', "none")
+					$(".rewardBor").css('display', "none")
 				});
 			},
 			previewmore() {
-				
+
 				if(this.newestComments.length != 0) {
 
-
 					if(this.hasNext == true) {
-						
+
 						this.pageIndex = parseInt(this.pageIndex) + 1
 						//						alert(this.pageIndex)
 						let data = {
@@ -439,10 +460,9 @@
 							pageSize: 5,
 							postId: this.id - 0,
 						}
-						
+
 						discussCommentList(data).then(res => {
 							if(res.code == 0) {
-								
 
 								this.hasNext = res.data.comments.hasNext
 								//							console.log(this.hasNext)
@@ -454,7 +474,7 @@
 										var nowdate = Data.customData()
 										//切割当前时间获取当前年份
 										var time = nowdate.split("-")
-										
+
 										//时间  字符串切割
 										var arr = res.data.comments.rows[i].createTimeStr.split(" ")
 										this.timestr = arr[0];
@@ -464,7 +484,7 @@
 										} else {
 											//年份分割
 											var year = this.timestr.split("-")
-											
+
 											if(time[0] == year[0]) {
 												res.data.comments.rows[i].createTimeStr = year[1] + "-" + year[2];
 											} else {
@@ -488,8 +508,8 @@
 
 			},
 			toreward() {
-//				console.log(this.postId)
-				this.$router.push('/reward/?id='+this.postId)
+				//				console.log(this.postId)
+				this.$router.push('/reward/?id=' + this.postId)
 			},
 			download() {
 				this.$router.push('/user/download')
