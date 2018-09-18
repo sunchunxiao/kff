@@ -166,7 +166,7 @@
 					<img class="evaluation-info-img" :src="item.commentUserIcon" alt="">
 					<div class="evaluation-info-p">
 						<p class="name">{{item .commentUserName}}</p>
-						<span class="info">{{item.floor}}楼 {{item.createTimeStr}}</span>
+						<span class="info">{{item.createTimeStr}}</span>
 					</div>
 					<!--点赞-->
 					<div class="evaluation-follow"><img src="../../assets/reward/zan.png" alt=""><span>{{item.praiseNum}}</span></div>
@@ -345,6 +345,8 @@
 								this.postImg.push(this.imgUrl)
 								// console.log(this.postImg)
 							}
+						}else{
+							$(".evaluationUl").css("display","none")
 						}
 
 						//标签
