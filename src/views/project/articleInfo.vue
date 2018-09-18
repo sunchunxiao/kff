@@ -183,7 +183,7 @@
 
 		mounted() {
 
-			console.log(this.$route.query.id)
+//			console.log(this.$route.query.id)
 			this.id = this.$route.query.id;
 			//评论
 			this.preview()
@@ -193,7 +193,7 @@
 			//测评
 			articleInfo(params).then(res => {
 				if(res.code == 0) {
-					// console.log(res.data.projectEvaluationDetailResponse)
+					
 					var data = res.data.projectEvaluationDetailResponse
 
 					//头像加V
@@ -214,7 +214,7 @@
 						$(".imgV").attr("src", "../../../static/elevation/V.gif")
 
 					}
-					// console.log(JSON.parse(data.post.createUserIcon).fileUrl)
+					
 					this.articleTitle = data.post.postTitle
 					//头像
 					var icon = data.post.createUserIcon
@@ -229,7 +229,7 @@
 					this.storeList = JSON.parse(data.evaluation.professionalEvaDetail);
 					//自定义维度
 					if(this.storeList == null) {
-						console.log(111)
+						
 						$(".store-info1").css("display", "none")
 					}
 					//文章
@@ -279,7 +279,7 @@
 		},
 		updated() {
 			// console.log(this.imgUrl)
-			// console.log(this.postShortDesc,this.articleTitle)
+			
 			//  如果有缩略图
 			if(this.imgUrl.length == 0) {
 				this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
@@ -287,7 +287,7 @@
 				this.imgUrlwx = this.imgUrl[0].fileUrl
 
 			}
-			// console.log(this.imgUrlwx)
+			
 			wechatShare({
 				title: this.articleTitle,
 				content: this.postShortDesc,
@@ -342,7 +342,6 @@
 							var nowdate = Data.customData()
 							//切割当前时间获取当前年份
 							var time = nowdate.split("-")
-							//							console.log(time[0])
 
 							for(let i = 0; i < res.data.newestComments.rows.length; i++) {
 								//时间  字符串切割
@@ -354,7 +353,7 @@
 								} else {
 									//年份分割
 									var year = this.timestr.split("-")
-									console.log(year[0])
+									
 									if(time[0] == year[0]) {
 										res.data.newestComments.rows[i].createTimeStr = year[1] + "-" + year[2];
 									} else {
@@ -402,7 +401,7 @@
 										var nowdate = Data.customData()
 										//切割当前时间获取当前年份
 										var time = nowdate.split("-")
-										//							console.log(time[0])
+										
 
 										//时间  字符串切割
 										var arr = res.data.newestComments.rows[i].createTimeStr.split(" ")
@@ -413,7 +412,7 @@
 										} else {
 											//年份分割
 											var year = this.timestr.split("-")
-											console.log(year[0])
+											
 											if(time[0] == year[0]) {
 												res.data.newestComments.rows[i].createTimeStr = year[1] + "-" + year[2];
 											}else {

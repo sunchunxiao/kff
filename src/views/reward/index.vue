@@ -336,7 +336,6 @@
 							var nowdate = Data.customData()
 							//切割当前时间获取当前年份
 							var time = nowdate.split("-")
-							//							console.log(time[0])
 
 							for(let i = 0; i < res.data.rows.length; i++) {
 								//判断标标签不为空
@@ -364,7 +363,6 @@
 								} else {
 									//年份分割
 									var year = this.timestr.split("-")
-									//									console.log(year[0])
 									if(time[0] == year[0]) {
 										res.data.rows[i].createTimeStr = year[1] + "-" + year[2];
 									} else {
@@ -400,7 +398,7 @@
 							rewarId: this.id - 0,
 							types: 1
 						}
-						
+
 						getRewardAnswerList(data).then(res => {
 							if(res.code == 0) {
 
@@ -419,7 +417,6 @@
 										var nowdate = Data.customData()
 										//切割当前时间获取当前年份
 										var time = nowdate.split("-")
-										console.log(time[0])
 										//时间  字符串切割
 										var arr = res.data.rows[i].createTimeStr.split(" ")
 										this.timestr = arr[0];
@@ -429,7 +426,7 @@
 										} else {
 											//年份分割
 											var year = this.timestr.split("-")
-											console.log(year[0])
+											
 											if(time[0] == year[0]) {
 												res.data.rows[i].createTimeStr = year[1] + "-" + year[2];
 											} else {
@@ -488,9 +485,8 @@
 						this.userSignature = data.createUserSignature;
 						//文章内容
 						this.disscussContents = data.rewardContents;
+						
 						//图片
-
-						// console.log(a)
 						if(data.postSmallImages != null && data.postSmallImages.length != 0) {
 							var a = JSON.parse(data.postSmallImages);
 							for(let i = 0; i < a.length; i++) {
@@ -532,12 +528,10 @@
 						//						console.log(end[1].split(":"))
 						var end1 = end[0].split("-")
 						var end2 = end[1].split(":")
-						console.log(end2)
 
 						if(time[0] == end1[0]) {
-
 							this.endTimeStr = end1[1] + "-" + end1[2] + " " + end2[0] + ":" + end2[1];
-							console.log(this.endTimeStr)
+
 						}
 						//回答人数
 						this.answerCount = data.answerCount
@@ -552,7 +546,6 @@
 				})
 			},
 			answer(id) {
-				console.log(id)
 				this.$router.push('/reward/answer?id=' + id)
 			},
 			download() {

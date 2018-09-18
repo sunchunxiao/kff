@@ -196,11 +196,9 @@
 				post: [],
 				imgUrl: '',
 				imgUrlwx: '',
-				postShortDesc: '',
 				scrollTop: "",
 				allLoaded: false, //是否可以上拉属性，false可以上拉，true为禁止上拉，就是不让往上划加载数据了
 				scrollMode: "auto", //移动端弹性滚动效果，touch为弹性滚动，auto是非弹性滚动
-				totalpage: 0,
 				loading: false,
 				bottomText: '',
 				bottomStatus: '',
@@ -219,7 +217,7 @@
 		mounted() {
 			window.addEventListener('scroll', this.handleScroll)
 			this.id = this.$route.query.id;
-			console.log(this.$route.query.id)
+//			console.log(this.$route.query.id)
 
 			this.discussion()
 			//评论
@@ -276,7 +274,6 @@
 				//爆料
 				discuss(params).then(res => {
 					if(res.code == 0) {
-						// console.log(res.data.projectEvaluationDetailResponse)
 						var data = res.data.discussDetail
 						//头像加V
 						var cuser = data.userType
@@ -296,9 +293,8 @@
 							$(".imgV").attr("src", "../../../static/elevation/V.gif")
 
 						}
-
 						this.articleTitle = data.postTitle
-						console.log(this.articleTitle.length)
+						
 						if(this.articleTitle.length == 0) {
 							$(".evaluation-title").css("margin", 0)
 						}
@@ -310,14 +306,11 @@
 						this.userSignature = data.createUserSignature;
 						//文章内容
 						this.disscussContents = data.disscussContents;
+						
 						//图片
-
-						// console.log(a)
 						if(data.postSmallImages != null && data.postSmallImages.length != 0) {
 							var a = JSON.parse(data.postSmallImages);
 							for(let i = 0; i < a.length; i++) {
-
-								// console.log(a)
 								this.imgUrl = a[i].fileUrl
 								this.postImg.push(this.imgUrl)
 								// console.log(this.postImg)
@@ -395,7 +388,7 @@
 								} else {
 									//年份分割
 									var year = this.timestr.split("-")
-									console.log(year[0])
+									
 									if(time[0] == year[0]) {
 										res.data.comments.rows[i].createTimeStr = year[1] + "-" + year[2];
 									} else {
@@ -445,7 +438,7 @@
 										var nowdate = Data.customData()
 										//切割当前时间获取当前年份
 										var time = nowdate.split("-")
-										console.log(time[0])
+										
 										//时间  字符串切割
 										var arr = res.data.comments.rows[i].createTimeStr.split(" ")
 										this.timestr = arr[0];
@@ -455,7 +448,7 @@
 										} else {
 											//年份分割
 											var year = this.timestr.split("-")
-											console.log(year[0])
+											
 											if(time[0] == year[0]) {
 												res.data.comments.rows[i].createTimeStr = year[1] + "-" + year[2];
 											} else {

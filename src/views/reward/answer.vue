@@ -145,12 +145,12 @@
 			</div>
 
 			<!--  悬赏1000FIND -->
-			<div class="rewardFind">
+			<div class="rewardFind" @click="toreward">
 				<div class="rewardFindContent">
-					<div class="FindContentTitle">【 <img src="../../assets/reward/donate.png" alt="" /> 悬赏1000FIND 】</div>
+					<div class="FindContentTitle">【 <img src="../../assets/reward/donate.png" alt="" /> 悬赏{{rewardMoney}}FIND 】</div>
 					<p class="answerTitle">{{articleTitle}}</p>
 					<p class="answerContent">{{postShortDesc}}</p>
-					<div @click="toreward" style="text-align: right;"><span style="color: rgb(57,61,70);">去围观悬赏>></span></div>
+					<div  style="text-align: right;"><span style="color: rgb(57,61,70);">去围观悬赏>></span></div>
 				</div>
 			</div>
 		</div>
@@ -201,6 +201,7 @@
 				userSignature: "",
 				disscussContents: '',
 				postShortDesc: "",
+				rewardMoney:0,
 				imgUrl: "",
 				postImg: [],
 				imgUrl: '',
@@ -354,6 +355,7 @@
 
 						//最多选择标签
 						this.tagInfo = JSON.parse(data.tagInfos);
+						this.rewardMoney = data.rewardMoney
 
 						//时间  字符串切割
 						var arr = data.createTimeStr.split(" ")
@@ -452,7 +454,7 @@
 										var nowdate = Data.customData()
 										//切割当前时间获取当前年份
 										var time = nowdate.split("-")
-										console.log(time[0])
+										
 										//时间  字符串切割
 										var arr = res.data.comments.rows[i].createTimeStr.split(" ")
 										this.timestr = arr[0];
@@ -462,7 +464,7 @@
 										} else {
 											//年份分割
 											var year = this.timestr.split("-")
-											console.log(year[0])
+											
 											if(time[0] == year[0]) {
 												res.data.comments.rows[i].createTimeStr = year[1] + "-" + year[2];
 											} else {
@@ -486,7 +488,7 @@
 
 			},
 			toreward() {
-				console.log(this.postId)
+//				console.log(this.postId)
 				this.$router.push('/reward/?id='+this.postId)
 			},
 			download() {

@@ -217,14 +217,13 @@
 					var arr = data.createTimeStr.split(" ")
 
 					this.timestr = arr[0];
-										console.log(arr[0])
 					if(nowdate == this.timestr) {
 							var a1 = arr[1].split(":")
 							this.timestr1 = a1[0] + ":" + a1[1];
 						} else {
 							//年份分割
 							var year = this.timestr.split("-")
-							console.log(year[0])
+							
 							if(time[0] == year[0]) {
 								this.timestr1 = year[1] + "-" + year[2];
 							} else {
@@ -270,7 +269,7 @@
 		},
 		updated() {
 			// console.log(this.imgUrl)
-			// console.log(this.postShortDesc,this.articleTitle)
+			
 			if(this.imgUrl.length == 0) {
 				this.imgUrlwx = 'https://pic.qufen.top/posts20180628204925934317'
 			} else {
@@ -355,7 +354,7 @@
 								} else {
 									//年份分割
 									var year = this.timestr.split("-")
-									console.log(year[0])
+									
 									if(time[0] == year[0]) {
 										res.data.newestComments.rows[i].createTimeStr = year[1] + "-" + year[2];
 									} else {
@@ -413,7 +412,7 @@
 										} else {
 											//年份分割
 											var year = this.timestr.split("-")
-											console.log(year[0])
+											
 											if(time[0] == year[0]) {
 												res.data.newestComments.rows[i].createTimeStr = year[1] + "-" + year[2];
 											} else {
