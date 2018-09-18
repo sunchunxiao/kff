@@ -71,7 +71,7 @@
 				<div class="crack">
 					<!--标签-->
 					<div class="crack-tag1"><span class="span-name">{{tag}}</span></div>
-					<span class="crack-tag3">编辑于 {{timestr}}</span>
+					<span class="crack-tag3">编辑于 {{timestr1}}</span>
 					<div class="sponsor">
 						<img class="sponsor4 project-img1" :src="item" v-for="(item,index) in imgUrls" :style="fun(index)" alt="">
 						<p class="zan">{{donateNum}}人已赞助</p>
@@ -134,6 +134,7 @@
 				imgsrc: "",
 				tag: "",
 				timestr: "",
+				timestr1:'',
 				imgUrls: [],
 				articleContents: "",
 				donateNum: "",
@@ -207,10 +208,31 @@
 					this.userSignature = data.createUserSignature;
 					//标签
 					this.tag = data.projectCode;
+					
+					//调用 Data.customData()
+					var nowdate = Data.customData()
+					//切割当前时间获取当前年份
+					var time = nowdate.split("-")
 					//时间  字符串切割
 					var arr = data.createTimeStr.split(" ")
-//					console.log(arr[0])
+
 					this.timestr = arr[0];
+										console.log(arr[0])
+					if(nowdate == this.timestr) {
+							var a1 = arr[1].split(":")
+							this.timestr1 = a1[0] + ":" + a1[1];
+						} else {
+							//年份分割
+							var year = this.timestr.split("-")
+							console.log(year[0])
+							if(time[0] == year[0]) {
+								this.timestr1 = year[1] + "-" + year[2];
+							} else {
+								this.timestr1 = arr[0];
+							}
+
+						}
+					
 					//赞助  循环图片
 					var result = data.commendationList
 					for(let i = 0; i < result.length; i++) {

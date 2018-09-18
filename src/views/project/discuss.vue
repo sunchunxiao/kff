@@ -207,7 +207,7 @@
 				newestComments: [],
 				pageIndex: 1,
 				pageSize: 5,
-				hasNext: true,
+				hasNext: false,
 			}
 		},
 		components: {

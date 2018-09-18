@@ -148,8 +148,8 @@
 			<div class="rewardFind">
 				<div class="rewardFindContent">
 					<div class="FindContentTitle">【 <img src="../../assets/reward/donate.png" alt="" /> 悬赏1000FIND 】</div>
-					<p class="answerTitle">ALL- 团队测评!!!</p>
-					<p class="answerContent">截止时间08.08 12:00，已有12人回答，截止时间08.08 12:00，已有12人回答</p>
+					<p class="answerTitle">{{articleTitle}}</p>
+					<p class="answerContent">{{postShortDesc}}</p>
 					<div @click="toreward" style="text-align: right;"><span style="color: rgb(57,61,70);">去围观悬赏>></span></div>
 				</div>
 			</div>
@@ -205,7 +205,6 @@
 				postImg: [],
 				imgUrl: '',
 				imgUrlwx: '',
-				postShortDesc: '',
 				newestComments: [],
 				imgUrls: [
 					'http://img0.imgtn.bdimg.com/it/u=2882284884,1913504836&fm=27&gp=0.jpg',
@@ -325,7 +324,7 @@
 
 						}
 
-						//						this.articleTitle = data.postTitle
+						this.articleTitle = data.postTitle
 						//头像
 						var icon = data.createUserIcon
 						this.src = icon;

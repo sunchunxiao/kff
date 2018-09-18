@@ -130,14 +130,14 @@
 			<div class="crack">
 				<div class="crack-tag1"><span class="span-name">{{projectCode}}</span></div>
 				<span class="crack-tag2" v-for="item in tagInfo">#{{item.tagName}}#</span>
-				<div class="crack-tag3">发表于 {{timestr}}</div>
+				<div class="crack-tag3">发表于 {{timestr1}}</div>
 			</div>
 			<!--  悬赏1000FIND -->
 			<div class="rewardFind">
 				<div class="rewardFindContent">
-					<div class="FindContentTitle">【 <img src="../../assets/reward/donate.png" alt="" /> 悬赏1000FIND 】</div>
+					<div class="FindContentTitle">【 <img src="../../assets/reward/donate.png" alt="" /> 悬赏{{rewardMoney}}FIND 】</div>
 					<p>优秀的回答这将会在悬赏结束后分享奖金</p>
-					<p>截止时间08.08 12:00，已有12人回答</p>
+					<p>截止时间{{endTimeStr}}，已有{{answerCount}}人回答</p>
 					<!--<div @click="download" style="text-align: center;margin-top: 1rem;"><span class="findbBtn">去回答</span></div>-->
 				</div>
 			</div>
@@ -169,8 +169,7 @@
 					</div>
 
 				</div>
-				<p class="p-style">{{item.postShortDesc}}</p>
-
+				<p class="p-style"><span v-if="item.rewardMoneyToOne" style="color: red;font-size: 15px;">【 奖励{{item.rewardMoneyToOne}}FIND 】</span>{{item.postShortDesc}}</p>
 				<div class="rewardComment" v-if="item.postSmallImagesList">
 					<!--<li class="evaluationLi" v-for="(item,index) in postImg">-->
 					<div class="rewardCommentList" v-for="(item1,index) in item.postSmallImagesList">
@@ -185,7 +184,7 @@
 				<div class="childCrack">
 					<div class="childZan"><img src="../../assets/reward/zan.png" alt="" /><span class="childNum">{{item.praiseNum}}</span></div>
 					<div class="childZan"><img src="../../assets/reward/preview.png" alt="" /><span class="childNum">{{item.commentsNum}}</span></div>
-					<div class="childZan childD"><img src="../../assets/reward/donate.png" alt="" /><span class="childNum">120</span></div>
+					<div class="childZan childD"><img src="../../assets/reward/donate.png" alt="" /><span class="childNum">{{item.postTotalIncome}}</span></div>
 				</div>
 
 			</div>
@@ -205,7 +204,7 @@
 	import { discuss } from '@/service/home';
 	import { rewardDetail, getRewardAnswerList } from '@/service/reward';
 	import Data from '../../assets/js/date'
-	//	import { wechatShare } from '../../assets/js/wxshare'
+	import { wechatShare } from '../../assets/js/wxshare'
 	//	import App from '@/components/layout/app.vue'
 	import { Loadmore } from 'mint-ui';
 	export default {
@@ -219,24 +218,28 @@
 				isChoose: undefined,
 				id: "",
 				timestr: "",
+				timestr1: "",
+				endTimeStr: '',
+				answerCount: 0,
+				rewardMoney: 0,
 				articleTitle: "",
 				username: "",
 				userSignature: "",
 				disscussContents: '',
 				postShortDesc: "",
 				imgUrl: "",
-				commenticon: [],
 				commentsehot: [],
 				postImg: [],
 				postSmallImagesList: [],
 				imgUrl: '',
 				imgUrlwx: '',
-				postShortDesc: '',
 				scrollTop: "",
 				loading: false,
 				allLoaded: false, //是否可以上拉属性，false可以上拉，true为禁止上拉，就是不让往上划加载数据了
 				scrollMode: "auto", //移动端弹性滚动效果，touch为弹性滚动，auto是非弹性滚动
-				hasNext: true,
+				pageIndex: 1,
+				pageSize: 5,
+				hasNext: false,
 			}
 		},
 		components: {
@@ -277,12 +280,12 @@
 			} else {
 				this.imgUrlwx = this.imgUrl[0].fileUrl
 			}
-			//			wechatShare({
-			//				title: this.articleTitle,
-			//				content: this.postShortDesc,
-			//				link: window.location.href,
-			//				logo: this.imgUrlwx,
-			//			})
+			wechatShare({
+				title: this.articleTitle,
+				content: this.postShortDesc,
+				link: window.location.href,
+				logo: this.imgUrlwx,
+			})
 			document.title = this.articleTitle
 		},
 
@@ -376,8 +379,6 @@
 								this.allLoaded = true;
 							}
 
-						} else {
-							$(".previewBottom").css("display", "none")
 						}
 
 					}
@@ -385,8 +386,9 @@
 					$(".rewardBor").css('display', "none")
 				});
 			},
+			//加载下一页
 			previewmore() {
-				if(this.newestComments.length != 0) {
+				if(this.commentsehot.length != 0) {
 
 					if(this.hasNext == true) {
 						this.pageIndex = parseInt(this.pageIndex) + 1
@@ -398,14 +400,20 @@
 							rewarId: this.id - 0,
 							types: 1
 						}
+						
 						getRewardAnswerList(data).then(res => {
 							if(res.code == 0) {
 
-								this.hasNext = res.data.comments.hasNext
+								this.hasNext = res.data.hasNext
 								//							console.log(this.hasNext)
-								if(res.data.comments.rows != null) {
-									for(var i = 0; i < res.data.comments.rows.length; i++) {
-										this.newestComments.push(res.data.comments.rows[i]);
+								if(res.data.rows != null) {
+									for(var i = 0; i < res.data.rows.length; i++) {
+										this.commentsehot.push(res.data.rows[i]);
+										//判断标标签不为空
+										if(res.data.rows[i].tagInfos != null && res.data.rows[i].tagInfos.length != 0) {
+											//									console.log(res.data.rows[i].tagInfos)
+											res.data.rows[i].tagInfos = JSON.parse(res.data.rows[i].tagInfos)
+										}
 
 										//调用 Data.customData()
 										var nowdate = Data.customData()
@@ -413,19 +421,19 @@
 										var time = nowdate.split("-")
 										console.log(time[0])
 										//时间  字符串切割
-										var arr = res.data.comments.rows[i].createTimeStr.split(" ")
+										var arr = res.data.rows[i].createTimeStr.split(" ")
 										this.timestr = arr[0];
 										if(nowdate == this.timestr) {
 											var a1 = arr[1].split(":")
-											res.data.comments.rows[i].createTimeStr = a1[0] + ":" + a1[1];
+											res.data.rows[i].createTimeStr = a1[0] + ":" + a1[1];
 										} else {
 											//年份分割
 											var year = this.timestr.split("-")
 											console.log(year[0])
 											if(time[0] == year[0]) {
-												res.data.comments.rows[i].createTimeStr = year[1] + "-" + year[2];
+												res.data.rows[i].createTimeStr = year[1] + "-" + year[2];
 											} else {
-												res.data.comments.rows[i].createTimeStr = arr[0];
+												res.data.rows[i].createTimeStr = arr[0];
 											}
 										}
 
@@ -486,7 +494,6 @@
 						if(data.postSmallImages != null && data.postSmallImages.length != 0) {
 							var a = JSON.parse(data.postSmallImages);
 							for(let i = 0; i < a.length; i++) {
-
 								// console.log(a)
 								this.imgUrl = a[i].fileUrl
 								this.postImg.push(this.imgUrl)
@@ -497,11 +504,46 @@
 						//标签
 						this.projectCode = data.projectCode;
 
+						//调用 Data.customData()
+						var nowdate = Data.customData()
+						//切割当前时间获取当前年份
+						var time = nowdate.split("-")
 						//时间  字符串切割
 						var arr = data.createTimeStr.split(" ")
-						//					console.log(arr[0])
+
 						this.timestr = arr[0];
-						//						console.log(data.tagInfos)
+						//						console.log(arr[0])
+						if(nowdate == this.timestr) {
+							var a1 = arr[1].split(":")
+							this.timestr1 = a1[0] + ":" + a1[1];
+						} else {
+							//年份分割
+							var year = this.timestr.split("-")
+							//							console.log(year[0])
+							if(time[0] == year[0]) {
+								this.timestr1 = year[1] + "-" + year[2];
+							} else {
+								this.timestr1 = arr[0];
+							}
+
+						}
+						//结束时间
+						var end = data.endTimeStr.split(" ")
+						//						console.log(end[1].split(":"))
+						var end1 = end[0].split("-")
+						var end2 = end[1].split(":")
+						console.log(end2)
+
+						if(time[0] == end1[0]) {
+
+							this.endTimeStr = end1[1] + "-" + end1[2] + " " + end2[0] + ":" + end2[1];
+							console.log(this.endTimeStr)
+						}
+						//回答人数
+						this.answerCount = data.answerCount
+						//悬赏find
+						this.rewardMoney = data.rewardMoney
+
 						this.tagInfo = JSON.parse(data.tagInfos)
 						//缩略文章
 						this.postShortDesc = data.postShortDesc
