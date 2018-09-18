@@ -128,7 +128,7 @@
 			</div>
 			<!--文章内容-->
 			<!--<p v-html="disscussContents" class="evaluation-content v">{{disscussContents}}</p>-->
-			<pre id="prep" v-html>{{disscussContents}}</pre>
+			<pre id="prep" v-html><span v-if="rewardMoneyToOne" style="color: red;font-size: 1.2rem;">【 奖励{{rewardMoneyToOne}}FIND 】</span>{{disscussContents}}</pre>
 			<div class="evaluationUl">
 				<!--<li class="evaluationLi" v-for="(item,index) in postImg">-->
 				<div class="evaluationLi" v-for="(item,index) in postImg">
@@ -223,7 +223,8 @@
 				bottomStatus: '',
 				pageIndex: 1,
 				pageSize: 5,
-				postId: 0
+				postId: 0,
+				rewardMoneyToOne:''
 			}
 		},
 		components: {
@@ -366,6 +367,7 @@
 						var time = nowdate.split("-")
 						//时间  字符串切割
 						var arr = data.createTimeStr.split(" ")
+						this.rewardMoneyToOne = data.rewardMoneyToOne
 
 						this.timestr = arr[0];
 						if(nowdate == this.timestr) {

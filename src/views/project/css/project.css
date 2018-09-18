@@ -215,7 +215,7 @@ img {
 .p-style {
   font-size: 15px;
   color: #333333;
-  letter-spacing: 0;
+  /*letter-spacing: 0;*/
   line-height: 20px;
   text-align: justify;
   padding-bottom: 10px;

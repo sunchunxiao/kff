@@ -120,3 +120,14 @@
 	width: 100%;
 	height: 100%;
 }
+.answerStyle {
+  font-size: 15px;
+  color: #333333;
+  line-height: 20px;
+  padding-bottom: 10px;
+  padding-left: 4rem;
+}
+.answerSpan{
+	color: red;
+	font-size: 14px;
+}
