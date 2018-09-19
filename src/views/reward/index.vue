@@ -184,7 +184,7 @@
 				<div class="childCrack">
 					<div class="childZan"><img src="../../assets/reward/zan.png" alt="" /><span class="childNum">{{item.praiseNum}}</span></div>
 					<div class="childZan"><img src="../../assets/reward/preview.png" alt="" /><span class="childNum">{{item.commentsNum}}</span></div>
-					<div class="childZan childD"><img src="../../assets/reward/donate.png" alt="" /><span class="childNum">{{item.postTotalIncome}}</span></div>
+					<div class="childZanincom childD"><img src="../../assets/reward/donate.png" alt="" /><span class="childNum">{{item.postTotalIncome}}</span></div>
 				</div>
 
 			</div>

@@ -63,19 +63,31 @@
 	margin-right: 15px;
 	
 }
+.childZanincom{
+	display: flex;
+	align-items: center;
+	float: right;
+	
+}
+.childZanincom img{
+	width: 18px;
+	height: 18px;
+}
 .childZan img{
-	width: 29%;
+	width: 17px;
+	height: 17px;
+	/*width: 29%;*/
 }
 .childNum{
 	color: rgb(153,153,153);
 	font-size: 14px;
 	padding-left: 5px;
 }
-.childD{
+/*.childD{
 	position: absolute;
 	top: 0;
 	right: -20px;
-}
+}*/
 .toanswer{
 	color: rgb(255,255,255);
 	font-size: 16px;
