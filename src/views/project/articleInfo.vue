@@ -287,8 +287,7 @@
 					}
 					
 					//缩略文章
-					this.postShortDesc = data.post.postShortDesc
-
+					this.postShortDesc = data.postShortDesc
 				}
 
 			})
