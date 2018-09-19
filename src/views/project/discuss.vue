@@ -135,7 +135,7 @@
 			<div class="crack">
 				<div class="crack-tag1"><span class="span-name">{{projectCode}}</span></div>
 				<span class="crack-tag2" v-for="item in tagInfo">#{{item.tagName}}#</span>
-				<div class="crack-tag3">发表于 {{timestr}}</div>
+				<div class="crack-tag3">发表于 {{timestr1}}</div>
 			</div>
 		</div>
 
@@ -171,7 +171,7 @@
 	import Headerdown from '@/components/layout/headerdown.vue'
 	import { discuss, discussCommentList } from '@/service/home';
 	import { wechatShare } from '../../assets/js/wxshare'
-//	import App from '@/components/layout/app.vue'
+	//	import App from '@/components/layout/app.vue'
 	import '../../assets/js/baidu'
 	import { Loadmore } from 'mint-ui';
 	import Data from '../../assets/js/date'
@@ -186,6 +186,7 @@
 				isChoose: undefined,
 				id: "",
 				timestr: "",
+				timestr1: "",
 				articleTitle: "",
 				username: "",
 				userSignature: "",
@@ -211,13 +212,13 @@
 		components: {
 			HeaderBar,
 			Headerdown,
-//			App,
+			//			App,
 			'v-loadmore': Loadmore,
 		},
 		mounted() {
 			window.addEventListener('scroll', this.handleScroll)
 			this.id = this.$route.query.id;
-//			console.log(this.$route.query.id)
+			//			console.log(this.$route.query.id)
 
 			this.discussion()
 			//评论
@@ -294,7 +295,7 @@
 
 						}
 						this.articleTitle = data.postTitle
-						
+
 						if(this.articleTitle.length == 0) {
 							$(".evaluation-title").css("margin", 0)
 						}
@@ -306,7 +307,7 @@
 						this.userSignature = data.createUserSignature;
 						//文章内容
 						this.disscussContents = data.disscussContents;
-						
+
 						//图片
 						if(data.postSmallImages != null && data.postSmallImages.length != 0) {
 							var a = JSON.parse(data.postSmallImages);
@@ -321,17 +322,38 @@
 						this.projectCode = data.projectCode;
 
 						//最多选择标签
-						this.tagInfo = JSON.parse(data.tagInfo);
+						if(data.tagInfos != null && data.tagInfos.length != 0) {
+							this.tagInfo = JSON.parse(data.tagInfos);
+						}
 
 						//判断是不是评测   发送另一个组件
 						//					var a1 = window.location.href
 						//					var a2 = a1.match("discuss")[0]
 						//					this.post.push(a2,this.id)
 
+						//调用 Data.customData()
+						var nowdate = Data.customData()
+						//切割当前时间获取当前年份
+						var time = nowdate.split("-")
 						//时间  字符串切割
 						var arr = data.createTimeStr.split(" ")
-						//					console.log(arr[0])
+
 						this.timestr = arr[0];
+						if(nowdate == this.timestr) {
+							var a1 = arr[1].split(":")
+							this.timestr1 = a1[0] + ":" + a1[1];
+						} else {
+							//年份分割
+							var year = this.timestr.split("-")
+
+							if(time[0] == year[0]) {
+								this.timestr1 = year[1] + "-" + year[2];
+							} else {
+								this.timestr1 = arr[0];
+							}
+
+						}
+
 						//缩略图
 						// this.imgUrl = JSON.parse(data.post.postSmallImages)
 						//缩略文章
@@ -388,7 +410,7 @@
 								} else {
 									//年份分割
 									var year = this.timestr.split("-")
-									
+
 									if(time[0] == year[0]) {
 										res.data.comments.rows[i].createTimeStr = year[1] + "-" + year[2];
 									} else {
@@ -438,7 +460,7 @@
 										var nowdate = Data.customData()
 										//切割当前时间获取当前年份
 										var time = nowdate.split("-")
-										
+
 										//时间  字符串切割
 										var arr = res.data.comments.rows[i].createTimeStr.split(" ")
 										this.timestr = arr[0];
@@ -448,7 +470,7 @@
 										} else {
 											//年份分割
 											var year = this.timestr.split("-")
-											
+
 											if(time[0] == year[0]) {
 												res.data.comments.rows[i].createTimeStr = year[1] + "-" + year[2];
 											} else {
