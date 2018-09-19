@@ -161,7 +161,7 @@
 				</div>
 			</v-loadmore>
 		</div>
-		<!--<App :message="post"></App>-->
+		<App :message="post"></App>
 
 	</div>
 </template>
@@ -171,7 +171,7 @@
 	import Headerdown from '@/components/layout/headerdown.vue'
 	import { discuss, discussCommentList } from '@/service/home';
 	import { wechatShare } from '../../assets/js/wxshare'
-	//	import App from '@/components/layout/app.vue'
+	import App from '@/components/layout/app.vue'
 	import '../../assets/js/baidu'
 	import { Loadmore } from 'mint-ui';
 	import Data from '../../assets/js/date'
@@ -212,7 +212,7 @@
 		components: {
 			HeaderBar,
 			Headerdown,
-			//			App,
+			App,
 			'v-loadmore': Loadmore,
 		},
 		mounted() {

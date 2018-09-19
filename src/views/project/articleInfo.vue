@@ -126,7 +126,7 @@
 				</div>
 			</v-loadmore>
 		</div>
-		<!--<App :message="post"></App>-->
+		<App :message="post"></App>
 	</div>
 </template>
 
