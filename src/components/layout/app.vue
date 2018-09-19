@@ -55,16 +55,16 @@
 				//				}
 
 				if(navigator.userAgent.match(/android/i)) {
-					console.log(this.message[0])
+					alert(this.message[0])
 					//this.message[0]  3是文章
 					if(this.message[0] == "article") {
-//						alert("文章")
+						alert("文章")
 						window.location.href = "find://move/com.secretk.move?pid=2&postId="+ this.message[1]; //安卓协议，由安卓同事提供
 					} else if(this.message[0] == "articleInfo") {
-//						alert("评测")
+						alert("评测")
 						window.location.href = "find://move/com.secretk.move?pid=1&postId="+ this.message[1]; //安卓协议，由安卓同事提供
 					} else if(this.message[0] == "discuss") {
-//						alert("爆料")
+						alert("爆料")
 						window.location.href = "find://move/com.secretk.move?pid=3&postId="+ this.message[1]; //安卓协议，由安卓同事提供
 					} else {
 						window.setTimeout(function() {
