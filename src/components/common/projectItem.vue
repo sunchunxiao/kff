@@ -476,7 +476,7 @@
 							}
 						}
 
-						if(res.data.recommends.rows[i].postSmallImagesList!=null&& res.data.recommends.rows[i].postSmallImagesList.length != 0) {
+						if(res.data.recommends.rows[i].postSmallImagesList != null && res.data.recommends.rows[i].postSmallImagesList.length != 0) {
 
 							this.postImage = res.data.recommends.rows[i].postSmallImagesList
 

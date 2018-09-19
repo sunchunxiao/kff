@@ -248,7 +248,7 @@
 					//判断是不是文章 的发送另一个组件
 					var a1 = window.location.href
 					var a2 = a1.match("article")[0]
-					console.log(a2)
+					
 					this.post.push(a2, this.id)
 
 					//缩略图
