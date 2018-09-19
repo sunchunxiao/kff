@@ -30,7 +30,7 @@
 		props: ["message"],
 		name: "footer-info",
 		mounted() {
-			console.log(this.message[0],this.message[1])
+//			console.log(this.message[0],this.message[1])
 		},
 		methods: {
 			download() {
@@ -55,7 +55,7 @@
 				//				}
 
 				if(navigator.userAgent.match(/android/i)) {
-//					alert(this.message[0])
+					console.log(this.message[0])
 					//this.message[0]  3是文章
 					if(this.message[0] == "article") {
 //						alert("文章")

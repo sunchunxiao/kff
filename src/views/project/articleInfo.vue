@@ -279,7 +279,9 @@
 					//判断是不是评测   发送另一个组件
 					var a1 = window.location.href
 					var a2 = a1.match("articleInfo")[0]
+//					console.log(a2)
 					this.post.push(a2,this.id)
+//					console.log(this.post)
 					
 					//缩略图
 					if(data.postSmallImages!=null&&data.postSmallImages.length!=0){
