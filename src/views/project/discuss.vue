@@ -327,9 +327,9 @@
 						}
 
 						//判断是不是评测   发送另一个组件
-						//					var a1 = window.location.href
-						//					var a2 = a1.match("discuss")[0]
-						//					this.post.push(a2,this.id)
+						var a1 = window.location.href
+						var a2 = a1.match("discuss")[0]
+						this.post.push(a2, this.id)
 
 						//调用 Data.customData()
 						var nowdate = Data.customData()
@@ -355,7 +355,10 @@
 						}
 
 						//缩略图
-						// this.imgUrl = JSON.parse(data.post.postSmallImages)
+						if(data.postSmallImages != null && data.postSmallImages.length != 0) {
+							this.imgUrl = JSON.parse(data.postSmallImages)
+						}
+						
 						//缩略文章
 						this.postShortDesc = data.postShortDesc
 					}
