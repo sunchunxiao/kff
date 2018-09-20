@@ -70,9 +70,7 @@
     color: #d5eafb;
     float: right;
   }
-  .mint-button-text{
-    background-color: #63b5f7;
-  }
+
   .otherWay {
     width: 100%;
     height: 40px;
@@ -108,6 +106,9 @@
   import HeaderBar from '@/components/layout/headerBar.vue'
   import {login} from '@/service/user'
 
+  import { MessageBox } from 'mint-ui';
+
+
   export default {
     name: 'login',
     components: {
@@ -115,8 +116,10 @@
     },
     data() {
       return {
-        phone: "13111111111",
-        password: "123456",
+
+        phone: "",
+        password: "",
+
         rightOptions: {
           hasRightBtn: true,
           rightBtnText: "忘记密码"
@@ -152,13 +155,19 @@
       },
       login() {
         let params ={
-          userName:"111",
-          password:"111"
+
+          loginName:this.phone,
+          password:this.password
         }
         login(params).then(res=>{
-          console.log("第一个接口调试");
+          if(res.code==0){
+            console.log("res.data.user");
+            this.$router.push('/main')
+          }
+
         })
-        this.$router.push('/main')
+
+
       },
       //验证码登登录
       codeLogin(){
@@ -180,7 +189,7 @@
           passwords.type = "password";
           Visiblepasswords.src = "../static/nVisiblepasswords.png";
         } else {
-          console.log(111)
+
           passwords.type = "text";
           Visiblepasswords.src = "../static/Visiblepasswords.png";
         }

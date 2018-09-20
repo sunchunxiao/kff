@@ -1,11 +1,15 @@
 <template>
   <div>
+
     <Project-Item :itemList="recommendList" :isActionTop='false' v-on:addAttention="addAttention"></Project-Item>
   </div>
 </template>
 
 <script>
-  import ProjectItem from '@/components/common/projectItem.vue'
+
+import ProjectItem from '@/components/common/projectItem.vue'
+//import ProjectItem from '@/components/common/project.vue'
+
 
   export default {
     name: "recommmend",

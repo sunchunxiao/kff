@@ -1,11 +1,12 @@
 <template>
   <div>
-    <HeaderBar
-      :leftOptions="leftOptions"
-      v-on:leftClickHandel="leftClickHandel"
-      :title="title"
-    />
+
+    <!--<HeaderBar-->
+      <!--:title="title"-->
+    <!--/>-->
     <mt-navbar v-model="selected">
+      <!--<img src="../../assets/mine/zhufan.png" alt="">-->
+
       <mt-tab-item id="item">话题</mt-tab-item>
       <mt-tab-item id="user">用户</mt-tab-item>
     </mt-navbar>
@@ -16,7 +17,21 @@
   </div>
 </template>
 
-<style>
+
+<style lang="less" scoped>
+  .mint-navbar{
+    width: 26%;
+    margin: 0 auto;
+    color:#aeaeae;
+  }
+  .mint-navbar .mint-tab-item.is-selected{
+    margin-bottom: 0;
+  }
+  .mint-tab-item-label{
+    font-size:17px;
+    /*color:#aeaeae;*/
+    letter-spacing:0;
+  }
 
 </style>
 
@@ -34,10 +49,7 @@
     },
     data() {
       return {
-        leftOptions: {
-          hasLeftBtn: true,
-          leftBtnText: "返回"
-        },
+	  
         title: this.$route.meta.title,
         selected: "item",
         itemList: [],
@@ -87,9 +99,7 @@
     },
 
     methods: {
-      leftClickHandel() {
-        this.$router.push('/main/mine')
-      },
+
     }
   }
 </script>

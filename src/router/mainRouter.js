@@ -1,5 +1,9 @@
 /**
+<<<<<<< HEAD
  * Created by zhengchangshun on 2018/3/31.
+=======
+ * Created by sunchunxiao on 2018/3/31.
+>>>>>>> scx_master
  */
 
 /*底部菜单栏 路由*/
@@ -13,7 +17,10 @@ export const mainRouter = [
       {
         path: 'home',
         meta: {
-          title: '首页'
+
+          title: '首页',
+          keepAlive: true
+
         },
         component: (resolve) => require(['@/views/home/index.vue'], resolve)
       },

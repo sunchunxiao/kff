@@ -1,14 +1,7 @@
 <template>
   <div class="setting">
-    <!--<HeaderBar-->
-      <!--:leftOptions="leftOptions"-->
-      <!--v-on:leftClickHandel="leftClickHandel"-->
-      <!--:title="title"-->
-    <!--/>-->
-    <div class="setting-title" >
-      <span @click="leftClickHandel">返回</span>
-      设置
-    </div>
+
+    <HeaderBar :title="title" />
     <div class="title">个人信息</div>
     <mt-cell title="头像">
       <span>
@@ -57,6 +50,22 @@
       width: 100%;
       text-align: center;
       height: 40px;
+
+      line-height: 40px;
+      .back{
+        height: 40px;
+        line-height: 50px;
+        float: left;
+        img{
+          width: 50%;
+        }
+      }
+      .setting{
+        font-size:18px;
+        color:#333333;
+        letter-spacing:0;
+      }
+
     }
     .mint-cell-title {
       flex: 0.4;
@@ -97,6 +106,15 @@
       overflow: hidden
     }
   }
+
+  .mint-cell-value{
+    text-align: left;
+    span{
+      font-size: 14px;
+      color: #333;
+    }
+  }
+
 </style>
 
 <script>
@@ -112,10 +130,7 @@
     },
     data() {
       return {
-        leftOptions: {
-          hasLeftBtn: true,
-          leftBtnText: "返回"
-        },
+
         rightOptions: {
           hasRightBtn: false,
         },
@@ -152,10 +167,7 @@
       // queryList();
     },
     methods: {
-      //头部 -返回
-      leftClickHandel() {
-        this.$router.push('/main/mine')
-      },
+	
       //更改图像
       changeImage() {
         console.log("更换图像");

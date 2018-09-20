@@ -1,15 +1,18 @@
 import axios from 'axios'
 import {Toast} from 'mint-ui';
-import util from '@/utils/common'
-import Md5 from 'js-md5';
-import {Base64} from 'js-base64';
-import {ase128Encode, encrypt} from './aesEncode'
+
+import {jumpToLogin} from '@/utils/common'
+// import Md5 from 'js-md5';
+// import {Base64} from 'js-base64';
+// import {encrypt as aes128Encod} from './aesEncode'
 
 
 const specialCode = []
 
 let defaultOpts = {
-  method: 'POST',
+
+  method: 'get',
+
   credentials: 'same-origin',
   headers: {
     'Content-Type': 'application/json; charset=UTF-8'
@@ -19,41 +22,36 @@ let defaultOpts = {
 axios.interceptors.response.use((res) => {
   return res
 }, (error) => {
-  let message = (error.response.data && error.response.data.message) || error.message
+
+  let message = (error.response.data && error.response.data.msg) || error.msg
+
   Toast(message);
   return Promise.reject(error)
 })
 
 // option = {method,body,header}
 const request = (url, options = {}) => {
-  //测试地址
-  var url = "http://47.98.197.101/tzg-rest" + url;
-  //默认post请求
-  let method = options.method || "post"
-  let key = ~['delete', 'get', 'head'].indexOf(method) ? 'params' : 'data'
-  // 过滤空的筛选条件
-  if (['get'].indexOf(method.toLowerCase()) > -1) {
-    options.body = Object.assign({}, options.body)
-    for (let key in options.body) {
-      if (options.body.hasOwnProperty(key)) {
-        if (options.body[key] === '') {
-          delete  options.body[key]
-        }
-      }
-    }
-  }
 
-  let originBody = options.body
-  let aesEncode = encrypt(JSON.stringify(originBody))
-  let policy = Base64.encode(aesEncode)
-  let sign = Md5(JSON.stringify(originBody))
-  let time = new Date().getTime();
-  let encodeBody = {
-    policy, sign, time
-  }
+  //测试地址1
+	     var url = "/wap" + url;
+  //林俊
+  //var url = "http://192.168.10.128:8081/wap" + url;
+  //栋栋
+  //var url = "http://192.168.10.153:803" + url;
+
+  // let originBody = JSON.stringify(options.body)
+  // let aesEncode = aes128Encod(originBody)
+  // let policy = Base64.encode(aesEncode)
+  // policy = encodeURI(policy)
+  // let sign = Md5(originBody)
+  // let time = new Date().getTime();
+  // let encodeBody = {
+  //   policy, sign, time
+  // }
 
   // 数据单据处理
-  let body = {[key]: encodeBody}
+  let body = {'params': options.body}
+
   delete  options.body
 
   // form表单格式提交
@@ -69,12 +67,15 @@ const request = (url, options = {}) => {
 
   return axios(Object.assign({url}, defaultOpts, body, options))
     .then(res => {
-      if (res.data.success) {
-        return res.data.data
+
+
+      if (res.data.code == 0) {
+        return res.data
       } else {
         Toast(res.data.message)
         if (res.data.code === specialCode) {
-          util.jumpToLogin()
+          jumpToLogin()
+
         }
         return Promise.reject(res.data)
       }

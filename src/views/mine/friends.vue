@@ -1,10 +1,8 @@
 <template>
   <div>
-    <HeaderBar
-      :leftOptions="leftOptions"
-      v-on:leftClickHandel="leftClickHandel"
-      :title="title"
-    />
+
+    <HeaderBar :title="title"/>
+
     <div class="body">
       <h3 class="title">邀请好友注册得多级奖励</h3>
       <div class="row">
@@ -93,10 +91,8 @@
     },
     data() {
       return {
-        leftOptions: {
-          hasLeftBtn: true,
-          leftBtnText: "返回"
-        },
+
+
         title: this.$route.meta.title,
         data: {
           total: 500,
@@ -112,9 +108,7 @@
     },
 
     methods: {
-      leftClickHandel() {
-        this.$router.push('/main/mine')
-      },
+
 
     }
   }

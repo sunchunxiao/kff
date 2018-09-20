@@ -1,6 +1,6 @@
 /**
- * Created by zhengchangshun on 2018/4/1.
- */
+
+ * Created by sunchunxiao
 
 /*底部菜单-我的 路由*/
 export const mineRouter = [
@@ -60,5 +60,15 @@ export const mineRouter = [
     },
     component: (resolve) => require(['@/views/mine/help.vue'], resolve)
   },
+
+  //尽调规则
+  {
+    path: '/mine/regulation',
+    meta: {
+      title: '帮助中心'
+    },
+    component: (resolve) => require(['@/views/mine/regulation.vue'], resolve)
+  },
+
 
 ]

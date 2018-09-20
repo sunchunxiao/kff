@@ -31,11 +31,9 @@
 </style>
 <template>
   <div>
-    <HeaderBar
-      :leftOptions="leftOptions"
-      v-on:leftClickHandel="leftClickHandel"
-      :title="title"
-    />
+
+    <HeaderBar :title="title"  />
+
     <div class="authority">
       <div class="title">
         <div>专业测评</div>
@@ -80,10 +78,7 @@
     },
     data() {
       return {
-        leftOptions: {
-          hasLeftBtn: true,
-          leftBtnText: "返回"
-        },
+
         title: this.$route.meta.title,
         baseModel: [
           {name: "项目定位", rate: "20%"},
@@ -104,9 +99,7 @@
       }
     },
     methods: {
-      leftClickHandel() {
-        this.$router.go(-1)
-      },
+
       queryUserModel() {
         /*接口*/
         this.userModel = []

@@ -6,7 +6,6 @@
     color:#fff;
     background-image:linear-gradient(-180deg, #02b7ea 0%, #4372ff 100%);
 
-
     /*position: fixed;*/
     height: 100%;
     .back{
@@ -77,9 +76,7 @@
   .gotoRegister {
     float: right;
   }
-  .mint-button-text{
-    background-color: #63b5f7;
-  }
+
   .otherWay {
     width: 100%;
     height: 40px;
@@ -99,7 +96,8 @@
         <div class="gotoRegister" @click="gotoLogin">用户登录</div>
       </div>
     </div>
-    <mt-button type="primary" class="longBtn" @click.native="start">开始使用</mt-button>
+
+    <mt-button type="primary" class="longBtn" @click.native="startRegister">开始使用</mt-button>
     <div class="protocol">
       <a @click="showProtocolModal">注册即同意《开封府服务协议》</a>
     </div>
@@ -183,26 +181,30 @@
         }
 
       },
-      start() {
-        //开始使用
-        // if(){
-        //
-        // }
-        this.$router.push('/user/codeLogin1');
-        console.log(this.phone)
+
+      //开始使用
+      startRegister() {
+        let params ={
+          phone:this.phone,
+        }
+        phoneAvailable(params).then(res=>{
+          // debugger;
+          if(res.code==0){
+            console.log(111)
+            console.log(res.data.isRegister);
+            if(res.data.isRegister==0){
+              this.$router.push('/user/register')
+            }else{
+              console.log(222)
+              this.$router.push('/user/codeLogin1')
+            }
+          }
+        })
+
+        // console.log(this.phone)
         localStorage.setItem('phone',this.phone);
-        console.log(localStorage.phone)
-        // phoneAvailable({
-        //   phone:this.phone,
-        // }).then(res=>{
-        //   if(res.code==0){
-        //
-        //     console.log(res.data);
-        //     this.data=res.data;
-        //
-        //   }
-        //
-        // })
+        // console.log(localStorage.phone)
+
 
       },
       //点击用户登录

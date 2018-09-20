@@ -1,5 +1,7 @@
 /**
- * Created by zhengchangshun on 2018/4/22.
+
+ * Created by sunchunxiao on 2018/4/22.
+
  */
 /**
  * Created by zhengchangshun on 2018/3/31.
@@ -14,6 +16,9 @@ export const projectRouter = [
     },
     component: (resolve) => require(['@/views/project/home.vue'], resolve)
   },
+
+  /*测评详细部分（start）*/
+
   {
     path: '/project/rate',
     meta: {
@@ -27,7 +32,10 @@ export const projectRouter = [
       title: '普通测评'
     },
     component: (resolve) => require(['@/views/project/ordinary.vue'], resolve)
-  }, {
+
+  },
+  {
+
     path: '/project/authority',
     meta: {
       title: '专业测评'
@@ -41,6 +49,49 @@ export const projectRouter = [
     },
     component: (resolve) => require(['@/views/project/authorityDetail.vue'], resolve)
   },
+
+  //测评
+  {
+    path: '/project/articleInfo',
+    meta: {
+      title: '测评'
+    },
+    component: (resolve) => require(['@/views/project/articleInfo.vue'], resolve)
+  },
+  //爆料
+  {
+    path: '/project/discuss',
+    meta: {
+      title: '讨论'
+    },
+    component: (resolve) => require(['@/views/project/discuss.vue'], resolve)
+  },
+  //讨论
+  {
+    path: '/project/currency',
+    meta: {
+      title: '讨论'
+    },
+    component: (resolve) => require(['@/views/project/currency.vue'], resolve)
+  },
+  //文章
+  {
+    path: '/project/article',
+    meta: {
+      title: '文章'
+    },
+    component: (resolve) => require(['@/views/project/article.vue'], resolve)
+  },
+    
+  /*导航 币圈必读*/
+  {
+    path: '/project/navigation',
+    meta: {
+      title: '全部测评'
+    },
+    component: (resolve) => require(['@/views/project/navigation.vue'], resolve)
+  },
+
 
   {
     path: '/project/firstEvaluation',
@@ -63,4 +114,15 @@ export const projectRouter = [
     },
     component: (resolve) => require(['@/views/project/addModel.vue'], resolve)
   },
+
+  /*测评详细部分（end）*/
+  {
+    path: '/project/allEvaluate',
+    meta: {
+      title: '全部测评'
+    },
+    component: (resolve) => require(['@/views/project/allEvaluate.vue'], resolve)
+  },
+
+
 ]

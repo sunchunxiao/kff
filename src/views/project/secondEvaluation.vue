@@ -12,9 +12,9 @@
 <template>
   <div>
     <HeaderBar
-      :leftOptions="leftOptions"
+
       :rightOptions="rightOptions"
-      v-on:leftClickHandel="leftClickHandel"
+
       v-on:rightClickHandel="rightClickHandel"
       :title="title"
     />
@@ -37,10 +37,7 @@
     },
     data() {
       return {
-        leftOptions: {
-          hasLeftBtn: true,
-          leftBtnText: "返回"
-        },
+
         rightOptions: {
           hasRightBtn: true,
           rightBtnText: "发表"
@@ -54,9 +51,6 @@
       this.score = this.$route.query.average
     },
     methods: {
-      leftClickHandel() {
-        this.$router.go(-1)
-      },
 
       rightClickHandel() {
         let {score, message} = this

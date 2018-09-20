@@ -115,7 +115,9 @@ p{
   .mint-cell-value.is-link img{
     position: absolute;
     left: 4%;
-    width: 4%;
+
+    width: 5%;
+
   }
 </style>
 <template>
@@ -127,8 +129,10 @@ p{
       <!--<img src="../../assets/image/logo.png"/>-->
     <!--</div>-->
     <div class="set">
-        <div class="mine-title" @click="rightClickHandel">
-          设置
+
+        <div class="mine-title" >
+          <span @click="rightClickHandel">设置</span>
+
         </div>
         <div class="mine-info">
           <div class="mine-img"></div>
@@ -143,12 +147,8 @@ p{
 
       </div>
     </div>
-    <!--<div class="userInfo">-->
-      <!--<div class="name">{{name}}</div>-->
-      <!--<div class="description">{{description}}</div>-->
-    <!--</div>-->
-    <!--<category-Num :data="categoryData1"></category-Num>-->
-    <!--<hr/>-->
+
+
     <category-Num :data="categoryData2"></category-Num>
     <div class="balance">
       <span class="balance-money font">KFF余额</span>

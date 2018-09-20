@@ -1,8 +1,7 @@
 <template>
   <div>
     <HeaderBar
-      :leftOptions="leftOptions"
-      v-on:leftClickHandel="leftClickHandel"
+
       :title="title"
     />
     <Project-Item :itemList="itemList"  :isActionTop='false'  v-on:addAttention="addAttention"></Project-Item>
@@ -25,10 +24,7 @@
     },
     data() {
       return {
-        leftOptions: {
-          hasLeftBtn: true,
-          leftBtnText: "返回"
-        },
+
         title: this.$route.meta.title,
         itemList: [],
       }
@@ -41,7 +37,9 @@
         id: 1,
         action: "zan",
         itemImg: require("../../assets/image/rose.png"),
-        itemName: "柚子（EOS）",
+
+        itemName: "EOS",
+
         time: '2018-04-07',
         isAttention: true,
         testName: "ALL-整体评测",
@@ -56,7 +54,9 @@
         id: 1,
         action: "test",
         itemImg: require("../../assets/image/rose.png"),
-        itemName: "柚子（EOS）1111",
+
+        itemName: "EOS",
+
         time: '2018-05-07',
         isAttention: false,
         testName: "ALL-整体评测",
@@ -71,9 +71,6 @@
     },
 
     methods: {
-      leftClickHandel() {
-        this.$router.push('/main/mine')
-      },
 
       addAttention(item, index) {
         let {id} = item

@@ -1,11 +1,28 @@
-<style>
+
+<style lang="less">
   .header {
-    height: 30px;
+    height: 44px;
+    width: 100%;
+    background-color: #f9f9f9;
+    /*左侧返回btn*/
+    .is-left{
+      .mintui-back{
+        font-size: 20px;
+        color: #3b88f6;;
+
+      }
+    }
+    /*title*/
+    .mint-header-title {
+      font-size: 18px;
+      color: #333333;
+      font-weight: 600;
+    }
+
   }
 </style>
 <template>
-  <mt-header :title='title' class="header">
-    <mt-button slot="left" v-if='leftOptions.hasLeftBtn' @click.native="leftClick">{{leftOptions.leftBtnText}}</mt-button>
+    <mt-button slot="left" icon="back" @click.native="leftClick"></mt-button>
     <mt-button slot="right" v-if='rightOptions.hasRightBtn' @click.native="rightClick">{{rightOptions.rightBtnText}}</mt-button>
   </mt-header>
 </template>
@@ -13,21 +30,16 @@
 <script>
   export default {
     name: 'headBar',
-    props: ['title', 'leftOptions', 'rightOptions',],
+
+    props: ['title', 'rightOptions',],
+
     props: {
       'title': {
         type: String,
         default: ""
       },
-      'leftOptions': {
-        type: Object,
-        default: function () {
-          return {
-            hasLeftBtn: false,
-            leftBtnText: "",
-          }
-        }
-      },
+
+
       'rightOptions': {
         type: Object,
         default: function () {
@@ -40,10 +52,11 @@
     },
     methods: {
       leftClick: function () {
-        console.log('左侧按钮事件');
-        this.$emit('leftClickHandel')
-      }
-      ,
+
+        console.log('返回');
+        this.$router.go(-1)
+      },
+
       rightClick: function () {
         console.log('右侧按钮事件');
         this.$emit('rightClickHandel')

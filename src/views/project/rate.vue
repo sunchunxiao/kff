@@ -43,8 +43,7 @@
 <template>
   <div>
     <HeaderBar
-      :leftOptions="leftOptions"
-      v-on:leftClickHandel="leftClickHandel"
+
       :title="title"
     />
     <div class="rateInfo">
@@ -115,10 +114,7 @@
     },
     data() {
       return {
-        leftOptions: {
-          hasLeftBtn: true,
-          leftBtnText: "返回"
-        },
+
         title: this.$route.meta.title,
         rateLabel,
         rateInfo: {}
@@ -128,9 +124,7 @@
       this.queryRateInfo()
     },
     methods: {
-      leftClickHandel() {
-        this.$router.go(-1)
-      },
+
       queryRateInfo() {
         //接口
         this.rateInfo = {
